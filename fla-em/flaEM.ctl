@@ -26,7 +26,7 @@
 999 #_Growth_Age_for_L2 (999 to use as Linf)
 0 #_SD_add_to_LAA (set to 0.1 for SS2 V1.x compatibility)
 0 #_CV_Growth_Pattern:  0 CV=f(LAA); 1 CV=F(A); 2 SD=F(LAA); 3 SD=F(A); 4 logSD=F(A)
-1 #_maturity_option:  1=length logistic; 2=age logistic; 3=read age-maturity matrix by growth_pattern; 4=read age-fecundity; 5=read fec and wt from wtatage.ss
+2 #_maturity_option:  1=length logistic; 2=age logistic; 3=read age-maturity matrix by growth_pattern; 4=read age-fecundity; 5=read fec and wt from wtatage.ss
 #_placeholder for empirical age-maturity by growth pattern
 2 #_First_Mature_Age
 1 #_fecundity option:(1)eggs=Wt*(a+b*Wt);(2)eggs=a*L^b;(3)eggs=a*Wt^b; (4)eggs=a+b*L; (5)eggs=a+b*W
@@ -44,8 +44,8 @@
  0.001 1.0 0.2 0.2 -1 0.8 4 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  0 3 1e-005 1e-005 -1 0.2 -3 0 0 0 0 0 0 0 # Wtlen_1_Fem
  0.0149 14.9 3 2.98 -1 0.2 -3 0 0 0 0 0 0 0 # Wtlen_2_Fem
- .1445 144.5 28.9 0.879 -1 0.8 -3 0 0 0 0 0 0 0 # Mat50%_Fem
- -5 5 -0.42 -1.14 -1 0.8 -3 0 0 0 0 0 0 0 # Mat_slope_Fem
+ 0.01 14.0475 2.8095 0.879 -1 0.8 -3 0 0 0 0 0 0 0 # Mat50%_Fem
+ -10.78549 3 -2.157098 -1 0.8 -3 0 0 0 0 0 0 0 # Mat_slope_Fem
  -3 3 1 1 -1 0.8 -3 0 0 0 0 0 0 0 # Eggs/kg_inter_Fem
  -3 4 0 0 -1 0.8 -3 0 0 0 0 0 0 0 # Eggs/kg_slope_wt_Fem
  -4 4 0 0 -1 0 -4 0 0 0 0 0 0 0 # RecrDist_GP_1
