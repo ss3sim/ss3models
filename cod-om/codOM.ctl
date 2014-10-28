@@ -141,15 +141,23 @@
 
 #_age_selex_types
 #_Pattern ___ Male Special
-12 0 0 0  # 1 Fishery 
-12 0 0 0  # 2 SURVEY
+20 0 0 0  # 1 Fishery 
+20 0 0 0  # 2 SURVEY
 15 0 0 1  # 3 CPUE - Mirrors Fishery
 
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
-0.00943      9.43  	1.886  0     -1   99    -1      0    0      0       0       0 0 0   # AgeSel_1P_1_Fishery
-0.003005       3.005     0.601    0     -1     99    -1      0    0      0       0       0 0 0   # AgeSel_1P_2_Fishery  
-0.00747      7.47     1.494    0     -1     99    -1      0    0      0       0       0 0 0   # AgeSel_2P_1_SURVEY  - 0.8*size at 50% selectivity from fishery
-0.003005       3.005     0.601    0     -1     99    -1      0    0      0       0       0 0 0   # AgeSel_2P_2_SURVEY 
+0.0	13.5	2.7	2.7	1	0.05	-2	0	0	0	0	0.5	0	0	#	Fishery PEAK	value
+-5.0	3.0	-1.0	-1.0	1	0.05	-3	0	0	0	0	0.5	0	0	#	Fishery TOP	logistic
+-4.0	12.0	0.0	0.0	1	0.05	-3	0	0	0	0	0.5	0	0	#	Fishery WIDTH	exp
+-2.0	75	15.0	15.0	1	0.05	-3	0	0	0	0	0.5	0	0	#	Fishery WIDTH	exp
+-15.0	5.0	-999.0	-999.0	1	0.05	-2	0	0	0	0	0.5	0	0	#	Fishery INIT	logistic
+-5.0	5.0	-999.0	-999.0	1	0.05	-2	0	0	0	0	0.5	0	0	#	Fishery FINAL	logistic
+0.0	12	2.4	2.4	1	0.05	-2	0	0	0	0	0.5	0	0	#	Survey PEAK	value
+-5.0	3.0	-1.0	-1.0	1	0.05	-3	0	0	0	0	0.5	0	0	#	Survey TOP	logistic
+-4.0	12.0	0.0	0.0	1	0.05	-3	0	0	0	0	0.5	0	0	#	Survey WIDTH	exp
+-2.0	75	15.0	15.0	1	0.05	-3	0	0	0	0	0.5	0	0	#	Survey WIDTH	exp
+-15.0	5.0	-999.0	-999.0	1	0.05	-2	0	0	0	0	0.5	0	0	#	Survey INIT	logistic
+-5.0	5.0	-999.0	-999.0	1	0.05	-2	0	0	0	0	0.5	0	0	#	Survey FINAL	logistic
 
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
