@@ -2,7 +2,8 @@
 
 ### This should be the models to start with for ALL groups (and then modify as needed)
 
-## Specific changes: 
+
+# Specific changes: 
 - 1. Age based selectivity (using double normal but parametrized to mimic a logistic curve) (**NEED to do**)
 - 2. Age based logistic maturity (last changed 10/27)
 - 3. Years span from 1:100 (last changed 10/27)
