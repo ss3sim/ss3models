@@ -4,11 +4,11 @@
 
 
 # Specific changes: 
-- 1. Age based selectivity (using double normal but parametrized to mimic a logistic curve) (**NEED to do**)
+- 1. Age based selectivity (using double normal but parametrized to mimic a logistic curve) (last changed 10/28)
 - 2. Age based logistic maturity (last changed 10/27)
 - 3. Years span from 1:100 (last changed 10/27)
 - 4. Wider bounds for EM models (based on Kelli's approach: lower bounds = 0.5% of init values, upper bounds = 500% of init values) (last changed 10/27)
-- 5. Changed the "F" case files to reflect the pop dyn of these new models (**NEED to do**)
+- 5. Changed the "F" case files to reflect the pop dyn of these new models (last changed 10/28)
 
 
 Current contributors: the Fish600 team
