@@ -143,15 +143,15 @@
  10 0 0 0 # 2 SURVEY
  10 0 0 0 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 20 199 50.8 50.8 1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_1P_1_Fishery
+ 20 250 50.8 50.8 1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_1P_1_Fishery
  -5 3 -3 -3 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_2_Fishery
- -4 12 5.1 5.1 1 0.05 3 0 0 0 0 0.5 0 0 # SizeSel_1P_3_Fishery
+ -4 25 5.1 5.1 1 0.05 3 0 0 0 0 0.5 0 0 # SizeSel_1P_3_Fishery
  -2 16 15 15 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_4_Fishery
  -15 5 -999 -999 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_5_Fishery
  -5 5 -999 -999 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_6_Fishery
  20 199 41.8 41.8 1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_2P_1_Survey
  -5 3 -4 -4 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_2_Survey
- -4 12 5.2 5.2 1 0.05 3 0 0 0 0 0.5 0 0 # SizeSel_2P_3_Survey
+ -4 25 5.2 5.2 1 0.05 3 0 0 0 0 0.5 0 0 # SizeSel_2P_3_Survey
  -2 15 14 14 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_4_Survey
  -100 100 -99 -99 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_5_Survey
  -100 100 99 99 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_6_Survey
