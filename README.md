@@ -1,7 +1,10 @@
 ### This folder contains model files and case files when using the age-based selectivity and maturity (instead of length-based) through [ss3sim](https://github.com/ss3sim/ss3sim) package.
 
 ### This should be the models to start with for ALL groups (and then modify as needed)
-
+* cod - age based double normal selectivity, age based logistic maturity
+* col - length based double normal selectivity in OM, length based logistic in EM, narrow bounds
+* cos 
+* fla 
 
 # Specific changes: 
 - 1. Age based selectivity (using double normal but parametrized to mimic a logistic curve) (last changed 10/28)
