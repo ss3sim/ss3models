@@ -241,8 +241,8 @@
 
 #_age_selex_types
 #_Pattern ___ Male Special
-12 0 0 0  # 1 Fishery 
-12 0 0 0  # 2 SURVEY
+20 0 0 0  # 1 Fishery 
+20 0 0 0  # 2 SURVEY
 15 0 0 1  # 3 CPUE - Mirrors Fishery
 
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn

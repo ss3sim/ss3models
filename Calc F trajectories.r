@@ -1,8 +1,10 @@
+library(devtools)
 install('F:/ss3sim')
 library(ss3sim)
 
 setwd("F:/growth_models/cod-om - Copy")
 setwd("F:/growth_models/fla-om - Copy")
+setwd("F:/growth_models/fll-om - Copy")
 
 profile_fmsy(om_in=getwd(), results_out=getwd(), simlength = 100, start = 0.15, end = 0.7, by_val = 0.001)
 

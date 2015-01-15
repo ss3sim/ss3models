@@ -1,0 +1,12 @@
+SS-V3.24O-safe-win64;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.1
+Mon Nov 03 22:09:30 2014
+
+Fleet:_1 min bound on parameter for size at peak is 3; should be >= midsize bin 2 (5)
+Fleet:_1 min bound on parameter for size at peak is 3; which is < min databin (4), so illogical.
+Fleet:_1 max bound on parameter for size at peak is 182; should be <= midsize bin N-1 (85)
+Fleet:_2 min bound on parameter for size at peak is 3; should be >= midsize bin 2 (5)
+Fleet:_2 min bound on parameter for size at peak is 3; which is < min databin (4), so illogical.
+Fleet:_2 max bound on parameter for size at peak is 153; should be <= midsize bin N-1 (85)
+Final gradient: 1.36035 is larger than final_conv: 0.0001
+ N warnings: 7
+Number_of_active_parameters_on_or_near_bounds: 0
