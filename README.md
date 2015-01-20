@@ -2,7 +2,7 @@
 
 ### This should be the models to start with for ALL groups (and then modify as needed)
   1. cos - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, narrow bounds
-  2. fla - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, narrow bounds
+  2. fll - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, narrow bounds
 
 (Other models that we created at one point) 
   1. cod - age based double normal selectivity, age based logistic maturity
