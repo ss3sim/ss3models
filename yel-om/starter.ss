@@ -3,17 +3,17 @@
 #C rerun model to get more complete formatting in starter.ss_new
 #C should work with SS version: SSv3.10b_or_later
 #C file write time: 2010-07-20 09:47:31
-dat_master.ss
-ctl_master.ss
-0 # 0=use init values in control file; 1=use ss3.par
+data.ss
+control.ss
+1 # 0=use init values in control file; 1=use ss3.par
 0 # run display detail (0,1,2)
 1 # detailed age-structured reports in REPORT.SSO (0,1) 
-0 # write detailed info from first call to echoinput.sso (0,1) 
+0 # write detailed checkup.sso file (0,1) 
 0 # write parm values to ParmTrace.sso (0=no,1=good,active; 2=good,all; 3=every_iter,all_parms; 4=every,active)
 0 # write to cumreport.sso (0=no,1=like&timeseries; 2=add survey fits)
 1 # Include prior_like for non-estimated parameters (0,1) 
 1 # Use Soft Boundaries to aid convergence (0,1) (recommended)
-1 # Number of datafiles to produce: 1st is input, 2nd is estimates, 3rd and higher are bootstrap
+3 # Number of datafiles to produce: 1st is input, 2nd is estimates, 3rd and higher are bootstrap
 0 # Turn off estimation for parameters entering after this phase
 10 # MCeval burn interval
 2 # MCeval thin interval
