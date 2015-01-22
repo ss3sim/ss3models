@@ -1,58 +1,54 @@
-# P. mackerel stock assessment (1983-10)
-# P. R. Crone (June 2011)
-# Stock Synthesis 3 (v. 3.20b) - R. Methot
-# Model XA: number of fisheries = 2 / surveys = 2 / time-step = annual / biological distributions = age, length, and mean length-at-age / selectivity = age-based
+#V3.24O
+# for all year entries except rebuilder; enter either: actual year, -999 for styr, 0 for endyr, neg number for rel. endyr
+1 # Benchmarks: 0=skip; 1=calc F_spr,F_btgt,F_msy 
+2 # MSY: 1= set to F(SPR); 2=calc F(MSY); 3=set to F(Btgt); 4=set to F(endyr) 
+0.3 # SPR target (e.g. 0.40)
+0.5 # Biomass target (e.g. 0.40)
+#_Bmark_years: beg_bio, end_bio, beg_selex, end_selex, beg_relF, end_relF (enter actual year, or values of 0 or -integer to be rel. endyr)
+ 0 0 0 0 0 0
+#  2010 2010 2010 2010 2010 2010 # after processing 
+1 #Bmark_relF_Basis: 1 = use year range; 2 = set relF same as forecast below
 #
-# NOTES: ** ... ** = Pending questions and/or comments
+0 # Forecast: 0=none; 1=F(SPR); 2=F(MSY) 3=F(Btgt); 4=Ave F (uses first-last relF yrs); 5=input annual F scalar
+0 # N forecast years 
+0 # F scalar (only used for Do_Forecast==5)
+#_Fcast_years:  beg_selex, end_selex, beg_relF, end_relF  (enter actual year, or values of 0 or -integer to be rel. endyr)
+ 0 0 0 0
+#  2010 2010 2010 2010 # after processing 
+0 # Control rule method (1=catch=f(SSB) west coast; 2=F=f(SSB) ) 
+0 # Control rule Biomass level for constant F (as frac of Bzero, e.g. 0.40); (Must be > the no F level below) 
+0 # Control rule Biomass level for no F (as frac of Bzero, e.g. 0.10) 
+0 # Control rule target as fraction of Flimit (e.g. 0.75) 
+120 #_N forecast loops (1=OFL only; 2=ABC; 3=get F from forecast ABC catch with allocations applied)
+0 #_First forecast loop with stochastic recruitment
+0 #_Forecast loop control #3 (reserved for future bells&whistles) 
+0 #_Forecast loop control #4 (reserved for future bells&whistles) 
+0 #_Forecast loop control #5 (reserved for future bells&whistles) 
+0  #FirstYear for caps and allocations (should be after years with fixed inputs) 
+0 # stddev of log(realized catch/target catch) in forecast (set value>0.0 to cause active impl_error)
+0 # Do West Coast gfish rebuilder output (0/1) 
+0 # Rebuilder:  first year catch could have been set to zero (Ydecl)(-1 to set to 1999)
+0 # Rebuilder:  year for current age structure (Yinit) (-1 to set to endyear+1)
+1 # fleet relative F:  1=use first-last alloc year; 2=read seas(row) x fleet(col) below
+# Note that fleet allocation is used directly as average F if Do_Forecast=4 
+0 # basis for fcast catch tuning and for fcast catch caps and allocation  (2=deadbio; 3=retainbio; 5=deadnum; 6=retainnum)
+# Conditional input if relative F choice = 2
+# Fleet relative F:  rows are seasons, columns are fleets
+#_Fleet:  COM REC
+#  0.5 0.5
+# max totalcatch by fleet (-1 to have no max) must enter value for each fleet
+ -1 -1
+# max totalcatch by area (-1 to have no max); must enter value for each fleet 
+ -1
+# fleet assignment to allocation group (enter group ID# for each fleet, 0 for not included in an alloc group)
+ 0 0
+#_Conditional on >1 allocation group
+# allocation fraction for each of: 0 allocation groups
+# no allocation groups
+0 # Number of forecast catch levels to input (else calc catch from forecast F) 
+0 # basis for input Fcast catch:  2=dead catch; 3=retained catch; 99=input Hrate(F) (units are from fleetunits; note new codes in SSV3.20)
+# Input fixed catch values
+#Year Seas Fleet Catch(or_F) 
+ 
 #
-# FORECAST FILE
-1 # Benchmarks: 0 = skip, 1 = calculate (F_SPR, F_btgt, F_MSY) ** Related to Benchmark relative_F basis, Forecast, and F and SPR report basis (in ctl file) options **
-2 # MSY: 0 = none, 1 = set to F_SPR, 2 = calculate F_MSY, 3 = set to F_Btgt, 4 = set to F(endyr) 
-0.3 # SPR target - relative to B0 (e.g., 0.3)
-0.5 # Biomass target - relative to B0 (e.g., 0.5)
-# Benchmark years: begin_bio, end_bio, begin_selex, end_selex, begin_relative F, end_relative F (enter actual year, -999 = start_yr, 0 = end_yr, <0 = relative end_yr)
-0 0 0 0 0 0
-1 # Benchmark relative_F basis: 1 = use year range, 2 = set relative_F same as Forecast below
-#
-1 # Forecast: 0 = none, 1 = F_SPR, 2 = F_MSY, 3 = F_Btgt, 4 = Avg_F (uses first-last relative_F years), 5 = input annual F scalar
-1 # Number of forecast years 
-1.0 # F scalar (only used for Forecast = 5)
-# Forecast years: begin_selex, end_selex, begin_relative F, end_relative F (enter actual year, -999 = start_yr, 0 = end_yr, <0 = relative end_yr)
-0 0 0 0
-#
-1 # Control rule method: 1 = catch = f(SSB) West Coast, 2 = F = f(SSB) 
-0.5 # Control rule Biomass level (as fraction of B0, e.g. 0.40) above which F is constant
-0.1 # Control rule Biomass level (as fraction of B0, e.g. 0.10) below which F is set to 0
-0.75 # Control rule target as fraction of F_limit (e.g., 0.75) 
-3 # Number of forecast loops (1-3: fixed at 3 for now)
-3 # First forecast loop with stochastic recruitment
-0 # Forecast loop control #3 (reserved for future bells&whistles)
-0 # Forecast loop control #4 (reserved for future bells&whistles)
-0 # Forecast loop control #5 (reserved for future bells&whistles)
-2015 # First year for caps and allocations (should be after years with fixed inputs)
-0 # SD of log(realized F/target F) in forecast (set value >0.0 to cause active implementation error)
-0 # Do West Coast groundfish rebuilder output (0 = no, 1 = 0)
-2007 # Rebuilder: first year catch could have been set to zero (Ydecl)(-1 to set to 1999)
-2010 # Rebuilder: year for current age structure (Yinit) (-1 to set to endyear+1)
-1 # fleet relative F: 1 = use first-last allocation year, 2 = read season(row) x fleet(column) below
-# Note: that fleet allocation is used directly as average F if Forecast = 4
-2 # Basis for forecast catch tuning and for forecast catch caps and allocation: 2 = dead_bio, 3 = retain_bio, 5 = dead_num, 6 = retain_num
-# Conditional input if relative F = 2 (total of 4 lines)
-# Fishery relative F: rows = seasons and columns = Fishery
-# Fishery: F1 F2
-# 0.1 0.1
-# Maximum total catch by fishery (-1 to have no max)
--1 -1
-# Maximum total catch by area (-1 to have no max)
--1
-# Fleet assignment to allocation group (enter group ID# for each Fishery, 0 for not included in an allocation group)
-0 0
-# Conditional on >1 allocation groups (total of 3 lines) 
-# Allocation fraction for each of: 0 allocation groups
-# No allocation groups
-2 # Number of forecast catch levels to input (otherwise calculate catch from forecast F)
-2 # Basis for input forecast catch: 2 = dead catch, 3 = retained catch, 99 = input Hrate(F) with units that are from fishery units (note new codes in SSv3.20b)
-# Input fixed catch values: year, season, Fishery, catch (or F)
-2011 1 1 2257
-2011 1 2 100
-999 # End of file
+999 # verify end of input 
