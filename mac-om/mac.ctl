@@ -15,7 +15,7 @@
 #_Cond 1 1 1 2 4 10 # example move definition for seas=1, morph=1, source=1 dest=2, age1=4, age2=10
 #
 0 #_Nblock_Patterns
-#_blocks_per_pattern 
+#_Cond 0 #_blocks_per_pattern 
 # begin and end years of blocks
 #
 0.5 #_fracfemale 
@@ -27,8 +27,7 @@
 0 #_SD_add_to_LAA (set to 0.1 for SS2 V1.x compatibility)
 0 #_CV_Growth_Pattern:  0 CV=f(LAA); 1 CV=F(A); 2 SD=F(LAA); 3 SD=F(A); 4 logSD=F(A)
 1 #_maturity_option:  1=length logistic; 2=age logistic; 3=read age-maturity matrix by growth_pattern; 4=read age-fecundity; 5=read fec and wt from wtatage.ss
-#_Age_Maturity by growth pattern
-# 0 0.07 0.25 0.47 0.73 1 1 1 1 1 1 1 1
+#_placeholder for empirical age-maturity by growth pattern
 1 #_First_Mature_Age
 1 #_fecundity option:(1)eggs=Wt*(a+b*Wt);(2)eggs=a*L^b;(3)eggs=a*Wt^b; (4)eggs=a+b*L; (5)eggs=a+b*W
 0 #_hermaphroditism option:  0=none; 1=age-specific fxn
@@ -45,7 +44,7 @@
  0.0001 0.5 0.01 0 -1 0 -3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  -1 5 3.12e-06 0 -1 0 -3 0 0 0 0 0 0 0 # Wtlen_1_Fem
  1 5 3.40352 0 -1 0 -3 0 0 0 0 0 0 0 # Wtlen_2_Fem
- -3 3 3 0 -1 0 -3 0 0 0 0 0 0 0 # Mat50%_Fem
+ -3 50 3 0 -1 0 -3 0 0 0 0 0 0 0 # Mat50%_Fem
  -3 3 3 0 -1 0 -3 0 0 0 0 0 0 0 # Mat_slope_Fem
  -3 3 1 0 -1 0 -3 0 0 0 0 0 0 0 # Eggs/kg_inter_Fem
  -3 3 0 0 -1 0 -3 0 0 0 0 0 0 0 # Eggs/kg_slope_wt_Fem
@@ -79,19 +78,19 @@
 0 #_SR_env_link
 0 #_SR_env_target_0=none;1=devs;_2=R0;_3=steepness
 1 #do_recdev:  0=none; 1=devvector; 2=simple deviations
-1978 # first year of main recr_devs; early devs can preceed this era
-2009 # last year of main recr_devs; forecast devs start in following year
+1 # first year of main recr_devs; early devs can preceed this era
+100 # last year of main recr_devs; forecast devs start in following year
 -1 #_recdev phase 
 1 # (0/1) to read 13 advanced options
-0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
--4 #_recdev_early_phase
-0 #_forecast_recruitment phase (incl. late recr) (0 value resets to maxphase+1)
-1 #_lambda for Fcast_recr_like occurring before endyr+1
- 1983 #_last_early_yr_nobias_adj_in_MPD
- 1971 #_first_yr_fullbias_adj_in_MPD
- 2009 #_last_yr_fullbias_adj_in_MPD
- 2011 #_first_recent_yr_nobias_adj_in_MPD
--1 #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs)
+ 0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
+ -4 #_recdev_early_phase
+ 0 #_forecast_recruitment phase (incl. late recr) (0 value resets to maxphase+1)
+ 1 #_lambda for Fcast_recr_like occurring before endyr+1
+1 #_last_early_yr_nobias_adj_in_MPD
+1 #_first_yr_fullbias_adj_in_MPD
+100 #_last_yr_fullbias_adj_in_MPD
+100 #_first_recent_yr_nobias_adj_in_MPD
+ -1 #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs)
  0 #_period of cycles in recruitment (N parms read below)
  -5 #min rec_dev
  5 #max rec_dev
@@ -135,90 +134,93 @@
 #DisplayOnly 0 # Main_RecrDev_2007
 #DisplayOnly 0 # Main_RecrDev_2008
 #DisplayOnly 0 # Main_RecrDev_2009
-#DisplayOnly 0 # Late_RecrDev_2010
-#DisplayOnly 0 # ForeRecr_2011
-#DisplayOnly 0 # Impl_err_2011
 #
 #Fishing Mortality info 
-.3 # F ballpark for annual F (=Z-M) for specified year
--2000 # F ballpark year (neg value to disable)
+0.3 # F ballpark for annual F (=Z-M) for specified year
+-100 # F ballpark year (neg value to disable)
 2 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
 1.1 # max F or harvest rate, depends on F_Method
 # no additional F input needed for Fmethod 1
 # if Fmethod=2; read overall start F value; overall phase; N detailed inputs to read
-.2 1 1
-1 1988 1 .3 .1 -1  #fleet number, year, season, fishing mortality level, se mortality, phase
 # if Fmethod=3; read N iterations for tuning for Fmethod 3
-#
+ 0.2 1 1 # overall start F value; overall phase; N detailed inputs to read
+#Fleet Year Seas F_value se phase (for detailed setup of F_Method=2)
+1 1 1 0.3 0.1 -1
+# 2
 #_initial_F_parms
 #_LO HI INIT PRIOR PR_type SD PHASE
- 0.0001 5 0.1 0 -1 0 1 # InitF_1COM
- 
+ 0.0001 5 0 0 -1 0 1 # InitF_1Fishery
+
+# F rates for Fmethod=2
+# 0 F_fleet_1_YR_1983_s_1
+# 0.1 F_fleet_1_YR_1984_s_1
+# 0.001 F_fleet_1_YR_1985_s_1
+# 0.2 F_fleet_1_YR_1986_s_1
+# 0.2 F_fleet_1_YR_1987_s_1
+# 0.2 F_fleet_1_YR_1988_s_1
+# 0.2 F_fleet_1_YR_1989_s_1
+# 0.2 F_fleet_1_YR_1990_s_1
+# 0.3 F_fleet_1_YR_1991_s_1
+# 0.2 F_fleet_1_YR_1992_s_1
+# 0.2 F_fleet_1_YR_1993_s_1
+# 0.2 F_fleet_1_YR_1994_s_1
+# 0.2 F_fleet_1_YR_1995_s_1
+# 0.2 F_fleet_1_YR_1996_s_1
+# 0.2 F_fleet_1_YR_1997_s_1
+# 0.2 F_fleet_1_YR_1998_s_1
+# 0.2 F_fleet_1_YR_1999_s_1
+# 0.2 F_fleet_1_YR_2000_s_1
+# 0.2 F_fleet_1_YR_2001_s_1
+# 0.2 F_fleet_1_YR_2002_s_1
+# 0.2 F_fleet_1_YR_2003_s_1
+# 0.2 F_fleet_1_YR_2004_s_1
+# 0.2 F_fleet_1_YR_2005_s_1
+# 0.2 F_fleet_1_YR_2006_s_1
+# 0.2 F_fleet_1_YR_2007_s_1
+# 0.2 F_fleet_1_YR_2008_s_1
+# 0.2 F_fleet_1_YR_2009_s_1
+# 0.2 F_fleet_1_YR_2010_s_1
 #
 #_Q_setup
  # Q_type options:  <0=mirror, 0=float_nobiasadj, 1=float_biasadj, 2=parm_nobiasadj, 3=parm_w_random_dev, 4=parm_w_randwalk, 5=mean_unbiased_float_assign_to_parm
 #_for_env-var:_enter_index_of_the_env-var_to_be_linked
 #_Den-dep  env-var  extra_se  Q_type
- 0 0 0 2 # 1 COM
- 0 0 0 2 # 2 REC
- 0 0 0 2 # 3 CPFV
- 
+ 0 0 0 2 # 1 Fishery
+ 0 0 0 2 # 2 Survey
+ 0 0 0 2 # 3 CPUE
 #
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
- -3 3 0 0 -1 99 -5 # LnQ_base_1_Fishery
- -3 3 0 0 -1 99 -5 # LnQ_base_2_Survey
- -3 3 0 0 -1 99 -5 # LnQ_base_3_CPUE
-
+ -3 3 0.2 0 -1 99 -5 # LnQ_base_1_Fishery
+ -3 3 0.2 0 -1 99 -5 # LnQ_base_2_Survey
+ -3 3 0.2 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
 #_Pattern Discard Male Special
- 24 0 0 0 # 1 COM
- 24 0 0 0 # 2 REC
- 15 0 0 1 # 3 CPFV
- 
+ 24 0 0 0 # 1 Fishery
+ 24 0 0 0 # 2 Survey
+ 15 0 0 1 # 3 CPUE
 #
 #_age_selex_types
 #_Pattern ___ Male Special
- 10 0 0 0 # 1 COM
- 10 0 0 0 # 2 REC
- 10 0 0 2 # 3 CPFV
- 
+ 10 0 0 0 # 1 Fishery
+ 10 0 0 0 # 2 Survey
+ 10 0 0 2 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- #-20 15 1 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_1P_1_COM
- #-20 15 -5 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_1P_2_COM
- #-20 15 4 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_1P_3_COM
- #-20 15 1.5 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_1P_4_COM
- #-20 20 -1 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_1P_5_COM
- #-20 20 15 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_1P_6_COM
- #-10 15 2 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_1_REC
- #-10 15 -4 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_2_REC
- #-15 15 -1 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_3_REC
- #-20 15 -4 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_4_REC
- #-25 15 -5 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_5_REC
- #-20 15 -2 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_6_REC
- #-10 15 2 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_4P_1_CRFS
- #-10 15 -4 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_4P_2_CRFS
- #-15 15 -1 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_4P_3_CRFS
- #-20 15 -4 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_4P_4_CRFS
- #-25 15 -5 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_4P_5_CRFS
- #-20 15 -2 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_4P_6_CRFS
- 20 199 50.8 50.8 1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_1P_1_Fishery
- -5 3 -3 -3 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_2_Fishery
- -4 12 5.1 5.1 1 0.05 3 0 0 0 0 0.5 0 0 # SizeSel_1P_3_Fishery
- -2 16 15 15 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_4_Fishery
- -15 5 -999 -999 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_5_Fishery
- -5 5 -999 -999 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_6_Fishery
- 20 199 41.8 41.8 1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_2P_1_Survey
- -5 3 -4 -4 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_2_Survey
- -4 12 5.2 5.2 1 0.05 3 0 0 0 0 0.5 0 0 # SizeSel_2P_3_Survey
- -2 15 14 14 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_4_Survey
- -100 100 -99 -99 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_5_Survey
- -100 100 99 99 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_6_Survey
-
-
+ -20 15 41.95 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
+ -20 15 1 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
+ -20 15 4.18 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
+ -20 15 15 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_4_Fishery
+ -20 20 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
+ -20 20 -999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_6_Fishery
+ -10 15 34.95 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
+ -10 15 -1 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
+ -15 15 4.18 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
+ -20 15 15 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
+ -25 15 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
+ -20 15 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
@@ -232,13 +234,13 @@
 #_Cond -6 6 1 1 2 0.01 -4 0 0 0 0 0 0 0  #_placeholder if no parameters
 #
 0 #_Variance_adjustments_to_input_values
-#_fleet: 1 2 3 4 
-#  0 0 0 0 #_add_to_survey_CV
-#  0 0 0 0 #_add_to_discard_stddev
-#  0 0 0 0 #_add_to_bodywt_CV
-#  1 1 1 1 #_mult_by_lencomp_N
-#  1 1 1 1 #_mult_by_agecomp_N
-#  1 1 1 1 #_mult_by_size-at-age_N
+#_fleet: 1 2 3 
+#_Cond  0 0 0 #_add_to_survey_CV
+#_Cond  0 0 0 #_add_to_discard_stddev
+#_Cond  0 0 0 #_add_to_bodywt_CV
+#_Cond  1 1 1 #_mult_by_lencomp_N
+#_Cond  1 1 1 #_mult_by_agecomp_N
+#_Cond  1 1 1 #_mult_by_size-at-age_N
 #
 1 #_maxlambdaphase
 1 #_sd_offset
@@ -254,21 +256,14 @@
 #
 # lambdas (for info only; columns are phases)
 #  0 #_CPUE/survey:_1
-#  0 #_CPUE/survey:_2
+#  1 #_CPUE/survey:_2
 #  1 #_CPUE/survey:_3
-#  1 #_CPUE/survey:_4
 #  0 #_lencomp:_1
 #  1 #_lencomp:_2
 #  0 #_lencomp:_3
-#  1 #_lencomp:_4
 #  1 #_agecomp:_1
-#  0 #_agecomp:_2
+#  1 #_agecomp:_2
 #  0 #_agecomp:_3
-#  0 #_agecomp:_4
-#  1 #_size-age:_1
-#  0 #_size-age:_2
-#  0 #_size-age:_3
-#  0 #_size-age:_4
 #  0 #_init_equ_catch
 #  1 #_recruitments
 #  0 #_parameter-priors

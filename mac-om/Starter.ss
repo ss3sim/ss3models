@@ -14,8 +14,8 @@ mac.ctl
 10 # MCeval burn interval
 2 # MCeval thin interval
 0 # jitter initial parm value by this fraction
-1981 # min yr for sdreport outputs (-1 for styr)
-2011 # max yr for sdreport outputs (-1 for endyr; -2 for endyr+Nforecastyrs
+-1 # min yr for sdreport outputs (-1 for styr)
+-2 # max yr for sdreport outputs (-1 for endyr; -2 for endyr+Nforecastyrs
 0 # N individual STD years 
 #vector of year values 
 
