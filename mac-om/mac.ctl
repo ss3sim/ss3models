@@ -210,7 +210,7 @@
  10 0 0 2 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  -20 15 41.95 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
- -20 15 1 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
+ -20 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
  -20 15 4.18 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
  -20 15 15 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_4_Fishery
  -20 20 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
