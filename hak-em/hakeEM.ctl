@@ -1,7 +1,7 @@
 #V3.24O
 #C Hake OM control file
 #C Created for Empirical simulation group, 2014
-#_data_and_control_files: hakeOM.dat // hakeOM.ctl
+#_data_and_control_files: hakeEM.dat // hakeEM.ctl
 #_SS-V3.24O-safe-MacOS;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.0
 1  #_N_Growth_Patterns
 1 #_N_Morphs_Within_GrowthPattern 
@@ -38,7 +38,7 @@
 #
 #_growth_parms
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 0.05 0.4 0.22 -1.60944 3 0.1 4 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
+ 0.05 0.4 0.250345 -1.60944 3 0.1 4 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
  2 15 5 32 -1 99 -5 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
  45 75 55 50 -1 99 -3 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
  0.2 0.4 0.4 0.3 -1 99 -3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
@@ -71,8 +71,8 @@
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI INIT PRIOR PR_type SD PHASE
- 13 17 15 15 -1 99 1 # SR_LN(R0)
- 0.2 1 0.82 0.777 2 0.113 4 # SR_BH_steep
+ 13 17 13 15 -1 99 1 # SR_LN(R0)
+ 0.2 1 0.200318 0.777 2 0.113 4 # SR_BH_steep
  1 1.6 1.4 1.1 -1 99 -6 # SR_sigmaR
  -5 5 0 0 -1 99 -50 # SR_envlink
  -5 5 0 0 -1 99 -50 # SR_R1_offset
@@ -85,7 +85,7 @@
 3 #_recdev phase 
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
- 4 #_recdev_early_phase
+ -4 #_recdev_early_phase
  0 #_forecast_recruitment phase (incl. late recr) (0 value resets to maxphase+1)
  1 #_lambda for Fcast_recr_like occurring before endyr+1
  1 #_last_early_yr_nobias_adj_in_MPD
@@ -104,106 +104,106 @@
 #_Yr Input_value
 #
 # all recruitment deviations
-#DisplayOnly 0 # Main_RecrDev_1
-#DisplayOnly 0 # Main_RecrDev_2
-#DisplayOnly 0 # Main_RecrDev_3
-#DisplayOnly 0 # Main_RecrDev_4
-#DisplayOnly 0 # Main_RecrDev_5
-#DisplayOnly 0 # Main_RecrDev_6
-#DisplayOnly 0 # Main_RecrDev_7
-#DisplayOnly 0 # Main_RecrDev_8
-#DisplayOnly 0 # Main_RecrDev_9
-#DisplayOnly 0 # Main_RecrDev_10
-#DisplayOnly 0 # Main_RecrDev_11
-#DisplayOnly 0 # Main_RecrDev_12
-#DisplayOnly 0 # Main_RecrDev_13
-#DisplayOnly 0 # Main_RecrDev_14
-#DisplayOnly 0 # Main_RecrDev_15
-#DisplayOnly 0 # Main_RecrDev_16
-#DisplayOnly 0 # Main_RecrDev_17
-#DisplayOnly 0 # Main_RecrDev_18
-#DisplayOnly 0 # Main_RecrDev_19
-#DisplayOnly 0 # Main_RecrDev_20
-#DisplayOnly 0 # Main_RecrDev_21
-#DisplayOnly 0 # Main_RecrDev_22
-#DisplayOnly 0 # Main_RecrDev_23
-#DisplayOnly 0 # Main_RecrDev_24
-#DisplayOnly 0 # Main_RecrDev_25
-#DisplayOnly 0 # Main_RecrDev_26
-#DisplayOnly 0 # Main_RecrDev_27
-#DisplayOnly 0 # Main_RecrDev_28
-#DisplayOnly 0 # Main_RecrDev_29
-#DisplayOnly 0 # Main_RecrDev_30
-#DisplayOnly 0 # Main_RecrDev_31
-#DisplayOnly 0 # Main_RecrDev_32
-#DisplayOnly 0 # Main_RecrDev_33
-#DisplayOnly 0 # Main_RecrDev_34
-#DisplayOnly 0 # Main_RecrDev_35
-#DisplayOnly 0 # Main_RecrDev_36
-#DisplayOnly 0 # Main_RecrDev_37
-#DisplayOnly 0 # Main_RecrDev_38
-#DisplayOnly 0 # Main_RecrDev_39
-#DisplayOnly 0 # Main_RecrDev_40
-#DisplayOnly 0 # Main_RecrDev_41
-#DisplayOnly 0 # Main_RecrDev_42
-#DisplayOnly 0 # Main_RecrDev_43
-#DisplayOnly 0 # Main_RecrDev_44
-#DisplayOnly 0 # Main_RecrDev_45
-#DisplayOnly 0 # Main_RecrDev_46
-#DisplayOnly 0 # Main_RecrDev_47
-#DisplayOnly 0 # Main_RecrDev_48
-#DisplayOnly 0 # Main_RecrDev_49
-#DisplayOnly 0 # Main_RecrDev_50
-#DisplayOnly 0 # Main_RecrDev_51
-#DisplayOnly 0 # Main_RecrDev_52
-#DisplayOnly 0 # Main_RecrDev_53
-#DisplayOnly 0 # Main_RecrDev_54
-#DisplayOnly 0 # Main_RecrDev_55
-#DisplayOnly 0 # Main_RecrDev_56
-#DisplayOnly 0 # Main_RecrDev_57
-#DisplayOnly 0 # Main_RecrDev_58
-#DisplayOnly 0 # Main_RecrDev_59
-#DisplayOnly 0 # Main_RecrDev_60
-#DisplayOnly 0 # Main_RecrDev_61
-#DisplayOnly 0 # Main_RecrDev_62
-#DisplayOnly 0 # Main_RecrDev_63
-#DisplayOnly 0 # Main_RecrDev_64
-#DisplayOnly 0 # Main_RecrDev_65
-#DisplayOnly 0 # Main_RecrDev_66
-#DisplayOnly 0 # Main_RecrDev_67
-#DisplayOnly 0 # Main_RecrDev_68
-#DisplayOnly 0 # Main_RecrDev_69
-#DisplayOnly 0 # Main_RecrDev_70
-#DisplayOnly 0 # Main_RecrDev_71
-#DisplayOnly 0 # Main_RecrDev_72
-#DisplayOnly 0 # Main_RecrDev_73
-#DisplayOnly 0 # Main_RecrDev_74
-#DisplayOnly 0 # Main_RecrDev_75
-#DisplayOnly 0 # Main_RecrDev_76
-#DisplayOnly 0 # Main_RecrDev_77
-#DisplayOnly 0 # Main_RecrDev_78
-#DisplayOnly 0 # Main_RecrDev_79
-#DisplayOnly 0 # Main_RecrDev_80
-#DisplayOnly 0 # Main_RecrDev_81
-#DisplayOnly 0 # Main_RecrDev_82
-#DisplayOnly 0 # Main_RecrDev_83
-#DisplayOnly 0 # Main_RecrDev_84
-#DisplayOnly 0 # Main_RecrDev_85
-#DisplayOnly 0 # Main_RecrDev_86
-#DisplayOnly 0 # Main_RecrDev_87
-#DisplayOnly 0 # Main_RecrDev_88
-#DisplayOnly 0 # Main_RecrDev_89
-#DisplayOnly 0 # Main_RecrDev_90
-#DisplayOnly 0 # Main_RecrDev_91
-#DisplayOnly 0 # Main_RecrDev_92
-#DisplayOnly 0 # Main_RecrDev_93
-#DisplayOnly 0 # Main_RecrDev_94
-#DisplayOnly 0 # Main_RecrDev_95
-#DisplayOnly 0 # Main_RecrDev_96
-#DisplayOnly 0 # Main_RecrDev_97
-#DisplayOnly 0 # Main_RecrDev_98
-#DisplayOnly 0 # Main_RecrDev_99
-#DisplayOnly 0 # Main_RecrDev_100
+#DisplayOnly -0.0544935 # Main_RecrDev_1
+#DisplayOnly -0.175378 # Main_RecrDev_2
+#DisplayOnly -0.305504 # Main_RecrDev_3
+#DisplayOnly -0.412487 # Main_RecrDev_4
+#DisplayOnly -0.479517 # Main_RecrDev_5
+#DisplayOnly -0.516325 # Main_RecrDev_6
+#DisplayOnly -0.533862 # Main_RecrDev_7
+#DisplayOnly -0.539481 # Main_RecrDev_8
+#DisplayOnly -0.537797 # Main_RecrDev_9
+#DisplayOnly -0.531665 # Main_RecrDev_10
+#DisplayOnly -0.522843 # Main_RecrDev_11
+#DisplayOnly -0.5124 # Main_RecrDev_12
+#DisplayOnly -0.500989 # Main_RecrDev_13
+#DisplayOnly -0.489004 # Main_RecrDev_14
+#DisplayOnly -0.476682 # Main_RecrDev_15
+#DisplayOnly -0.464168 # Main_RecrDev_16
+#DisplayOnly -0.451547 # Main_RecrDev_17
+#DisplayOnly -0.438874 # Main_RecrDev_18
+#DisplayOnly -0.42618 # Main_RecrDev_19
+#DisplayOnly -0.413485 # Main_RecrDev_20
+#DisplayOnly -0.400789 # Main_RecrDev_21
+#DisplayOnly -0.388128 # Main_RecrDev_22
+#DisplayOnly -0.3755 # Main_RecrDev_23
+#DisplayOnly -0.362908 # Main_RecrDev_24
+#DisplayOnly -0.350353 # Main_RecrDev_25
+#DisplayOnly -0.337836 # Main_RecrDev_26
+#DisplayOnly -0.325361 # Main_RecrDev_27
+#DisplayOnly -0.312927 # Main_RecrDev_28
+#DisplayOnly -0.300537 # Main_RecrDev_29
+#DisplayOnly -0.288192 # Main_RecrDev_30
+#DisplayOnly -0.275895 # Main_RecrDev_31
+#DisplayOnly -0.263647 # Main_RecrDev_32
+#DisplayOnly -0.25145 # Main_RecrDev_33
+#DisplayOnly -0.239305 # Main_RecrDev_34
+#DisplayOnly -0.227214 # Main_RecrDev_35
+#DisplayOnly -0.21518 # Main_RecrDev_36
+#DisplayOnly -0.203204 # Main_RecrDev_37
+#DisplayOnly -0.191287 # Main_RecrDev_38
+#DisplayOnly -0.179433 # Main_RecrDev_39
+#DisplayOnly -0.167642 # Main_RecrDev_40
+#DisplayOnly -0.155918 # Main_RecrDev_41
+#DisplayOnly -0.144261 # Main_RecrDev_42
+#DisplayOnly -0.132676 # Main_RecrDev_43
+#DisplayOnly -0.121163 # Main_RecrDev_44
+#DisplayOnly -0.109726 # Main_RecrDev_45
+#DisplayOnly -0.0983673 # Main_RecrDev_46
+#DisplayOnly -0.0870902 # Main_RecrDev_47
+#DisplayOnly -0.0758978 # Main_RecrDev_48
+#DisplayOnly -0.0647934 # Main_RecrDev_49
+#DisplayOnly -0.0537809 # Main_RecrDev_50
+#DisplayOnly -0.0428642 # Main_RecrDev_51
+#DisplayOnly -0.0320478 # Main_RecrDev_52
+#DisplayOnly -0.0213364 # Main_RecrDev_53
+#DisplayOnly -0.0107353 # Main_RecrDev_54
+#DisplayOnly -0.000250255 # Main_RecrDev_55
+#DisplayOnly 0.0101125 # Main_RecrDev_56
+#DisplayOnly 0.0203462 # Main_RecrDev_57
+#DisplayOnly 0.0304432 # Main_RecrDev_58
+#DisplayOnly 0.040395 # Main_RecrDev_59
+#DisplayOnly 0.0501927 # Main_RecrDev_60
+#DisplayOnly 0.0598261 # Main_RecrDev_61
+#DisplayOnly 0.0692841 # Main_RecrDev_62
+#DisplayOnly 0.0785543 # Main_RecrDev_63
+#DisplayOnly 0.0876234 # Main_RecrDev_64
+#DisplayOnly 0.0964765 # Main_RecrDev_65
+#DisplayOnly 0.105097 # Main_RecrDev_66
+#DisplayOnly 0.113467 # Main_RecrDev_67
+#DisplayOnly 0.121566 # Main_RecrDev_68
+#DisplayOnly 0.129372 # Main_RecrDev_69
+#DisplayOnly 0.13686 # Main_RecrDev_70
+#DisplayOnly 0.144003 # Main_RecrDev_71
+#DisplayOnly 0.150771 # Main_RecrDev_72
+#DisplayOnly 0.157131 # Main_RecrDev_73
+#DisplayOnly 0.163048 # Main_RecrDev_74
+#DisplayOnly 0.168484 # Main_RecrDev_75
+#DisplayOnly 0.1734 # Main_RecrDev_76
+#DisplayOnly 0.177758 # Main_RecrDev_77
+#DisplayOnly 0.18153 # Main_RecrDev_78
+#DisplayOnly 0.184713 # Main_RecrDev_79
+#DisplayOnly 0.18737 # Main_RecrDev_80
+#DisplayOnly 0.189925 # Main_RecrDev_81
+#DisplayOnly 0.161734 # Main_RecrDev_82
+#DisplayOnly 0.134007 # Main_RecrDev_83
+#DisplayOnly 0.107105 # Main_RecrDev_84
+#DisplayOnly 0.082464 # Main_RecrDev_85
+#DisplayOnly 0.0620992 # Main_RecrDev_86
+#DisplayOnly 0.0477793 # Main_RecrDev_87
+#DisplayOnly 0.0410503 # Main_RecrDev_88
+#DisplayOnly 0.0435101 # Main_RecrDev_89
+#DisplayOnly 0.0571148 # Main_RecrDev_90
+#DisplayOnly 0.0845335 # Main_RecrDev_91
+#DisplayOnly 0.129595 # Main_RecrDev_92
+#DisplayOnly 0.197836 # Main_RecrDev_93
+#DisplayOnly 0.297035 # Main_RecrDev_94
+#DisplayOnly 0.437352 # Main_RecrDev_95
+#DisplayOnly 0.630641 # Main_RecrDev_96
+#DisplayOnly 0.891811 # Main_RecrDev_97
+#DisplayOnly 1.266 # Main_RecrDev_98
+#DisplayOnly 1.89193 # Main_RecrDev_99
+#DisplayOnly 5.99902 # Main_RecrDev_100
 #
 #Fishing Mortality info 
 0.3 # F ballpark for annual F (=Z-M) for specified year
@@ -214,115 +214,10 @@
 # if Fmethod=2; read overall start F value; overall phase; N detailed inputs to read
 # if Fmethod=3; read N iterations for tuning for Fmethod 3
 4  # N iterations for tuning F in hybrid method (recommend 3 to 7)
-# 0.2 1 1 # overall start F value; overall phase; N detailed inputs to read
-#Fleet Year Seas F_value se phase (for detailed setup of F_Method=2)
-# 1 1 1 0.05 0.01 -1
 #
 #_initial_F_parms
 #_LO HI INIT PRIOR PR_type SD PHASE
  0 1 0 0.01 -1 99 -50 # InitF_1Fishery
-
-# F rates for Fmethod=2
-# 0.05 F_fleet_1_YR_1_s_1
-# 0.2 F_fleet_1_YR_2_s_1
-# 0.2 F_fleet_1_YR_3_s_1
-# 0.2 F_fleet_1_YR_4_s_1
-# 0.2 F_fleet_1_YR_5_s_1
-# 0.2 F_fleet_1_YR_6_s_1
-# 0.2 F_fleet_1_YR_7_s_1
-# 0.2 F_fleet_1_YR_8_s_1
-# 0.2 F_fleet_1_YR_9_s_1
-# 0.2 F_fleet_1_YR_10_s_1
-# 0.2 F_fleet_1_YR_11_s_1
-# 0.2 F_fleet_1_YR_12_s_1
-# 0.2 F_fleet_1_YR_13_s_1
-# 0.2 F_fleet_1_YR_14_s_1
-# 0.2 F_fleet_1_YR_15_s_1
-# 0.2 F_fleet_1_YR_16_s_1
-# 0.2 F_fleet_1_YR_17_s_1
-# 0.2 F_fleet_1_YR_18_s_1
-# 0.2 F_fleet_1_YR_19_s_1
-# 0.2 F_fleet_1_YR_20_s_1
-# 0.2 F_fleet_1_YR_21_s_1
-# 0.2 F_fleet_1_YR_22_s_1
-# 0.2 F_fleet_1_YR_23_s_1
-# 0.2 F_fleet_1_YR_24_s_1
-# 0.2 F_fleet_1_YR_25_s_1
-# 0.2 F_fleet_1_YR_26_s_1
-# 0.2 F_fleet_1_YR_27_s_1
-# 0.2 F_fleet_1_YR_28_s_1
-# 0.2 F_fleet_1_YR_29_s_1
-# 0.2 F_fleet_1_YR_30_s_1
-# 0.2 F_fleet_1_YR_31_s_1
-# 0.2 F_fleet_1_YR_32_s_1
-# 0.2 F_fleet_1_YR_33_s_1
-# 0.2 F_fleet_1_YR_34_s_1
-# 0.2 F_fleet_1_YR_35_s_1
-# 0.2 F_fleet_1_YR_36_s_1
-# 0.2 F_fleet_1_YR_37_s_1
-# 0.2 F_fleet_1_YR_38_s_1
-# 0.2 F_fleet_1_YR_39_s_1
-# 0.2 F_fleet_1_YR_40_s_1
-# 0.2 F_fleet_1_YR_41_s_1
-# 0.2 F_fleet_1_YR_42_s_1
-# 0.2 F_fleet_1_YR_43_s_1
-# 0.2 F_fleet_1_YR_44_s_1
-# 0.2 F_fleet_1_YR_45_s_1
-# 0.2 F_fleet_1_YR_46_s_1
-# 0.2 F_fleet_1_YR_47_s_1
-# 0.2 F_fleet_1_YR_48_s_1
-# 0.2 F_fleet_1_YR_49_s_1
-# 0.2 F_fleet_1_YR_50_s_1
-# 0.2 F_fleet_1_YR_51_s_1
-# 0.2 F_fleet_1_YR_52_s_1
-# 0.2 F_fleet_1_YR_53_s_1
-# 0.2 F_fleet_1_YR_54_s_1
-# 0.2 F_fleet_1_YR_55_s_1
-# 0.2 F_fleet_1_YR_56_s_1
-# 0.2 F_fleet_1_YR_57_s_1
-# 0.2 F_fleet_1_YR_58_s_1
-# 0.2 F_fleet_1_YR_59_s_1
-# 0.2 F_fleet_1_YR_60_s_1
-# 0.2 F_fleet_1_YR_61_s_1
-# 0.2 F_fleet_1_YR_62_s_1
-# 0.2 F_fleet_1_YR_63_s_1
-# 0.2 F_fleet_1_YR_64_s_1
-# 0.2 F_fleet_1_YR_65_s_1
-# 0.2 F_fleet_1_YR_66_s_1
-# 0.2 F_fleet_1_YR_67_s_1
-# 0.2 F_fleet_1_YR_68_s_1
-# 0.2 F_fleet_1_YR_69_s_1
-# 0.2 F_fleet_1_YR_70_s_1
-# 0.2 F_fleet_1_YR_71_s_1
-# 0.2 F_fleet_1_YR_72_s_1
-# 0.2 F_fleet_1_YR_73_s_1
-# 0.2 F_fleet_1_YR_74_s_1
-# 0.2 F_fleet_1_YR_75_s_1
-# 0.2 F_fleet_1_YR_76_s_1
-# 0.2 F_fleet_1_YR_77_s_1
-# 0.2 F_fleet_1_YR_78_s_1
-# 0.2 F_fleet_1_YR_79_s_1
-# 0.2 F_fleet_1_YR_80_s_1
-# 0.2 F_fleet_1_YR_81_s_1
-# 0.2 F_fleet_1_YR_82_s_1
-# 0.2 F_fleet_1_YR_83_s_1
-# 0.2 F_fleet_1_YR_84_s_1
-# 0.2 F_fleet_1_YR_85_s_1
-# 0.2 F_fleet_1_YR_86_s_1
-# 0.2 F_fleet_1_YR_87_s_1
-# 0.2 F_fleet_1_YR_88_s_1
-# 0.2 F_fleet_1_YR_89_s_1
-# 0.2 F_fleet_1_YR_90_s_1
-# 0.2 F_fleet_1_YR_91_s_1
-# 0.2 F_fleet_1_YR_92_s_1
-# 0.2 F_fleet_1_YR_93_s_1
-# 0.2 F_fleet_1_YR_94_s_1
-# 0.2 F_fleet_1_YR_95_s_1
-# 0.2 F_fleet_1_YR_96_s_1
-# 0.2 F_fleet_1_YR_97_s_1
-# 0.2 F_fleet_1_YR_98_s_1
-# 0.2 F_fleet_1_YR_99_s_1
-# 0.2 F_fleet_1_YR_100_s_1
 #
 #_Q_setup
  # Q_type options:  <0=mirror, 0=float_nobiasadj, 1=float_biasadj, 2=parm_nobiasadj, 3=parm_w_random_dev, 4=parm_w_randwalk, 5=mean_unbiased_float_assign_to_parm
@@ -345,22 +240,21 @@
 #
 #_age_selex_types
 #_Pattern ___ Male Special
-10 0 0 0 # 1 Fishery
-10 0 0 0 # 2 Survey
-
-#_LO  HI  INIT  PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 15   69  52    45 -1 0.05 1 0 0 0 0 0.5 0 0 # SizeSel_1P_1_Fishery
- -5   10  2.5   5 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_2_Fishery
- -4   12  5.7   3 -1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_1P_3_Fishery
- -2   10  9     10 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_1P_4_Fishery
- -999 5   -999  -999 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_5_Fishery
- -9   9   -999     0.5 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_1P_6_Fishery
- 15   69  43.33 45 -1 0.05 1 0 0 0 0 0.5 0 0 # SizeSel_2P_1_Survey
- -5   10  2.5   5 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_2_Survey
- -4   12  5.7   3 -1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_2P_3_Survey
- -2   10  9     10 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_2P_4_Survey
- -999 5  -999   -999 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_5_Survey
- -9   9  -999      0.5 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_2P_6_Survey
+ 10 0 0 0 # 1 Fishery
+ 10 0 0 0 # 2 Survey
+#_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
+ 15 69 68.9999 45 -1 0.05 1 0 0 0 0 0.5 0 0 # SizeSel_1P_1_Fishery
+ -5 10 2.5 5 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_2_Fishery
+ -4 12 8.00369 3 -1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_1P_3_Fishery
+ -2 10 9 10 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_1P_4_Fishery
+ -999 5 -999 -999 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_5_Fishery
+ -9 9 -999 0.5 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_1P_6_Fishery
+ 15 69 69 45 -1 0.05 1 0 0 0 0 0.5 0 0 # SizeSel_2P_1_Survey
+ -5 10 2.5 5 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_2_Survey
+ -4 12 7.77925 3 -1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_2P_3_Survey
+ -2 10 9 10 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_2P_4_Survey
+ -999 5 -999 -999 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_5_Survey
+ -9 9 -999 0.5 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
