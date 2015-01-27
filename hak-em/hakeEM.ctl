@@ -214,9 +214,9 @@
 # if Fmethod=2; read overall start F value; overall phase; N detailed inputs to read
 # if Fmethod=3; read N iterations for tuning for Fmethod 3
 4  # N iterations for tuning F in hybrid method (recommend 3 to 7)
- 0.2 1 1 # overall start F value; overall phase; N detailed inputs to read
+# 0.2 1 1 # overall start F value; overall phase; N detailed inputs to read
 #Fleet Year Seas F_value se phase (for detailed setup of F_Method=2)
- 1 1 1 0.05 0.01 -1
+# 1 1 1 0.05 0.01 -1
 #
 #_initial_F_parms
 #_LO HI INIT PRIOR PR_type SD PHASE
