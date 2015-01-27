@@ -1,4 +1,5 @@
 file.copy("../hak-om/hakeOM.dat", "hakeEM.dat")
 library("r4ss")
+system("ss3_24o_safe")
 o <- SS_output(dir = ".")
 SS_plots(o, png = TRUE)
