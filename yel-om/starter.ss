@@ -22,7 +22,6 @@ control.ss
 -1 # max yr for sdreport outputs (-1 for endyr; -2 for endyr+Nforecastyrs
 0 # N individual STD years
 #vector of year values
-
 0.0001 # final convergence criteria (e.g. 1.0e-04)
 0 # retrospective year relative to end year (e.g. -4)
 1 # min age for calc of summary biomass
