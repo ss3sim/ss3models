@@ -37,23 +37,23 @@
 1 #_env/block/dev_adjust_method (1=standard; 2=logistic transform keeps in base parm bounds; 3=standard w/ no bound check)
 #
 #_growth_parms
-#_LO    HI     INIT    PRIOR      PR_type   SD    PHASE   env-var   use_dev   dev_minyr   dev_maxyr   dev_stddev   Block   Block_Fxn
- 0.05   0.4    0.22    -1.60944   3         0.1   4       0         0         0           0           0            0       0   # NatM_p_1_Fem_GP_1
- 2      15     5       32         -1        99    -5      0         0         0           0           0            0       0   # L_at_Amin_Fem_GP_1
- 45     75     55      50         -1        99    -3      0         0         0           0           0            0       0   # L_at_Amax_Fem_GP_1
- 0.2    0.4    0.4     0.3        -1        99    -3      0         0         0           0           0            0       0   # VonBert_K_Fem_GP_1
- 0.03   0.16   0.1     0.1        -1        99    -5      0         0         0           0           0            0       0   # CV_young_Fem_GP_1
- 0.03   0.2    0.1     0.1        -1        99    -5      0         0         0           0           0            0       0   # CV_old_Fem_GP_1
- -3     3      7e-06   7e-06      -1        99    -50     0         0         0           0           0            0       0   # Wtlen_1_Fem
- -3     3      2.95    2.9624     -1        99    -50     0         0         0           0           0            0       0   # Wtlen_2_Fem
- -3     43     34      36.89      -1        99    -50     0         0         0           0           0            0       0   # Mat50%_Fem
- -3     3      -0.18   -0.48      -1        99    -50     0         0         0           0           0            0       0   # Mat_slope_Fem
- -3     3      1       1          -1        99    -50     0         0         0           0           0            0       0   # Eggs/kg_inter_Fem
- -3     3      0       0          -1        99    -50     0         0         0           0           0            0       0   # Eggs/kg_slope_wt_Fem
- 0      2      1       1          -1        99    -50     0         0         0           0           0            0       0   # RecrDist_GP_1
- 0      2      1       1          -1        99    -50     0         0         0           0           0            0       0   # RecrDist_Area_1
- 0      2      1       1          -1        99    -50     0         0         0           0           0            0       0   # RecrDist_Seas_1
- 0      2      1       1          -1        99    -50     0         0         0           0           0            0       0   # CohortGrowDev
+#_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
+ 0.05 0.4 0.22 -1.60944 3 0.1 4 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
+ 2 15 5 32 -1 99 -5 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
+ 45 75 55 50 -1 99 -3 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
+ 0.2 0.4 0.4 0.3 -1 99 -3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
+ 0.03 0.16 0.1 0.1 -1 99 -5 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
+ 0.03 0.2 0.1 0.1 -1 99 -5 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
+ -3 3 7e-06 7e-06 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_1_Fem
+ -3 3 2.95 2.9624 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_2_Fem
+ -3 43 34 36.89 -1 99 -50 0 0 0 0 0 0 0 # Mat50%_Fem
+ -3 3 -0.18 -0.48 -1 99 -50 0 0 0 0 0 0 0 # Mat_slope_Fem
+ -3 3 1 1 -1 99 -50 0 0 0 0 0 0 0 # Eggs/kg_inter_Fem
+ -3 3 0 0 -1 99 -50 0 0 0 0 0 0 0 # Eggs/kg_slope_wt_Fem
+ 0 2 1 1 -1 99 -50 0 0 0 0 0 0 0 # RecrDist_GP_1
+ 0 2 1 1 -1 99 -50 0 0 0 0 0 0 0 # RecrDist_Area_1
+ 0 2 1 1 -1 99 -50 0 0 0 0 0 0 0 # RecrDist_Seas_1
+ 0 2 1 1 -1 99 -50 0 0 0 0 0 0 0 # CohortGrowDev
 #
 #_Cond 0  #custom_MG-env_setup (0/1)
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no MG-environ parameters
@@ -70,13 +70,13 @@
 #
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
-#_LO   HI    INIT   PRIOR   PR_type   SD      PHASE
- 13    17    15     15      -1        99      1     # SR_LN(R0)
- 0.2   1     0.82   0.777   2         0.113   4     # SR_BH_steep
- 1     1.6   1.4    1.1     -1        99      -6    # SR_sigmaR
- -5    5     0      0       -1        99      -50   # SR_envlink
- -5    5     0      0       -1        99      -50   # SR_R1_offset
- 0     2     0      1       -1        99      -50   # SR_autocorr
+#_LO HI INIT PRIOR PR_type SD PHASE
+ 13 17 15 15 -1 99 1 # SR_LN(R0)
+ 0.2 1 0.82 0.777 2 0.113 4 # SR_BH_steep
+ 1 1.6 1.4 1.1 -1 99 -6 # SR_sigmaR
+ -5 5 0 0 -1 99 -50 # SR_envlink
+ -5 5 0 0 -1 99 -50 # SR_R1_offset
+ 0 2 0 1 -1 99 -50 # SR_autocorr
 0 #_SR_env_link
 0 #_SR_env_target_0=none;1=devs;_2=R0;_3=steepness
 1 #do_recdev:  0=none; 1=devvector; 2=simple deviations
@@ -348,19 +348,19 @@
 10 0 0 0 # 1 Fishery
 10 0 0 0 # 2 Survey
 
-#_LO    HI   INIT    PRIOR   PR_type   SD     PHASE   env-var   use_dev   dev_minyr   dev_maxyr   dev_stddev   Block   Block_Fxn
- 15     69   52      45      -1        0.05   1       0         0         0           0           0.5          0       0   # SizeSel_1P_1_Fishery
- -5     10   2.5     5       -1        0.05   -3      0         0         0           0           0.5          0       0   # SizeSel_1P_2_Fishery
- -4     12   5.7     3       -1        0.05   2       0         0         0           0           0.5          0       0   # SizeSel_1P_3_Fishery
- -2     10   9       10      -1        0.05   -4      0         0         0           0           0.5          0       0   # SizeSel_1P_4_Fishery
- -999   5    -999    -999    -1        0.05   -3      0         0         0           0           0.5          0       0   # SizeSel_1P_5_Fishery
- -9     9    -999    0.5     -1        0.05   -4      0         0         0           0           0.5          0       0   # SizeSel_1P_6_Fishery
- 15     69   43.33   45      -1        0.05   1       0         0         0           0           0.5          0       0   # SizeSel_2P_1_Survey
- -5     10   2.5     5       -1        0.05   -3      0         0         0           0           0.5          0       0   # SizeSel_2P_2_Survey
- -4     12   5.7     3       -1        0.05   2       0         0         0           0           0.5          0       0   # SizeSel_2P_3_Survey
- -2     10   9       10      -1        0.05   -4      0         0         0           0           0.5          0       0   # SizeSel_2P_4_Survey
- -999   5    -999    -999    -1        0.05   -3      0         0         0           0           0.5          0       0   # SizeSel_2P_5_Survey
- -9     9    -999    0.5     -1        0.05   -4      0         0         0           0           0.5          0       0   # SizeSel_2P_6_Survey
+#_LO  HI  INIT  PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
+ 15   69  52    45 -1 0.05 1 0 0 0 0 0.5 0 0 # SizeSel_1P_1_Fishery
+ -5   10  2.5   5 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_2_Fishery
+ -4   12  5.7   3 -1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_1P_3_Fishery
+ -2   10  9     10 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_1P_4_Fishery
+ -999 5   -999  -999 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_5_Fishery
+ -9   9   -999     0.5 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_1P_6_Fishery
+ 15   69  43.33 45 -1 0.05 1 0 0 0 0 0.5 0 0 # SizeSel_2P_1_Survey
+ -5   10  2.5   5 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_2_Survey
+ -4   12  5.7   3 -1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_2P_3_Survey
+ -2   10  9     10 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_2P_4_Survey
+ -999 5  -999   -999 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_5_Survey
+ -9   9  -999      0.5 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
