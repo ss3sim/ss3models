@@ -3,8 +3,8 @@
 #C rerun model to get more complete formatting in starter.ss_new
 #C should work with SS version: SSv3.10b_or_later
 #C file write time: 2010-07-20 09:47:31
-data.ss
-control.ss
+yel.dat
+yel.ctl
 0 # 0=use init values in control file; 1=use ss3.par
 0 # run display detail (0,1,2)
 1 # detailed age-structured reports in REPORT.SSO (0,1) 
