@@ -23,8 +23,8 @@ This folder contains operating model (OM) and estimating model (EM) files and ca
 - [] Standardize parameter bounds using [standardize_bounds](https://github.com/ss3sim/ss3sim/blob/master/R/standardize_bounds.R): approach used in [Johnson *et al*.][johnsonetal] (2015) of lower bounds = 0.5% of init values and upper bounds = 500% of init values
 - [] Fishing case files: "F" case files for each model are based on Fmsy, which can be found with [profile_fmsy](https://github.com/ss3sim/ss3sim/blob/master/R/profile_fmsy.r).
    * F0 = Constant fishing at Fmsy: years 25 - 100 at Fmsy;
-   * F1 = One way trip: years 25 - 100 ramp up to 0.9 x Fmsy (left limb);
-   * F2 = Two way trip: years 25 - 65 ramp up to 0.9 x Fmsy (right limb), years 66 - 100 ramp down from 0.9 x Fmsy (right limb) to 0.9 x Fmsy (left limb.
+   * F1 = Two way trip: years 25 - 65 ramp up to 0.9 x Fmsy (right limb), years 66 - 100 ramp down from 0.9 x Fmsy (right limb) to 0.9 x Fmsy (left limb;
+   * F2 = One way trip: years 25 - 100 ramp up to 0.9 x Fmsy (left limb).
 
 Current contributors: the Fish600 team
 
