@@ -23,7 +23,7 @@
   #_no additional input for selected M option; read 1P per morph
 1 # GrowthModel: 1=vonBert with L1&L2; 2=Richards with L1&L2; 3=age_speciific_K; 4=not implemented
 1 #_Growth_Age_for_L1
-70 #_Growth_Age_for_L2 (999 to use as Linf)
+999 #_Growth_Age_for_L2 (999 to use as Linf)
 0 #_SD_add_to_LAA (set to 0.1 for SS2 V1.x compatibility)
 0 #_CV_Growth_Pattern:  0 CV=f(LAA); 1 CV=F(A); 2 SD=F(LAA); 3 SD=F(A); 4 logSD=F(A)
 1 #_maturity_option:  1=length logistic; 2=age logistic; 3=read age-maturity matrix by growth_pattern; 4=read age-fecundity; 5=read fec and wt from wtatage.ss
@@ -31,7 +31,7 @@
 2 #_First_Mature_Age
 1 #_fecundity option:(1)eggs=Wt*(a+b*Wt);(2)eggs=a*L^b;(3)eggs=a*Wt^b; (4)eggs=a+b*L; (5)eggs=a+b*W
 0 #_hermaphroditism option:  0=none; 1=age-specific fxn
-3 #_parameter_offset_approach (1=none, 2= M, G, CV_G as offset from female-GP1, 3=like SS2 V1.x)
+1 #_parameter_offset_approach (1=none, 2= M, G, CV_G as offset from female-GP1, 3=like SS2 V1.x)
 1 #_env/block/dev_adjust_method (1=standard; 2=logistic transform keeps in base parm bounds; 3=standard w/ no bound check)
 #
 #_growth_parms
@@ -41,7 +41,7 @@
  40 120 62 66 -1 99 -2 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
  0.01 0.2 0.047 0.05 -1 99 -2 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
  0.05 0.2 0.13 0.19 -1 99 -3 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
- -2 2 -0.6 0.1 -1 99 -3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
+ -2 2 0.13 0.1 -1 99 -3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  -3 3 9.77e-006 2.09e-005 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_1_Fem
  -3 4 3.17125 2.96956 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_2_Fem
  38 39 38.78 40 -1 99 -50 0 0 0 0 0 0 0 # Mat50%_Fem
@@ -79,7 +79,7 @@
 0 #_SR_env_target_0=none;1=devs;_2=R0;_3=steepness
 1 #do_recdev:  0=none; 1=devvector; 2=simple deviations
 1 # first year of main recr_devs; early devs can preceed this era
-60 # last year of main recr_devs; forecast devs start in following year
+100 # last year of main recr_devs; forecast devs start in following year
 1 #_recdev phase 
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
@@ -88,8 +88,8 @@
  1 #_lambda for Fcast_recr_like occurring before endyr+1
  -10 #_last_early_yr_nobias_adj_in_MPD
  1 #_first_yr_fullbias_adj_in_MPD
- 60 #_last_yr_fullbias_adj_in_MPD
- 61 #_first_recent_yr_nobias_adj_in_MPD
+ 100 #_last_yr_fullbias_adj_in_MPD
+ 101 #_first_recent_yr_nobias_adj_in_MPD
  1 #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs)
  0 #_period of cycles in recruitment (N parms read below)
  -5 #min rec_dev
@@ -171,7 +171,7 @@
 # no additional F input needed for Fmethod 1
 # if Fmethod=2; read overall start F value; overall phase; N detailed inputs to read
 7 # if Fmethod=3; read N iterations for tuning for Fmethod 3
- 0.2 1 0 # overall start F value; overall phase; N detailed inputs to read
+# 0.2 1 0 # overall start F value; overall phase; N detailed inputs to read
 #Fleet Year Seas F_value se phase (for detailed setup of F_Method=2)
 
 #
@@ -245,19 +245,23 @@
  # Q_type options:  <0=mirror, 0=float_nobiasadj, 1=float_biasadj, 2=parm_nobiasadj, 3=parm_w_random_dev, 4=parm_w_randwalk, 5=mean_unbiased_float_assign_to_parm
 #_for_env-var:_enter_index_of_the_env-var_to_be_linked
 #_Den-dep  env-var  extra_se  Q_type
- 0 0 0 0 # 1 fishery1
- 0 0 0 0 # 2 survey1
- 0 0 0 0 # 3 survey2
+ 0 0 0 2 # 1 fishery1
+ 0 0 0 2 # 2 survey1
+ 0 0 0 2 # 3 survey2
 #
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
 #_Q_parms(if_any);Qunits_are_ln(q)
+ #LO  HI    INIT    PRIOR  PR_type  SD   PHASE
+-20   20      0       0       -1     99     -5    # Q_base_1_Fishery
+-20   20      0       0       -1     99     5    # Q_base_2_Survey
+-20   20      0       0       -1     99     -5    # Q_base_3_CPUE
 #
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
 #_Pattern Discard Male Special
  24 0 0 0 # 1 fishery1
  24 0 0 0 # 2 survey1
- 0 0 0 0 # 3 survey2
+ 15 0 0 1 # 3 survey2
 #
 #_age_selex_types
 #_Pattern ___ Male Special
@@ -265,15 +269,15 @@
  10 0 0 0 # 2 survey1
  10 0 0 0 # 3 survey2
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 40 89 57 57 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_1_fishery1
+ 40 89 57 57 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_1P_1_fishery1
  -5 0 -2 -5 0 5 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_2_fishery1
- 0 10 5 5 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_3_fishery1
+ 0 10 5 5 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_1P_3_fishery1
  0 15 7 10 0 10 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_4_fishery1
  -15 0 -10 -10 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_5_fishery1
  -999 5 -999 0 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_6_fishery1
- 40 89 57 57 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_1_survey1
+ 40 89 57 57 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_2P_1_survey1
  -5 0 -2 -5 0 5 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_2_survey1
- 0 10 5 5 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_3_survey1
+ 0 10 5 5 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_2P_3_survey1
  0 15 7 10 0 10 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_4_survey1
  -15 0 -10 -10 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_5_survey1
  -999 5 -999 0 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_6_survey1
@@ -289,23 +293,23 @@
 0  # TG_custom:  0=no read; 1=read if tags exist
 #_Cond -6 6 1 1 2 0.01 -4 0 0 0 0 0 0 0  #_placeholder if no parameters
 #
-1 #_Variance_adjustments_to_input_values
+0 #_Variance_adjustments_to_input_values
 #_fleet: 1 2 3 
-  0 0 0 #_add_to_survey_CV
-  0 0 0 #_add_to_discard_stddev
-  0 0 0 #_add_to_bodywt_CV
-  1 1 1 #_mult_by_lencomp_N
-  1 1 1 #_mult_by_agecomp_N
-  1 1 1 #_mult_by_size-at-age_N
+#  0 0 0 #_add_to_survey_CV
+#  0 0 0 #_add_to_discard_stddev
+#  0 0 0 #_add_to_bodywt_CV
+#  1 1 1 #_mult_by_lencomp_N
+#  1 1 1 #_mult_by_agecomp_N
+#  1 1 1 #_mult_by_size-at-age_N
 #
-1 #_maxlambdaphase
+5 #_maxlambdaphase
 1 #_sd_offset
 #
-1 # number of changes to make to default Lambdas (default value is 1.0)
+0 # number of changes to make to default Lambdas (default value is 1.0)
 # Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=SizeFreq; 7=sizeage; 8=catch; 
 # 9=init_equ_catch; 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin
 #like_comp fleet/survey  phase  value  sizefreq_method
- 7 2 1 0 0
+# 7 2 1 0 0
 #
 # lambdas (for info only; columns are phases)
 #  0 #_CPUE/survey:_1
