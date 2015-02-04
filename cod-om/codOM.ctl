@@ -115,7 +115,7 @@
 
 #_initial_F_parms
 #_LO  HI  INIT   PRIOR  PR_type   SD   PHASE
-   0  2   0.087  0.01     0       99    -1    # InitF_1Fishery 
+   0  2   0  0.01     0       99    -1    # InitF_1Fishery 
 
 #_Q_setup
  # Q_type options:  <0=mirror, 0=float_nobiasadj, 1=float_biasadj, 2=parm_nobiasadj, 3=parm_w_random_dev, 4=parm_w_randwalk, 5=mean_unbiased_float_assign_to_parm
