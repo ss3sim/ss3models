@@ -1,2 +1,3 @@
 *.vim
 .Rproj.user
+fmsy/**

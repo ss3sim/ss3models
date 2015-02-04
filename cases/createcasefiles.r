@@ -11,11 +11,11 @@
 ####Remarks    : Character width = 80
 #-----------------------------------------------------------------------------#
 ###############################################################################
-###############################################################################	
+###############################################################################
 
 ###############################################################################
-## Step 
-## Set working directories 
+## Step
+## Set working directories
 ###############################################################################
 
 wd.curr <- getwd()
@@ -27,7 +27,7 @@ start <- 1
 end <- 100
 
 ###############################################################################
-## Step 
+## Step
 ## Standard case files
 ## These case files do not change per scenario
 ###############################################################################
@@ -35,51 +35,19 @@ for(spp in seq_along(spp.case)) {
 r0 <- "retro_yr; 0"
 writeLines(r0, paste0("R0-", spp.case[spp], ".txt"))
 
-index0 <- c("fleets; 2", 
+index0 <- c("fleets; 2",
             paste0("years; list(c(", paste(
             #Years of survey index of abundance
-              seq(start.survey, end, by = 2), 
+              seq(start.survey, end, by = 2),
             collapse = ","),
                    "))"),
             "sds_obs; list(0.2)")
 writeLines(index0, paste0("index0-", spp.case, ".txt"))
 
 ###############################################################################
-## Step 
+## Step
 ## Case files that change
 ###############################################################################
-#change_f: case "F"
-## Constant F for 75 years
-f.info <- c(paste0("years; c(", paste(
-        #All years in the simulation
-          start:end, 
-        collapse = ","), ")"),
-        paste0("years_alter; c(", paste(
-        #Years to alter F
-          start:end, 
-        collapse = ","), ")"))
-f0 <- c(f.info, paste0("fvals; c(", paste(
-        #F vals for each year
-          c(rep(0, start.fishery - start), rep(0.07, end - start.fishery + 1)
-        ), collapse = ","), ")"))
-writeLines(f0, paste0("F0-", spp.case, ".txt"))
-
-## Burn in of 0 for 25 years, up to 0.9*Fmsy (right limb) for 40 years,
-## down to 0.9*Fmsy (left limb value) for 35years
-f1 <- c(f.info, paste0("fvals; c(", paste(
-        #F vals for each year
-          c(rep(0, start.fishery - start - 1), seq(0, 0.175, length.out = 41),
-            seq(0.175, 0.07, length.out = 35)), 
-        collapse = ","),")"))
-writeLines(f1, paste0("F1-", spp.case, ".txt"))
-
-## Burn in of 0 for 25 years, up to 0.9*Fmsy (left limb) for 75 years,
-f2 <- c(f.info, paste0("fvals; c(", paste(
-        #F vals for each year
-          c(rep(0, start.fishery - start - 1), seq(0, 0.175, length.out = 76)),
-        collapse = ","),")"))
-writeLines(f2, paste0("F2-", spp.case, ".txt"))
-
 #change_e: case "E"
 allgrowth <- c("L_at_Amin", "L_at_Amax", "VonBert_K", "CV_young", "CV_old")
 growthint <- rep(NA, length(allgrowth))
@@ -125,16 +93,16 @@ fishsamples.4 <- "list(rep(10, 37))"
 
 allyears <- paste0("list(c(", paste(c(
                    #Fishery
-                     seq(start.fishery, start.fishery + 10, by = 10), 
+                     seq(start.fishery, start.fishery + 10, by = 10),
                      seq(start.fishery + 20, start.fishery + 45, by = 5),
-                     seq(start.fishery + 46, end)), 
+                     seq(start.fishery + 46, end)),
                    collapse = ","), "), c(", paste( c(
                    #Survey
                      seq(start.survey, end, by = 2)),
                    collapse = ","), "))")
 fishyears <- paste0("list(c(", paste(c(
                    #Fishery
-                     seq(start.fishery, start.fishery + 10, by = 10), 
+                     seq(start.fishery, start.fishery + 10, by = 10),
                      seq(start.fishery + 20, start.fishery + 45, by = 5),
                      seq(start.fishery + 46, end)),
                    collapse = ","), "))")
@@ -199,7 +167,7 @@ writeS <- function(vals, case) {
   mid <- "dev; rep("
   end <- ", 100)"
   let <- toupper(letters[10:15])
-  
+
   lapply(seq_along(parnames), function(x) {
     info <- c(beg, paste(sec, parnames[x]), paste0(mid, vals[x], end))
     writeLines(info, paste0(let[x], case, "-", spp.case[spp], ".txt"))
