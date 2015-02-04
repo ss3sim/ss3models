@@ -20,7 +20,7 @@ This folder contains operating model (OM) and estimating model (EM) files and ca
    * Length based
 - [x] Maturity:
    * Age based logistic maturity (2014-10-27)
-- [] Standardize parameter bounds using [standardize_bounds](https://github.com/ss3sim/ss3sim/blob/master/R/standardize_bounds.R): approach used in [Johnson *et al*.][johnsonetal] (2015) of lower bounds = 0.5% of init values and upper bounds = 500% of init values
+- [ ] Standardize parameter bounds using [standardize_bounds](https://github.com/ss3sim/ss3sim/blob/master/R/standardize_bounds.R): approach used in [Johnson *et al*.][johnsonetal] (2015) of lower bounds = 0.5% of init values and upper bounds = 500% of init values
 - [x] Fishing case files: "F" case files for each model are based on Fmsy, which can be found with [profile_fmsy](https://github.com/ss3sim/ss3sim/blob/master/R/profile_fmsy.r). Casefiles are automatically generated from the script create_f.R in the cases directory. Please rerun this script any time a new model is added.
    * F0 = Constant fishing at Fmsy: years 25 - 100 at Fmsy;
    * F1 = Two way trip: years 25 - 65 ramp up to 0.9 x Fmsy (right limb), years 66 - 100 ramp down from 0.9 x Fmsy (right limb) to 0.9 x Fmsy (left limb;
