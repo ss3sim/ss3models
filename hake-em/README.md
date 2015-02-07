@@ -4,7 +4,7 @@ TODO add a brief description
 
 Estimation model is set up generally to mimic the cod model.
 
-Initial work was by @allanhicks, @peterkuriyama and probably many others I'm not aware of. @seananderson made finishing touches adapting the models for ss3sim.
+Initial work was by Allan Hicks, Peter Kuriyama, and probably others I'm not aware of at this point. Sean Anderson made finishing touches adapting the model setups for ss3sim.
 
 ### Remaining discrepancies with the cod EM
 
