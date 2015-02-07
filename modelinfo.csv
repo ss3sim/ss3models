@@ -1,0 +1,8 @@
+name,author,lastupdated,OM,EM,slxshape,slxtype,maturityshape,maturitytype,description,reference,todo_lbintype2,todo_popbinwidth,todo_bounds,todo_fmsy,todo_years
+cos,KO,2/5/2015,yes,yes,doublenormal,length,?,length,cod with length based double normal,?,kfj,kfj,need,kfj,kfj
+fll,KO,2/5/2015,yes,yes,doublenormal,length,?,?,flatfish with length based double normal,?,kfj,kjf,need,kfj,kjf
+cod,RL,?,yes,yes,?,?,?,?,cod with age based double normal,?,kfj,need,need,need,need
+fla,KO,?,yes,yes,?,?,?,?,flatfish with age based double normal,?,kfj,need,need,kfj,need
+mac,PK,?,no,no,?,?,?,?,?,?,kfj,need,need,need,need
+yel,MR,?,no,no,?,?,?,?,?,?,kfj,need,need,need,need
+hake,SA,?,no,no,?,?,?,?,?,?,kfj,need,need,need,need
