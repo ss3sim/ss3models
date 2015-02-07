@@ -463,7 +463,7 @@ Fishery%Survey
  0.5 1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5 14.5 15.5 16.5 17.5 18.5 19.5 20.5
  0.329 0.329 0.347 0.369 0.395 0.428 0.468 0.518 0.579 0.653 0.745 0.858 0.996 1.167 1.376 1.632 1.858 2.172 2.53 2.934 3.388
 200 #_N_Agecomp_obs
-1 #_Lbin_method: 1=poplenbins; 2=datalenbins; 3=lengths
+2 #_Lbin_method: 1=poplenbins; 2=datalenbins; 3=lengths
 0 #_combine males into females at or below this bin number
 #Yr Seas Flt/Svy Gender Part Ageerr Lbin_lo Lbin_hi Nsamp datavector(female-male)
  1 1 1 0 0 1 -1 -1 50 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
