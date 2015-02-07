@@ -225,23 +225,27 @@
 #_Den-dep  env-var  extra_se  Q_type
  0 0 0 2 # 1 Fishery
  0 0 0 2 # 2 Survey
+ 0 0 0 2 # 3 CPUE
 #
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -3 3 0 0 -1 99 -5 # LnQ_base_1_Fishery
- -3 3 0 0 -1 99 5 # LnQ_base_2_Survey
+ -20 20 0 0 -1 99 5 # LnQ_base_2_Survey
+ -20 20 0 0 -1 99 5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
 #_Pattern Discard Male Special
- 24 0 0 0 # 1 Fishery
- 24 0 0 0 # 2 Survey
+ 0 0 0 0 # 1 Fishery
+ 0 0 0 0 # 2 Survey
+ 0 0  0  0 # 3 CPUE - Mirrors Fishery
 #
 #_age_selex_types
 #_Pattern ___ Male Special
- 10 0 0 0 # 1 Fishery
- 10 0 0 0 # 2 Survey
+ 20 0 0 0 # 1 Fishery
+ 20 0 0 0 # 2 Survey
+ 15 0 0 1 # 3 CPUE - Mirrors Fishery
 #_LO  HI INIT    PRIOR PR_type SD   PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  15   69 68.9999 45    -1      0.05 1     0       0       0         0         0.5        0     0 # SizeSel_1P_1_Fishery
  -5   10 2.5     5     -1      0.05 -3    0       0       0         0         0.5        0     0 # SizeSel_1P_2_Fishery
@@ -268,15 +272,15 @@
 #_Cond -6 6 1 1 2 0.01 -4 0 0 0 0 0 0 0  #_placeholder if no parameters
 #
 0 #_Variance_adjustments_to_input_values
-#_fleet: 1 2 
-#_Cond  0 0 #_add_to_survey_CV
-#_Cond  0 0 #_add_to_discard_stddev
-#_Cond  0 0 #_add_to_bodywt_CV
-#_Cond  1 1 #_mult_by_lencomp_N
-#_Cond  1 1 #_mult_by_agecomp_N
-#_Cond  1 1 #_mult_by_size-at-age_N
+#_fleet: 1 2 3
+#_Cond  0 0 0 #_add_to_survey_CV
+#_Cond  0 0 0 #_add_to_discard_stddev
+#_Cond  0 0 0 #_add_to_bodywt_CV
+#_Cond  1 1 1 #_mult_by_lencomp_N
+#_Cond  1 1 1 #_mult_by_agecomp_N
+#_Cond  1 1 1 #_mult_by_size-at-age_N
 #
-1 #_maxlambdaphase
+5 #_maxlambdaphase
 1 #_sd_offset
 #
 0 # number of changes to make to default Lambdas (default value is 1.0)
@@ -285,18 +289,21 @@
 #like_comp fleet/survey  phase  value  sizefreq_method
 #
 # lambdas (for info only; columns are phases)
-#  0 #_CPUE/survey:_1
-#  1 #_CPUE/survey:_2
-#  1 #_lencomp:_1
-#  1 #_lencomp:_2
-#  1 #_agecomp:_1
-#  1 #_agecomp:_2
-#  1 #_init_equ_catch
-#  1 #_recruitments
-#  1 #_parameter-priors
-#  1 #_parameter-dev-vectors
-#  1 #_crashPenLambda
-#  0 # F_ballpark_lambda
+#  0 0 0 0 0 #_CPUE/survey:_1
+#  1 1 1 1 1 #_CPUE/survey:_2
+#  1 1 1 1 1 #_CPUE/survey:_3
+#  1 1 1 1 1 #_lencomp:_1
+#  1 1 1 1 1 #_lencomp:_2
+#  0 0 0 0 0 #_lencomp:_3
+#  1 1 1 1 1 #_agecomp:_1
+#  1 1 1 1 1 #_agecomp:_2
+#  0 0 0 0 0 #_agecomp:_3
+#  1 1 1 1 1 #_init_equ_catch
+#  1 1 1 1 1 #_recruitments
+#  1 1 1 1 1 #_parameter-priors
+#  1 1 1 1 1 #_parameter-dev-vectors
+#  1 1 1 1 1 #_crashPenLambda
+#  0 0 0 0 0 # F_ballpark_lambda
 0 # (0/1) read specs for more stddev reporting 
  # 0 1 -1 5 1 5 1 -1 5 # placeholder for selex type, len/age, year, N selex bins, Growth pattern, N growth ages, NatAge_area(-1 for all), NatAge_yr, N Natages
  # placeholder for vector of selex bins to be reported
