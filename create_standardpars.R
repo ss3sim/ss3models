@@ -116,11 +116,11 @@ for (spp in seq_along(speciesname)) {
     em_ctl_file = "newEM.ctl", verbose = FALSE, estimate = NULL)
   # Copy the files back to their respective directories
   # Need to change this so it finds the correct file
+  setwd("..")
   permom <- file.path(grep(speciesname[spp], foldername[oms], value = TRUE), nameom)
   file.copy("newOM.ctl", permom, overwrite = TRUE)
   permem <- file.path(grep(speciesname[spp], foldername[ems], value = TRUE), nameem)
-  file.copy("newEM", permem, overwrite = TRUE)
-  setwd("..")
+  file.copy("newEM.ctl", permem, overwrite = TRUE)
   done <- sapply(dir(), unlink, recursive = TRUE)
   setwd(dir.master)
 }
