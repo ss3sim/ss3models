@@ -8,12 +8,11 @@ This folder contains operating model (OM) and estimating model (EM) files and ca
 
 ### Additional models
   1. cod - age based double normal selectivity, age based logistic maturity
-  2. col - length based double normal selectivity (mimicking logistic) in OM, length based logistic in EM, narrow bounds (WILL BE REMOVED SOON)
-  3. fla - age based double normal selectivity, age based logistic maturity
-  4. mac - mackerel model under development (in development by @peterkuriyama )
-  5. yel - yellowtail rockfish model under development (in development by @merrillrudd)
+  2. fla - age based double normal selectivity, age based logistic maturity
+  3. mac - mackerel model under development (in development by @peterkuriyama )
+  4. yel - yellowtail rockfish model under development (in development by @merrillrudd)
 
-### Specific changes: 
+### Specific changes:
 - [x] Years: 1-100
 - [x] Selectivity: parameterized using a double normal to mimic logistic selectivity (2014-10-28)
    * Age based

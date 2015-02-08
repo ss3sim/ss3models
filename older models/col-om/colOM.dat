@@ -102,13 +102,13 @@ Fishery%Survey%CPUE
 1	99	1
 1   100 1
 
-150 #_N_cpue_and_surveyabundance_observations
-#_Units:  0=numbers; 1=biomass; 2=F
+150 #_N_cpue_and_surveyabundance_observations 
+#_Units:  0=numbers; 1=biomass; 2=F 
 #_Errtype:  -1=normal; 0=lognormal; >0=T
 #_Fleet Units 	Errtype
 1       1      0      # FISHERY
 2       1      0      # SURVEY
-3       1      0      # CPUE
+3       1      0      # CPUE 
 
 #_year seas  index     obs    se_log
 26    	1	2	1	0.2
@@ -272,13 +272,13 @@ Fishery%Survey%CPUE
 1	#_DF_for_meanbodywt_T-distribution_like
 # These define the resolution at which the mean weight-at-length, maturity-at-length and size-selectivity are based.  Calculations use the mid-length of the population bins.
 2 	# length bin method: 1=use databins; 2=generate from binwidth,min,max below; 3=read vector
-1 	# binwidth for population size comp
-10 	# minimum size in the population (lower edge of first bin and size at age 0.00)
+2 	# binwidth for population size comp 
+10 	# minimum size in the population (lower edge of first bin and size at age 0.00) 
 200 	# maximum size in the population (lower edge of last bin)
 -0.001  #_comp_tail_compression
 0.00001 #_add_to_comp
 0 	#_combine males into females at or below this bin number
-45 	#_N_LengthBins
+45 	#_N_LengthBins 
 # lower edge of each length data bin (in cm)
 20	23	26	29	32	35	38	41	44	47	50	53	56	59	62	65	68	71	74	77	80	83	86	89	92	95	98	101	104	107	110	113	116	119	122	125	128	131	134	137	140	143	146	149	152
 150     #_N_Length_obs
@@ -359,7 +359,7 @@ Fishery%Survey%CPUE
 98 	    1	1	0	0	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
 99    	1	1	0	0	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
 100	    1	1	0	0	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
-
+																																																		
 26    	1	2	0	0	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
 27    	1	2	0	0	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
 28    	1	2	0	0	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
@@ -436,9 +436,9 @@ Fishery%Survey%CPUE
 99    	1	2	0	0	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
 100	    1	2	0	0	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
 
-15 #_N_age_bins
+15 #_N_age_bins   
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
-1 #_N_ageerror_definitions
+1 #_N_ageerror_definitions   
 -1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1
 0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001
 150 #_N_Agecomp_obs
@@ -446,7 +446,7 @@ Fishery%Survey%CPUE
 -1  #_combine males into females at or below this bin number
 
 #Yr   Seas   Flt/Svy Gender   Part   Ageerr  Lbin_lo Lbin_hi Nsamp  datavector(female, then male)
-#Fishery
+#Fishery																							
 26 	1	1	0	0	1	-1	-1	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
 27 	1	1	0	0	1	-1	-1	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
 28 	1	1	0	0	1	-1	-1	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
@@ -522,7 +522,7 @@ Fishery%Survey%CPUE
 98 	1	1	0	0	1	-1	-1	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
 99 	1	1	0	0	1	-1	-1	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
 100	1	1	0	0	1	-1	-1	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
-#Survey
+#Survey																							
 26 	1	2	0	0	1	-1	-1	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
 27 	1	2	0	0	1	-1	-1	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
 28 	1	2	0	0	1	-1	-1	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
@@ -599,13 +599,13 @@ Fishery%Survey%CPUE
 99 	1	2	0	0	1	-1	-1	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
 100	1	2	0	0	1	-1	-1	100	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
 
-0 #_N_MeanSize-at-Age_obs
+0 #_N_MeanSize-at-Age_obs 
 #Yr Seas Flt/Svy Gender Part Ageerr Ignore datavector(female-male)
 #                                          samplesize(female-male)
 #
 0 #_N_environ_variables
 0 #_N_environ_obs
-0 # N sizefreq methods to read
-0 # no tag data
-0 # no morphcomp data
+0 # N sizefreq methods to read 
+0 # no tag data 
+0 # no morphcomp data 
 999
