@@ -339,28 +339,28 @@
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
 #_Pattern Discard Male Special
- 24 0 0 0 # 1 Fishery
- 24 0 0 0 # 2 Survey
- 15 0 0 1 # 3 CPUE
+ 0 0 0 0 # 1 Fishery
+ 0 0 0 0 # 2 Survey
+ 0 0 0 0 # 3 CPUE
 #
 #_age_selex_types
 #_Pattern ___ Male Special
- 10 0 0 0 # 1 Fishery
- 10 0 0 0 # 2 Survey
- 10 0 0 0 # 3 CPUE
+ 20 0 0 0 # 1 Fishery
+ 20 0 0 0 # 2 Survey
+ 15 0 0 1 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- -20 15 5.03 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
- -20 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
- -20 15 1.72 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
- -20 30 15 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_4_Fishery
- -999 20 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
- -20 10000 999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_6_Fishery
- -10 15 5.03 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
- -10 15 -1 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
- -15 15 1.72 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
- -20 30 15 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
- -999 15 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
- -20 10000 999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
+ -20 15 5.03 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_1P_1_Fishery
+ -20 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_1P_2_Fishery
+ -20 15 1.72 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_1P_3_Fishery
+ -20 30 15 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_1P_4_Fishery
+ -999 20 -999 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_1P_5_Fishery
+ -20 10000 999 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_1P_6_Fishery
+ -10 15 5.03 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_1_Survey
+ -10 15 -1 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_2_Survey
+ -15 15 1.72 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_3_Survey
+ -20 30 15 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_4_Survey
+ -999 15 -999 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_5_Survey
+ -20 10000 999 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
@@ -385,25 +385,21 @@
 1 #_maxlambdaphase
 1 #_sd_offset
 #
-4 # number of changes to make to default Lambdas (default value is 1.0)
+0 # number of changes to make to default Lambdas (default value is 1.0)
 # Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=SizeFreq; 7=sizeage; 8=catch; 9=init_equ_catch; 
 # 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin; 17=F_ballpark
 #like_comp fleet/survey  phase  value  sizefreq_method
- 4 1 1 0 1
- 9 1 1 0 1
- 9 2 1 0 1
- 11 1 1 0 1
 #
 # lambdas (for info only; columns are phases)
 #  0 #_CPUE/survey:_1
 #  1 #_CPUE/survey:_2
 #  1 #_CPUE/survey:_3
-#  0 #_lencomp:_1
+#  1 #_lencomp:_1
 #  0 #_lencomp:_2
 #  0 #_lencomp:_3
-#  0 #_init_equ_catch
+#  1 #_init_equ_catch
 #  1 #_recruitments
-#  0 #_parameter-priors
+#  1 #_parameter-priors
 #  1 #_parameter-dev-vectors
 #  1 #_crashPenLambda
 #  0 # F_ballpark_lambda
