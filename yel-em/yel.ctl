@@ -246,17 +246,17 @@
  10 0 0 0 # 3 survey2
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  40 89 59.734 57 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_1P_1_fishery1
- -5 0 -2 -5 0 5 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_2_fishery1
+ -5 0 -1 -5 0 5 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_2_fishery1
  0 10 5.19758 5 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_1P_3_fishery1
  0 15 7 10 0 10 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_4_fishery1
- -15 0 -10 -10 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_5_fishery1
- -999 5 -999 0 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_6_fishery1
+ -999 0 -999 -10 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_5_fishery1
+ -999 10000 999 0 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_6_fishery1
  40 89 55.93 57 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_2P_1_survey1
- -5 0 -2 -5 0 5 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_2_survey1
+ -5 0 -1 -5 0 5 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_2_survey1
  0 10 4.87402 5 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_2P_3_survey1
  0 15 7 10 0 10 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_4_survey1
- -15 0 -10 -10 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_5_survey1
- -999 5 -999 0 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_6_survey1
+ -999 0 -999 -10 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_5_survey1
+ -999 10000 999 0 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_6_survey1
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
