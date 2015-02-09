@@ -21,6 +21,7 @@ Columns with todo in the name should be filled out with your initials once compl
     * Length based
   - Maturity:
     * Age based logistic maturity
+    * length based logistic maturity
 
 #### todo
   - lbin type = 2
