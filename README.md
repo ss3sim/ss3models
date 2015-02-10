@@ -3,14 +3,14 @@
 This folder contains operating model (OM) and estimating model (EM) files and case files for use within the [ss3sim][ss3sim] package. [ss3sim][ss3sim] is an R package that facilitates flexible, rapid, and reproducible fisheries stock assessment simulation testing with the widely-used [Stock Synthesis 3][SS3] (SS3) statistical age-structured stock assessment framework.
 
 ### Base models (length-based selectivity)
-  1. cos - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, narrow bounds
-  2. fll - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, narrow bounds
-  3. yel - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, length based maturity
-  4. hake - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, length based maturity (slightly changed compared t othe original assessment to match the purpose of this simulation study)
+  1. `cod` cos - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, narrow bounds
+  2. `flatfish` fll - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, narrow bounds
+  3. `yellow` yel - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, length based maturity
+  4. `hake` hake - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, length based maturity (slightly changed compared t othe original assessment to match the purpose of this simulation study)
 
 ### Base models (age-based selectivity)
-  1. yelloweye_age_based - age based double normal selectivity (mimicking logistic) in OM, age based double normal selectivity (mimicking logistic) in EM, age based maturity
-  2. hake_age_based - age based double normal selectivity (mimicking logistic) in OM, age based double normal selectivity (mimicking logistic) in EM, age based maturity (converted from the 'hake' model)
+  1. `yellow-age` yelloweye_age_based - age based double normal selectivity (mimicking logistic) in OM, age based double normal selectivity (mimicking logistic) in EM, age based maturity
+  2. `hake-age` hake_age_based - age based double normal selectivity (mimicking logistic) in OM, age based double normal selectivity (mimicking logistic) in EM, age based maturity (converted from the 'hake' model)
   
 ### Additional models
   1. cod - age based double normal selectivity, age based logistic maturity
