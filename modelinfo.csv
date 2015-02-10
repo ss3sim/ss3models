@@ -4,5 +4,8 @@ fll,KO,2/5/2015,yes,yes,doublenormal,length,logistic,length,flatfish with length
 cod,RL,?,yes,yes,?,?,?,?,cod with age based double normal,?,kfj,need,need,need,need
 fla,KO,?,yes,yes,?,?,?,?,flatfish with age based double normal,?,kfj,need,need,kfj,need
 mac,PK,?,no,no,?,?,?,?,?,?,kfj,need,need,need,need
-yel,MR,?,no,no,?,?,?,?,?,?,kfj,need,need,need,need
-hake,SA,?,no,no,?,?,?,?,?,?,kfj,need,need,need,need
+yel,KO,2/9/2015,yes,yes,doublenormal,length,logistic,length,yelloweye with length based double normal,?,kfj,need,need,need,need
+yel,KO,2/9/2015,yes,yes,doublenormal,age,logistic,age,yelloweye with age based double normal,?,kfj,need,need,need,need
+hak,SA,?,no,no,?,?,?,?,?,?,kfj,need,need,need,need
+hake,KO,2/9/2015,yes,yes,doublenormal,length,logistic,length,hake with length based double normal (but the maturity curve has been modified compared to the original for the purpose of this study),?,need,need,need,need,need
+hake_age_based,KO,2/9/2015,yes,yes,doublenormal,age,logistic,age,hake with age based double normal (modified from the 'hake' model),?,need,need,need,need,need
