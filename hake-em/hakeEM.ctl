@@ -4,7 +4,7 @@
 #_data_and_control_files: hakeEM.dat // hakeEM.ctl
 #_SS-V3.24O-safe-MacOS;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.0
 1  #_N_Growth_Patterns
-1 #_N_Morphs_Within_GrowthPattern 
+1 #_N_Morphs_Within_GrowthPattern
 #_Cond 1 #_Morph_between/within_stdev_ratio (no read if N_morphs=1)
 #_Cond  1 #vector_Morphdist_(-1_in_first_val_gives_normal_approx)
 #
@@ -17,10 +17,10 @@
 #_Cond 1 1 1 2 4 10 # example move definition for seas=1, morph=1, source=1 dest=2, age1=4, age2=10
 #
 0 #_Nblock_Patterns
-#_Cond 0 #_blocks_per_pattern 
+#_Cond 0 #_blocks_per_pattern
 # begin and end years of blocks
 #
-0.5 #_fracfemale 
+0.5 #_fracfemale
 0 #_natM_type:_0=1Parm; 1=N_breakpoints;_2=Lorenzen;_3=agespecific;_4=agespec_withseasinterpolate
   #_no additional input for selected M option; read 1P per morph
 1 # GrowthModel: 1=vonBert with L1&L2; 2=Richards with L1&L2; 3=age_speciific_K; 4=not implemented
@@ -60,7 +60,7 @@
 #
 #_Cond 0  #custom_MG-block_setup (0/1)
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no MG-block parameters
-#_Cond No MG parm trends 
+#_Cond No MG parm trends
 #
 #_seasonal_effects_on_biology_parms
  0 0 0 0 0 0 0 0 0 0 #_femwtlen1,femwtlen2,mat1,mat2,fec1,fec2,Malewtlen1,malewtlen2,L1,K
@@ -82,7 +82,7 @@
 1 #do_recdev:  0=none; 1=devvector; 2=simple deviations
 1 # first year of main recr_devs; early devs can preceed this era
 100 # last year of main recr_devs; forecast devs start in following year
-3 #_recdev phase 
+3 #_recdev phase
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
  4 #_recdev_early_phase
@@ -103,109 +103,7 @@
 # read specified recr devs
 #_Yr Input_value
 #
-# all recruitment deviations
-#DisplayOnly -0.0544935 # Main_RecrDev_1
-#DisplayOnly -0.175378 # Main_RecrDev_2
-#DisplayOnly -0.305504 # Main_RecrDev_3
-#DisplayOnly -0.412487 # Main_RecrDev_4
-#DisplayOnly -0.479517 # Main_RecrDev_5
-#DisplayOnly -0.516325 # Main_RecrDev_6
-#DisplayOnly -0.533862 # Main_RecrDev_7
-#DisplayOnly -0.539481 # Main_RecrDev_8
-#DisplayOnly -0.537797 # Main_RecrDev_9
-#DisplayOnly -0.531665 # Main_RecrDev_10
-#DisplayOnly -0.522843 # Main_RecrDev_11
-#DisplayOnly -0.5124 # Main_RecrDev_12
-#DisplayOnly -0.500989 # Main_RecrDev_13
-#DisplayOnly -0.489004 # Main_RecrDev_14
-#DisplayOnly -0.476682 # Main_RecrDev_15
-#DisplayOnly -0.464168 # Main_RecrDev_16
-#DisplayOnly -0.451547 # Main_RecrDev_17
-#DisplayOnly -0.438874 # Main_RecrDev_18
-#DisplayOnly -0.42618 # Main_RecrDev_19
-#DisplayOnly -0.413485 # Main_RecrDev_20
-#DisplayOnly -0.400789 # Main_RecrDev_21
-#DisplayOnly -0.388128 # Main_RecrDev_22
-#DisplayOnly -0.3755 # Main_RecrDev_23
-#DisplayOnly -0.362908 # Main_RecrDev_24
-#DisplayOnly -0.350353 # Main_RecrDev_25
-#DisplayOnly -0.337836 # Main_RecrDev_26
-#DisplayOnly -0.325361 # Main_RecrDev_27
-#DisplayOnly -0.312927 # Main_RecrDev_28
-#DisplayOnly -0.300537 # Main_RecrDev_29
-#DisplayOnly -0.288192 # Main_RecrDev_30
-#DisplayOnly -0.275895 # Main_RecrDev_31
-#DisplayOnly -0.263647 # Main_RecrDev_32
-#DisplayOnly -0.25145 # Main_RecrDev_33
-#DisplayOnly -0.239305 # Main_RecrDev_34
-#DisplayOnly -0.227214 # Main_RecrDev_35
-#DisplayOnly -0.21518 # Main_RecrDev_36
-#DisplayOnly -0.203204 # Main_RecrDev_37
-#DisplayOnly -0.191287 # Main_RecrDev_38
-#DisplayOnly -0.179433 # Main_RecrDev_39
-#DisplayOnly -0.167642 # Main_RecrDev_40
-#DisplayOnly -0.155918 # Main_RecrDev_41
-#DisplayOnly -0.144261 # Main_RecrDev_42
-#DisplayOnly -0.132676 # Main_RecrDev_43
-#DisplayOnly -0.121163 # Main_RecrDev_44
-#DisplayOnly -0.109726 # Main_RecrDev_45
-#DisplayOnly -0.0983673 # Main_RecrDev_46
-#DisplayOnly -0.0870902 # Main_RecrDev_47
-#DisplayOnly -0.0758978 # Main_RecrDev_48
-#DisplayOnly -0.0647934 # Main_RecrDev_49
-#DisplayOnly -0.0537809 # Main_RecrDev_50
-#DisplayOnly -0.0428642 # Main_RecrDev_51
-#DisplayOnly -0.0320478 # Main_RecrDev_52
-#DisplayOnly -0.0213364 # Main_RecrDev_53
-#DisplayOnly -0.0107353 # Main_RecrDev_54
-#DisplayOnly -0.000250255 # Main_RecrDev_55
-#DisplayOnly 0.0101125 # Main_RecrDev_56
-#DisplayOnly 0.0203462 # Main_RecrDev_57
-#DisplayOnly 0.0304432 # Main_RecrDev_58
-#DisplayOnly 0.040395 # Main_RecrDev_59
-#DisplayOnly 0.0501927 # Main_RecrDev_60
-#DisplayOnly 0.0598261 # Main_RecrDev_61
-#DisplayOnly 0.0692841 # Main_RecrDev_62
-#DisplayOnly 0.0785543 # Main_RecrDev_63
-#DisplayOnly 0.0876234 # Main_RecrDev_64
-#DisplayOnly 0.0964765 # Main_RecrDev_65
-#DisplayOnly 0.105097 # Main_RecrDev_66
-#DisplayOnly 0.113467 # Main_RecrDev_67
-#DisplayOnly 0.121566 # Main_RecrDev_68
-#DisplayOnly 0.129372 # Main_RecrDev_69
-#DisplayOnly 0.13686 # Main_RecrDev_70
-#DisplayOnly 0.144003 # Main_RecrDev_71
-#DisplayOnly 0.150771 # Main_RecrDev_72
-#DisplayOnly 0.157131 # Main_RecrDev_73
-#DisplayOnly 0.163048 # Main_RecrDev_74
-#DisplayOnly 0.168484 # Main_RecrDev_75
-#DisplayOnly 0.1734 # Main_RecrDev_76
-#DisplayOnly 0.177758 # Main_RecrDev_77
-#DisplayOnly 0.18153 # Main_RecrDev_78
-#DisplayOnly 0.184713 # Main_RecrDev_79
-#DisplayOnly 0.18737 # Main_RecrDev_80
-#DisplayOnly 0.189925 # Main_RecrDev_81
-#DisplayOnly 0.161734 # Main_RecrDev_82
-#DisplayOnly 0.134007 # Main_RecrDev_83
-#DisplayOnly 0.107105 # Main_RecrDev_84
-#DisplayOnly 0.082464 # Main_RecrDev_85
-#DisplayOnly 0.0620992 # Main_RecrDev_86
-#DisplayOnly 0.0477793 # Main_RecrDev_87
-#DisplayOnly 0.0410503 # Main_RecrDev_88
-#DisplayOnly 0.0435101 # Main_RecrDev_89
-#DisplayOnly 0.0571148 # Main_RecrDev_90
-#DisplayOnly 0.0845335 # Main_RecrDev_91
-#DisplayOnly 0.129595 # Main_RecrDev_92
-#DisplayOnly 0.197836 # Main_RecrDev_93
-#DisplayOnly 0.297035 # Main_RecrDev_94
-#DisplayOnly 0.437352 # Main_RecrDev_95
-#DisplayOnly 0.630641 # Main_RecrDev_96
-#DisplayOnly 0.891811 # Main_RecrDev_97
-#DisplayOnly 1.266 # Main_RecrDev_98
-#DisplayOnly 1.89193 # Main_RecrDev_99
-#DisplayOnly 5.99902 # Main_RecrDev_100
-#
-#Fishing Mortality info 
+#Fishing Mortality info
 0.3 # F ballpark for annual F (=Z-M) for specified year
 -1999 # F ballpark year (neg value to disable)
 3 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
@@ -259,11 +157,11 @@
  -2   10 9       10    1       0.05 -4    0       0       0         0         0.5        0     0 # SizeSel_2P_4_Survey
  -999 5  -999    -999  1       0.05 -3    0       0       0         0         0.5        0     0 # SizeSel_2P_5_Survey
  -9   9  -999    0.5   1       0.05 -4    0       0       0         0         0.5        0     0 # SizeSel_2P_6_Survey
-#_Cond 0 #_custom_sel-env_setup (0/1) 
+#_Cond 0 #_custom_sel-env_setup (0/1)
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
-#_Cond 0 #_custom_sel-blk_setup (0/1) 
+#_Cond 0 #_custom_sel-blk_setup (0/1)
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no block usage
-#_Cond No selex parm trends 
+#_Cond No selex parm trends
 #_Cond -4 # placeholder for selparm_Dev_Phase
 #_Cond 0 #_env/block/dev_adjust_method (1=standard; 2=logistic trans to keep in base parm bounds; 3=standard w/ no bound check)
 #
@@ -284,7 +182,7 @@
 1 #_sd_offset
 #
 0 # number of changes to make to default Lambdas (default value is 1.0)
-# Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=SizeFreq; 7=sizeage; 8=catch; 9=init_equ_catch; 
+# Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=SizeFreq; 7=sizeage; 8=catch; 9=init_equ_catch;
 # 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin; 17=F_ballpark
 #like_comp fleet/survey  phase  value  sizefreq_method
 #
@@ -304,7 +202,7 @@
 #  1 1 1 1 1 #_parameter-dev-vectors
 #  1 1 1 1 1 #_crashPenLambda
 #  0 0 0 0 0 # F_ballpark_lambda
-0 # (0/1) read specs for more stddev reporting 
+0 # (0/1) read specs for more stddev reporting
  # 0 1 -1 5 1 5 1 -1 5 # placeholder for selex type, len/age, year, N selex bins, Growth pattern, N growth ages, NatAge_area(-1 for all), NatAge_yr, N Natages
  # placeholder for vector of selex bins to be reported
  # placeholder for vector of growth ages to be reported
