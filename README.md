@@ -6,9 +6,11 @@ This folder contains operating model (OM) and estimating model (EM) files and ca
   1. cos - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, narrow bounds
   2. fll - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, narrow bounds
   3. yel - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, length based maturity
+  4. hake - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, length based maturity (slightly changed compared t othe original assessment to match the purpose of this simulation study)
 
 ### Base models (age-based selectivity)
   1. yelloweye_age_based - age based double normal selectivity (mimicking logistic) in OM, age based double normal selectivity (mimicking logistic) in EM, age based maturity
+  2. hake_age_based - age based double normal selectivity (mimicking logistic) in OM, age based double normal selectivity (mimicking logistic) in EM, age based maturity (converted from the 'hake' model)
   
 ### Additional models
   1. cod - age based double normal selectivity, age based logistic maturity
