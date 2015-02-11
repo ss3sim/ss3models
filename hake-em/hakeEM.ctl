@@ -38,13 +38,13 @@
 #
 #_growth_parms
 #_LO  HI   INIT     PRIOR    PR_type SD  PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 0.05 0.4  0.250345 -1.60944 -1      0.1 -4    0       0       0         0         0          0     0 # NatM_p_1_Fem_GP_1
+ 0.05 0.4  0.22 -1.60944 -1      0.1 -4    0       0       0         0         0          0     0 # NatM_p_1_Fem_GP_1
  2    15   5        32       -1      99  5     0       0       0         0         0          0     0 # L_at_Amin_Fem_GP_1
  45   75   55       50       -1      99  3     0       0       0         0         0          0     0 # L_at_Amax_Fem_GP_1
  0.2  0.4  0.4      0.3      -1      99  3     0       0       0         0         0          0     0 # VonBert_K_Fem_GP_1
  0.03 0.16 0.1      0.1      -1      99  5     0       0       0         0         0          0     0 # CV_young_Fem_GP_1
  0.03 0.2  0.1      0.1      -1      99  5     0       0       0         0         0          0     0 # CV_old_Fem_GP_1
- -3   3    7e-06    7e-06    -1      99  -50   0       0       0         0         0          0     0 # Wtlen_1_Fem
+ -3   3    7e-006    7e-006    -1      99  -50   0       0       0         0         0          0     0 # Wtlen_1_Fem
  -3   3    2.95     2.9624   -1      99  -50   0       0       0         0         0          0     0 # Wtlen_2_Fem
  -3   43   31       36.89    -1      99  -50   0       0       0         0         0          0     0 # Mat50%_Fem
  -3   3    -0.23    -0.48    -1      99  -50   0       0       0         0         0          0     0 # Mat_slope_Fem
@@ -71,8 +71,8 @@
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI  INIT     PRIOR PR_type SD    PHASE
- 13  17  13       15    -1      99    1   # SR_LN(R0)
- 0.2 1   0.200318 0.777 -1      0.113 4   # SR_BH_steep
+ 13  17  15       15    -1      99    1   # SR_LN(R0)
+ 0.2 1   0.82     0.777 -1      0.113 4   # SR_BH_steep
  1   1.6 1.4      1.1   -1      99    -6  # SR_sigmaR
  -5  5   0        0     -1      99    -50 # SR_envlink
  -5  5   0        0     -1      99    -50 # SR_R1_offset
@@ -137,7 +137,7 @@
 #_Pattern Discard Male Special
  0 0 0 0 # 1 Fishery
  0 0 0 0 # 2 Survey
- 0 0  0  0 # 3 CPUE - Mirrors Fishery
+ 0 0  0  1 # 3 CPUE
 #
 #_age_selex_types
 #_Pattern ___ Male Special

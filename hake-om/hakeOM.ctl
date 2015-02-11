@@ -103,108 +103,6 @@
 # read specified recr devs
 #_Yr Input_value
 #
-# all recruitment deviations
-#DisplayOnly 0 # Main_RecrDev_1
-#DisplayOnly 0 # Main_RecrDev_2
-#DisplayOnly 0 # Main_RecrDev_3
-#DisplayOnly 0 # Main_RecrDev_4
-#DisplayOnly 0 # Main_RecrDev_5
-#DisplayOnly 0 # Main_RecrDev_6
-#DisplayOnly 0 # Main_RecrDev_7
-#DisplayOnly 0 # Main_RecrDev_8
-#DisplayOnly 0 # Main_RecrDev_9
-#DisplayOnly 0 # Main_RecrDev_10
-#DisplayOnly 0 # Main_RecrDev_11
-#DisplayOnly 0 # Main_RecrDev_12
-#DisplayOnly 0 # Main_RecrDev_13
-#DisplayOnly 0 # Main_RecrDev_14
-#DisplayOnly 0 # Main_RecrDev_15
-#DisplayOnly 0 # Main_RecrDev_16
-#DisplayOnly 0 # Main_RecrDev_17
-#DisplayOnly 0 # Main_RecrDev_18
-#DisplayOnly 0 # Main_RecrDev_19
-#DisplayOnly 0 # Main_RecrDev_20
-#DisplayOnly 0 # Main_RecrDev_21
-#DisplayOnly 0 # Main_RecrDev_22
-#DisplayOnly 0 # Main_RecrDev_23
-#DisplayOnly 0 # Main_RecrDev_24
-#DisplayOnly 0 # Main_RecrDev_25
-#DisplayOnly 0 # Main_RecrDev_26
-#DisplayOnly 0 # Main_RecrDev_27
-#DisplayOnly 0 # Main_RecrDev_28
-#DisplayOnly 0 # Main_RecrDev_29
-#DisplayOnly 0 # Main_RecrDev_30
-#DisplayOnly 0 # Main_RecrDev_31
-#DisplayOnly 0 # Main_RecrDev_32
-#DisplayOnly 0 # Main_RecrDev_33
-#DisplayOnly 0 # Main_RecrDev_34
-#DisplayOnly 0 # Main_RecrDev_35
-#DisplayOnly 0 # Main_RecrDev_36
-#DisplayOnly 0 # Main_RecrDev_37
-#DisplayOnly 0 # Main_RecrDev_38
-#DisplayOnly 0 # Main_RecrDev_39
-#DisplayOnly 0 # Main_RecrDev_40
-#DisplayOnly 0 # Main_RecrDev_41
-#DisplayOnly 0 # Main_RecrDev_42
-#DisplayOnly 0 # Main_RecrDev_43
-#DisplayOnly 0 # Main_RecrDev_44
-#DisplayOnly 0 # Main_RecrDev_45
-#DisplayOnly 0 # Main_RecrDev_46
-#DisplayOnly 0 # Main_RecrDev_47
-#DisplayOnly 0 # Main_RecrDev_48
-#DisplayOnly 0 # Main_RecrDev_49
-#DisplayOnly 0 # Main_RecrDev_50
-#DisplayOnly 0 # Main_RecrDev_51
-#DisplayOnly 0 # Main_RecrDev_52
-#DisplayOnly 0 # Main_RecrDev_53
-#DisplayOnly 0 # Main_RecrDev_54
-#DisplayOnly 0 # Main_RecrDev_55
-#DisplayOnly 0 # Main_RecrDev_56
-#DisplayOnly 0 # Main_RecrDev_57
-#DisplayOnly 0 # Main_RecrDev_58
-#DisplayOnly 0 # Main_RecrDev_59
-#DisplayOnly 0 # Main_RecrDev_60
-#DisplayOnly 0 # Main_RecrDev_61
-#DisplayOnly 0 # Main_RecrDev_62
-#DisplayOnly 0 # Main_RecrDev_63
-#DisplayOnly 0 # Main_RecrDev_64
-#DisplayOnly 0 # Main_RecrDev_65
-#DisplayOnly 0 # Main_RecrDev_66
-#DisplayOnly 0 # Main_RecrDev_67
-#DisplayOnly 0 # Main_RecrDev_68
-#DisplayOnly 0 # Main_RecrDev_69
-#DisplayOnly 0 # Main_RecrDev_70
-#DisplayOnly 0 # Main_RecrDev_71
-#DisplayOnly 0 # Main_RecrDev_72
-#DisplayOnly 0 # Main_RecrDev_73
-#DisplayOnly 0 # Main_RecrDev_74
-#DisplayOnly 0 # Main_RecrDev_75
-#DisplayOnly 0 # Main_RecrDev_76
-#DisplayOnly 0 # Main_RecrDev_77
-#DisplayOnly 0 # Main_RecrDev_78
-#DisplayOnly 0 # Main_RecrDev_79
-#DisplayOnly 0 # Main_RecrDev_80
-#DisplayOnly 0 # Main_RecrDev_81
-#DisplayOnly 0 # Main_RecrDev_82
-#DisplayOnly 0 # Main_RecrDev_83
-#DisplayOnly 0 # Main_RecrDev_84
-#DisplayOnly 0 # Main_RecrDev_85
-#DisplayOnly 0 # Main_RecrDev_86
-#DisplayOnly 0 # Main_RecrDev_87
-#DisplayOnly 0 # Main_RecrDev_88
-#DisplayOnly 0 # Main_RecrDev_89
-#DisplayOnly 0 # Main_RecrDev_90
-#DisplayOnly 0 # Main_RecrDev_91
-#DisplayOnly 0 # Main_RecrDev_92
-#DisplayOnly 0 # Main_RecrDev_93
-#DisplayOnly 0 # Main_RecrDev_94
-#DisplayOnly 0 # Main_RecrDev_95
-#DisplayOnly 0 # Main_RecrDev_96
-#DisplayOnly 0 # Main_RecrDev_97
-#DisplayOnly 0 # Main_RecrDev_98
-#DisplayOnly 0 # Main_RecrDev_99
-#DisplayOnly 0 # Main_RecrDev_100
-#
 #Fishing Mortality info 
 0.3 # F ballpark for annual F (=Z-M) for specified year
 -1999 # F ballpark year (neg value to disable)
@@ -341,9 +239,9 @@
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
 #_Pattern Discard Male Special
- 24 0 0 0 # 1 Fishery
- 24 0 0 0 # 2 Survey
- 15 0 0 1 # 3 CPUE
+ 0 0 0 0 # 1 Fishery
+ 0 0 0 0 # 2 Survey
+ 0 0 0 1 # 3 CPUE
 #
 #_age_selex_types
 #_Pattern ___ Male Special
@@ -384,7 +282,7 @@
 #_Cond  1 1 1 #_mult_by_agecomp_N
 #_Cond  1 1 1 #_mult_by_size-at-age_N
 #
-1 #_maxlambdaphase
+5 #_maxlambdaphase
 1 #_sd_offset
 #
 0 # number of changes to make to default Lambdas (default value is 1.0)
@@ -393,21 +291,21 @@
 #like_comp fleet/survey  phase  value  sizefreq_method
 #
 # lambdas (for info only; columns are phases)
-#  0 #_CPUE/survey:_1
-#  1 #_CPUE/survey:_2
-#  1 #_CPUE/survey:_3
-#  1 #_lencomp:_1
-#  1 #_lencomp:_2
-#  0 #_lencomp:_3
-#  1 #_agecomp:_1
-#  1 #_agecomp:_2
-#  0 #_agecomp:_3
-#  1 #_init_equ_catch
-#  1 #_recruitments
-#  1 #_parameter-priors
-#  1 #_parameter-dev-vectors
-#  1 #_crashPenLambda
-#  0 # F_ballpark_lambda
+#  0 0 0 0 0 #_CPUE/survey:_1
+#  1 1 1 1 1 #_CPUE/survey:_2
+#  1 1 1 1 1 #_CPUE/survey:_3
+#  1 1 1 1 1 #_lencomp:_1
+#  1 1 1 1 1 #_lencomp:_2
+#  0 0 0 0 0 #_lencomp:_3
+#  1 1 1 1 1 #_agecomp:_1
+#  1 1 1 1 1 #_agecomp:_2
+#  0 0 0 0 0 #_agecomp:_3
+#  1 1 1 1 1 #_init_equ_catch
+#  1 1 1 1 1 #_recruitments
+#  1 1 1 1 1 #_parameter-priors
+#  1 1 1 1 1 #_parameter-dev-vectors
+#  1 1 1 1 1 #_crashPenLambda
+#  0 0 0 0 0 # F_ballpark_lambda
 0 # (0/1) read specs for more stddev reporting 
  # 0 1 -1 5 1 5 1 -1 5 # placeholder for selex type, len/age, year, N selex bins, Growth pattern, N growth ages, NatAge_area(-1 for all), NatAge_yr, N Natages
  # placeholder for vector of selex bins to be reported
