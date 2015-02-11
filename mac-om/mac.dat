@@ -1120,7 +1120,7 @@ Fishery%Survey%CPUE
  -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
  0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001
 0 #_N_Agecomp_obs
-1 #_Lbin_method: 1=poplenbins; 2=datalenbins; 3=lengths
+2 #_Lbin_method: 1=poplenbins; 2=datalenbins; 3=lengths
 0 #_combine males into females at or below this bin number
 #Yr Seas Flt/Svy Gender Part Ageerr Lbin_lo Lbin_hi Nsamp datavector(female-male)
 
