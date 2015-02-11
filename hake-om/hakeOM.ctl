@@ -2,7 +2,7 @@
 #C Hake OM control file
 #C Created for Empirical simulation group, 2014
 #_data_and_control_files: hakeOM.dat // hakeOM.ctl
-#_SS-V3.24O-safe-win64;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.1
+#_SS-V3.24O-safe-MacOS;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.0
 1  #_N_Growth_Patterns
 1 #_N_Morphs_Within_GrowthPattern 
 #_Cond 1 #_Morph_between/within_stdev_ratio (no read if N_morphs=1)
@@ -350,7 +350,7 @@
  10 0 0 0 # 1 Fishery
  10 0 0 0 # 2 Survey
  10 0 0 0 # 3 CPUE
-#_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
+#_LO  HI  INIT  PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  15 69 45.1 45 -1 0.05 1 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
  -5 10 -1 5 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
  -4 12 5.52 3 -1 0.05 2 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
