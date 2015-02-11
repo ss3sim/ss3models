@@ -332,7 +332,7 @@ Fishery%Survey%CPUE #_fleetnames
 0 #_N_meanbodywt
 1 #_DF_for_meanbodywt
 2 #_lbin_method
-2	# bin_width for the pop size comp
+1	# bin_width for the pop size comp
 2	# min size in the pop(lower edge of first bin ans size at age 0.0)
 86	# max size in the pop(lower edge of last bin)
 

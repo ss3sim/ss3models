@@ -44,10 +44,10 @@
  0.2 0.4 0.4 0.3 -1 99 -3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
  0.03 0.16 0.1 0.1 -1 99 -5 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
  0.03 0.2 0.1 0.1 -1 99 -5 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
- -3 3 7e-06 7e-06 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_1_Fem
+ -3 3 7e-006 7e-006 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_1_Fem
  -3 3 2.95 2.9624 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_2_Fem
- -3 43 34 36.89 -1 99 -50 0 0 0 0 0 0 0 # Mat50%_Fem
- -3 3 -0.18 -0.48 -1 99 -50 0 0 0 0 0 0 0 # Mat_slope_Fem
+ -3 43 31 36.89 -1 99 -50 0 0 0 0 0 0 0 # Mat50%_Fem
+ -3 3 -0.23 -0.48 -1 99 -50 0 0 0 0 0 0 0 # Mat_slope_Fem
  -3 3 1 1 -1 99 -50 0 0 0 0 0 0 0 # Eggs/kg_inter_Fem
  -3 3 0 0 -1 99 -50 0 0 0 0 0 0 0 # Eggs/kg_slope_wt_Fem
  0 2 1 1 -1 99 -50 0 0 0 0 0 0 0 # RecrDist_GP_1
@@ -329,37 +329,40 @@
 #_Den-dep  env-var  extra_se  Q_type
  0 0 0 2 # 1 Fishery
  0 0 0 2 # 2 Survey
+ 0 0 0 2 # 3 CPUE
 #
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -3 3 0 0 -1 99 -5 # LnQ_base_1_Fishery
  -3 3 0 0 -1 99 -5 # LnQ_base_2_Survey
+ -3 3 0 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
 #_Pattern Discard Male Special
  24 0 0 0 # 1 Fishery
  24 0 0 0 # 2 Survey
+ 15 0 0 1 # 3 CPUE
 #
 #_age_selex_types
 #_Pattern ___ Male Special
-10 0 0 0 # 1 Fishery
-10 0 0 0 # 2 Survey
-
+ 10 0 0 0 # 1 Fishery
+ 10 0 0 0 # 2 Survey
+ 10 0 0 0 # 3 CPUE
 #_LO  HI  INIT  PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 15   69  52    45 -1 0.05 1 0 0 0 0 0.5 0 0 # SizeSel_1P_1_Fishery
- -5   10  2.5   5 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_2_Fishery
- -4   12  5.7   3 -1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_1P_3_Fishery
- -2   10  9     10 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_1P_4_Fishery
- -999 5   -999  -999 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_5_Fishery
- -9   9   -999     0.5 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_1P_6_Fishery
- 15   69  43.33 45 -1 0.05 1 0 0 0 0 0.5 0 0 # SizeSel_2P_1_Survey
- -5   10  2.5   5 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_2_Survey
- -4   12  5.7   3 -1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_2P_3_Survey
- -2   10  9     10 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_2P_4_Survey
- -999 5  -999   -999 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_5_Survey
- -9   9  -999      0.5 -1 0.05 -4 0 0 0 0 0.5 0 0 # SizeSel_2P_6_Survey
+ 15 69 45.1 45 -1 0.05 1 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
+ -5 10 -1 5 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
+ -4 12 5.52 3 -1 0.05 2 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
+ -2 30 15 10 -1 0.05 -4 0 0 0 0 0 0 0 # SizeSel_1P_4_Fishery
+ -999 5 -999 -999 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
+ -9 1000 999 0.5 -1 0.05 -4 0 0 0 0 0 0 0 # SizeSel_1P_6_Fishery
+ 15 69 38.94 45 -1 0.05 1 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
+ -5 10 -1 5 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
+ -4 12 5.53 3 -1 0.05 2 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
+ -2 30 15 10 -1 0.05 -4 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
+ -999 5 -999 -999 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
+ -9 1000 999 0.5 -1 0.05 -4 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
@@ -373,13 +376,13 @@
 #_Cond -6 6 1 1 2 0.01 -4 0 0 0 0 0 0 0  #_placeholder if no parameters
 #
 0 #_Variance_adjustments_to_input_values
-#_fleet: 1 2 
-#_Cond  0 0 #_add_to_survey_CV
-#_Cond  0 0 #_add_to_discard_stddev
-#_Cond  0 0 #_add_to_bodywt_CV
-#_Cond  1 1 #_mult_by_lencomp_N
-#_Cond  1 1 #_mult_by_agecomp_N
-#_Cond  1 1 #_mult_by_size-at-age_N
+#_fleet: 1 2 3 
+#_Cond  0 0 0 #_add_to_survey_CV
+#_Cond  0 0 0 #_add_to_discard_stddev
+#_Cond  0 0 0 #_add_to_bodywt_CV
+#_Cond  1 1 1 #_mult_by_lencomp_N
+#_Cond  1 1 1 #_mult_by_agecomp_N
+#_Cond  1 1 1 #_mult_by_size-at-age_N
 #
 1 #_maxlambdaphase
 1 #_sd_offset
@@ -392,10 +395,13 @@
 # lambdas (for info only; columns are phases)
 #  0 #_CPUE/survey:_1
 #  1 #_CPUE/survey:_2
+#  1 #_CPUE/survey:_3
 #  1 #_lencomp:_1
 #  1 #_lencomp:_2
+#  0 #_lencomp:_3
 #  1 #_agecomp:_1
 #  1 #_agecomp:_2
+#  0 #_agecomp:_3
 #  1 #_init_equ_catch
 #  1 #_recruitments
 #  1 #_parameter-priors
