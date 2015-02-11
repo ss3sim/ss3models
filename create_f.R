@@ -9,6 +9,7 @@
 ####Inputs     :
 ####Outputs    :
 ####Remarks    : Character width = 80
+## Modified 2/10/15 by Cole to fix fmsytable and make plots for checking
 #-----------------------------------------------------------------------------#
 ###############################################################################
 ###############################################################################
@@ -34,9 +35,13 @@ years.rup <- 40
 ###############################################################################
 ###############################################################################
 library(ss3sim)
-
+library(ggplot2)
+library(plyr)
 modelnames <- dir(pattern = "om$", full.names = FALSE)
 foldername <- dir(getwd(), pattern = "om$", full.names = TRUE)
+# TODO: Next two lines will be removed when the models are all working
+modelnames <- modelnames[c(6,9,10)]
+foldername <- foldername[c(6,9,10)]
 
 ###############################################################################
 ###############################################################################
@@ -44,30 +49,52 @@ foldername <- dir(getwd(), pattern = "om$", full.names = TRUE)
 #### Get Fmsy
 ###############################################################################
 ###############################################################################
-# TODO: Next two lines will be removed when the models are all working
-modelnames <- modelnames[2:5]
-foldername <- foldername[2:5]
 fmsy <- list()
+## We need a list of F ranges since they vary pretty widely
+F.end.list <- list("mac-om"=75, "yel-om"=.1, "hake-om"=1)
+N.steps <- 10
 for (m in seq_along(modelnames)) {
   dir.results <- file.path("fmsy", modelnames[m])
   dir.create(dir.results, recursive = TRUE, showWarnings = FALSE)
   om.use <- foldername[m]
+  F.end <- F.end.list[[modelnames[[m]]]]
+  byval <- (F.end-.01)/N.steps
   fmsy[[m]] <- profile_fmsy(om_in = om.use, results_out = dir.results,
-    simlength = 100, start = 0.03, end = 0.8, by_val = 0.005,
+    simlength = 100, start = 0.01, end = F.end, by_val = byval,
     ss_mode = "safe")
 }
 
-fmsytable <- t(sapply(fmsy, function(x) {
-    maxcatch <- max(x[, "eqCatch"])
-    index <- which(x[, "eqCatch"] == maxcatch)
-    fmsy <- x[index, "fValues"]
-    catch90 <- 0.90 * maxcatch
-    catch90l <- x[tail(which(x[1:index, "eqCatch"] < catch90), 1), "fValues"]
-    catch90r <- x[head(which(x[index:dim(x)[1], "eqCatch"] < catch90) + index, 1), "fValues"]
-   c(catch = maxcatch, fmsy = fmsy, fmsy90l = catch90l, fmsy90r = catch90r)
-}))
+names(fmsy) <- modelnames
+fmsytable <- ldply(fmsy, mutate,
+                   maxcatch= max(eqCatch),
+                   ## for one of the models this wasn't unique so took first one
+                   fmsy=fValues[which.max(eqCatch)[1]],
+                   catch90=0.90 * maxcatch,
+                   catch90l=fValues[which(eqCatch > catch90)][1],
+                   catch90r=fValues[which(eqCatch > catch90)][length(which(eqCatch > catch90))])
+ggplot(fmsytable) + geom_line(aes(fValues, eqCatch))+facet_wrap(".id", scales="free") +
+    ggtitle("Catch Curves for models") +
+    geom_point(aes(x=fmsy, y=maxcatch)) +
+    geom_hline(aes(yintercept=catch90), col="blue") +
+    geom_vline(aes(xintercept=catch90r), col="gray") +
+    geom_vline(aes(xintercept=fmsy), col="black") +
+    geom_vline(aes(xintercept=catch90l), col="gray")
+ggsave("catch_curves.png", width=9, height=7)
 
-rownames(fmsytable) <- sapply(modelnames, function(x) substr(x, 1, nchar(x) - 3))
+xx
+## Original way this was done, was broken so redid using plyr below
+## fmsytable <- t(sapply(fmsy, function(x) {
+##     maxcatch <- max(x[, "eqCatch"])
+##     ## for one of the models this wasn't unique so took first one
+##     index <- which(x[, "eqCatch"] == maxcatch)[1]
+##     fmsy <- x[index, "fValues"]
+##     catch90 <- 0.90 * maxcatch
+##     catch90l <- x[tail(which(x[1:index, "eqCatch"] < catch90), 1), "fValues"]
+##     catch90r <- x[head(which(x[index:dim(x)[1], "eqCatch"] < catch90) + index, 1), "fValues"]
+##    c(catch = maxcatch, fmsy = fmsy, fmsy90l = catch90l, fmsy90r = catch90r)
+## }))
+## rownames(fmsytable) <- sapply(modelnames, function(x) substr(x, 1, nchar(x) - 3))
+
 
 ###############################################################################
 ###############################################################################
