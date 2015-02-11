@@ -71,8 +71,8 @@
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI  INIT     PRIOR PR_type SD    PHASE
- 13  17  13       15    -1      99    1   # SR_LN(R0)
- 0.2 1   0.200318 0.777 -1      0.113 4   # SR_BH_steep
+ 13  17  15       15    -1      99    1   # SR_LN(R0)
+ 0.2 1   0.82 0.777 -1      0.113 4   # SR_BH_steep
  1   1.6 1.4      1.1   -1      99    -6  # SR_sigmaR
  -5  5   0        0     -1      99    -50 # SR_envlink
  -5  5   0        0     -1      99    -50 # SR_R1_offset
@@ -135,15 +135,15 @@
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
 #_Pattern Discard Male Special
- 0 0 0 0 # 1 Fishery
- 0 0 0 0 # 2 Survey
- 0 0  0  0 # 3 CPUE - Mirrors Fishery
+ 24 0 0 0 # 1 Fishery
+ 24 0 0 0 # 2 Survey
+ 15 0  0  1 # 3 CPUE - Mirrors Fishery
 #
 #_age_selex_types
 #_Pattern ___ Male Special
- 20 0 0 0 # 1 Fishery
- 20 0 0 0 # 2 Survey
- 15 0 0 1 # 3 CPUE - Mirrors Fishery
+ 10 0 0 0 # 1 Fishery
+ 10 0 0 0 # 2 Survey
+ 10 0 0 0 # 3 CPUE - Mirrors Fishery
 #_LO  HI   INIT  PRIOR PR_type SD   PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  15   69   45.1  45    1       0.05 1     0       0       0         0         0.5        0     0 # SizeSel_1P_1_Fishery
  -5   10   -1    5     1       0.05 -3    0       0       0         0         0.5        0     0 # SizeSel_1P_2_Fishery
