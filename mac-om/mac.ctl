@@ -41,11 +41,11 @@
  30 70 45 0 -1 0 3 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
  0.1 0.7 0.35 0 -1 0 3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
  0.01 0.5 0.1 0 -1 0 3 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
- 0.0001 0.5 0.01 0 -1 0 -3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
+ 0.0001 0.5 0.1 0 -1 0 -3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  -1 5 3.12e-06 0 -1 0 -3 0 0 0 0 0 0 0 # Wtlen_1_Fem
  1 5 3.40352 0 -1 0 -3 0 0 0 0 0 0 0 # Wtlen_2_Fem
- -3 50 3 0 -1 0 -3 0 0 0 0 0 0 0 # Mat50%_Fem
- -3 3 3 0 -1 0 -3 0 0 0 0 0 0 0 # Mat_slope_Fem
+ -3 50 29 0 -1 0 3 0 0 0 0 0 0 0 # Mat50%_Fem
+ -3 3 -.29 0 -1 0 -3 0 0 0 0 0 0 0 # Mat_slope_Fem
  -3 3 1 0 -1 0 -3 0 0 0 0 0 0 0 # Eggs/kg_inter_Fem
  -3 3 0 0 -1 0 -3 0 0 0 0 0 0 0 # Eggs/kg_slope_wt_Fem
  -4 4 0 0 -1 0 -4 0 0 0 0 0 0 0 # RecrDist_GP_1
@@ -209,18 +209,18 @@
  10 0 0 0 # 2 Survey
  10 0 0 2 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- -20 15 41.95 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
+ -20 100 41.95 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
  -20 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
  -20 15 4.18 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
  -20 15 15 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_4_Fishery
- -20 20 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
- -20 20 -999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_6_Fishery
- -10 15 34.95 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
+ -999 20 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
+ -999 20 -999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_6_Fishery
+ -10 100 34.95 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
  -10 15 -1 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
  -15 15 4.18 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
  -20 15 15 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
- -25 15 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
- -20 15 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
+ -999 15 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
+ -999 15 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
