@@ -34,7 +34,7 @@ getDoParWorkers()
 ## Setup cases and models
 case_folder <- 'cases'
 ## modelnames <- dir(pattern = "om$", full.names = FALSE)[1:2]
-model_names <- c("hake", "yel", "mac")
+model_names <- c("hake", "yel", "mac")[3]
 ## These are the high data cases used for deterministic testing. Write them
 ## for each model to be tested. Age and length comps.
 index100 <- c('fleets;2', 'years;list(seq(50,100, by=2))', 'sds_obs;list(.01)')
@@ -95,14 +95,82 @@ plyr::ddply(results.sc.long, .(species), summarize,
 ### looks good.
 ### ------------------------------------------------------------
 
-trace <- read.table("D100-E0-F1-hake/1/em/ParmTrace.sso", header=TRUE)
-trace$ObjFun <- log(trace$ObjFun)
-trace.recdevs <- trace[-(1:50), c(1:2,grep("Main_Recr", x=names(trace)))]
-trace.notrecdevs <- trace[-(1:50), c(-grep("Main_Recr", x=names(trace)))]
-trace.notrecdevs.long <- melt(trace.notrecdevs, id.vars=c("Phase", "Iter"))
-trace.recdevs.long <- melt(trace.recdevs, id.vars=c("Phase", "Iter"))
-g <- ggplot(trace.recdevs.long, aes(Iter, value, color=Phase, group=variable))+ geom_line()
-ggsave("hake_traces_recdevs.png", g, width=9, height=6)
-g <- ggplot(trace.notrecdevs.long, aes(Iter, value, color=Phase))+
-    geom_line()+facet_wrap("variable", scales="free_y")
-ggsave("hake_traces.png", g, width=15, height=7)
+## ## Run a few with ParmTrace turned on to see behavior of estimation
+## trace.hake <- read.table("D100-E0-F1-hake/1/em/ParmTrace.sso", header=TRUE)
+## trace.hake$LogObjFun <- log(trace.hake$ObjFun)
+## trace.hake$ObjFun <- NULL
+## n.half <- floor(nrow(trace.hake)/2)
+## n <- nrow(trace.hake)
+## trace.hake.recdevs1 <- trace.hake[1:n.half, grep("Phase|Iter|Main_Recr", x=names(trace.hake))]
+## trace.hake.notrecdevs1 <- trace.hake[1:n.half, c(-grep("Main_Recr", x=names(trace.hake)))]
+## trace.hake.recdevs2 <- trace.hake[n.half:n, grep("Phase|Iter|Main_Recr", x=names(trace.hake))]
+## trace.hake.notrecdevs2 <- trace.hake[n.half:n, c(-grep("Main_Recr", x=names(trace.hake)))]
+## trace.hake.notrecdevs.long1 <- melt(trace.hake.notrecdevs1, id.vars=c("Phase", "Iter"))
+## trace.hake.recdevs.long1 <- melt(trace.hake.recdevs1, id.vars=c("Phase", "Iter"))
+## trace.hake.notrecdevs.long2 <- melt(trace.hake.notrecdevs2, id.vars=c("Phase", "Iter"))
+## trace.hake.recdevs.long2 <- melt(trace.hake.recdevs2, id.vars=c("Phase", "Iter"))
+## g <- ggplot(trace.hake.recdevs.long1, aes(Iter, value, color=Phase, group=variable))+ geom_line()
+## ggsave("hake_traces1_recdevs.png", g, width=12, height=6)
+## g <- ggplot(trace.hake.notrecdevs.long1, aes(Iter, value, color=Phase))+
+##     geom_line()+facet_wrap("variable", scales="free_y")
+## ggsave("hake_traces1.png", g, width=15, height=7)
+## g <- ggplot(trace.hake.recdevs.long2, aes(Iter, value, color=Phase, group=variable))+ geom_line()
+## ggsave("hake_traces2_recdevs.png", g, width=12, height=6)
+## g <- ggplot(trace.hake.notrecdevs.long2, aes(Iter, value, color=Phase))+
+##     geom_line()+facet_wrap("variable", scales="free_y")
+## ggsave("hake_traces2.png", g, width=15, height=7)
+
+## trace.yel <- read.table("D100-E0-F1-yel/1/em/ParmTrace.sso", header=TRUE)
+## trace.yel$LogObjFun <- log(trace.yel$ObjFun)
+## trace.yel$ObjFun <- NULL
+## n.half <- floor(nrow(trace.yel)/2)
+## n <- nrow(trace.yel)
+## trace.yel.recdevs1 <- trace.yel[1:n.half, grep("Phase|Iter|Main_Recr", x=names(trace.yel))]
+## trace.yel.notrecdevs1 <- trace.yel[1:n.half, c(-grep("Main_Recr", x=names(trace.yel)))]
+## trace.yel.recdevs2 <- trace.yel[n.half:n, grep("Phase|Iter|Main_Recr", x=names(trace.yel))]
+## trace.yel.notrecdevs2 <- trace.yel[n.half:n, c(-grep("Main_Recr", x=names(trace.yel)))]
+## trace.yel.notrecdevs.long1 <- melt(trace.yel.notrecdevs1, id.vars=c("Phase", "Iter"))
+## trace.yel.recdevs.long1 <- melt(trace.yel.recdevs1, id.vars=c("Phase", "Iter"))
+## trace.yel.notrecdevs.long2 <- melt(trace.yel.notrecdevs2, id.vars=c("Phase", "Iter"))
+## trace.yel.recdevs.long2 <- melt(trace.yel.recdevs2, id.vars=c("Phase", "Iter"))
+## g <- ggplot(trace.yel.recdevs.long1, aes(Iter, value, color=Phase, group=variable))+ geom_line()
+## ggsave("yel_traces1_recdevs.png", g, width=12, height=6)
+## g <- ggplot(trace.yel.notrecdevs.long1, aes(Iter, value, color=Phase))+
+##     geom_line()+facet_wrap("variable", scales="free_y")
+## ggsave("yel_traces1.png", g, width=15, height=7)
+## g <- ggplot(trace.yel.recdevs.long2, aes(Iter, value, color=Phase, group=variable))+ geom_line()
+## ggsave("yel_traces2_recdevs.png", g, width=12, height=6)
+## g <- ggplot(trace.yel.notrecdevs.long2, aes(Iter, value, color=Phase))+
+##     geom_line()+facet_wrap("variable", scales="free_y")
+## ggsave("yel_traces2.png", g, width=15, height=7)
+
+## trace.mac <- read.table("D100-E0-F1-mac/1/em/ParmTrace.sso", header=TRUE)
+## trace.mac$LogObjFun <- log(trace.mac$ObjFun)
+## trace.mac$ObjFun <- NULL
+## n.half <- floor(nrow(trace.mac)/2)
+## n <- nrow(trace.mac)
+## trace.mac.recdevs1 <- trace.mac[1:n.half, grep("Phase|Iter|Main_Recr", x=names(trace.mac))]
+## trace.mac.notrecdevs1 <- trace.mac[1:n.half, c(-grep("Main_Recr", x=names(trace.mac)))]
+## trace.mac.recdevs2 <- trace.mac[n.half:n, grep("Phase|Iter|Main_Recr", x=names(trace.mac))]
+## trace.mac.notrecdevs2 <- trace.mac[n.half:n, c(-grep("Main_Recr", x=names(trace.mac)))]
+## trace.mac.notrecdevs.long1 <- melt(trace.mac.notrecdevs1, id.vars=c("Phase", "Iter"))
+## trace.mac.recdevs.long1 <- melt(trace.mac.recdevs1, id.vars=c("Phase", "Iter"))
+## trace.mac.notrecdevs.long2 <- melt(trace.mac.notrecdevs2, id.vars=c("Phase", "Iter"))
+## trace.mac.recdevs.long2 <- melt(trace.mac.recdevs2, id.vars=c("Phase", "Iter"))
+## g <- ggplot(trace.mac.recdevs.long1, aes(Iter, value, color=Phase, group=variable))+ geom_line()
+## ggsave("mac_traces1_recdevs.png", g, width=12, height=6)
+## g <- ggplot(trace.mac.notrecdevs.long1, aes(Iter, value, color=Phase))+
+##     geom_line()+facet_wrap("variable", scales="free_y")
+## ggsave("mac_traces1.png", g, width=20, height=12)
+## g <- ggplot(trace.mac.recdevs.long2, aes(Iter, value, color=Phase, group=variable))+ geom_line()
+## ggsave("mac_traces2_recdevs.png", g, width=12, height=6)
+## g <- ggplot(trace.mac.notrecdevs.long2, aes(Iter, value, color=Phase))+
+##     geom_line()+facet_wrap("variable", scales="free_y")
+## ggsave("mac_traces2.png", g, width=20, height=12)
+
+
+
+library(r4ss)
+xx <- SS_output("D100-E0-F1-yel/1/om/", covar=FALSE, forecast=FALSE)
+yy <- SS_output("D100-E0-F1-yel/1/em/", covar=FALSE, forecast=FALSE)
+yy <- SS_plots(yy, png=TRUE, uncertainty=FALSE)
