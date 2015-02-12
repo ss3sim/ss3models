@@ -6,7 +6,7 @@ colOM.ctl
 1 # run display detail (0,1,2)
 1 # detailed age-structured reports in REPORT.SSO (0,1) 
 0 # write detailed info from first call to echoinput.sso (0,1) 
-4 # write parm values to ParmTrace.sso (0=no,1=good,active; 2=good,all; 3=every_iter,all_parms; 4=every,active)
+0 # write parm values to ParmTrace.sso (0=no,1=good,active; 2=good,all; 3=every_iter,all_parms; 4=every,active)
 2 # write to cumreport.sso (0=no,1=like&timeseries; 2=add survey fits)
 0 # Include prior_like for non-estimated parameters (0,1) 
 1 # Use Soft Boundaries to aid convergence (0,1) (recommended)

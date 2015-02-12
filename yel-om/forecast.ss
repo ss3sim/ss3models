@@ -1,19 +1,19 @@
 #V3.24j-64bit
 # for all year entries except rebuilder; enter either: actual year, -999 for styr, 0 for endyr, neg number for rel. endyr
-0 # Benchmarks: 0=skip; 1=calc F_spr,F_btgt,F_msy 
-0.51 # MSY: 1= set to F(SPR); 2=calc F(MSY); 3=set to F(Btgt); 4=set to F(endyr) 
-0.51 # SPR target (e.g. 0.40)
-0 # Biomass target (e.g. 0.40)
+1 # Benchmarks: 0=skip; 1=calc F_spr,F_btgt,F_msy 
+2 # MSY: 1= set to F(SPR); 2=calc F(MSY); 3=set to F(Btgt); 4=set to F(endyr) 
+0.4 # SPR target (e.g. 0.40)
+0.4 # Biomass target (e.g. 0.40)
 #_Bmark_years: beg_bio, end_bio, beg_selex, end_selex, beg_relF, end_relF (enter actual year, or values of 0 or -integer to be rel. endyr)
- 2 1634036837 25971 0 0 0
+-999 -999 -999 -999 -999 -999
 #  2 1634036837 25971 2010 2010 2010 # after processing 
-0 #Bmark_relF_Basis: 1 = use year range; 2 = set relF same as forecast below
+1 #Bmark_relF_Basis: 1 = use year range; 2 = set relF same as forecast below
 #
 0 # Forecast: 0=none; 1=F(SPR); 2=F(MSY) 3=F(Btgt); 4=Ave F (uses first-last relF yrs); 5=input annual F scalar
 0 # N forecast years 
 0 # F scalar (only used for Do_Forecast==5)
 #_Fcast_years:  beg_selex, end_selex, beg_relF, end_relF  (enter actual year, or values of 0 or -integer to be rel. endyr)
- 2.90264e-264 9.97756e-071 9.97751e-071 3.9845e+252
+ 0 0 0 0
 #  0 0 0 0 # after processing 
 0 # Control rule method (1=catch=f(SSB) west coast; 2=F=f(SSB) ) 
 0 # Control rule Biomass level for constant F (as frac of Bzero, e.g. 0.40); (Must be > the no F level below) 
