@@ -72,7 +72,7 @@
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI  INIT     PRIOR PR_type SD    PHASE
  13  17  15       15    -1      99    1   # SR_LN(R0)
- 0.2 1   0.82 0.777 -1      0.113 4   # SR_BH_steep
+ 0.2 1   0.82 0.777 -1      0.113 -4   # SR_BH_steep
  1   1.6 1.4      1.1   -1      99    -6  # SR_sigmaR
  -5  5   0        0     -1      99    -50 # SR_envlink
  -5  5   0        0     -1      99    -50 # SR_R1_offset
@@ -130,7 +130,7 @@
 # LO HI INIT PRIOR PR_type SD PHASE
  -3 3 0 0 -1 99 -5 # LnQ_base_1_Fishery
  -3 3 0 0 -1 99 5 # LnQ_base_2_Survey
- -3 3 0 0 -1 99 5 # LnQ_base_3_CPUE
+ -3 3 0 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
