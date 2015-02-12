@@ -7,7 +7,7 @@
 #_Bmark_years: beg_bio, end_bio, beg_selex, end_selex, beg_relF, end_relF (enter actual year, or values of 0 or -integer to be rel. endyr)
 -999 -999 -999 -999 -999 -999
 #  2 1634036837 25971 2010 2010 2010 # after processing 
-0 #Bmark_relF_Basis: 1 = use year range; 2 = set relF same as forecast below
+1 #Bmark_relF_Basis: 1 = use year range; 2 = set relF same as forecast below
 #
 0 # Forecast: 0=none; 1=F(SPR); 2=F(MSY) 3=F(Btgt); 4=Ave F (uses first-last relF yrs); 5=input annual F scalar
 0 # N forecast years 
