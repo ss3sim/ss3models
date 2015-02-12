@@ -36,12 +36,12 @@
 #
 #_growth_parms
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 0.01 0.15 0.05 0.05 0 0.0226 -6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
+0.01 0.15 0.05 0.05 0 0.0226 -6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
  10 35 18 30 -1 99 2 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
  40 120 62 66 -1 99 2 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
  0.01 0.2 0.047 0.05 1 99 2 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
- 0.05 0.2 0.13 0.19 -1 99 3 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
- -2 2 0.13 0.1 -1 99 3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
+ 0.05 0.2 0.13 0.19 -1 99 4 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
+ -2 2 0.13 0.1 -1 99 4 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  -3 3 9.77e-006 2.09e-005 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_1_Fem
  -3 4 3.17125 2.96956 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_2_Fem
  38 39 38.78 40 -1 99 -50 0 0 0 0 0 0 0 # Mat50%_Fem
@@ -207,7 +207,7 @@
 0.1 # F ballpark for tuning early phases
 -1 # F ballpark year (neg value to disable)
 3 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
-1.5 # max F or harvest rate, depends on F_Method
+3 # max F or harvest rate, depends on F_Method
 # no additional F input needed for Fmethod 1
 # if Fmethod=2; read overall start F value; overall phase; N detailed inputs to read
 # if Fmethod=3; read N iterations for tuning for Fmethod 3
@@ -230,7 +230,7 @@
 # LO HI INIT PRIOR PR_type SD PHASE
  -20 20 0 0 -1 99 -5 # LnQ_base_1_fishery1
  -20 20 0 0 -1 99 5 # LnQ_base_2_survey1
- -20 20 0 0 -1 99 -5 # LnQ_base_3_CPUE
+-20 20 0 0 -1 99 -1 # LnQ_base_3_CPUE
 #
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
