@@ -34,7 +34,7 @@ getDoParWorkers()
 ## Setup cases and models
 case_folder <- 'cases'
 ## modelnames <- dir(pattern = "om$", full.names = FALSE)[1:2]
-model_names <- c("hake", "yel", "mac")[2]
+model_names <- c("hake", "yel", "mac")
 ## These are the high data cases used for deterministic testing. Write them
 ## for each model to be tested. Age and length comps.
 index100 <- c('fleets;2', 'years;list(seq(50,100, by=2))', 'sds_obs;list(.01)')
@@ -48,7 +48,7 @@ for(species in model_names){
 
 ## Loop through all of the species and run Nsim iterations
 Nsim <- 1
-user.recdevs <- matrix(rnorm(3*100,0, .01), nrow=100)
+user.recdevs <- matrix(rnorm(Nsim*100,0, .01), nrow=100)
 results.sc <- results.ts <- list()
 for(i in 1:length(model_names)){
     print(paste("starting model", model_names[i]))
@@ -62,7 +62,7 @@ for(i in 1:length(model_names)){
                = om.dir, em_dir = em.dir, case_files = case_files,
                user_recdevs=user.recdevs, bias_adjust=FALSE, bias_nsim=3)
     ## Read in and save key data for plotting
-    get_results_all(user=scen, parallel=TRUE)
+    get_results_all(user=scen, parallel=FALSE, over=TRUE)
     results.sc[[i]] <-
         subset(calculate_re(read.csv("ss3sim_scalar.csv"), add=TRUE),
                select=c("ID", "species", "D", "replicate", "L_at_Amin_Fem_GP_1_re","L_at_Amax_Fem_GP_1_re",
@@ -74,7 +74,7 @@ for(i in 1:length(model_names)){
                "Recruit_0_re", "F_re"))
     file.copy("ss3sim_scalar.csv", paste0("scalar_", model_names[i], ".csv"))
     file.copy("ss3sim_ts.csv", paste0("ts_", model_names[i], ".csv"))
-   ##  unlink(scen, TRUE); file.remove("ss3sim_scalar.csv", "ss3sim_ts.csv")
+    ##  unlink(scen, TRUE); file.remove("ss3sim_scalar.csv", "ss3sim_ts.csv")
 }
 
 ## Put all data together into long form for plotting
@@ -89,10 +89,20 @@ levels(results.ts.long$variable) <- gsub("_re", "", levels(results.ts.long$varia
 plot_scalar_points(results.sc.long, x="variable", y='value', horiz='species', rel=TRUE)
 plot_ts_lines(results.ts.long, vert="variable", y='value', horiz='species', rel=TRUE)
 plyr::ddply(results.sc.long, .(species), summarize,
-            max.maxgrad=round(median(max_grad),2),
+            median.maxgrad=round(median(max_grad),2),
             max.bounds=max(params_on_bound_em))
 ### End of deterministic runs. Check plots and table make sure everything
 ### looks good.
 ### ------------------------------------------------------------
 
-
+trace <- read.table("D100-E0-F1-hake/1/em/ParmTrace.sso", header=TRUE)
+trace$ObjFun <- log(trace$ObjFun)
+trace.recdevs <- trace[-(1:50), c(1:2,grep("Main_Recr", x=names(trace)))]
+trace.notrecdevs <- trace[-(1:50), c(-grep("Main_Recr", x=names(trace)))]
+trace.notrecdevs.long <- melt(trace.notrecdevs, id.vars=c("Phase", "Iter"))
+trace.recdevs.long <- melt(trace.recdevs, id.vars=c("Phase", "Iter"))
+g <- ggplot(trace.recdevs.long, aes(Iter, value, color=Phase, group=variable))+ geom_line()
+ggsave("hake_traces_recdevs.png", g, width=9, height=6)
+g <- ggplot(trace.notrecdevs.long, aes(Iter, value, color=Phase))+
+    geom_line()+facet_wrap("variable", scales="free_y")
+ggsave("hake_traces.png", g, width=15, height=7)
