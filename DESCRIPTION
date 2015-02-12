@@ -1,7 +1,7 @@
 Package: ss3models
 Type: Package
-Title: Simulation models for use with Stock Synthesis 3
-Version: 0.0.0.00
+Title: Simulation model setups for use with Stock Synthesis 3
+Version: 0.0.1
 Date: 2015-02-11
 Authors@R: c(person("Sean", "Anderson", email =
     "sean@seananderson.ca", role = c("aut", "cre")),
@@ -16,21 +16,10 @@ Authors@R: c(person("Sean", "Anderson", email =
     person("Merrill", "Rudd", role = "aut"),
     person("Christine", "Stawitz", role = "aut"),
     person("Ian", "Taylor", role = "aut"))
-Description: The ss3models package offers Stock Synthesis 3 (SS3) operating and
-    estimation simulation models for use within the ss3sim package.
+Description: The ss3models package contains Stock Synthesis 3 (SS3) operating
+    and estimation simulation model setups for use within the ss3sim package.
 License: MIT + file LICENSE
 Roxygen: list(wrap = TRUE)
 LazyData: true
-Suggests:
-    knitr
-VignetteBuilder: knitr
 Depends:
-    R (>= 3.1.0)
-Imports:
-    ggplot2 (>= 1.0.0),
-    gtools (>= 2.7.1),
-    lubridate (>= 1.3.0),
-    plyr (>= 1.8),
-    r4ss (>= 1.21.1),
-    reshape2 (>= 1.2.2),
-    ss3sim (>= 0.8.2)
+    R (>= 3.1.2)
