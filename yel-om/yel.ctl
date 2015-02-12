@@ -220,31 +220,31 @@
  0 1 0 0.01 0 99 -1 # InitF_1fishery1
 
 # F rates for Fmethod=2
-# 0.004 F_fleet_1_YR_1_s_1
-# 0 F_fleet_1_YR_2_s_1
-# 0 F_fleet_1_YR_3_s_1
-# 0 F_fleet_1_YR_4_s_1
-# 0 F_fleet_1_YR_5_s_1
-# 0 F_fleet_1_YR_6_s_1
-# 0 F_fleet_1_YR_7_s_1
-# 0 F_fleet_1_YR_8_s_1
-# 0 F_fleet_1_YR_9_s_1
-# 0 F_fleet_1_YR_10_s_1
-# 0 F_fleet_1_YR_11_s_1
-# 0 F_fleet_1_YR_12_s_1
-# 0 F_fleet_1_YR_13_s_1
-# 0 F_fleet_1_YR_14_s_1
-# 0 F_fleet_1_YR_15_s_1
-# 0 F_fleet_1_YR_16_s_1
-# 0 F_fleet_1_YR_17_s_1
-# 0 F_fleet_1_YR_18_s_1
-# 0 F_fleet_1_YR_19_s_1
-# 0 F_fleet_1_YR_20_s_1
-# 0 F_fleet_1_YR_21_s_1
-# 0 F_fleet_1_YR_22_s_1
-# 0 F_fleet_1_YR_23_s_1
-# 0 F_fleet_1_YR_24_s_1
-# 0 F_fleet_1_YR_25_s_1
+# 0.2 F_fleet_1_YR_1_s_1
+# 0.2 F_fleet_1_YR_2_s_1
+# 0.2 F_fleet_1_YR_3_s_1
+# 0.2 F_fleet_1_YR_4_s_1
+# 0.2 F_fleet_1_YR_5_s_1
+# 0.2 F_fleet_1_YR_6_s_1
+# 0.2 F_fleet_1_YR_7_s_1
+# 0.2 F_fleet_1_YR_8_s_1
+# 0.2 F_fleet_1_YR_9_s_1
+# 0.2 F_fleet_1_YR_10_s_1
+# 0.2 F_fleet_1_YR_11_s_1
+# 0.2 F_fleet_1_YR_12_s_1
+# 0.2 F_fleet_1_YR_13_s_1
+# 0.2 F_fleet_1_YR_14_s_1
+# 0.2 F_fleet_1_YR_15_s_1
+# 0.2 F_fleet_1_YR_16_s_1
+# 0.2 F_fleet_1_YR_17_s_1
+# 0.2 F_fleet_1_YR_18_s_1
+# 0.2 F_fleet_1_YR_19_s_1
+# 0.2 F_fleet_1_YR_20_s_1
+# 0.2 F_fleet_1_YR_21_s_1
+# 0.2 F_fleet_1_YR_22_s_1
+# 0.2 F_fleet_1_YR_23_s_1
+# 0.2 F_fleet_1_YR_24_s_1
+# 0.2 F_fleet_1_YR_25_s_1
 # 0.2 F_fleet_1_YR_26_s_1
 # 0.2 F_fleet_1_YR_27_s_1
 # 0.2 F_fleet_1_YR_28_s_1
@@ -349,18 +349,18 @@
  10 0 0 0 # 2 survey1
  10 0 0 0 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 40 89 57 57 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_1P_1_fishery1
- -5 0 -2 -5 0 5 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_2_fishery1
- 0 10 5 5 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_1P_3_fishery1
- 0 15 7 10 0 10 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_4_fishery1
- -999 0 -10 -10 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_5_fishery1
- -999 10000 -999 0 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_6_fishery1
- 40 89 57 57 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_2P_1_survey1
- -5 0 -2 -5 0 5 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_2_survey1
- 0 10 5 5 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_2P_3_survey1
- 0 15 7 10 0 10 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_4_survey1
- -999 0 -10 -10 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_5_survey1
- -999 10000 -999 0 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_6_survey1
+ 20 89 46.43 57 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_1P_1_fishery1
+ -5 0 -1 -5 0 5 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_2_fishery1
+ 0 10 4.24 5 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_1P_3_fishery1
+ 0 30 15 10 0 10 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_4_fishery1
+ -999 0 -999 -10 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_5_fishery1
+ -999 10000 999 0 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_6_fishery1
+ 20 89 38.68 57 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_2P_1_survey1
+ -5 0 -1 -5 0 5 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_2_survey1
+ 0 10 4.24 5 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_2P_3_survey1
+ 0 30 15 10 0 10 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_4_survey1
+ -999 0 -999 -10 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_5_survey1
+ -999 10000 999 0 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_6_survey1
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
