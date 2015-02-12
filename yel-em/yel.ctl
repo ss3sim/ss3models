@@ -223,27 +223,27 @@
 #_Den-dep  env-var  extra_se  Q_type
  0 0 0 2 # 1 fishery1
  0 0 0 2 # 2 survey1
- 0 0 0 2 # 3 survey2
+ 0 0 0 2 # 3 CPUE
 #
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -20 20 0 0 -1 99 -5 # LnQ_base_1_fishery1
  -20 20 -0.0656039 0 -1 99 5 # LnQ_base_2_survey1
- -20 20 0 0 -1 99 -5 # LnQ_base_3_survey2
+ -20 20 0 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
 #_Pattern Discard Male Special
  24 0 0 0 # 1 fishery1
  24 0 0 0 # 2 survey1
- 15 0 0 1 # 3 survey2
+ 15 0 0 1 # 3 CPUE
 #
 #_age_selex_types
 #_Pattern ___ Male Special
  10 0 0 0 # 1 fishery1
  10 0 0 0 # 2 survey1
- 10 0 0 0 # 3 survey2
+ 10 0 0 0 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  40 89 59.734 57 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_1P_1_fishery1
  -5 0 -1 -5 0 5 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_2_fishery1
