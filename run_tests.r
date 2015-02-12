@@ -2,7 +2,7 @@
 ## This file is used to run simple tests on the models. Mostly used during
 ## development.
 
-## Last update: 2/10/15 by Cole to add determinstic runs for newest models
+## Last update: 2/11/15 by Cole to add determinstic runs for newest models
 ### ------------------------------------------------------------
 
 ## Startup the working environment
@@ -14,9 +14,10 @@
 library(devtools)
 library(r4ss)
 library(ggplot2)
-
-#Install ss3sim package. Be sure to pull before installing
-devtools::install("../ss3sim")
+library(plyr)
+library(reshape2)
+## Install ss3sim package. Be sure to pull before installing
+## devtools::install("../ss3sim")
 library(ss3sim)
 
 ## install.packages(c("doParallel", "foreach"))
@@ -24,11 +25,6 @@ library(doParallel)
 registerDoParallel(cores = 4)
 # require(foreach)
 getDoParWorkers()
-## Function for substr_r which for some reason is never around.
-substr_r <- function(x, n){
-  substr(x, nchar(x)-n+1, nchar(x))
-}
-
 
 ### ------------------------------------------------------------
 ### Deterministic tests for the models, to test for basic functionality,
@@ -38,7 +34,7 @@ substr_r <- function(x, n){
 ## Setup cases and models
 case_folder <- 'cases'
 ## modelnames <- dir(pattern = "om$", full.names = FALSE)[1:2]
-model_names <- c("cod", "cos", "fla")
+model_names <- c("hake", "yel", "mac")[2]
 ## These are the high data cases used for deterministic testing. Write them
 ## for each model to be tested. Age and length comps.
 index100 <- c('fleets;2', 'years;list(seq(50,100, by=2))', 'sds_obs;list(.01)')
@@ -51,19 +47,20 @@ for(species in model_names){
 }
 
 ## Loop through all of the species and run Nsim iterations
-Nsim <- 25
-user.recdevs <- matrix(rnorm(Nsim*100,0, .01), nrow=100)
+Nsim <- 1
+user.recdevs <- matrix(rnorm(3*100,0, .01), nrow=100)
 results.sc <- results.ts <- list()
 for(i in 1:length(model_names)){
+    print(paste("starting model", model_names[i]))
     scen <- expand_scenarios(species=model_names[i], cases=list(D=100, F=1, E=0))
     om.dir <- paste0(model_names[i], "-om")
     em.dir <- paste0(model_names[i], "-em")
     case_files <-
         list(F = "F", D = c("index", "lcomp", "agecomp"), E="E")
-    run_ss3sim(iterations = 1:Nsim, scenarios = scen, parallel=TRUE,
-               parallel_iterations=TRUE, case_folder = case_folder, om_dir
+    run_ss3sim(iterations = 1:Nsim, scenarios = scen, parallel=FALSE,
+               parallel_iterations=FALSE, case_folder = case_folder, om_dir
                = om.dir, em_dir = em.dir, case_files = case_files,
-               user_recdevs=user.recdevs)
+               user_recdevs=user.recdevs, bias_adjust=FALSE, bias_nsim=3)
     ## Read in and save key data for plotting
     get_results_all(user=scen, parallel=TRUE)
     results.sc[[i]] <-
@@ -75,28 +72,22 @@ for(i in 1:length(model_names)){
         subset(calculate_re(read.csv("ss3sim_ts.csv"), add=TRUE),
                select=c("ID","species", "D", "replicate", "year","SpawnBio_re",
                "Recruit_0_re", "F_re"))
-    unlink(scen, TRUE); file.remove("ss3sim_scalar.csv", "ss3sim_ts.csv")
+    file.copy("ss3sim_scalar.csv", paste0("scalar_", model_names[i], ".csv"))
+    file.copy("ss3sim_ts.csv", paste0("ts_", model_names[i], ".csv"))
+   ##  unlink(scen, TRUE); file.remove("ss3sim_scalar.csv", "ss3sim_ts.csv")
 }
+
 ## Put all data together into long form for plotting
-results.sc.long <-
-    reshape2::melt(do.call(rbind, results.sc), id.vars=
-                   c("ID","species", "D", "replicate", "max_grad",
-                     "params_on_bound_em"))
-results.ts.long <- reshape2::melt(do.call(rbind, results.ts), id.vars=c("ID","species", "D", "replicate", "year"))
-results.ts.long <-
-    merge(x=results.ts.long, y= subset(results.sc.long,
-                             select=c("ID", "params_on_bound_em",
-                             "max_grad")), by="ID")
+results.sc.long <- melt(do.call(rbind, results.sc), id.vars=
+        c("ID","species", "D", "replicate", "max_grad", "params_on_bound_em"))
+results.ts.long <- melt(do.call(rbind, results.ts), id.vars=c("ID","species", "D", "replicate", "year"))
+results.ts.long <- merge(x=results.ts.long, y= subset(results.sc.long,
+                         select=c("ID", "params_on_bound_em", "max_grad")),
+                         by="ID")
 levels(results.sc.long$variable) <- gsub("_Fem_GP_1_re|_re", "", levels(results.sc.long$variable))
 levels(results.ts.long$variable) <- gsub("_re", "", levels(results.ts.long$variable))
-plot_scalar_points(results.sc.long, x="variable", y='value', color="params_on_bound_em",
-                   horiz='species', rel=TRUE)
-plot_scalar_points(results.sc.long, x="variable", y='value', color="max_grad",
-                   horiz='species', rel=TRUE)
-plot_ts_lines(results.ts.long, vert="variable", y='value', horiz='species',
-              rel=TRUE, color="params_on_bound_em")
-plot_ts_lines(results.ts.long, vert="variable", y='value', horiz='species',
-              rel=TRUE, color="max_grad")
+plot_scalar_points(results.sc.long, x="variable", y='value', horiz='species', rel=TRUE)
+plot_ts_lines(results.ts.long, vert="variable", y='value', horiz='species', rel=TRUE)
 plyr::ddply(results.sc.long, .(species), summarize,
             max.maxgrad=round(median(max_grad),2),
             max.bounds=max(params_on_bound_em))
