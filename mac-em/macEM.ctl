@@ -193,7 +193,7 @@
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -3 3 0.2 0 -1 99 -5 # LnQ_base_1_Fishery
- -3 3 0.2 0 -1 99 -5 # LnQ_base_2_Survey
+ -3 3 0.2 0 -1 99 5 # LnQ_base_2_Survey
  -3 3 0.2 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
@@ -213,14 +213,14 @@
  -10 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
  0 15 5.06 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
  0 15 15 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_4_Fishery
- -999 20 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
+ -999 20 -999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
  -999 10000 999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_6_Fishery
  2 80 34.48 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
- -10 15 -1 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
+ -10 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
  0 15 5.06 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
- 0 30 15 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
- -999 15 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
- -999 10000 999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
+ 0 30 15 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
+ -999 15 -999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
+ -999 10000 999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
