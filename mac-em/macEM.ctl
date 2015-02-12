@@ -138,14 +138,16 @@
 #Fishing Mortality info 
 0.3 # F ballpark for annual F (=Z-M) for specified year
 -100 # F ballpark year (neg value to disable)
-2 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
-1.1 # max F or harvest rate, depends on F_Method
+3 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
+4
+4
+# 1.1 # max F or harvest rate, depends on F_Method
 # no additional F input needed for Fmethod 1
 # if Fmethod=2; read overall start F value; overall phase; N detailed inputs to read
 # if Fmethod=3; read N iterations for tuning for Fmethod 3
- 0.2 1 1 # overall start F value; overall phase; N detailed inputs to read
+# 0.2 1 1 # overall start F value; overall phase; N detailed inputs to read
 #Fleet Year Seas F_value se phase (for detailed setup of F_Method=2)
-1 1 1 0.3 0.1 -1
+# 1 1 1 0.3 0.1 -1
 # 2
 #_initial_F_parms
 #_LO HI INIT PRIOR PR_type SD PHASE
