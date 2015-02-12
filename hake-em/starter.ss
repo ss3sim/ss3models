@@ -19,7 +19,7 @@ hakeEM.ctl
 0 # N individual STD years 
 #vector of year values 
 
-0.0001 # final convergence criteria (e.g. 1.0e-04) 
+0.01 # final convergence criteria (e.g. 1.0e-04) 
 0 # retrospective year relative to end year (e.g. -4)
 3 # min age for calc of summary biomass
 1 # Depletion basis:  denom is: 0=skip; 1=rel X*B0; 2=rel X*Bmsy; 3=rel X*B_styr
