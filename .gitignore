@@ -1,3 +1,4 @@
 *.vim
 .Rproj.user
 fmsy/**
+man/
