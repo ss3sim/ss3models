@@ -2,6 +2,44 @@
 
 This folder contains operating model (OM) and estimating model (EM) files and case files for use within the [ss3sim][ss3sim] package. [ss3sim][ss3sim] is an R package that facilitates flexible, rapid, and reproducible fisheries stock assessment simulation testing with the widely-used [Stock Synthesis 3][SS3] (SS3) statistical age-structured stock assessment framework.
 
+**We are currently rearranging this repository into a data R package**
+
+Install the R package with:
+
+```R
+# install.packages("devtools")
+devtools::install_github("ss3sim/ss3models")
+library("ss3models")
+```
+
+The model setups are installed with the packag and can be accessed with:
+
+```R
+system.file("hake/om", package = "ss3models")
+system.file("hake/em", package = "ss3models")
+```
+
+SS3 files in the operating model folders are:
+
+```
+starter.ss
+ss3.ctl
+ss3.dat
+forecast.ss
+```
+
+SS3 files in the estimation model folders are:
+
+```
+starter.ss
+ss3.ctl
+forecast.ss
+```
+
+-------------------------------
+
+Old documenation:
+
 ### Base models (length-based selectivity)
   1. `cod` cos - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, narrow bounds
   2. `flatfish` fll - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, narrow bounds
