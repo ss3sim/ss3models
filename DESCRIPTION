@@ -25,3 +25,4 @@ Roxygen: list(wrap = TRUE)
 LazyData: true
 Depends:
     R (>= 3.1.2)
+Imports: rmarkdown
