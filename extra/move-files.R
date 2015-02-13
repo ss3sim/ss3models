@@ -1,4 +1,4 @@
-setwd("../inst")
+setwd("inst")
 m <- list.files()
 ty <- c("om", "em")
 for (i in m) {
@@ -11,12 +11,16 @@ for (i in m) {
       system(paste("git mv", ctl_file, "ss3.ctl"))
       if (j == "om") system(paste("git mv", dat_file, "ss3.dat"))
     }
+
+    setwd("..")
     if (!file.exists("README.md")) {
       system("touch README.md")
+
     }
     if (!file.exists("README.Rmd")) {
       system("touch README.Rmd")
     }
-    setwd("../../")
+    setwd("..")
   }
 }
+setwd("..")
