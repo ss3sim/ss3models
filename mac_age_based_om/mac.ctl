@@ -1,6 +1,6 @@
 #V3.24O
 #_data_and_control_files: mac.dat // mac.ctl
-#_SS-V3.24O-safe-MacOS;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.0
+#_SS-V3.24O-safe-win64;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.1
 1  #_N_Growth_Patterns
 1 #_N_Morphs_Within_GrowthPattern 
 #_Cond 1 #_Morph_between/within_stdev_ratio (no read if N_morphs=1)
@@ -42,10 +42,10 @@
  0.1 0.7 0.35 0 -1 0 3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
  0.01 0.5 0.1 0 -1 0 3 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
  0.0001 0.5 0.1 0 -1 0 -3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
- -1 5 3.12e-06 0 -1 0 -3 0 0 0 0 0 0 0 # Wtlen_1_Fem
+ -1 5 3.12e-006 0 -1 0 -3 0 0 0 0 0 0 0 # Wtlen_1_Fem
  1 5 3.40352 0 -1 0 -3 0 0 0 0 0 0 0 # Wtlen_2_Fem
- -3 50 3 0 -1 0 -3 0 0 0 0 0 0 0 # Mat50%_Fem
- -3 3 -1.5 0 -1 0 -3 0 0 0 0 0 0 0 # Mat_slope_Fem
+ -3 50 2.296 0 -1 0 -3 0 0 0 0 0 0 0 # Mat50%_Fem
+ -3 3 -1.58 0 -1 0 -3 0 0 0 0 0 0 0 # Mat_slope_Fem
  -3 3 1 0 -1 0 -3 0 0 0 0 0 0 0 # Eggs/kg_inter_Fem
  -3 3 0 0 -1 0 -3 0 0 0 0 0 0 0 # Eggs/kg_slope_wt_Fem
  -4 4 0 0 -1 0 -4 0 0 0 0 0 0 0 # RecrDist_GP_1
@@ -221,105 +221,105 @@
 
 # F rates for Fmethod=2
 # 0.3 F_fleet_1_YR_1_s_1
-# 0 F_fleet_1_YR_2_s_1
-# 0 F_fleet_1_YR_3_s_1
-# 0 F_fleet_1_YR_4_s_1
-# 0 F_fleet_1_YR_5_s_1
-# 0 F_fleet_1_YR_6_s_1
-# 0 F_fleet_1_YR_7_s_1
-# 0 F_fleet_1_YR_8_s_1
-# 0 F_fleet_1_YR_9_s_1
-# 0 F_fleet_1_YR_10_s_1
-# 0 F_fleet_1_YR_11_s_1
-# 0 F_fleet_1_YR_12_s_1
-# 0 F_fleet_1_YR_13_s_1
-# 0 F_fleet_1_YR_14_s_1
-# 0 F_fleet_1_YR_15_s_1
-# 0 F_fleet_1_YR_16_s_1
-# 0 F_fleet_1_YR_17_s_1
-# 0 F_fleet_1_YR_18_s_1
-# 0 F_fleet_1_YR_19_s_1
-# 0 F_fleet_1_YR_20_s_1
-# 0 F_fleet_1_YR_21_s_1
-# 0 F_fleet_1_YR_22_s_1
-# 0 F_fleet_1_YR_23_s_1
-# 0 F_fleet_1_YR_24_s_1
-# 0 F_fleet_1_YR_25_s_1
-# 0 F_fleet_1_YR_26_s_1
-# 0 F_fleet_1_YR_27_s_1
-# 0 F_fleet_1_YR_28_s_1
-# 0 F_fleet_1_YR_29_s_1
-# 0 F_fleet_1_YR_30_s_1
-# 0 F_fleet_1_YR_31_s_1
-# 0 F_fleet_1_YR_32_s_1
-# 0 F_fleet_1_YR_33_s_1
-# 0 F_fleet_1_YR_34_s_1
-# 0 F_fleet_1_YR_35_s_1
-# 0 F_fleet_1_YR_36_s_1
-# 0 F_fleet_1_YR_37_s_1
-# 0 F_fleet_1_YR_38_s_1
-# 0 F_fleet_1_YR_39_s_1
-# 0 F_fleet_1_YR_40_s_1
-# 0 F_fleet_1_YR_41_s_1
-# 0 F_fleet_1_YR_42_s_1
-# 0 F_fleet_1_YR_43_s_1
-# 0 F_fleet_1_YR_44_s_1
-# 0 F_fleet_1_YR_45_s_1
-# 0 F_fleet_1_YR_46_s_1
-# 0 F_fleet_1_YR_47_s_1
-# 0 F_fleet_1_YR_48_s_1
-# 0 F_fleet_1_YR_49_s_1
-# 0 F_fleet_1_YR_50_s_1
-# 0 F_fleet_1_YR_51_s_1
-# 0 F_fleet_1_YR_52_s_1
-# 0 F_fleet_1_YR_53_s_1
-# 0 F_fleet_1_YR_54_s_1
-# 0 F_fleet_1_YR_55_s_1
-# 0 F_fleet_1_YR_56_s_1
-# 0 F_fleet_1_YR_57_s_1
-# 0 F_fleet_1_YR_58_s_1
-# 0 F_fleet_1_YR_59_s_1
-# 0 F_fleet_1_YR_60_s_1
-# 0 F_fleet_1_YR_61_s_1
-# 0 F_fleet_1_YR_62_s_1
-# 0 F_fleet_1_YR_63_s_1
-# 0 F_fleet_1_YR_64_s_1
-# 0 F_fleet_1_YR_65_s_1
-# 0 F_fleet_1_YR_66_s_1
-# 0 F_fleet_1_YR_67_s_1
-# 0 F_fleet_1_YR_68_s_1
-# 0 F_fleet_1_YR_69_s_1
-# 0 F_fleet_1_YR_70_s_1
-# 0 F_fleet_1_YR_71_s_1
-# 0 F_fleet_1_YR_72_s_1
-# 0 F_fleet_1_YR_73_s_1
-# 0 F_fleet_1_YR_74_s_1
-# 0 F_fleet_1_YR_75_s_1
-# 0 F_fleet_1_YR_76_s_1
-# 0 F_fleet_1_YR_77_s_1
-# 0 F_fleet_1_YR_78_s_1
-# 0 F_fleet_1_YR_79_s_1
-# 0 F_fleet_1_YR_80_s_1
-# 0 F_fleet_1_YR_81_s_1
-# 0 F_fleet_1_YR_82_s_1
-# 0 F_fleet_1_YR_83_s_1
-# 0 F_fleet_1_YR_84_s_1
-# 0 F_fleet_1_YR_85_s_1
-# 0 F_fleet_1_YR_86_s_1
-# 0 F_fleet_1_YR_87_s_1
-# 0 F_fleet_1_YR_88_s_1
-# 0 F_fleet_1_YR_89_s_1
-# 0 F_fleet_1_YR_90_s_1
-# 0 F_fleet_1_YR_91_s_1
-# 0 F_fleet_1_YR_92_s_1
-# 0 F_fleet_1_YR_93_s_1
-# 0 F_fleet_1_YR_94_s_1
-# 0 F_fleet_1_YR_95_s_1
-# 0 F_fleet_1_YR_96_s_1
-# 0 F_fleet_1_YR_97_s_1
-# 0 F_fleet_1_YR_98_s_1
-# 0 F_fleet_1_YR_99_s_1
-# 0 F_fleet_1_YR_100_s_1
+# 0.2 F_fleet_1_YR_2_s_1
+# 0.2 F_fleet_1_YR_3_s_1
+# 0.2 F_fleet_1_YR_4_s_1
+# 0.2 F_fleet_1_YR_5_s_1
+# 0.2 F_fleet_1_YR_6_s_1
+# 0.2 F_fleet_1_YR_7_s_1
+# 0.2 F_fleet_1_YR_8_s_1
+# 0.2 F_fleet_1_YR_9_s_1
+# 0.2 F_fleet_1_YR_10_s_1
+# 0.2 F_fleet_1_YR_11_s_1
+# 0.2 F_fleet_1_YR_12_s_1
+# 0.2 F_fleet_1_YR_13_s_1
+# 0.2 F_fleet_1_YR_14_s_1
+# 0.2 F_fleet_1_YR_15_s_1
+# 0.2 F_fleet_1_YR_16_s_1
+# 0.2 F_fleet_1_YR_17_s_1
+# 0.2 F_fleet_1_YR_18_s_1
+# 0.2 F_fleet_1_YR_19_s_1
+# 0.2 F_fleet_1_YR_20_s_1
+# 0.2 F_fleet_1_YR_21_s_1
+# 0.2 F_fleet_1_YR_22_s_1
+# 0.2 F_fleet_1_YR_23_s_1
+# 0.2 F_fleet_1_YR_24_s_1
+# 0.2 F_fleet_1_YR_25_s_1
+# 0.2 F_fleet_1_YR_26_s_1
+# 0.2 F_fleet_1_YR_27_s_1
+# 0.2 F_fleet_1_YR_28_s_1
+# 0.2 F_fleet_1_YR_29_s_1
+# 0.2 F_fleet_1_YR_30_s_1
+# 0.2 F_fleet_1_YR_31_s_1
+# 0.2 F_fleet_1_YR_32_s_1
+# 0.2 F_fleet_1_YR_33_s_1
+# 0.2 F_fleet_1_YR_34_s_1
+# 0.2 F_fleet_1_YR_35_s_1
+# 0.2 F_fleet_1_YR_36_s_1
+# 0.2 F_fleet_1_YR_37_s_1
+# 0.2 F_fleet_1_YR_38_s_1
+# 0.2 F_fleet_1_YR_39_s_1
+# 0.2 F_fleet_1_YR_40_s_1
+# 0.2 F_fleet_1_YR_41_s_1
+# 0.2 F_fleet_1_YR_42_s_1
+# 0.2 F_fleet_1_YR_43_s_1
+# 0.2 F_fleet_1_YR_44_s_1
+# 0.2 F_fleet_1_YR_45_s_1
+# 0.2 F_fleet_1_YR_46_s_1
+# 0.2 F_fleet_1_YR_47_s_1
+# 0.2 F_fleet_1_YR_48_s_1
+# 0.2 F_fleet_1_YR_49_s_1
+# 0.2 F_fleet_1_YR_50_s_1
+# 0.2 F_fleet_1_YR_51_s_1
+# 0.2 F_fleet_1_YR_52_s_1
+# 0.2 F_fleet_1_YR_53_s_1
+# 0.2 F_fleet_1_YR_54_s_1
+# 0.2 F_fleet_1_YR_55_s_1
+# 0.2 F_fleet_1_YR_56_s_1
+# 0.2 F_fleet_1_YR_57_s_1
+# 0.2 F_fleet_1_YR_58_s_1
+# 0.2 F_fleet_1_YR_59_s_1
+# 0.2 F_fleet_1_YR_60_s_1
+# 0.2 F_fleet_1_YR_61_s_1
+# 0.2 F_fleet_1_YR_62_s_1
+# 0.2 F_fleet_1_YR_63_s_1
+# 0.2 F_fleet_1_YR_64_s_1
+# 0.2 F_fleet_1_YR_65_s_1
+# 0.2 F_fleet_1_YR_66_s_1
+# 0.2 F_fleet_1_YR_67_s_1
+# 0.2 F_fleet_1_YR_68_s_1
+# 0.2 F_fleet_1_YR_69_s_1
+# 0.2 F_fleet_1_YR_70_s_1
+# 0.2 F_fleet_1_YR_71_s_1
+# 0.2 F_fleet_1_YR_72_s_1
+# 0.2 F_fleet_1_YR_73_s_1
+# 0.2 F_fleet_1_YR_74_s_1
+# 0.2 F_fleet_1_YR_75_s_1
+# 0.2 F_fleet_1_YR_76_s_1
+# 0.2 F_fleet_1_YR_77_s_1
+# 0.2 F_fleet_1_YR_78_s_1
+# 0.2 F_fleet_1_YR_79_s_1
+# 0.2 F_fleet_1_YR_80_s_1
+# 0.2 F_fleet_1_YR_81_s_1
+# 0.2 F_fleet_1_YR_82_s_1
+# 0.2 F_fleet_1_YR_83_s_1
+# 0.2 F_fleet_1_YR_84_s_1
+# 0.2 F_fleet_1_YR_85_s_1
+# 0.2 F_fleet_1_YR_86_s_1
+# 0.2 F_fleet_1_YR_87_s_1
+# 0.2 F_fleet_1_YR_88_s_1
+# 0.2 F_fleet_1_YR_89_s_1
+# 0.2 F_fleet_1_YR_90_s_1
+# 0.2 F_fleet_1_YR_91_s_1
+# 0.2 F_fleet_1_YR_92_s_1
+# 0.2 F_fleet_1_YR_93_s_1
+# 0.2 F_fleet_1_YR_94_s_1
+# 0.2 F_fleet_1_YR_95_s_1
+# 0.2 F_fleet_1_YR_96_s_1
+# 0.2 F_fleet_1_YR_97_s_1
+# 0.2 F_fleet_1_YR_98_s_1
+# 0.2 F_fleet_1_YR_99_s_1
+# 0.2 F_fleet_1_YR_100_s_1
 #
 #_Q_setup
  # Q_type options:  <0=mirror, 0=float_nobiasadj, 1=float_biasadj, 2=parm_nobiasadj, 3=parm_w_random_dev, 4=parm_w_randwalk, 5=mean_unbiased_float_assign_to_parm
@@ -349,18 +349,18 @@
  20 0 0 0 # 2 Survey
  15 0 0 1 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- -20 15 5.03 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_1P_1_Fishery
- -20 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_1P_2_Fishery
- -20 15 1.72 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_1P_3_Fishery
- -20 30 15 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_1P_4_Fishery
- -999 20 -999 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_1P_5_Fishery
- -20 10000 999 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_1P_6_Fishery
- -10 15 5.03 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_1_Survey
- -10 15 -1 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_2_Survey
- -15 15 1.72 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_3_Survey
- -20 30 15 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_4_Survey
- -999 15 -999 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_5_Survey
- -20 10000 999 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_6_Survey
+ 0 80 4.45 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_1P_1_Fishery
+ -10 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_1P_2_Fishery
+ 0 15 1.88 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_1P_3_Fishery
+ 0 30 15 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_1P_4_Fishery
+ -999 20 -999 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_1P_5_Fishery
+ -999 10000 999 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_1P_6_Fishery
+ 0 80 4.08 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_1_Survey
+ -10 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_2P_2_Survey
+ 0 15 2.03 0 -1 0 4 0 0 0 0 0 0 0 # AgeSel_2P_3_Survey
+ 0 30 15 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_2P_4_Survey
+ -999 15 -999 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_2P_5_Survey
+ -999 10000 999 0 -1 0 -4 0 0 0 0 0 0 0 # AgeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 

@@ -92,7 +92,7 @@
  1 #_first_yr_fullbias_adj_in_MPD
  100 #_last_yr_fullbias_adj_in_MPD
  100 #_first_recent_yr_nobias_adj_in_MPD
- -1 #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs)
+ 0 #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs)
  0 #_period of cycles in recruitment (N parms read below)
  -6 #min rec_dev
  6 #max rec_dev
@@ -239,9 +239,9 @@
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
 #_Pattern Discard Male Special
- 0 0 0 0 # 1 Fishery
- 0 0 0 0 # 2 Survey
- 0 0 0 1 # 3 CPUE
+ 24 0 0 0 # 1 Fishery
+ 24 0 0 0 # 2 Survey
+ 15 0 0 1 # 3 CPUE
 #
 #_age_selex_types
 #_Pattern ___ Male Special

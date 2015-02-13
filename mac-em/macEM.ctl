@@ -41,7 +41,7 @@
  30 70 45 0 -1 0 5 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
  0.1 0.7 0.35 0 -1 0 3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
  0.01 0.5 0.1 0 -1 0 3 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
- 0.0001 0.5 0.01 0 -1 0 -3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
+ 0.0001 0.5 0.1 0 -1 0 3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  -1 5 3.12e-06 0 -1 0 -3 0 0 0 0 0 0 0 # Wtlen_1_Fem
  1 5 3.40352 0 -1 0 -3 0 0 0 0 0 0 0 # Wtlen_2_Fem
  -3 50 29 0 -1 0 -3 0 0 0 0 0 0 0 # Mat50%_Fem
@@ -138,14 +138,16 @@
 #Fishing Mortality info 
 0.3 # F ballpark for annual F (=Z-M) for specified year
 -100 # F ballpark year (neg value to disable)
-2 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
-1.1 # max F or harvest rate, depends on F_Method
+3 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
+4
+4
+# 1.1 # max F or harvest rate, depends on F_Method
 # no additional F input needed for Fmethod 1
 # if Fmethod=2; read overall start F value; overall phase; N detailed inputs to read
 # if Fmethod=3; read N iterations for tuning for Fmethod 3
- 0.2 1 1 # overall start F value; overall phase; N detailed inputs to read
+# 0.2 1 1 # overall start F value; overall phase; N detailed inputs to read
 #Fleet Year Seas F_value se phase (for detailed setup of F_Method=2)
-1 1 1 0.3 0.1 -1
+# 1 1 1 0.3 0.1 -1
 # 2
 #_initial_F_parms
 #_LO HI INIT PRIOR PR_type SD PHASE
@@ -193,7 +195,7 @@
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -3 3 0.2 0 -1 99 -5 # LnQ_base_1_Fishery
- -3 3 0.2 0 -1 99 -5 # LnQ_base_2_Survey
+ -3 3 0.2 0 -1 99 5 # LnQ_base_2_Survey
  -3 3 0.2 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
@@ -213,14 +215,14 @@
  -10 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
  0 15 5.06 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
  0 15 15 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_4_Fishery
- -999 20 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
+ -999 20 -999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
  -999 10000 999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_6_Fishery
  2 80 34.48 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
- -10 15 -1 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
+ -10 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
  0 15 5.06 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
- 0 30 15 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
- -999 15 -999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
- -999 10000 999 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
+ 0 30 15 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
+ -999 15 -999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
+ -999 10000 999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
