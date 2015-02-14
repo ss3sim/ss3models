@@ -17,5 +17,5 @@ test_that("EMs run", {
   models <- list.files(f)
 
   lapply(models, function(x)
-    check_model(file.path(f, x, "em")))
+    check_model(file.path(f, x, "em"), ss_mode = "opt"))
 })
