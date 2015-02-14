@@ -1,3 +1,18 @@
 ---
 output: md_document
 ---
+
+```{r}
+d <- system.file("cod-age/om/ss3.dat", package = "ss3models")
+x <- r4ss::SS_readdat(d)
+r4ss::SSplotData(x)
+
+system("mkdir test")
+f <- list.files()
+file.copy(f, "test/")
+setwd("test")
+system("cp ../../om/ss3.dat .")
+system("ss3_24o_opt -nohess")
+r4ss::SSplotPars(".")
+```
+
