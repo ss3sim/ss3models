@@ -14,8 +14,8 @@ devtools::install_github("ss3sim/ss3models")
 The model setups are installed with the package. The location of the operating models (`om` folders; OM) and estimation models (`em` folders; EM) can be accessed using `system.file()`:
 
 ```R
-system.file("hake/om", package = "ss3models")
-system.file("hake/em", package = "ss3models")
+system.file("models/hake/om", package = "ss3models")
+system.file("models/hake/em", package = "ss3models")
 ```
 
 The SS3 model setup files in the operating model folders are:
