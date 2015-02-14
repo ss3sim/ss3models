@@ -13,6 +13,9 @@ test_that("OMs run", {
 test_that("EMs run", {
   skip_on_cran()
 
+  f <- system.file("models", package = "ss3models")
+  models <- list.files(f)
+
   lapply(models, function(x)
     check_model(file.path(f, x, "em")))
 })
