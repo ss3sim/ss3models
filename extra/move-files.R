@@ -1,6 +1,5 @@
-setwd("inst")
+setwd("inst/models/")
 m <- list.files()
-m <- m[-which(m == "cases")]
 ty <- c("om", "em")
 for (i in m) {
   for (j in ty) {
@@ -18,8 +17,8 @@ for (i in m) {
       system("touch README.md")
 
     }
-    if (!file.exists("README.Rmd")) {
-      system("touch README.Rmd")
+    if (file.exists("README.Rmd")) {
+      system("rm README.Rmd")
     }
 
     # system(paste0("cp ../../extra/README.Rmd ."))
