@@ -57,7 +57,11 @@ forecast.ss
 
 4. `hake-age`: age-based double normal selectivity (mimicking logistic) in OM, age-based double normal selectivity (mimicking logistic) in EM, age-based maturity (converted from the 'hake' model)
 
-### Model summaries: Specific information for each model can be found in the [information document][info.csv]. Columns with todo in the name should be filled out with your initials once completed. All other columns pertain to information specific the parameterization of each model.
+### Model summaries
+
+Specific information for each model can be found in the [information document][info.csv]. Columns with todo in the name should be filled out with your initials once completed. All other columns pertain to information specific the parameterization of each model.
+
+Eventually more summary data and descriptive plots will be available on the `README.md` files within each species folder.
 
 ### Paramerization
 
