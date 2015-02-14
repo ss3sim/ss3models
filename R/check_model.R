@@ -5,7 +5,7 @@
 #'
 #' @export
 
-check_model <- function(model, hess = FALSE) {
+check_model <- function(model, opts = "-nohess") {
   wd <- getwd()
   on.exit(setwd(wd))
   td <- tempdir()
@@ -14,9 +14,6 @@ check_model <- function(model, hess = FALSE) {
   unlink(tdf, recursive = TRUE, force = TRUE)
   file.copy(file.path(model, f), td, overwrite = TRUE)
   setwd(td)
-  if (hess)
-    system("ss3_24o_safe")
-  else
-    system("ss3_24o_safe -nohess")
+  system(paste("ss3_24o_safe", opts))
   setwd(wd)
 }
