@@ -26,3 +26,4 @@ LazyData: true
 Depends:
     R (>= 3.1.2)
 Imports: rmarkdown
+Suggests: testthat
