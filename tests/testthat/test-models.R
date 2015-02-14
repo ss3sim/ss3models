@@ -4,8 +4,15 @@ test_that("OMs run", {
   skip_on_cran()
 
   f <- system.file("models", package = "ss3models")
-  fs <- list.files(f)
+  models <- list.files(f)
 
-  lapply(fs, function(x)
-    check_model(file.path(f, x, "om")))
+  lapply(models, function(x)
+    check_model(file.path(f, x, "om"), opts = "-noest"))
+})
+
+test_that("EMs run", {
+  skip_on_cran()
+
+  lapply(models, function(x)
+    check_model(file.path(f, x, "em")))
 })
