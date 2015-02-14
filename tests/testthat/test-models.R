@@ -1,4 +1,4 @@
-context("OMs can be run through SS3")
+context("Model checking")
 
 test_that("OMs run", {
   skip_on_cran()
@@ -18,4 +18,14 @@ test_that("EMs run", {
 
   lapply(models, function(x)
     check_model(file.path(f, x, "em"), ss_mode = "opt"))
+})
+
+test_that("OM .dat files pass ss3sim checks", {
+  f <- system.file("models", package = "ss3models")
+  models <- list.files(f)
+
+  lapply(models, function(x) {
+    d <- r4ss::SS_readdat(file.path(f, x, "om", "ss3.dat"))
+    ss3sim::check_data(d)
+  })
 })
