@@ -1,6 +1,5 @@
 #' Write a \code{forecast.ss} file for use in \pkg{ss3sim}.
-
-
+#'
 #' @param outfile A character value specifying the name to save the forecast
 #'   file as. Will not be written to the disk unless \code{write_file = TRUE}.
 #'   The default is \code{"forecast.ss"}.
@@ -45,8 +44,8 @@
 #' @param write_file A logical specifying whether or not to write the file to the
 #'   disk or not. File will always be returned as a \code{invisible} independent of
 #'   \code{write_file}. Default is to write to the disk.
-
-#' @importfrom r4ss SS_writeforecast
+#'
+#' @importFrom r4ss SS_writeforecast
 #' @author Kelli Johnson
 
 make_forecast <- function(outfile = "forecast.ss", dir = NULL, msy = 2, 
