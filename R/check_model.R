@@ -1,7 +1,9 @@
 #' Check SS3 models
 #'
-#' @param Path to the model
-#' @param hess Should the hessian matrix be estimated?
+#' @param model Path to a model to check
+#' @param opts Options to pass to SS3 on the command line
+#' @param ss_mode One of \code{"safe"} or \code{"optimized"} for which SS3
+#'   binary to run. See the ss3sim vignette for instructions.
 #'
 #' @export
 
