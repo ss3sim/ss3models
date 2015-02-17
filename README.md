@@ -1,5 +1,7 @@
 # ss3sim models
 
+[![Travis-CI Build Status](https://travis-ci.org/ss3sim/ss3models.png?branch=master)](https://travis-ci.org/ss3sim/ss3models)
+
 This folder contains operating model (OM) and estimating model (EM) files and case files for use within the [ss3sim][ss3sim] package. [ss3sim][ss3sim] is an R package that facilitates flexible, rapid, and reproducible fisheries stock assessment simulation testing with the widely-used [Stock Synthesis 3][SS3] (SS3) statistical age-structured stock assessment framework.
 
 **We are currently rearranging this repository into an R data package**

@@ -2,3 +2,4 @@
 ^\.Rproj\.user$
 extra/
 archived-models/
+^\.travis\.yml$
