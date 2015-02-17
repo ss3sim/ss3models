@@ -25,6 +25,5 @@ Roxygen: list(wrap = TRUE)
 LazyData: true
 Depends:
     R (>= 3.1.2)
-Imports: rmarkdown,
-   r4ss
-Suggests: testthat
+Imports: rmarkdown, r4ss
+Suggests: testthat, ss3sim
