@@ -39,9 +39,9 @@
 #_growth_parms
 #_LO  HI   INIT     PRIOR    PR_type SD  PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  0.05 0.4  0.22 -1.60944 -1      0.1 -4    0       0       0         0         0          0     0 # NatM_p_1_Fem_GP_1
- 2    15   5        32       -1      99  5     0       0       0         0         0          0     0 # L_at_Amin_Fem_GP_1
- 45   75   55       50       -1      99  5     0       0       0         0         0          0     0 # L_at_Amax_Fem_GP_1
- 0.2  0.8  0.4      0.3      -1      99  5     0       0       0         0         0          0     0 # VonBert_K_Fem_GP_1
+ 2    15   5        32       -1      99  4     0       0       0         0         0          0     0 # L_at_Amin_Fem_GP_1
+ 45   75   55       50       -1      99  4     0       0       0         0         0          0     0 # L_at_Amax_Fem_GP_1
+ 0.2  0.8  0.4      0.3      -1      99  4     0       0       0         0         0          0     0 # VonBert_K_Fem_GP_1
  0.03 0.2 0.1      0.1      -1      99  7     0       0       0         0         0          0     0 # CV_young_Fem_GP_1
  0.03 0.2  0.1      0.1      -1      99  7     0       0       0         0         0          0     0 # CV_old_Fem_GP_1
  -3   3    7e-006    7e-006    -1      99  -50   0       0       0         0         0          0     0 # Wtlen_1_Fem
@@ -71,7 +71,7 @@
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI  INIT     PRIOR PR_type SD    PHASE
- 13  17  15       15    -1      99    3   # SR_LN(R0)
+ 13  18  16.5       15    -1      99    2   # SR_LN(R0)
  0.2 1   0.82 0.777 -1      0.113 -4   # SR_BH_steep
  1   1.6 1.4      1.1   -1      99    -6  # SR_sigmaR
  -5  5   0        0     -1      99    -50 # SR_envlink
@@ -85,7 +85,7 @@
 1 #_recdev phase
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
- 2 #_recdev_early_phase
+ -2 #_recdev_early_phase
  0 #_forecast_recruitment phase (incl. late recr) (0 value resets to maxphase+1)
  1 #_lambda for Fcast_recr_like occurring before endyr+1
  1 #_last_early_yr_nobias_adj_in_MPD
@@ -129,7 +129,7 @@
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -3 3 0 0 -1 99 -5 # LnQ_base_1_Fishery
- -3 3 0 0 -1 99 4 # LnQ_base_2_Survey
+ -3 3 0 0 -1 99 3 # LnQ_base_2_Survey
  -3 3 0 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
@@ -145,13 +145,13 @@
  10 0 0 0 # 2 Survey
  10 0 0 0 # 3 CPUE
 #_LO  HI   INIT  PRIOR PR_type SD   PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 15   69   45.1  45    1       0.05 6     0       0       0         0         0.5        0     0 # SizeSel_1P_1_Fishery
+ 15   69   45.1  45    1       0.05 5     0       0       0         0         0.5        0     0 # SizeSel_1P_1_Fishery
  -5   10   -1    5     1       0.05 -3    0       0       0         0         0.5        0     0 # SizeSel_1P_2_Fishery
  -4   12   5.52  3     1       0.05 6     0       0       0         0         0.5        0     0 # SizeSel_1P_3_Fishery
  -2   30   15    10    1       0.05 -4    0       0       0         0         0.5        0     0 # SizeSel_1P_4_Fishery
  -999 5    -999  -999  1       0.05 -3    0       0       0         0         0.5        0     0 # SizeSel_1P_5_Fishery
  -9   1000 999  0.5   1       0.05 -4    0       0       0         0         0.5        0     0 # SizeSel_1P_6_Fishery
- 15   69   38.94 45    1       0.05 6     0       0       0         0         0.5        0     0 # SizeSel_2P_1_Survey
+ 15   69   38.94 45    1       0.05 5     0       0       0         0         0.5        0     0 # SizeSel_2P_1_Survey
  -5   10   -1    5     1       0.05 -3    0       0       0         0         0.5        0     0 # SizeSel_2P_2_Survey
  -4   12   5.53  3     1       0.05 6     0       0       0         0         0.5        0     0 # SizeSel_2P_3_Survey
  -2   30   15    10    1       0.05 -4    0       0       0         0         0.5        0     0 # SizeSel_2P_4_Survey
