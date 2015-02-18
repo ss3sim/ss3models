@@ -37,11 +37,11 @@
 #_growth_parms
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  0.3 0.7 0.5 0 -1 0 -3 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
- 4 35 15 0 -1 0 2 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
- 30 70 45 0 -1 0 5 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
- 0.1 0.7 0.35 0 -1 0 3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
- 0.01 0.5 0.1 0 -1 0 3 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
- 0.0001 0.5 0.1 0 -1 0 3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
+ 4 35 15 0 -1 0 4 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
+ 30 70 45 0 -1 0 4 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
+ 0.1 0.7 0.35 0 -1 0 4 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
+ 0.01 0.5 0.1 0 -1 0 5 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
+ 0.0001 0.5 0.1 0 -1 0 5 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  -1 5 3.12e-06 0 -1 0 -3 0 0 0 0 0 0 0 # Wtlen_1_Fem
  1 5 3.40352 0 -1 0 -3 0 0 0 0 0 0 0 # Wtlen_2_Fem
  -3 50 29 0 -1 0 -3 0 0 0 0 0 0 0 # Mat50%_Fem
@@ -69,7 +69,7 @@
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI INIT PRIOR PR_type SD PHASE
- 1 30 10 0 -1 0 1 # SR_LN(R0)
+ 4 20 10 0 -1 0 2 # SR_LN(R0)
  0.1 1 0.9 0 1 0 -5 # SR_BH_steep
  0 2 1 0 -1 0 -3 # SR_sigmaR
  -5 5 0 0 -1 0 -3 # SR_envlink
@@ -80,10 +80,10 @@
 1 #do_recdev:  0=none; 1=devvector; 2=simple deviations
 1 # first year of main recr_devs; early devs can preceed this era
 100 # last year of main recr_devs; forecast devs start in following year
-3 #_recdev phase 
+1 #_recdev phase 
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
- 4 #_recdev_early_phase
+ -4 #_recdev_early_phase
  0 #_forecast_recruitment phase (incl. late recr) (0 value resets to maxphase+1)
  1 #_lambda for Fcast_recr_like occurring before endyr+1
  1 #_last_early_yr_nobias_adj_in_MPD
@@ -92,8 +92,8 @@
  100 #_first_recent_yr_nobias_adj_in_MPD
  .9 #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs)
  0 #_period of cycles in recruitment (N parms read below)
- -5 #min rec_dev
- 5 #max rec_dev
+ -6 #min rec_dev
+ 6 #max rec_dev
  0 #_read_recdevs
 #_end of advanced SR options
 #
@@ -139,49 +139,15 @@
 0.3 # F ballpark for annual F (=Z-M) for specified year
 -100 # F ballpark year (neg value to disable)
 3 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
-4
-4
-# 1.1 # max F or harvest rate, depends on F_Method
+6 # max F or harvest rate, depends on F_Method
 # no additional F input needed for Fmethod 1
 # if Fmethod=2; read overall start F value; overall phase; N detailed inputs to read
 # if Fmethod=3; read N iterations for tuning for Fmethod 3
-# 0.2 1 1 # overall start F value; overall phase; N detailed inputs to read
-#Fleet Year Seas F_value se phase (for detailed setup of F_Method=2)
-# 1 1 1 0.3 0.1 -1
-# 2
+4  # N iterations for tuning F in hybrid method (recommend 3 to 7)
+#
 #_initial_F_parms
 #_LO HI INIT PRIOR PR_type SD PHASE
  0.0001 5 0 0 -1 0 -1 # InitF_1Fishery
-
-# F rates for Fmethod=2
-# 0 F_fleet_1_YR_1983_s_1
-# 0.1 F_fleet_1_YR_1984_s_1
-# 0.001 F_fleet_1_YR_1985_s_1
-# 0.2 F_fleet_1_YR_1986_s_1
-# 0.2 F_fleet_1_YR_1987_s_1
-# 0.2 F_fleet_1_YR_1988_s_1
-# 0.2 F_fleet_1_YR_1989_s_1
-# 0.2 F_fleet_1_YR_1990_s_1
-# 0.3 F_fleet_1_YR_1991_s_1
-# 0.2 F_fleet_1_YR_1992_s_1
-# 0.2 F_fleet_1_YR_1993_s_1
-# 0.2 F_fleet_1_YR_1994_s_1
-# 0.2 F_fleet_1_YR_1995_s_1
-# 0.2 F_fleet_1_YR_1996_s_1
-# 0.2 F_fleet_1_YR_1997_s_1
-# 0.2 F_fleet_1_YR_1998_s_1
-# 0.2 F_fleet_1_YR_1999_s_1
-# 0.2 F_fleet_1_YR_2000_s_1
-# 0.2 F_fleet_1_YR_2001_s_1
-# 0.2 F_fleet_1_YR_2002_s_1
-# 0.2 F_fleet_1_YR_2003_s_1
-# 0.2 F_fleet_1_YR_2004_s_1
-# 0.2 F_fleet_1_YR_2005_s_1
-# 0.2 F_fleet_1_YR_2006_s_1
-# 0.2 F_fleet_1_YR_2007_s_1
-# 0.2 F_fleet_1_YR_2008_s_1
-# 0.2 F_fleet_1_YR_2009_s_1
-# 0.2 F_fleet_1_YR_2010_s_1
 #
 #_Q_setup
  # Q_type options:  <0=mirror, 0=float_nobiasadj, 1=float_biasadj, 2=parm_nobiasadj, 3=parm_w_random_dev, 4=parm_w_randwalk, 5=mean_unbiased_float_assign_to_parm
@@ -194,9 +160,9 @@
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
- -3 3 0.2 0 -1 99 -5 # LnQ_base_1_Fishery
- -3 3 0.2 0 -1 99 5 # LnQ_base_2_Survey
- -3 3 0.2 0 -1 99 -5 # LnQ_base_3_CPUE
+ -3 3 0 0 -1 99 -5 # LnQ_base_1_Fishery
+ -3 3 0 0 -1 99 3 # LnQ_base_2_Survey
+ -3 3 0 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
@@ -211,15 +177,15 @@
  10 0 0 0 # 2 Survey
  10 0 0 0 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 2 80 40.28 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
+ 2 80 40.28 0 -1 0 6 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
  -10 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
- 0 15 5.06 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
+ 0 15 5.06 0 -1 0 7 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
  0 15 15 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_4_Fishery
  -999 20 -999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
  -999 10000 999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_6_Fishery
- 2 80 34.48 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
+ 2 80 34.48 0 -1 0 6 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
  -10 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
- 0 15 5.06 0 -1 0 4 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
+ 0 15 5.06 0 -1 0 7 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
  0 30 15 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
  -999 15 -999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
  -999 10000 999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
