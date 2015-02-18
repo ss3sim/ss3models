@@ -1,6 +1,6 @@
 #V3.24O
-#_data_and_control_files: mac.dat // mac.ctl
-#_SS-V3.24O-safe-MacOS;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.0
+#_data_and_control_files: ss3.dat // em.ctl
+#_SS-V3.24O-safe-win64;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.1
 1  #_N_Growth_Patterns
 1 #_N_Morphs_Within_GrowthPattern 
 #_Cond 1 #_Morph_between/within_stdev_ratio (no read if N_morphs=1)
@@ -37,12 +37,12 @@
 #_growth_parms
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  0.3 0.7 0.5 0 -1 0 -3 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
- 4 35 15 0 -1 0 4 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
- 30 70 45 0 -1 0 4 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
- 0.1 0.7 0.35 0 -1 0 4 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
- 0.01 0.5 0.1 0 -1 0 5 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
- 0.0001 0.5 0.1 0 -1 0 5 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
- -1 5 3.12e-06 0 -1 0 -3 0 0 0 0 0 0 0 # Wtlen_1_Fem
+ 4 35 15.3297 0 -1 0 4 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
+ 30 70 45.9621 0 -1 0 4 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
+ 0.1 0.7 0.340902 0 -1 0 4 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
+ 0.01 0.5 0.101801 0 -1 0 5 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
+ 0.0001 0.5 0.101797 0 -1 0 5 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
+ -1 5 3.12e-006 0 -1 0 -3 0 0 0 0 0 0 0 # Wtlen_1_Fem
  1 5 3.40352 0 -1 0 -3 0 0 0 0 0 0 0 # Wtlen_2_Fem
  -3 50 29 0 -1 0 -3 0 0 0 0 0 0 0 # Mat50%_Fem
  -3 3 -0.29 0 -1 0 -3 0 0 0 0 0 0 0 # Mat_slope_Fem
@@ -90,7 +90,7 @@
  26 #_first_yr_fullbias_adj_in_MPD
  99 #_last_yr_fullbias_adj_in_MPD
  100 #_first_recent_yr_nobias_adj_in_MPD
- .9 #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs)
+ 0.9 #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs)
  0 #_period of cycles in recruitment (N parms read below)
  -6 #min rec_dev
  6 #max rec_dev
@@ -102,38 +102,106 @@
 #_Yr Input_value
 #
 # all recruitment deviations
-#DisplayOnly 0 # Main_InitAge_5
-#DisplayOnly 0 # Main_InitAge_4
-#DisplayOnly 0 # Main_InitAge_3
-#DisplayOnly 0 # Main_InitAge_2
-#DisplayOnly 0 # Main_InitAge_1
-#DisplayOnly 0 # Main_RecrDev_1983
-#DisplayOnly 0 # Main_RecrDev_1984
-#DisplayOnly 0 # Main_RecrDev_1985
-#DisplayOnly 0 # Main_RecrDev_1986
-#DisplayOnly 0 # Main_RecrDev_1987
-#DisplayOnly 0 # Main_RecrDev_1988
-#DisplayOnly 0 # Main_RecrDev_1989
-#DisplayOnly 0 # Main_RecrDev_1990
-#DisplayOnly 0 # Main_RecrDev_1991
-#DisplayOnly 0 # Main_RecrDev_1992
-#DisplayOnly 0 # Main_RecrDev_1993
-#DisplayOnly 0 # Main_RecrDev_1994
-#DisplayOnly 0 # Main_RecrDev_1995
-#DisplayOnly 0 # Main_RecrDev_1996
-#DisplayOnly 0 # Main_RecrDev_1997
-#DisplayOnly 0 # Main_RecrDev_1998
-#DisplayOnly 0 # Main_RecrDev_1999
-#DisplayOnly 0 # Main_RecrDev_2000
-#DisplayOnly 0 # Main_RecrDev_2001
-#DisplayOnly 0 # Main_RecrDev_2002
-#DisplayOnly 0 # Main_RecrDev_2003
-#DisplayOnly 0 # Main_RecrDev_2004
-#DisplayOnly 0 # Main_RecrDev_2005
-#DisplayOnly 0 # Main_RecrDev_2006
-#DisplayOnly 0 # Main_RecrDev_2007
-#DisplayOnly 0 # Main_RecrDev_2008
-#DisplayOnly 0 # Main_RecrDev_2009
+#DisplayOnly -1.01568 # Main_RecrDev_1
+#DisplayOnly -1.01552 # Main_RecrDev_2
+#DisplayOnly -1.01528 # Main_RecrDev_3
+#DisplayOnly -1.01494 # Main_RecrDev_4
+#DisplayOnly -1.01443 # Main_RecrDev_5
+#DisplayOnly -1.01369 # Main_RecrDev_6
+#DisplayOnly -1.01262 # Main_RecrDev_7
+#DisplayOnly -1.01107 # Main_RecrDev_8
+#DisplayOnly -1.00883 # Main_RecrDev_9
+#DisplayOnly -1.00557 # Main_RecrDev_10
+#DisplayOnly -1.00085 # Main_RecrDev_11
+#DisplayOnly -0.993993 # Main_RecrDev_12
+#DisplayOnly -0.984037 # Main_RecrDev_13
+#DisplayOnly -0.969517 # Main_RecrDev_14
+#DisplayOnly -0.948617 # Main_RecrDev_15
+#DisplayOnly -0.918149 # Main_RecrDev_16
+#DisplayOnly -0.87405 # Main_RecrDev_17
+#DisplayOnly -0.809899 # Main_RecrDev_18
+#DisplayOnly -0.708027 # Main_RecrDev_19
+#DisplayOnly -0.573839 # Main_RecrDev_20
+#DisplayOnly -0.303888 # Main_RecrDev_21
+#DisplayOnly 0.0255693 # Main_RecrDev_22
+#DisplayOnly 0.471214 # Main_RecrDev_23
+#DisplayOnly 1.05875 # Main_RecrDev_24
+#DisplayOnly 0.633676 # Main_RecrDev_25
+#DisplayOnly 0.341588 # Main_RecrDev_26
+#DisplayOnly 0.484828 # Main_RecrDev_27
+#DisplayOnly 0.528549 # Main_RecrDev_28
+#DisplayOnly 0.330854 # Main_RecrDev_29
+#DisplayOnly 0.256793 # Main_RecrDev_30
+#DisplayOnly 0.31491 # Main_RecrDev_31
+#DisplayOnly 0.734193 # Main_RecrDev_32
+#DisplayOnly 0.902853 # Main_RecrDev_33
+#DisplayOnly 0.795838 # Main_RecrDev_34
+#DisplayOnly 0.245728 # Main_RecrDev_35
+#DisplayOnly -0.452461 # Main_RecrDev_36
+#DisplayOnly -0.393588 # Main_RecrDev_37
+#DisplayOnly -0.731479 # Main_RecrDev_38
+#DisplayOnly -0.383132 # Main_RecrDev_39
+#DisplayOnly -0.660221 # Main_RecrDev_40
+#DisplayOnly -0.443951 # Main_RecrDev_41
+#DisplayOnly -0.879381 # Main_RecrDev_42
+#DisplayOnly 0.716297 # Main_RecrDev_43
+#DisplayOnly -0.337923 # Main_RecrDev_44
+#DisplayOnly 0.969483 # Main_RecrDev_45
+#DisplayOnly -0.712849 # Main_RecrDev_46
+#DisplayOnly 1.02368 # Main_RecrDev_47
+#DisplayOnly -0.424249 # Main_RecrDev_48
+#DisplayOnly 1.32807 # Main_RecrDev_49
+#DisplayOnly -2.35014 # Main_RecrDev_50
+#DisplayOnly 1.79194 # Main_RecrDev_51
+#DisplayOnly -1.02379 # Main_RecrDev_52
+#DisplayOnly 0.770329 # Main_RecrDev_53
+#DisplayOnly -1.13096 # Main_RecrDev_54
+#DisplayOnly 0.0982534 # Main_RecrDev_55
+#DisplayOnly 0.389073 # Main_RecrDev_56
+#DisplayOnly 0.256718 # Main_RecrDev_57
+#DisplayOnly -0.305688 # Main_RecrDev_58
+#DisplayOnly 1.8724 # Main_RecrDev_59
+#DisplayOnly 0.262404 # Main_RecrDev_60
+#DisplayOnly 1.52265 # Main_RecrDev_61
+#DisplayOnly 0.0565429 # Main_RecrDev_62
+#DisplayOnly 0.493287 # Main_RecrDev_63
+#DisplayOnly 0.221842 # Main_RecrDev_64
+#DisplayOnly 1.56209 # Main_RecrDev_65
+#DisplayOnly 0.42457 # Main_RecrDev_66
+#DisplayOnly 1.14415 # Main_RecrDev_67
+#DisplayOnly -0.30323 # Main_RecrDev_68
+#DisplayOnly 0.0822092 # Main_RecrDev_69
+#DisplayOnly -0.847974 # Main_RecrDev_70
+#DisplayOnly 0.36972 # Main_RecrDev_71
+#DisplayOnly 0.146367 # Main_RecrDev_72
+#DisplayOnly 0.818336 # Main_RecrDev_73
+#DisplayOnly 0.596452 # Main_RecrDev_74
+#DisplayOnly 0.888454 # Main_RecrDev_75
+#DisplayOnly 1.15526 # Main_RecrDev_76
+#DisplayOnly 1.40671 # Main_RecrDev_77
+#DisplayOnly -0.340783 # Main_RecrDev_78
+#DisplayOnly -0.577939 # Main_RecrDev_79
+#DisplayOnly 0.476033 # Main_RecrDev_80
+#DisplayOnly 0.250265 # Main_RecrDev_81
+#DisplayOnly 1.07621 # Main_RecrDev_82
+#DisplayOnly 0.249829 # Main_RecrDev_83
+#DisplayOnly -0.358415 # Main_RecrDev_84
+#DisplayOnly 0.117459 # Main_RecrDev_85
+#DisplayOnly 0.0174162 # Main_RecrDev_86
+#DisplayOnly 0.0163518 # Main_RecrDev_87
+#DisplayOnly -0.277572 # Main_RecrDev_88
+#DisplayOnly 0.402204 # Main_RecrDev_89
+#DisplayOnly 1.0993 # Main_RecrDev_90
+#DisplayOnly 0.755431 # Main_RecrDev_91
+#DisplayOnly -0.108389 # Main_RecrDev_92
+#DisplayOnly 0.105676 # Main_RecrDev_93
+#DisplayOnly -0.580403 # Main_RecrDev_94
+#DisplayOnly 0.125878 # Main_RecrDev_95
+#DisplayOnly -0.155554 # Main_RecrDev_96
+#DisplayOnly 0.781384 # Main_RecrDev_97
+#DisplayOnly 0.0880554 # Main_RecrDev_98
+#DisplayOnly 0.954427 # Main_RecrDev_99
+#DisplayOnly -1.01598 # Main_RecrDev_100
 #
 #Fishing Mortality info 
 0.3 # F ballpark for annual F (=Z-M) for specified year
@@ -161,8 +229,8 @@
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -3 3 0 0 -1 99 -5 # LnQ_base_1_Fishery
- -3 3 0 0 -1 99 3 # LnQ_base_2_Survey
- -3 3 0 0 -1 99 -5 # LnQ_base_3_CPUE
+ -3 3 0.377609 0 -1 99 3 # LnQ_base_2_Survey
+ -3 3 0 0 -1 99 -1 # LnQ_base_3_CPUE
 #
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
@@ -177,15 +245,15 @@
  10 0 0 0 # 2 Survey
  10 0 0 0 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 2 80 40.28 0 -1 0 6 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
+ 2 80 41.3725 0 -1 0 6 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
  -10 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
- 0 15 5.06 0 -1 0 7 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
+ 0 15 5.00062 0 -1 0 7 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
  0 15 15 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_4_Fishery
  -999 20 -999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
  -999 10000 999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_1P_6_Fishery
- 2 80 34.48 0 -1 0 6 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
+ 2 80 34.0941 0 -1 0 6 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
  -10 15 -1 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
- 0 15 5.06 0 -1 0 7 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
+ 0 15 5.08528 0 -1 0 7 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
  0 30 15 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
  -999 15 -999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
  -999 10000 999 0 -1 0 -4 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
@@ -217,27 +285,23 @@
 # Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=SizeFreq; 7=sizeage; 8=catch; 9=init_equ_catch; 
 # 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin; 17=F_ballpark
 #like_comp fleet/survey  phase  value  sizefreq_method
-#4 1 1 0 1
-#9 1 1 0 1
-#9 2 1 0 1
-#11 1 1 0 1
 #
 # lambdas (for info only; columns are phases)
-#  0 #_CPUE/survey:_1
-#  1 #_CPUE/survey:_2
-#  1 #_CPUE/survey:_3
-#  0 #_lencomp:_1
-#  1 #_lencomp:_2
-#  0 #_lencomp:_3
-#  1 #_agecomp:_1
-#  1 #_agecomp:_2
-#  0 #_agecomp:_3
-#  0 #_init_equ_catch
-#  1 #_recruitments
-#  0 #_parameter-priors
-#  1 #_parameter-dev-vectors
-#  1 #_crashPenLambda
-#  0 # F_ballpark_lambda
+#  0 0 0 0 #_CPUE/survey:_1
+#  1 1 1 1 #_CPUE/survey:_2
+#  0 0 0 0 #_CPUE/survey:_3
+#  1 1 1 1 #_lencomp:_1
+#  1 1 1 1 #_lencomp:_2
+#  0 0 0 0 #_lencomp:_3
+#  1 1 1 1 #_agecomp:_1
+#  1 1 1 1 #_agecomp:_2
+#  0 0 0 0 #_agecomp:_3
+#  1 1 1 1 #_init_equ_catch
+#  1 1 1 1 #_recruitments
+#  1 1 1 1 #_parameter-priors
+#  1 1 1 1 #_parameter-dev-vectors
+#  1 1 1 1 #_crashPenLambda
+#  0 0 0 0 # F_ballpark_lambda
 0 # (0/1) read specs for more stddev reporting 
  # 0 1 -1 5 1 5 1 -1 5 # placeholder for selex type, len/age, year, N selex bins, Growth pattern, N growth ages, NatAge_area(-1 for all), NatAge_yr, N Natages
  # placeholder for vector of selex bins to be reported

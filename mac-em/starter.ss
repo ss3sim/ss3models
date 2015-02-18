@@ -23,8 +23,8 @@ macEM.ctl
 0 # retrospective year relative to end year (e.g. -4)
 1 # min age for calc of summary biomass
 1 # Depletion basis:  denom is: 0=skip; 1=rel X*B0; 2=rel X*Bmsy; 3=rel X*B_styr
-0.6 # Fraction (X) for Depletion denominator (e.g. 0.4)
-1 # SPR_report_basis:  0=skip; 1=(1-SPR)/(1-SPR_tgt); 2=(1-SPR)/(1-SPR_MSY); 3=(1-SPR)/(1-SPR_Btarget); 4=rawSPR
+1 # Fraction (X) for Depletion denominator (e.g. 0.4)
+4 # SPR_report_basis:  0=skip; 1=(1-SPR)/(1-SPR_tgt); 2=(1-SPR)/(1-SPR_MSY); 3=(1-SPR)/(1-SPR_Btarget); 4=rawSPR
 1 # F_report_units: 0=skip; 1=exploitation(Bio); 2=exploitation(Num); 3=sum(Frates); 4=true F for range of ages
 #COND 10 15 #_min and max age over which average F will be calculated with F_reporting=4
 0 # F_report_basis: 0=raw; 1=F/Fspr; 2=F/Fmsy ; 3=F/Fbtgt
