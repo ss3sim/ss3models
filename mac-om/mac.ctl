@@ -332,9 +332,9 @@
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
- -3 3 0.2 0 -1 99 -5 # LnQ_base_1_Fishery
- -3 3 0.2 0 -1 99 -5 # LnQ_base_2_Survey
- -3 3 0.2 0 -1 99 -5 # LnQ_base_3_CPUE
+ -3 3 0 0 -1 99 -5 # LnQ_base_1_Fishery
+ -3 3 0 0 -1 99 -5 # LnQ_base_2_Survey
+ -3 3 0 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
