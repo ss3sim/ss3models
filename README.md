@@ -108,7 +108,7 @@ Eventually more summary data and descriptive plots will be available on the `REA
 
 ### TODO
 
--   [ ] lbin type = 2
+-   [ ] lbin type = 3
 -   [ ] population bin width must be divisible by the data bin width
 -   [ ] years = 1:100
 -   [ ] Standardize parameter bounds using [standardize\_bounds](https://github.com/ss3sim/ss3sim/blob/master/R/standardize_bounds.R): approach used in [Johnson *et al*. (2015)](http://icesjms.oxfordjournals.org/content/early/2014/04/09/icesjms.fsu055.full.pdf?keytype=ref&ijkey=NEXmZIkz3289u3z)) of lower bounds = 0.5% of init values and upper bounds = [ ] 500% of init values
