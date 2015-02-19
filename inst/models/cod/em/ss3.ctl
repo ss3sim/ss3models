@@ -37,10 +37,10 @@
 #_growth_parms
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  0.01 1.8 0.2 0.1 -1 0.8 -3 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
- 10 80 20 30.8 -1 0.2 2 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
- 25 250 132 120.1 -1 0.2 5 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
- 0.01 2 0.2 0.25 -1 0.8 2 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
- 0.01 0.5 0.1 0.1 -1 0.8 3 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
+ 10 80 20 30.8 -1 0.2 4 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
+ 25 250 132 120.1 -1 0.2 4 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
+ 0.01 2 0.2 0.25 -1 0.8 4 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
+ 0.01 0.5 0.1 0.1 -1 0.8 5 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
  0.01 0.5 0.1 0.1 -1 0.8 5 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  0 3 6.8e-006 6.8e-006 -1 0 -1 0 0 0 0 0 0 0 # Wtlen_1_Fem
  2.5 3.5 3.101 3.101 -1 0.2 -3 0 0 0 0 0 0 0 # Wtlen_2_Fem
@@ -113,7 +113,7 @@
 #
 #_initial_F_parms
 #_LO HI INIT PRIOR PR_type SD PHASE
- 0 2 0 0.01 0 99 -1 # InitF_1Fishery
+ 0 2 0 0.01 -1 99 -1 # InitF_1Fishery
 #
 #_Q_setup
  # Q_type options:  <0=mirror, 0=float_nobiasadj, 1=float_biasadj, 2=parm_nobiasadj, 3=parm_w_random_dev, 4=parm_w_randwalk, 5=mean_unbiased_float_assign_to_parm
@@ -128,7 +128,7 @@
 # LO HI INIT PRIOR PR_type SD PHASE
  -3 3 0 0 -1 99 -5 # LnQ_base_1_Fishery
  -3 3 0 0 -1 99 5 # LnQ_base_2_SURVEY
- -3 3 0 0 -1 99 5 # LnQ_base_3_CPUE
+ -3 3 0 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
@@ -143,18 +143,18 @@
  10 0 0 0 # 2 SURVEY
  10 0 0 0 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 20 250 50.8 50.8 1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_1P_1_Fishery
- -5 3 -3 -3 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_2_Fishery
- -4 25 5.1 5.1 1 0.05 3 0 0 0 0 0.5 0 0 # SizeSel_1P_3_Fishery
- -2 16 15 15 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_4_Fishery
- -15 5 -999 -999 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_5_Fishery
- -5 5 -999 -999 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_6_Fishery
- 20 199 41.8 41.8 1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_2P_1_Survey
- -5 3 -4 -4 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_2_Survey
- -4 25 5.2 5.2 1 0.05 3 0 0 0 0 0.5 0 0 # SizeSel_2P_3_Survey
- -2 15 14 14 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_4_Survey
- -100 100 -99 -99 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_5_Survey
- -100 100 99 99 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_6_Survey
+ 20 250 50.8 50.8 -1 0.05 2 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
+ -5 3 -3 -3 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
+ -4 25 5.1 5.1 -1 0.05 3 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
+ -2 16 15 15 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_1P_4_Fishery
+ -15 5 -999 -999 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
+ -5 5 -999 -999 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_1P_6_Fishery
+ 20 199 41.8 41.8 -1 0.05 2 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
+ -5 3 -4 -4 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
+ -4 25 5.2 5.2 -1 0.05 3 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
+ -2 15 14 14 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
+ -100 100 -99 -99 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
+ -100 100 99 99 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 

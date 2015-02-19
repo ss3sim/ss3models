@@ -148,18 +148,18 @@
  10 0 0 0 # 3 CPUE
  
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
-3.0	182	36.4	36.4	1	0.05	-2	0	0	0	0	0.5	0	0	#	Fishery PEAK	value
--5.0	5.0	-1.0	-1.0	1	0.05	-3	0	0	0	0	0.5	0	0	#	Fishery TOP	logistic
--4.0	21.5	4.3	4.3	1	0.05	-3	0	0	0	0	0.5	0	0	#	Fishery WIDTH	exp
--2.0	75.0	15.0	15.0	1	0.05	-3	0	0	0	0	0.5	0	0	#	Fishery WIDTH	exp
--15.0	5.0	-999.0	-999.0	1	0.05	-2	0	0	0	0	0.5	0	0	#	Fishery INIT	logistic
--5.0	5.0	-999.0	-999.0	1	0.05	-2	0	0	0	0	0.5	0	0	#	Fishery FINAL	logistic
-3.0	153	30.6	30.6	1	0.05	-2	0	0	0	0	0.5	0	0	#	Survey PEAK	value
--5.0	5.0	-1.0	-1.0	1	0.05	-3	0	0	0	0	0.5	0	0	#	Survey TOP	logistic
--4.0	22	4.3	4.3	1	0.05	-3	0	0	0	0	0.5	0	0	#	Survey WIDTH	exp
--2.0	75.0	15.0	15.0	1	0.05	-3	0	0	0	0	0.5	0	0	#	Survey WIDTH	exp
--15.0	5.0	-999.0	-999.0	1	0.05	-2	0	0	0	0	0.5	0	0	#	Survey INIT	logistic
--5.0	5.0	-999.0	-999.0	1	0.05	-2	0	0	0	0	0.5	0	0	#	Survey FINAL	logistic
+3.0	182	36.4	36.4	-1	0.05	-2	0	0	0	0	0.5	0	0	#	Fishery PEAK	value
+-5.0	5.0	-1.0	-1.0	-1	0.05	-3	0	0	0	0	0.5	0	0	#	Fishery TOP	logistic
+-4.0	21.5	4.3	4.3	-1	0.05	-3	0	0	0	0	0.5	0	0	#	Fishery WIDTH	exp
+-2.0	75.0	15.0	15.0	-1	0.05	-3	0	0	0	0	0.5	0	0	#	Fishery WIDTH	exp
+-15.0	5.0	-999.0	-999.0	-1	0.05	-2	0	0	0	0	0.5	0	0	#	Fishery INIT	logistic
+-5.0	5.0	-999.0	-999.0	-1	0.05	-2	0	0	0	0	0.5	0	0	#	Fishery FINAL	logistic
+3.0	153	30.6	30.6	-1	0.05	-2	0	0	0	0	0.5	0	0	#	Survey PEAK	value
+-5.0	5.0	-1.0	-1.0	-1	0.05	-3	0	0	0	0	0.5	0	0	#	Survey TOP	logistic
+-4.0	22	4.3	4.3	-1	0.05	-3	0	0	0	0	0.5	0	0	#	Survey WIDTH	exp
+-2.0	75.0	15.0	15.0	-1	0.05	-3	0	0	0	0	0.5	0	0	#	Survey WIDTH	exp
+-15.0	5.0	-999.0	-999.0	-1	0.05	-2	0	0	0	0	0.5	0	0	#	Survey INIT	logistic
+-5.0	5.0	-999.0	-999.0	-1	0.05	-2	0	0	0	0	0.5	0	0	#	Survey FINAL	logistic
 
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns

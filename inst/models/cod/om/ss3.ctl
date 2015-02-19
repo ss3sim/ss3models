@@ -116,7 +116,7 @@
 #
 #_initial_F_parms
 #_LO HI INIT PRIOR PR_type SD PHASE
- 0 2 0 0.01 0 99 -1 # InitF_1Fishery
+ 0 2 0 0.01 -1 99 -1 # InitF_1Fishery
 #_Q_setup
  # Q_type options:  <0=mirror, 0=float_nobiasadj, 1=float_biasadj, 2=parm_nobiasadj, 3=parm_w_random_dev, 4=parm_w_randwalk, 5=mean_unbiased_float_assign_to_parm
 #_for_env-var:_enter_index_of_the_env-var_to_be_linked
@@ -145,18 +145,18 @@
  10 0 0 0 # 2 Survey
  10 0 0 0 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 20 199 50.8 50.8 1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_1P_1_Fishery
- -5 3 -3 -3 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_2_Fishery
- -4 12 5.1 5.1 1 0.05 3 0 0 0 0 0.5 0 0 # SizeSel_1P_3_Fishery
- -2 16 15 15 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_4_Fishery
- -15 5 -999 -999 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_5_Fishery
- -5 5 -999 -999 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_6_Fishery
- 20 199 41.8 41.8 1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_2P_1_Survey
- -5 3 -4 -4 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_2_Survey
- -4 12 5.2 5.2 1 0.05 3 0 0 0 0 0.5 0 0 # SizeSel_2P_3_Survey
- -2 15 14 14 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_4_Survey
- -100 100 -99 -99 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_5_Survey
- -100 100 99 99 1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_6_Survey
+ 20 199 50.8 50.8 -1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_1P_1_Fishery
+ -5 3 -3 -3 -1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_2_Fishery
+ -4 12 5.1 5.1 -1 0.05 3 0 0 0 0 0.5 0 0 # SizeSel_1P_3_Fishery
+ -2 16 15 15 -1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_4_Fishery
+ -15 5 -999 -999 -1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_5_Fishery
+ -5 5 -999 -999 -1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_1P_6_Fishery
+ 20 199 41.8 41.8 -1 0.05 2 0 0 0 0 0.5 0 0 # SizeSel_2P_1_Survey
+ -5 3 -4 -4 -1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_2_Survey
+ -4 12 5.2 5.2 -1 0.05 3 0 0 0 0 0.5 0 0 # SizeSel_2P_3_Survey
+ -2 15 14 14 -1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_4_Survey
+ -100 100 -99 -99 -1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_5_Survey
+ -100 100 99 99 -1 0.05 -99 0 0 0 0 0.5 0 0 # SizeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 

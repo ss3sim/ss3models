@@ -120,11 +120,14 @@ Fishery%Survey%CPUE #_fleetnames
 0.1	98	1
 0.1	99	1
 0.1	100	1
-200 #_N_cpue
-#_X1 X2 X3
-1  0  0
-2  0  0
-3  0  0
+#
+200 #_N_cpue_and_surveyabundance_observations
+#_Units:  0=numbers; 1=biomass; 2=F
+#_Errtype:  -1=normal; 0=lognormal; >0=T
+#_Fleet Units Errtype
+1 1 0 # Fishery
+2 1 0 # Survey
+3 1 0 # CPUE
 #_year seas index obs se_log
 1	1     3   1    0.4
 2	1     3   1    0.4

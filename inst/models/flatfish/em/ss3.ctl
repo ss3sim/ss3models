@@ -37,11 +37,11 @@
 #_growth_parms
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  0.01 1.8 0.2 0 -1 0.8 -3 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
- 2 20 12.6666 30.8 -1 0.2 1 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
- 25 80 47.4245 40.1 -1 0.2 2 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
- 0.01 2 0.347769 0 -1 0.8 1 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
- 0.01 0.5 0.2 0.2 -1 0.8 5 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
- 0.01 0.5 0.2 0.2 -1 0.8 5 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
+ 2 20 12.6666 30.8 -1 0.2 3 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
+ 25 80 47.4245 40.1 -1 0.2 3 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
+ 0.01 2 0.347769 0 -1 0.8 3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
+ 0.01 0.5 0.2 0.2 -1 0.8 6 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
+ 0.01 0.5 0.2 0.2 -1 0.8 6 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  0 3 1e-005 1e-005 -1 0.2 -3 0 0 0 0 0 0 0 # Wtlen_1_Fem
  2.5 3.5 3 2.98 -1 0.2 -3 0 0 0 0 0 0 0 # Wtlen_2_Fem
  25 35 28.9 0.879 -1 0.8 -3 0 0 0 0 0 0 0 # Mat50%_Fem
@@ -69,7 +69,7 @@
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI INIT PRIOR PR_type SD PHASE
- .052467 52.467 10.4934 10.3 -1 10 2 # SR_LN(R0)
+ .052467 52.467 10.4934 10.3 -1 10 1 # SR_LN(R0)
  0.0038 3.803 0.760619 0.7 -1 0.05 -4 # SR_BH_steep
  .004 4 0.7 0.8 -1 0.8 -4 # SR_sigmaR
  -5 5 0 0 -1 1 -3 # SR_envlink
@@ -80,10 +80,10 @@
 1 #do_recdev:  0=none; 1=devvector; 2=simple deviations
 1 # first year of main recr_devs; early devs can preceed this era
 100 # last year of main recr_devs; forecast devs start in following year
-3 #_recdev phase
+2 #_recdev phase
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
- 4 #_recdev_early_phase
+ -4 #_recdev_early_phase
  0 #_forecast_recruitment phase (incl. late recr) (0 value resets to maxphase+1)
  1 #_lambda for Fcast_recr_like occurring before endyr+1
  -10 #_last_early_yr_nobias_adj_in_MPD
@@ -147,18 +147,18 @@
  10 0 0 0 # 3 CPUE
 
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
-3.0	182	36.4	36.4	1	0.05	2	0	0	0	0	0.5	0	0	#	Fishery PEAK	value
--5.0	5.0	-1.0	-1.0	1	0.05	-3	0	0	0	0	0.5	0	0	#	Fishery TOP	logistic
--4.0	21.5	4.3	4.3	1	0.05	3	0	0	0	0	0.5	0	0	#	Fishery WIDTH	exp
--2.0	75.0	15.0	15.0	1	0.05	-3	0	0	0	0	0.5	0	0	#	Fishery WIDTH	exp
--15.0	5.0	-999.0	-999.0	1	0.05	-2	0	0	0	0	0.5	0	0	#	Fishery INIT	logistic
--5.0	5.0	-999.0	-999.0	1	0.05	-2	0	0	0	0	0.5	0	0	#	Fishery FINAL	logistic
-3.0	153	30.6	30.6	1	0.05	2	0	0	0	0	0.5	0	0	#	Survey PEAK	value
--5.0	5.0	-1.0	-1.0	1	0.05	-3	0	0	0	0	0.5	0	0	#	Survey TOP	logistic
--4.0	22	4.3	4.3	1	0.05	3	0	0	0	0	0.5	0	0	#	Survey WIDTH	exp
--2.0	75.0	15.0	15.0	1	0.05	-3	0	0	0	0	0.5	0	0	#	Survey WIDTH	exp
--15.0	5.0	-999.0	-999.0	1	0.05	-2	0	0	0	0	0.5	0	0	#	Survey INIT	logistic
--5.0	5.0	-999.0	-999.0	1	0.05	-2	0	0	0	0	0.5	0	0	#	Survey FINAL	logistic
+3.0	182	36.4	36.4	-1	0.05	4	0	0	0	0	0	0	0	#	Fishery PEAK	value
+-5.0	5.0	-1.0	-1.0	1	0.05	-3	0	0	0	0	0	0	0	#	Fishery TOP	logistic
+-4.0	21.5	4.3	4.3	-1	0.05	5	0	0	0	0	0	0	0	#	Fishery WIDTH	exp
+-2.0	75.0	15.0	15.0	-1	0.05	-3	0	0	0	0	0	0	0	#	Fishery WIDTH	exp
+-15.0	5.0	-999.0	-999.0	-1	0.05	-2	0	0	0	0	0	0	0	#	Fishery INIT	logistic
+-5.0	5.0	-999.0	-999.0	-1	0.05	-2	0	0	0	0	0	0	0	#	Fishery FINAL	logistic
+3.0	153	30.6	30.6	-1	0.05	4	0	0	0	0	0	0	0	#	Survey PEAK	value
+-5.0	5.0	-1.0	-1.0	-1	0.05	-3	0	0	0	0	0	0	0	#	Survey TOP	logistic
+-4.0	22	4.3	4.3	-1	0.05	5	0	0	0	0	0	0	0	#	Survey WIDTH	exp
+-2.0	75.0	15.0	15.0	-1	0.05	-3	0	0	0	0	0	0	0	#	Survey WIDTH	exp
+-15.0	5.0	-999.0	-999.0	-1	0.05	-2	0	0	0	0	0	0	0	#	Survey INIT	logistic
+-5.0	5.0	-999.0	-999.0	-1	0.05	-2	0	0	0	0	0	0	0	#	Survey FINAL	logistic
 
 #_Cond 0 #_custom_sel-env_setup (0/1)
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns

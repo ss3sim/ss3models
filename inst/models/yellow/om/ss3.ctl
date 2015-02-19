@@ -36,7 +36,7 @@
 #
 #_growth_parms
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 0.01 0.15 0.05 0.05 0 0.0226 -6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
+ 0.01 0.15 0.05 0.05 -1 0.0226 -6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
  10 35 18 30 -1 99 -2 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
  40 120 62 66 -1 99 -2 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
  0.01 0.2 0.047 0.05 -1 99 -2 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
@@ -70,7 +70,7 @@
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI INIT PRIOR PR_type SD PHASE
  3 15 5.6 5 -1 99 -1 # SR_LN(R0)
- 0.2 1 0.44 0.44 2 0.1 -7 # SR_BH_steep
+ 0.2 1 0.44 0.44 -1 0.1 -7 # SR_BH_steep
  0 5 0.5 1 -1 99 -50 # SR_sigmaR
  -5 5 0 0 -1 99 -50 # SR_envlink
  -5 5 0 0 -1 99 -50 # SR_R1_offset
@@ -349,18 +349,18 @@
  10 0 0 0 # 2 survey1
  10 0 0 0 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 20 89 46.43 57 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_1P_1_fishery1
- -5 0 -1 -5 0 5 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_2_fishery1
- 0 10 4.24 5 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_1P_3_fishery1
- 0 30 15 10 0 10 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_4_fishery1
- -999 0 -999 -10 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_5_fishery1
- -999 10000 999 0 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_6_fishery1
- 20 89 38.68 57 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_2P_1_survey1
- -5 0 -1 -5 0 5 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_2_survey1
- 0 10 4.24 5 -1 99 3 0 0 0 0 0.5 0 0 # SizeSel_2P_3_survey1
- 0 30 15 10 0 10 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_4_survey1
- -999 0 -999 -10 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_5_survey1
- -999 10000 999 0 -1 99 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_6_survey1
+ 20 89 46.43 57 -1 99 3 0 0 0 0 0 0 0 # SizeSel_1P_1_fishery1
+ -5 0 -1 -5 -1 5 -3 0 0 0 0 0 0 0 # SizeSel_1P_2_fishery1
+ 0 10 4.24 5 -1 99 3 0 0 0 0 0 0 0 # SizeSel_1P_3_fishery1
+ 0 30 15 10 -1 10 -3 0 0 0 0 0 0 0 # SizeSel_1P_4_fishery1
+ -999 0 -999 -10 -1 99 -3 0 0 0 0 0 0 0 # SizeSel_1P_5_fishery1
+ -999 10000 999 -1 -1 99 -3 0 0 0 0 0 0 0 # SizeSel_1P_6_fishery1
+ 20 89 38.68 57 -1 99 3 0 0 0 0 0 0 0 # SizeSel_2P_1_survey1
+ -5 0 -1 -5 -1 5 -3 0 0 0 0 0 0 0 # SizeSel_2P_2_survey1
+ 0 10 4.24 5 -1 99 3 0 0 0 0 0 0 0 # SizeSel_2P_3_survey1
+ 0 30 15 10 -1 10 -3 0 0 0 0 0 0 0 # SizeSel_2P_4_survey1
+ -999 0 -999 -10 -1 99 -3 0 0 0 0 0 0 0 # SizeSel_2P_5_survey1
+ -999 10000 999 0 -1 99 -3 0 0 0 0 0 0 0 # SizeSel_2P_6_survey1
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
