@@ -12,6 +12,7 @@ Install the ss3models package with:
 ``` r
 # install.packages("devtools")
 devtools::install_github("ss3sim/ss3models")
+library("ss3models")
 ```
 
 The model setups are stored in the package in the [`inst/models`](inst/models) folder. The local file path to the operating models (`om` folders) and estimating models (`em` folders) can be accessed using the `ss3model` function:
