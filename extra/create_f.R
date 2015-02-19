@@ -49,15 +49,22 @@ foldername <- file.path(dir(file.path(getwd(), "inst", "models"),
 ###############################################################################
 fmsy <- list()
 ## We need a list of F ranges since they vary pretty widely
-F.end.list <- list("mac-om"=3, "yel-om"=.075, "hake-om"=.75)
-F.start.list <- list("mac-om"=.5, "yel-om"=.025, "hake-om"=.2)
 N.steps <- 25
+
+truem <- vector(length = length(modelnames))
+for (ind in seq_along(truem)) {
+  om <- dir(foldername[ind], pattern = ".ctl", full.names = TRUE)
+  pars <- SS_parlines(om)
+  truem[ind] <- pars[grep("NatM", pars$Label), "INIT"]
+}
+F.start.list <- sapply(truem, function(x) ifelse(x > 0.25, 0.8, 0.015))
+F.end.list <- sapply(truem, function(x) ifelse(x > 0.25, 1.6, 0.4))
 for (m in seq_along(modelnames)) {
   dir.results <- file.path("fmsy", modelnames[m])
   dir.create(dir.results, recursive = TRUE, showWarnings = FALSE)
   om.use <- foldername[m]
-  F.end <- F.end.list[[modelnames[m]]]
-  F.start <- F.start.list[[modelnames[m]]]
+  F.end <- F.end.list[m]
+  F.start <- F.start.list[m]
   if(is.null(F.end) | is.null(F.start))
       stop(paste0("start or end not specified for ", modelnames[m]))
   byval <- (F.end-F.start)/N.steps
