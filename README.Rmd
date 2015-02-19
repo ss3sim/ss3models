@@ -15,6 +15,7 @@ knitr::opts_chunk$set(
   autodep = TRUE
 )
 options("width" = 90)
+library("magrittr")
 ```
 
 # ss3sim models
@@ -34,37 +35,41 @@ Install the ss3models package with:
 devtools::install_github("ss3sim/ss3models")
 ```
 
-The model setups are stored in the package in the [`inst/models`](inst/models) folder. The local file path to the operating models (`om` folders) and estimating models (`em` folders) can be accessed using `system.file()`:
+The model setups are stored in the package in the [`inst/models`](inst/models) folder. The local file path to the operating models (`om` folders) and estimating models (`em` folders) can be accessed using the `ss3model` function:
 
 ```{r, eval = FALSE}
-system.file("models/hake/om", package = "ss3models")
-system.file("models/hake/em", package = "ss3models")
+ss3model("hake", "em")
+#> "/Library/Frameworks/R.framework/Versions/3.1/Resources/library/ss3models/models/hake/em"
+ss3model("flatfish", "om")
+#> "/Library/Frameworks/R.framework/Versions/3.1/Resources/library/ss3models/models/flatfish/om"
 ```
 
 You can get a list of all available models in R with:
 
 ```{r}
-dir(system.file("models", package = "ss3models"))
+list_models()
 ```
 
 The SS3 model setup files in the operating model folders are:
 
 ```{r}
-dir(system.file("models", "cod", "om", package = "ss3models"))
+ss3model("hake", "om") %>%
+  dir
 ```
 
 SS3 files in the estimating model folders are:
 
 ```{r}
-dir(system.file("models", "cod", "em", package = "ss3models"))
+ss3model("hake", "em") %>%
+  dir
 ```
 
 The ss3models package also contains a couple helper functions for working with and checking model setups. For example:
 
 ```{r}
-m <- system.file("models", package = "ss3models")
-p <- get_parvalues(m, write_csv = FALSE)
-head(p)
+system.file("models", package = "ss3models") %>%
+  get_parvalues(write_csv = FALSE) %>%
+  head
 ```
 
 You can test all the operating model setups (run them through SS3 with `-noest`) and run all the \code{.dat} files through `ss3sim::check_data()` by running `devtools::test()` in the base `ss3models` folder.

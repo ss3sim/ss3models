@@ -14,17 +14,19 @@ Install the ss3models package with:
 devtools::install_github("ss3sim/ss3models")
 ```
 
-The model setups are stored in the package in the [`inst/models`](inst/models) folder. The local file path to the operating models (`om` folders) and estimating models (`em` folders) can be accessed using `system.file()`:
+The model setups are stored in the package in the [`inst/models`](inst/models) folder. The local file path to the operating models (`om` folders) and estimating models (`em` folders) can be accessed using the `ss3model` function:
 
 ``` r
-system.file("models/hake/om", package = "ss3models")
-system.file("models/hake/em", package = "ss3models")
+ss3model("hake", "em")
+#> "/Library/Frameworks/R.framework/Versions/3.1/Resources/library/ss3models/models/hake/em"
+ss3model("flatfish", "om")
+#> "/Library/Frameworks/R.framework/Versions/3.1/Resources/library/ss3models/models/flatfish/om"
 ```
 
 You can get a list of all available models in R with:
 
 ``` r
-dir(system.file("models", package = "ss3models"))
+list_models()
 #>  [1] "cod"          "cod-age"      "flatfish"     "flatfish-age" "hake"        
 #>  [6] "hake-age"     "mackerel"     "mackerel-age" "yellow"       "yellow-age"
 ```
@@ -32,23 +34,25 @@ dir(system.file("models", package = "ss3models"))
 The SS3 model setup files in the operating model folders are:
 
 ``` r
-dir(system.file("models", "cod", "om", package = "ss3models"))
+ss3model("hake", "om") %>%
+  dir
 #> [1] "forecast.ss" "ss3.ctl"     "ss3.dat"     "ss3.par"     "starter.ss"
 ```
 
 SS3 files in the estimating model folders are:
 
 ``` r
-dir(system.file("models", "cod", "em", package = "ss3models"))
-#> [1] "forecast.ss" "ss3.ctl"     "starter.ss"
+ss3model("hake", "em") %>%
+  dir
+#> [1] "check.R"     "forecast.ss" "ss3.ctl"     "starter.ss"
 ```
 
 The ss3models package also contains a couple helper functions for working with and checking model setups. For example:
 
 ``` r
-m <- system.file("models", package = "ss3models")
-p <- get_parvalues(m, write_csv = FALSE)
-head(p)
+system.file("models", package = "ss3models") %>%
+  get_parvalues(write_csv = FALSE) %>%
+  head
 #>                  Label    LO INIT.om INIT.em  HI PHASE PRIOR PR_type   SD model
 #> 1        cohortgrowdev -4.00     1.0     1.0 4.0    -4  0.00      -1  0.0   cod
 #> 2      cv_old_fem_gp_1  0.01     0.1     0.1 0.5     5  0.10      -1  0.8   cod
