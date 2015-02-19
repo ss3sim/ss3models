@@ -1,0 +1,29 @@
+Package: ss3models
+Type: Package
+Title: Simulation model setups for use with Stock Synthesis 3
+Version: 0.0.1
+Date: 2015-02-13
+Authors@R: c(
+    person("ss3team", "ss3team", email = "tobedecided@nothing.com", role =
+      c("aut", "cre")),
+    person("Sean", "Anderson", role = "aut"),
+    person("Cole", "Monnahan", role = "aut"),
+    person("Kelli", "Johnson", role = "aut"),
+    person("Kotaro", "Ono", role = "aut"),
+    person("Juan", "Valero", role = "aut"),
+    person("Allan", "Hicks", role = "aut"),
+    person("Felipe", "Hurtado-Ferro", role = "aut"),
+    person("Peter", "Kuriyama", role = "aut"),
+    person("Roberto", "Licandeo", role = "aut"),
+    person("Merrill", "Rudd", role = "aut"),
+    person("Christine", "Stawitz", role = "aut"),
+    person("Ian", "Taylor", role = "aut"))
+Description: The ss3models package contains Stock Synthesis 3 (SS3) operating
+    and estimation simulation model setups for use within the ss3sim package.
+License: MIT + file LICENSE
+Roxygen: list(wrap = TRUE)
+LazyData: true
+Depends:
+    R (>= 3.1.2)
+Imports: rmarkdown, r4ss
+Suggests: testthat, ss3sim

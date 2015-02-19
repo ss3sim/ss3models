@@ -1,45 +1,88 @@
 # ss3sim models
 
-This folder contains operating model (OM) and estimating model (EM) files and case files for use within the [ss3sim][ss3sim] package. [ss3sim][ss3sim] is an R package that facilitates flexible, rapid, and reproducible fisheries stock assessment simulation testing with the widely-used [Stock Synthesis 3][SS3] (SS3) statistical age-structured stock assessment framework.
+[![Travis-CI Build Status](https://travis-ci.org/ss3sim/ss3models.png?branch=master)](https://travis-ci.org/ss3sim/ss3models)
+
+This R package contains operating model (OM) and estimating model (EM) files and case files for use within the [ss3sim][ss3sim] package. [ss3sim][ss3sim] is an R package that facilitates flexible, rapid, and reproducible fisheries stock assessment simulation testing with the widely-used [Stock Synthesis 3][SS3] (SS3) statistical age-structured stock assessment framework.
+
+Install the ss3models package with:
+
+```R
+# install.packages("devtools")
+devtools::install_github("ss3sim/ss3models")
+```
+
+The model setups are stored in the package in the [`inst/models`](inst/models) folder. The local file path to the operating models (`om` folders) and estimating models (`em` folders) can be accessed using `system.file()`:
+
+```R
+system.file("models/hake/om", package = "ss3models")
+system.file("models/hake/em", package = "ss3models")
+```
+
+The SS3 model setup files in the operating model folders are:
+
+```
+starter.ss
+ss3.ctl
+ss3.dat
+forecast.ss
+```
+
+SS3 files in the estimating model folders are:
+
+```
+starter.ss
+ss3.ctl
+forecast.ss
+```
+
+## Included models
 
 ### Base models (length-based selectivity)
-  1. `cod` cos - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, narrow bounds
-  2. `flatfish` fll - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, narrow bounds
-  3. `yellow` yel - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, length based maturity
-  4. `hake` hake - length based double normal selectivity (mimicking logistic) in OM, length based double normal selectivity (mimicking logistic) in EM, length based maturity (slightly changed compared t othe original assessment to match the purpose of this simulation study)
+
+1. `cod`: length-based double normal selectivity (mimicking logistic) in OM, length-based double normal selectivity (mimicking logistic) in EM, narrow bounds
+
+2. `flatfish`: length-based double normal selectivity (mimicking logistic) in OM, length-based double normal selectivity (mimicking logistic) in EM, narrow bounds
+
+3. `yellow`: (yellowtail flounder) length-based double normal selectivity (mimicking logistic) in OM, length-based double normal selectivity (mimicking logistic) in EM, length-based maturity
+
+4. `hake`: length-based double normal selectivity (mimicking logistic) in OM, length-based double normal selectivity (mimicking logistic) in EM, length-based maturity (slightly changed compared t o the original assessment to match the purpose of this simulation study)
 
 ### Base models (age-based selectivity)
-  1. `yellow-age` yelloweye_age_based - age based double normal selectivity (mimicking logistic) in OM, age based double normal selectivity (mimicking logistic) in EM, age based maturity
-  2. `hake-age` hake_age_based - age based double normal selectivity (mimicking logistic) in OM, age based double normal selectivity (mimicking logistic) in EM, age based maturity (converted from the 'hake' model)
-  
-### Additional models
-  1. cod - age based double normal selectivity, age based logistic maturity
-  2. fla - age based double normal selectivity, age based logistic maturity
-  3. mac - mackerel model under development (in development by @peterkuriyama )
-  4. yel - yellowtail rockfish model under development (in development by @merrillrudd)
 
-### Model summaries: Specific information for each model can be found in the [information document][info.csv].
-Columns with todo in the name should be filled out with your initials once completed. All other columns pertain to information specific the parameterization of each model.
+1. `cod-age`: TODO
 
-#### Paramerization
-  - Selectivity: parameterized using a double normal to mimic logistic selectivity
-    * Age based
-    * Length based
-  - Maturity:
-    * Age based logistic maturity
-    * length based logistic maturity
+2. `flatfish`: TODO
 
-#### todo
-  - lbin type = 2
-  - population bin width must be divisible by the data bin width
-  - years = 1:100
-  - Standardize parameter bounds using [standardize_bounds](https://github.com/ss3sim/ss3sim/blob/master/R/standardize_bounds.R): approach used in [Johnson *et al*. (2015)][johnsonetal] of lower bounds = 0.5% of init values and upper bounds = 500% of init values
-  - Fishing case files: "F" case files for each model are based on Fmsy, which can be found with [profile_fmsy](https://github.com/ss3sim/ss3sim/blob/master/R/profile_fmsy.r). Casefiles are automatically generated from the script [create_f.R][fscript]. Please rerun this script any time a new model is added.
-    * F0 = Constant fishing at Fmsy (constant): years 25 - 100 at Fmsy;
-    * F1 = Two way trip (contrast): years 25 - 65 ramp up to 0.9 x Fmsy (right limb), years 66 - 100 ramp down from 0.9 x Fmsy (right limb) to 0.9 x Fmsy (left limb;
-    * F2 = One way trip (increase): years 25 - 100 ramp up to 0.9 x Fmsy (left limb).
+3. `yellow-age`: (yellowtail flounder) age-based double normal selectivity (mimicking logistic) in OM, age-based double normal selectivity (mimicking logistic) in EM, age-based maturity
 
-Current contributors: the Fish600 team
+4. `hake-age`: age-based double normal selectivity (mimicking logistic) in OM, age-based double normal selectivity (mimicking logistic) in EM, age-based maturity (converted from the 'hake' model)
+
+### Model summaries
+
+Specific information for each model can be found in the [information document][info.csv]. Columns with todo in the name should be filled out with your initials once completed. All other columns pertain to information specific the parameterization of each model.
+
+Eventually more summary data and descriptive plots will be available on the `README.md` files within each species folder.
+
+### Paramerization
+
+- Selectivity: parameterized using a double normal to mimic logistic selectivity
+  * age-based
+  * length-based
+
+- Maturity:
+  * age-based logistic maturity
+  * length-based logistic maturity
+
+### TODO
+
+- [ ] lbin type = 2
+- [ ] population bin width must be divisible by the data bin width
+- [ ] years = 1:100
+- [ ] Standardize parameter bounds using [standardize_bounds](https://github.com/ss3sim/ss3sim/blob/master/R/standardize_bounds.R): approach used in [Johnson *et al*. (2015)][johnsonetal] of lower bounds = 0.5% of init values and upper bounds = [ ] 500% of init values
+- [ ] Fishing case files: "F" case files for each model are based on Fmsy, which can be found with [profile_fmsy](https://github.com/ss3sim/ss3sim/blob/master/R/profile_fmsy.r). Casefiles are automatically generated from the script [create_f.R][fscript]. Please rerun this script any time a new model is added.
+  * F0 = Constant fishing at Fmsy (constant): years 25 - 100 at Fmsy;
+  * F1 = Two way trip (contrast): years 25 - 65 ramp up to 0.9 x Fmsy (right limb), years 66 - 100 ramp down from 0.9 x Fmsy (right limb) to 0.9 x Fmsy (left limb;
+  * F2 = One way trip (increase): years 25 - 100 ramp up to 0.9 x Fmsy (left limb).
 
 [vignette]: https://dl.dropboxusercontent.com/u/254940/ss3sim-vignette.pdf
 [paper]: http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0092725
@@ -48,5 +91,5 @@ Current contributors: the Fish600 team
 [SAFS]: http://fish.washington.edu/
 [ss3sim]: https://github.com/ss3sim/ss3sim
 [johnsonetal]: http://icesjms.oxfordjournals.org/content/early/2014/04/09/icesjms.fsu055.full.pdf?keytype=ref&ijkey=NEXmZIkz3289u3z)
-[info.csv]: https://github.com/ss3sim/growth_models/blob/master/modelinfo.csv
+[info.csv]: https://github.com/ss3sim/growth_models/blob/master/extra/modelinfo.csv
 [fscript]: https://github.com/ss3sim/growth_models/blob/master/create_f.R
