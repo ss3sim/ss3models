@@ -10,6 +10,7 @@
 check_model <- function(model, opts = "-nohess",
   ss_mode = c("safe", "optimized")) {
 
+  ss_mode <- match.arg(ss_mode)
   if(!ss_mode %in% c("safe", "optimized")) {
     warning(paste("ss_mode must be one of safe or optimized.",
       "Defaulting to safe mode"))
