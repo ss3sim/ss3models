@@ -35,6 +35,7 @@ years.rup <- 40
 ###############################################################################
 ###############################################################################
 library(ss3sim)
+library(r4ss)
 library(ggplot2)
 library(plyr)
 modelnames <- dir(file.path("inst", "models"))
@@ -70,7 +71,7 @@ for (m in seq_along(modelnames)) {
       stop(paste0("start or end not specified for ", modelnames[m]))
   byval <- (F.end-F.start)/N.steps
   fmsy[[m]] <- profile_fmsy(om_in = om.use, results_out = dir.results,
-    simlength = 100, start = 0.01, end = F.end, by_val = byval,
+    simlength = 100, start = F.start, end = F.end, by_val = byval,
     ss_mode = "safe")
 }
 
