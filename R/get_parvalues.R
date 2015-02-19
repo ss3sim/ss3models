@@ -21,7 +21,6 @@
 #' @importFrom r4ss SS_parlines
 
 get_parvalues <- function(modelfolder = ".", write_csv = TRUE) {
-
   wd <- getwd()
   on.exit(setwd(wd))
   setwd(modelfolder)
