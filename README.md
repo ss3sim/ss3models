@@ -45,7 +45,7 @@ SS3 files in the estimating model folders are:
 ``` r
 ss3model("hake", "em") %>%
   dir
-#> [1] "check.R"     "forecast.ss" "ss3.ctl"     "starter.ss"
+#> [1] "forecast.ss" "ss3.ctl"     "starter.ss"
 ```
 
 The ss3models package also contains a couple helper functions for working with and checking model setups. For example:
