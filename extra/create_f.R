@@ -49,7 +49,6 @@ foldername <- file.path(dir(file.path(getwd(), "inst", "models"),
 ###############################################################################
 fmsy <- list()
 ## We need a list of F ranges since they vary pretty widely
-N.steps <- 25
 
 truem <- vector(length = length(modelnames))
 for (ind in seq_along(truem)) {
@@ -59,6 +58,8 @@ for (ind in seq_along(truem)) {
 }
 F.start.list <- sapply(truem, function(x) ifelse(x > 0.25, 0.8, 0.015))
 F.end.list <- sapply(truem, function(x) ifelse(x > 0.25, 1.6, 0.4))
+
+N.steps <- 50
 for (m in seq_along(modelnames)) {
   dir.results <- file.path("fmsy", modelnames[m])
   dir.create(dir.results, recursive = TRUE, showWarnings = FALSE)
