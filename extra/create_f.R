@@ -142,7 +142,7 @@ comment1 <- paste0("# Two-way trip F, increasing to Fmsy (right limb) for, ",
 comment2 <- paste0("# One-way trip F, increasing to Fmsy (right limb) for 75\n")
 
 
-setwd("cases")
+setwd(file.path("inst", "cases"))
 for (spp in seq_along(modelnames)) {
     writeF(fvals = c(rep(0, years.burnin), rep(fmsytable[spp, "fmsy"], years.fish)),
            species = fmsytable$species[spp], case = 0,
