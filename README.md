@@ -7,8 +7,6 @@ ss3sim models
 
 This R package contains operating model (OM) and estimating model (EM) files and case files for use within the [ss3sim](https://github.com/ss3sim/ss3sim) package. [ss3sim](https://github.com/ss3sim/ss3sim) is an R package that facilitates flexible, rapid, and reproducible fisheries stock assessment simulation testing with the widely-used [Stock Synthesis 3](http://nft.nefsc.noaa.gov/Stock_Synthesis_3.htm) (SS3) statistical age-structured stock assessment framework.
 
-    #> Loading ss3models
-
 Install the ss3models package with:
 
 ``` r
