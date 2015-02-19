@@ -18,6 +18,14 @@ system.file("models/hake/om", package = "ss3models")
 system.file("models/hake/em", package = "ss3models")
 ```
 
+You can get a list of all available models in R with:
+
+```R
+dir(system.file("models", package = "ss3models"))
+## [1] "cod"          "cod-age"      "flatfish"     "flatfish-age" "hake"        
+## [6] "hake-age"     "mackerel"     "mackerel-age" "yellow"       "yellow-age"  
+```
+
 The SS3 model setup files in the operating model folders are:
 
 ```
