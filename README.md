@@ -66,7 +66,7 @@ head(p)
 #> 6   cod
 ```
 
-You can test all the operating model setups (run them through SS3) and run all the files through `ss3sim::check_data()` by running `devtools::test()` in the base `ss3models` folder.
+You can test all the operating model setups (run them through SS3 with `-noest`) and run all the files through `ss3sim::check_data()` by running `devtools::test()` in the base `ss3models` folder.
 
 If you also want to test the estimation model setups (run them through SS3 with `-nohess`) then uncomment the relevant code in [`tests/testthat/test-models.R`](tests/testthat/test-models.R). For now the code is commented out while we develop the models. They take a while to run.
 
