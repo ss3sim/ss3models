@@ -5,10 +5,10 @@
 #' @param path Folder path to the base of the package folder.
 #'
 #' @export
-#' @importFrom rmarkdown render
+# @importFrom rmarkdown render
 
 make_readme <- function(path = ".") {
-  render(paste0(path, "/README.Rmd"))
+  # render(paste0(path, "/README.Rmd"))
 }
 
 #' Make all README files
@@ -18,11 +18,11 @@ make_readme <- function(path = ".") {
 #' @param path Folder path to the base package folder.
 #'
 #' @export
-#' @importFrom rmarkdown render
+# @importFrom rmarkdown render
 
 make_readmes <- function(path = ".") {
   m <- list.files("inst")
   for (i in m) {
-    render(paste0(path, "/inst/models/", i, "/README.Rmd"))
+    # render(paste0(path, "/inst/models/", i, "/README.Rmd"))
   }
 }
