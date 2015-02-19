@@ -21,6 +21,8 @@ test_that("OMs run", {
 # })
 
 test_that("OM .dat files pass ss3sim checks", {
+  skip_on_cran()
+
   f <- system.file("models", package = "ss3models")
   models <- list.files(f)
 
