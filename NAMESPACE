@@ -2,8 +2,10 @@
 
 export(check_model)
 export(get_parvalues)
+export(list_models)
 export(make_readme)
 export(make_readmes)
+export(ss3model)
 importFrom(r4ss,SS_parlines)
 importFrom(r4ss,SS_writeforecast)
 importFrom(r4ss,SS_writestarter)
