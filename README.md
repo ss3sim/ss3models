@@ -2,18 +2,16 @@
 
 [![Travis-CI Build Status](https://travis-ci.org/ss3sim/ss3models.png?branch=master)](https://travis-ci.org/ss3sim/ss3models)
 
-This folder contains operating model (OM) and estimating model (EM) files and case files for use within the [ss3sim][ss3sim] package. [ss3sim][ss3sim] is an R package that facilitates flexible, rapid, and reproducible fisheries stock assessment simulation testing with the widely-used [Stock Synthesis 3][SS3] (SS3) statistical age-structured stock assessment framework.
+This R package contains operating model (OM) and estimating model (EM) files and case files for use within the [ss3sim][ss3sim] package. [ss3sim][ss3sim] is an R package that facilitates flexible, rapid, and reproducible fisheries stock assessment simulation testing with the widely-used [Stock Synthesis 3][SS3] (SS3) statistical age-structured stock assessment framework.
 
-**We are currently rearranging this repository into an R data package**
-
-Install the R package with:
+Install the ss3models package with:
 
 ```R
 # install.packages("devtools")
 devtools::install_github("ss3sim/ss3models")
 ```
 
-The model setups are installed with the package. The location of the operating models (`om` folders; OM) and estimation models (`em` folders; EM) can be accessed using `system.file()`:
+The model setups are stored in the package in the [`inst/models`](inst/models) folder. The local file path to the operating models (`om` folders) and estimating models (`em` folders) can be accessed using `system.file()`:
 
 ```R
 system.file("models/hake/om", package = "ss3models")
@@ -29,7 +27,7 @@ ss3.dat
 forecast.ss
 ```
 
-SS3 files in the estimation model folders are:
+SS3 files in the estimating model folders are:
 
 ```
 starter.ss
