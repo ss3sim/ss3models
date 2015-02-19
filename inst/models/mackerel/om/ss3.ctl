@@ -1,5 +1,5 @@
 #V3.24O
-#_data_and_control_files: mac.dat // mac.ctl
+#_data_and_control_files: ss3.dat // ss3.ctl
 #_SS-V3.24O-safe-win64;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.1
 1  #_N_Growth_Patterns
 1 #_N_Morphs_Within_GrowthPattern 
@@ -389,21 +389,17 @@
 # Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=SizeFreq; 7=sizeage; 8=catch; 9=init_equ_catch; 
 # 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin; 17=F_ballpark
 #like_comp fleet/survey  phase  value  sizefreq_method
-# 4 1 1 0 1
-# 9 1 1 0 1
-# 9 2 1 0 1
-# 11 1 1 0 1
 #
 # lambdas (for info only; columns are phases)
 #  0 #_CPUE/survey:_1
 #  1 #_CPUE/survey:_2
 #  1 #_CPUE/survey:_3
-#  0 #_lencomp:_1
+#  1 #_lencomp:_1
 #  0 #_lencomp:_2
 #  0 #_lencomp:_3
-#  0 #_init_equ_catch
+#  1 #_init_equ_catch
 #  1 #_recruitments
-#  0 #_parameter-priors
+#  1 #_parameter-priors
 #  1 #_parameter-dev-vectors
 #  1 #_crashPenLambda
 #  0 # F_ballpark_lambda

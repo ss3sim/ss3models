@@ -1,8 +1,8 @@
 #V3.24O
 #C Hake OM control file
 #C Created for Empirical simulation group, 2014
-#_data_and_control_files: hakeOM.dat // hakeOM.ctl
-#_SS-V3.24O-safe-MacOS;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.0
+#_data_and_control_files: ss3.dat // ss3.ctl
+#_SS-V3.24O-safe-win64;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.1
 1  #_N_Growth_Patterns
 1 #_N_Morphs_Within_GrowthPattern 
 #_Cond 1 #_Morph_between/within_stdev_ratio (no read if N_morphs=1)
@@ -102,6 +102,108 @@
 #_placeholder for full parameter lines for recruitment cycles
 # read specified recr devs
 #_Yr Input_value
+#
+# all recruitment deviations
+#DisplayOnly 0 # Main_RecrDev_1
+#DisplayOnly 0 # Main_RecrDev_2
+#DisplayOnly 0 # Main_RecrDev_3
+#DisplayOnly 0 # Main_RecrDev_4
+#DisplayOnly 0 # Main_RecrDev_5
+#DisplayOnly 0 # Main_RecrDev_6
+#DisplayOnly 0 # Main_RecrDev_7
+#DisplayOnly 0 # Main_RecrDev_8
+#DisplayOnly 0 # Main_RecrDev_9
+#DisplayOnly 0 # Main_RecrDev_10
+#DisplayOnly 0 # Main_RecrDev_11
+#DisplayOnly 0 # Main_RecrDev_12
+#DisplayOnly 0 # Main_RecrDev_13
+#DisplayOnly 0 # Main_RecrDev_14
+#DisplayOnly 0 # Main_RecrDev_15
+#DisplayOnly 0 # Main_RecrDev_16
+#DisplayOnly 0 # Main_RecrDev_17
+#DisplayOnly 0 # Main_RecrDev_18
+#DisplayOnly 0 # Main_RecrDev_19
+#DisplayOnly 0 # Main_RecrDev_20
+#DisplayOnly 0 # Main_RecrDev_21
+#DisplayOnly 0 # Main_RecrDev_22
+#DisplayOnly 0 # Main_RecrDev_23
+#DisplayOnly 0 # Main_RecrDev_24
+#DisplayOnly 0 # Main_RecrDev_25
+#DisplayOnly 0 # Main_RecrDev_26
+#DisplayOnly 0 # Main_RecrDev_27
+#DisplayOnly 0 # Main_RecrDev_28
+#DisplayOnly 0 # Main_RecrDev_29
+#DisplayOnly 0 # Main_RecrDev_30
+#DisplayOnly 0 # Main_RecrDev_31
+#DisplayOnly 0 # Main_RecrDev_32
+#DisplayOnly 0 # Main_RecrDev_33
+#DisplayOnly 0 # Main_RecrDev_34
+#DisplayOnly 0 # Main_RecrDev_35
+#DisplayOnly 0 # Main_RecrDev_36
+#DisplayOnly 0 # Main_RecrDev_37
+#DisplayOnly 0 # Main_RecrDev_38
+#DisplayOnly 0 # Main_RecrDev_39
+#DisplayOnly 0 # Main_RecrDev_40
+#DisplayOnly 0 # Main_RecrDev_41
+#DisplayOnly 0 # Main_RecrDev_42
+#DisplayOnly 0 # Main_RecrDev_43
+#DisplayOnly 0 # Main_RecrDev_44
+#DisplayOnly 0 # Main_RecrDev_45
+#DisplayOnly 0 # Main_RecrDev_46
+#DisplayOnly 0 # Main_RecrDev_47
+#DisplayOnly 0 # Main_RecrDev_48
+#DisplayOnly 0 # Main_RecrDev_49
+#DisplayOnly 0 # Main_RecrDev_50
+#DisplayOnly 0 # Main_RecrDev_51
+#DisplayOnly 0 # Main_RecrDev_52
+#DisplayOnly 0 # Main_RecrDev_53
+#DisplayOnly 0 # Main_RecrDev_54
+#DisplayOnly 0 # Main_RecrDev_55
+#DisplayOnly 0 # Main_RecrDev_56
+#DisplayOnly 0 # Main_RecrDev_57
+#DisplayOnly 0 # Main_RecrDev_58
+#DisplayOnly 0 # Main_RecrDev_59
+#DisplayOnly 0 # Main_RecrDev_60
+#DisplayOnly 0 # Main_RecrDev_61
+#DisplayOnly 0 # Main_RecrDev_62
+#DisplayOnly 0 # Main_RecrDev_63
+#DisplayOnly 0 # Main_RecrDev_64
+#DisplayOnly 0 # Main_RecrDev_65
+#DisplayOnly 0 # Main_RecrDev_66
+#DisplayOnly 0 # Main_RecrDev_67
+#DisplayOnly 0 # Main_RecrDev_68
+#DisplayOnly 0 # Main_RecrDev_69
+#DisplayOnly 0 # Main_RecrDev_70
+#DisplayOnly 0 # Main_RecrDev_71
+#DisplayOnly 0 # Main_RecrDev_72
+#DisplayOnly 0 # Main_RecrDev_73
+#DisplayOnly 0 # Main_RecrDev_74
+#DisplayOnly 0 # Main_RecrDev_75
+#DisplayOnly 0 # Main_RecrDev_76
+#DisplayOnly 0 # Main_RecrDev_77
+#DisplayOnly 0 # Main_RecrDev_78
+#DisplayOnly 0 # Main_RecrDev_79
+#DisplayOnly 0 # Main_RecrDev_80
+#DisplayOnly 0 # Main_RecrDev_81
+#DisplayOnly 0 # Main_RecrDev_82
+#DisplayOnly 0 # Main_RecrDev_83
+#DisplayOnly 0 # Main_RecrDev_84
+#DisplayOnly 0 # Main_RecrDev_85
+#DisplayOnly 0 # Main_RecrDev_86
+#DisplayOnly 0 # Main_RecrDev_87
+#DisplayOnly 0 # Main_RecrDev_88
+#DisplayOnly 0 # Main_RecrDev_89
+#DisplayOnly 0 # Main_RecrDev_90
+#DisplayOnly 0 # Main_RecrDev_91
+#DisplayOnly 0 # Main_RecrDev_92
+#DisplayOnly 0 # Main_RecrDev_93
+#DisplayOnly 0 # Main_RecrDev_94
+#DisplayOnly 0 # Main_RecrDev_95
+#DisplayOnly 0 # Main_RecrDev_96
+#DisplayOnly 0 # Main_RecrDev_97
+#DisplayOnly 0 # Main_RecrDev_98
+#DisplayOnly 0 # Main_RecrDev_99
+#DisplayOnly 0 # Main_RecrDev_100
 #
 #Fishing Mortality info 
 0.3 # F ballpark for annual F (=Z-M) for specified year
@@ -248,7 +350,7 @@
  10 0 0 0 # 1 Fishery
  10 0 0 0 # 2 Survey
  10 0 0 0 # 3 CPUE
-#_LO  HI  INIT  PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
+#_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  15 69 45.1 45 -1 0.05 1 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
  -5 10 -1 5 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
  -4 12 5.52 3 -1 0.05 2 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
