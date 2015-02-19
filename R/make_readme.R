@@ -22,8 +22,7 @@ make_readme <- function(path = ".") {
 
 make_readmes <- function(path = ".") {
   m <- list.files("inst")
-  m <- m[-which(m == "cases")]
   for (i in m) {
-    render(paste0(path, "/inst/", i, "/README.Rmd"))
+    render(paste0(path, "/inst/models/", i, "/README.Rmd"))
   }
 }
