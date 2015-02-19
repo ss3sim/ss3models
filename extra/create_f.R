@@ -37,10 +37,9 @@ years.rup <- 40
 library(ss3sim)
 library(ggplot2)
 library(plyr)
-modelnames <- dir(pattern = "om$", full.names = FALSE)
-foldername <- dir(getwd(), pattern = "om$", full.names = TRUE)
-modelnames <- modelnames[c(5,7,9)]
-foldername <- foldername[c(5,7,9)]
+modelnames <- dir(file.path("inst", "models"))
+foldername <- file.path(dir(file.path(getwd(), "inst", "models"),
+                        full.names = TRUE), "om")
 
 ###############################################################################
 ###############################################################################
@@ -83,8 +82,8 @@ ggplot(fmsytable.full) + geom_line(aes(fValues, eqCatch))+facet_wrap(".id", scal
     geom_vline(aes(xintercept=fmsy90r), col="gray") +
     geom_vline(aes(xintercept=fmsy), col="black") +
     geom_vline(aes(xintercept=fmsy90l), col="gray")
-ggsave("catch_curves.png", width=9, height=7)
-write.csv(fmsytable.full, "fmsytable.full.csv")
+ggsave(file.path("extra", "plots", "catch_curves.png"), width = 9, height = 7)
+write.csv(fmsytable.full, file.path("extra", "fmsytable.full.csv"))
 ## Pare down to just the meta data
 fmsytable <- unique(subset(fmsytable.full, select=-c(fValues, eqCatch)))
 
