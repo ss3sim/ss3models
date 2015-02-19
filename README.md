@@ -28,8 +28,6 @@ dir(system.file("models", package = "ss3models"))
 #>  [1] "cod"          "cod-age"      "flatfish"     "flatfish-age"
 #>  [5] "hake"         "hake-age"     "mackerel"     "mackerel-age"
 #>  [9] "yellow"       "yellow-age"
-## [1] "cod"          "cod-age"      "flatfish"     "flatfish-age" "hake"        
-## [6] "hake-age"     "mackerel"     "mackerel-age" "yellow"       "yellow-age"  
 ```
 
 The SS3 model setup files in the operating model folders are:
