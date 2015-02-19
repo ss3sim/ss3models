@@ -25,9 +25,8 @@ You can get a list of all available models in R with:
 
 ``` r
 dir(system.file("models", package = "ss3models"))
-#>  [1] "cod"          "cod-age"      "flatfish"     "flatfish-age"
-#>  [5] "hake"         "hake-age"     "mackerel"     "mackerel-age"
-#>  [9] "yellow"       "yellow-age"
+#>  [1] "cod"          "cod-age"      "flatfish"     "flatfish-age" "hake"        
+#>  [6] "hake-age"     "mackerel"     "mackerel-age" "yellow"       "yellow-age"
 ```
 
 The SS3 model setup files in the operating model folders are:
@@ -50,20 +49,13 @@ The ss3models package also contains a couple helper functions for working with a
 m <- system.file("models", package = "ss3models")
 p <- get_parvalues(m, write_csv = FALSE)
 head(p)
-#>                  Label    LO INIT.om INIT.em  HI PHASE PRIOR PR_type   SD
-#> 1        cohortgrowdev -4.00     1.0     1.0 4.0    -4  0.00      -1  0.0
-#> 2      cv_old_fem_gp_1  0.01     0.1     0.1 0.5     5  0.10      -1  0.8
-#> 3    cv_young_fem_gp_1  0.01     0.1     0.1 0.5     3  0.10      -1  0.8
-#> 4    eggs/kg_inter_fem -3.00     1.0     1.0 3.0    -3  0.00      -1  0.0
-#> 5 eggs/kg_slope_wt_fem -3.00     0.0     0.0 4.0    -3  0.00      -1  0.0
-#> 6       initf_1fishery  0.00     0.0     0.0 2.0    -1  0.01       0 99.0
-#>   model
-#> 1   cod
-#> 2   cod
-#> 3   cod
-#> 4   cod
-#> 5   cod
-#> 6   cod
+#>                  Label    LO INIT.om INIT.em  HI PHASE PRIOR PR_type   SD model
+#> 1        cohortgrowdev -4.00     1.0     1.0 4.0    -4  0.00      -1  0.0   cod
+#> 2      cv_old_fem_gp_1  0.01     0.1     0.1 0.5     5  0.10      -1  0.8   cod
+#> 3    cv_young_fem_gp_1  0.01     0.1     0.1 0.5     3  0.10      -1  0.8   cod
+#> 4    eggs/kg_inter_fem -3.00     1.0     1.0 3.0    -3  0.00      -1  0.0   cod
+#> 5 eggs/kg_slope_wt_fem -3.00     0.0     0.0 4.0    -3  0.00      -1  0.0   cod
+#> 6       initf_1fishery  0.00     0.0     0.0 2.0    -1  0.01       0 99.0   cod
 ```
 
 You can test all the operating model setups (run them through SS3 with `-noest`) and run all the files through `ss3sim::check_data()` by running `devtools::test()` in the base `ss3models` folder.
