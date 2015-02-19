@@ -10,7 +10,9 @@ output:
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  cache = TRUE,
+  autodep = TRUE
 )
 ```
 
@@ -20,7 +22,7 @@ knitr::opts_chunk$set(
 
 This R package contains operating model (OM) and estimating model (EM) files and case files for use within the [ss3sim][ss3sim] package. [ss3sim][ss3sim] is an R package that facilitates flexible, rapid, and reproducible fisheries stock assessment simulation testing with the widely-used [Stock Synthesis 3][SS3] (SS3) statistical age-structured stock assessment framework.
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, }
 devtools::load_all()
 ```
 
@@ -66,11 +68,7 @@ p <- get_parvalues(m, write_csv = FALSE)
 head(p)
 ```
 
-You can test all the operating model setups (run them through SS3) and run all the \code{.dat} files through `ss3sim::check_data()` by running the following in the base `ss3models` folder:
-
-```{r, eval = FALSE}
-devtools::test()
-```
+You can test all the operating model setups (run them through SS3) and run all the \code{.dat} files through `ss3sim::check_data()` by running `devtools::test()` in the base `ss3models` folder.
 
 If you also want to test the estimation model setups (run them through SS3 with `-nohess`) then uncomment the relevant code in [`tests/testthat/test-models.R`](tests/testthat/test-models.R). For now the code is commented out while we develop the models. They take a while to run. 
 
