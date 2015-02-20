@@ -15,6 +15,9 @@ check_model(model, opts = "-nohess", ss_mode = c("safe", "optimized"))
   for which SS3 binary to run. See the ss3sim vignette for
   instructions.}
 }
+\value{
+A data frame of warnings produced from SS3.
+}
 \description{
 Check SS3 models
 }
