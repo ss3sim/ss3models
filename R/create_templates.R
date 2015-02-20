@@ -60,12 +60,16 @@ create_templates <- function(modelfolder = ".", forecast = TRUE, starter = TRUE,
       file.copy("starter.ss", file.path("..", "em", "starter.ss"),
                 overwrite = TRUE)
       setwd(file.path("..", "em"))
-      starter <- readLines("starter.ss")
-      starter[grep("phase", starter)] <-
-        gsub("0", lastphase, grep("phase", starter, value = TRUE))
-      starter[grep("sdreport", starter)] <-
-        gsub("-1", "-2", grep("sdreport", starter, value = TRUE))
-      writeLines(starter, "starter.ss")
+      str.file <- readLines("starter.ss")
+      str.file[grep("use init values in control", str.file)] <-
+        gsub("^1", "0", grep("use init values in control", str.file, value = TRUE))
+      str.file[grep("phase", str.file)] <-
+        paste(lastphase, strsplit(grep("phase", str.file,
+        value = TRUE), "#")[[1]][2], sep = " #")
+      str.file[grep("max yr for sdreport", str.file)] <-
+        paste("-2", strsplit(grep("max yr for sdreport", str.file,
+        value = TRUE), "#")[[1]][2], sep = " #")
+      writeLines(str.file, "starter.ss")
       setwd(modelfolder)
     }
 
