@@ -6,6 +6,7 @@
 #'   binary to run. See the ss3sim vignette for instructions.
 #'
 #' @export
+#' @return A data frame of warnings produced from SS3.
 
 check_model <- function(model, opts = "-nohess",
   ss_mode = c("safe", "optimized")) {
@@ -28,5 +29,9 @@ check_model <- function(model, opts = "-nohess",
   file.copy(file.path(model, f), td, overwrite = TRUE)
   setwd(td)
   system(paste(ss_bin, opts))
+  warns <- readLines("warning.sso")[-c(1:2)]
+  warns <- warns[warns != ""]
+  warns <- data.frame("model" = model, "warnings" = warns)
   setwd(wd)
+  return(warns)
 }
