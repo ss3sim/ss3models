@@ -1,9 +1,0 @@
-# description: Linf fixed at 125% true value
-natM_type;          1Parm      
-natM_n_breakpoints; NULL  
-natM_lorenzen;      NULL
-natM_val;           c(NA,-1)
-par_name;           L_at_Amax_Fem_GP_1
-par_int;            59.280625
-par_phase;          -1
-forecast_num;       0
