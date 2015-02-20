@@ -1,7 +1,7 @@
 #V3.24f
 #_data_and_control_files: cod.dat // cod.ctl
 1 #_N_Growth_Patterns
-1 #_N_Morphs_Within_GrowthPattern 
+1 #_N_Morphs_Within_GrowthPattern
 #_Cond 1 #_Morph_between/within_stdev_ratio (no read if N_morphs=1)
 #_Cond  1 #vector_Morphdist_(-1_in_first_val_gives_normal_approx)
 #
@@ -14,10 +14,10 @@
 #_Cond 1 1 1 2 4 10 # example move definition for seas=1, morph=1, source=1 dest=2, age1=4, age2=10
 #
 0 #_Nblock_Patterns
-#_Cond 0 #_blocks_per_pattern 
+#_Cond 0 #_blocks_per_pattern
 # begin and end years of blocks
 #
-0.5 #_fracfemale 
+0.5 #_fracfemale
 0 #_natM_type:_0=1Parm; 1=N_breakpoints;_2=Lorenzen;_3=agespecific;_4=agespec_withseasinterpolate
 #_no additional input for selected M option; read 1P per morph
 1 # GrowthModel: 1=vonBert with L1&L2; 2=Richards with L1&L2; 3=age_speciific_K; 4=not implemented
@@ -25,7 +25,7 @@
 999 #_Growth_Age_for_L2 (999 to use as Linf)
 0 #_SD_add_to_LAA (set to 0.1 for SS2 V1.x compatibility)
 0 #_CV_Growth_Pattern:  0 CV=f(LAA); 1 CV=F(A); 2 SD=F(LAA); 3 SD=F(A); 4 logSD=F(A)
-2 #_maturity_option:  1=length logistic; 2=age logistic; 3=read age-maturity matrix by growth_pattern; 4=read age-fecundity; 5=read fec and wt from wtatage.ss   
+2 #_maturity_option:  1=length logistic; 2=age logistic; 3=read age-maturity matrix by growth_pattern; 4=read age-fecundity; 5=read fec and wt from wtatage.ss
 #_Age_Maturity by growth pattern
 2 #_First_Mature_Age
 1 #_fecundity option:(1)eggs=Wt*(a+b*Wt);(2)eggs=a*L^b;(3)eggs=a*Wt^b; (4)eggs=a+b*L; (5)eggs=a+b*W
@@ -44,8 +44,8 @@
 5e-04    0.5     0.1         0.1         -1     0.8     -5      0	0	0	0	0	0	0	# CV_old_Fem_GP_1
 0       3   0.0000068   0.0000068       -1     0       -1      0	0	0	0	0	0	0	# Wtlen_1_Fem
 0.015505 15.505     3.101       3.101       -1     0.2     -3      0	0	0	0	0	0	0	# Wtlen_2_Fem
-0.00943 9.43     1.886        0           -1     0       -3      0	0	0	0	0	0	0	# Mat50%_Fem -     
--24.49616      5       -4.899233       0           -1     0       -3      0	0	0	0	0	0	0	# Mat_slope_Fem    
+0.00943 9.43     1.886        0           -1     0       -3      0	0	0	0	0	0	0	# Mat50%_Fem -
+-24.49616      5       -4.899233       0           -1     0       -3      0	0	0	0	0	0	0	# Mat_slope_Fem
 -3      3       1           0           -1     0       -3      0	0	0	0	0	0	0	# Eggs/kg_inter_Fem
 -3      4       0           0           -1     0       -3      0	0	0	0	0	0	0	# Eggs/kg_slope_wt_Fem
 -4      4       0           0           -1     0       -4      0	0	0	0	0	0	0	# RecrDist_GP_1
@@ -57,7 +57,7 @@
 #
 #_Cond 0  #custom_MG-block_setup (0/1)
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no MG-block parameters
-#_Cond No MG parm trends 
+#_Cond No MG parm trends
 #
 #_seasonal_effects_on_biology_parms
  0 0 0 0 0 0 0 0 0 0 #_femwtlen1,femwtlen2,mat1,mat2,fec1,fec2,Malewtlen1,malewtlen2,L1,K
@@ -79,7 +79,7 @@
 1  #do_recdev:  0=none; 1=devvector; 2=simple deviations
 1 # first year of main recr_devs; early devs can preceed this era - ##### NOTE: May need to be changed
 100 # last year of main recr_devs; forecast devs start in following year - ##### NOTE: May need to be changed
--2  #_recdev phase 
+-2  #_recdev phase
 1    # (0/1) to read 13 advanced options
 0    #_recdev_early_start (0=none; neg value makes relative to recdev_start)
 -4   #_recdev_early_phase
@@ -89,7 +89,7 @@
 1 #_first_yr_fullbias_adj_in_MPD
 100 #_last_yr_fullbias_adj_in_MPD
 101 #_first_recent_yr_nobias_adj_in_MPD
-0    #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs) - 
+0    #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs) -
 0    #_period of cycles in recruitment (N parms read below)
 -5   #min rec_dev
 5    #max rec_dev
@@ -99,7 +99,7 @@
 #_placeholder for full parameter lines for recruitment cycles
 # read specified recr devs
 #
-#Fishing Mortality info 
+#Fishing Mortality info
 0.3 # F ballpark for tuning early phases
 -1 # F ballpark year (neg value to disable)
 2 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
@@ -115,7 +115,7 @@
 
 #_initial_F_parms
 #_LO  HI  INIT   PRIOR  PR_type   SD   PHASE
-   0  2   0  0.01     0       99    -1    # InitF_1Fishery 
+   0  2   0  0.01     0       99    -1    # InitF_1Fishery
 
 #_Q_setup
  # Q_type options:  <0=mirror, 0=float_nobiasadj, 1=float_biasadj, 2=parm_nobiasadj, 3=parm_w_random_dev, 4=parm_w_randwalk, 5=mean_unbiased_float_assign_to_parm
@@ -141,7 +141,7 @@
 
 #_age_selex_types
 #_Pattern ___ Male Special
-20 0 0 0  # 1 Fishery 
+20 0 0 0  # 1 Fishery
 20 0 0 0  # 2 SURVEY
 15 0 0 1  # 3 CPUE - Mirrors Fishery
 
@@ -159,11 +159,11 @@
 -15.0	5.0	-999.0	-999.0	1	0.05	-2	0	0	0	0	0.5	0	0	#	Survey INIT	logistic
 -5.0	5.0	-999.0	-999.0	1	0.05	-2	0	0	0	0	0.5	0	0	#	Survey FINAL	logistic
 
-#_Cond 0 #_custom_sel-env_setup (0/1) 
+#_Cond 0 #_custom_sel-env_setup (0/1)
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
-#_Cond 0 #_custom_sel-blk_setup (0/1) 
+#_Cond 0 #_custom_sel-blk_setup (0/1)
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no block usage
-#_Cond No selex parm trends 
+#_Cond No selex parm trends
 #_Cond -4 # placeholder for selparm_Dev_Phase
 #_env/block/dev_adjust_method (1=standard; 2=logistic trans to keep in base parm bounds; 3=standard w/ no bound check)
 
@@ -172,7 +172,7 @@
 #_Cond -6 6 1 1 2 0.01 -4 0 0 0 0 0 0 0  #_placeholder if no parameters
 #
 0 #_Variance_adjustments_to_input_values
-#_fleet: 1 2 3 
+#_fleet: 1 2 3
 #  0   0    0    #_add_to_survey_CV
 #  0   0    0    #_add_to_discard_stddev
 #  0   0    0    #_add_to_bodywt_CV
@@ -184,7 +184,7 @@
 1 #_sd_offset
 #
 0 # number of changes to make to default Lambdas (default value is 1.0)
-# Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=SizeFreq; 7=sizeage; 8=catch; 
+# Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=SizeFreq; 7=sizeage; 8=catch;
 # 9=init_equ_catch; 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin
 #like_comp fleet/survey  phase  value  sizefreq_method
 
@@ -204,12 +204,9 @@
 #  1 1 1 1 #_parameter-dev-vectors
 #  1 1 1 1 #_crashPenLambda
 
-0 # (0/1) read specs for more stddev reporting 
+0 # (0/1) read specs for more stddev reporting
  # 0 1 -1 5 1 5 1 -1 5 # placeholder for selex type, len/age, year, N selex bins, Growth pattern, N growth ages, NatAge_area(-1 for all), NatAge_yr, N Natages
  # placeholder for vector of selex bins to be reported
  # placeholder for vector of growth ages to be reported
  # placeholder for vector of NatAges ages to be reported
 999
-
-
-
