@@ -27,7 +27,8 @@ test_that("OM .dat files pass ss3sim checks", {
   models <- list.files(f)
 
   output <- lapply(models, function(x) {
-    d <- r4ss::SS_readdat(file.path(f, x, "om", "ss3.dat"))
+    message(paste("Checking", x))
+    d <- r4ss::SS_readdat(file.path(f, x, "om", "ss3.dat"), verbose = FALSE)
     ss3sim::check_data(d)
   })
 })
