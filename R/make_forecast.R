@@ -45,6 +45,7 @@
 #'   disk or not. File will always be returned as a \code{invisible} independent of
 #'   \code{write_file}. Default is to write to the disk.
 #'
+#' @export
 #' @importFrom r4ss SS_writeforecast
 #' @author Kelli Johnson
 
