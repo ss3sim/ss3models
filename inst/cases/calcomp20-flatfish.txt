@@ -1,0 +1,3 @@
+fleets; c(2)
+years; list(sample(c(76, 80, 84, 88, 92, 96, 100), 2, replace = FALSE))
+Nsamp; list(100)
