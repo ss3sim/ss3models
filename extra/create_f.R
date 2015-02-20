@@ -10,6 +10,9 @@
 ####Outputs    :
 ####Remarks    : Character width = 80
 ## Modified 2/10/15 by Cole to fix fmsytable and make plots for checking
+## Modified 2/20/15 by Cole to make paths work with installed package, not
+## cloned git repo. Also changed bounds for F values based on M, and added
+## NatM to the plot/table...
 #-----------------------------------------------------------------------------#
 ###############################################################################
 ###############################################################################
@@ -38,8 +41,9 @@ library(ss3sim)
 library(r4ss)
 library(ggplot2)
 library(plyr)
-modelnames <- dir(file.path("inst", "models"))
-foldername <- file.path(dir(file.path(getwd(), "inst", "models"),
+setwd(find.package("ss3models"))
+modelnames <- dir("models")
+foldername <- file.path(dir(file.path(getwd(), "models"),
                         full.names = TRUE), "om")
 
 ###############################################################################
@@ -50,28 +54,23 @@ foldername <- file.path(dir(file.path(getwd(), "inst", "models"),
 ###############################################################################
 fmsy <- list()
 ## We need a list of F ranges since they vary pretty widely
-
 truem <- vector(length = length(modelnames))
 for (ind in seq_along(truem)) {
   om <- dir(foldername[ind], pattern = ".ctl", full.names = TRUE)
   pars <- SS_parlines(om)
   truem[ind] <- pars[grep("NatM", pars$Label), "INIT"]
 }
-F.start.list <- sapply(truem, function(x) ifelse(x > 0.25, 0.8, 0.015))
-F.end.list <- sapply(truem, function(x) ifelse(x > 0.25, 1.6, 0.4))
+truem.df <- data.frame(species=modelnames, NatM=truem)
+F.start <- truem*.05#sapply(truem, function(x) ifelse(x > 0.25, 0.8, 0.015))
+F.end <- truem*6 #sapply(truem, function(x) ifelse(x > 0.25, 1.6, 0.4))
 
 N.steps <- 50
 for (m in seq_along(modelnames)) {
   dir.results <- file.path("fmsy", modelnames[m])
   dir.create(dir.results, recursive = TRUE, showWarnings = FALSE)
-  om.use <- foldername[m]
-  F.end <- F.end.list[m]
-  F.start <- F.start.list[m]
-  if(is.null(F.end) | is.null(F.start))
-      stop(paste0("start or end not specified for ", modelnames[m]))
-  byval <- (F.end-F.start)/N.steps
-  fmsy[[m]] <- profile_fmsy(om_in = om.use, results_out = dir.results,
-    simlength = 100, start = F.start, end = F.end, by_val = byval,
+  byval <- (F.end[m]-F.start[m])/N.steps
+  fmsy[[m]] <- profile_fmsy(om_in = foldername[m], results_out = dir.results,
+    simlength = 100, start = F.start[m], end = F.end[m], by_val = byval,
     ss_mode = "safe")
 }
 
@@ -84,14 +83,17 @@ fmsytable.full <- ldply(fmsy, mutate,
                    fmsy90l=fValues[which(eqCatch > catch90)][1],
                    fmsy90r=fValues[rev(which(eqCatch > catch90))][1])
 fmsytable.full$species <- gsub("-om", "", fmsytable.full$.id)
-ggplot(fmsytable.full) + geom_line(aes(fValues, eqCatch))+facet_wrap(".id", scales="free") +
+fmsytable.full <- merge(fmsytable.full, y=truem.df, by="species")
+fmsytable.full$.id <- NULL
+g <- ggplot(fmsytable.full) + geom_line(aes(fValues, eqCatch))+facet_wrap("species", scales="free") +
     ggtitle("Catch Curves for models") +
     geom_point(aes(x=fmsy, y=maxcatch)) +
     geom_hline(aes(yintercept=catch90), col="blue") +
     geom_vline(aes(xintercept=fmsy90r), col="gray") +
     geom_vline(aes(xintercept=fmsy), col="black") +
-    geom_vline(aes(xintercept=fmsy90l), col="gray")
-ggsave(file.path("extra", "plots", "catch_curves.png"), width = 9, height = 7)
+    geom_vline(aes(xintercept=fmsy90l), col="gray") +
+    geom_vline(aes(xintercept=NatM), col="red")
+ggsave(file.path("extra", "plots", "catch_curves.png"), g, width=9, height=7)
 write.csv(fmsytable.full, file.path("extra", "fmsytable.full.csv"))
 ## Pare down to just the meta data
 fmsytable <- unique(subset(fmsytable.full, select=-c(fValues, eqCatch)))
@@ -144,16 +146,20 @@ comment2 <- paste0("# One-way trip F, increasing to Fmsy (right limb) for 75\n")
 
 setwd(file.path("inst", "cases"))
 for (spp in seq_along(modelnames)) {
-    writeF(fvals = c(rep(0, years.burnin), rep(fmsytable[spp, "fmsy"], years.fish)),
+    ## Some species are special cases and we need to scale the whole F
+    ## sequence down to improve convergence. So far just hake and mackerel
+    ## models
+    scal <- ifelse(length(grep("hake|mackerel",modelnames[spp]))>0, .6, 1)
+    writeF(fvals = scal*c(rep(0, years.burnin), rep(fmsytable[spp, "fmsy"], years.fish)),
            species = fmsytable$species[spp], case = 0,
            comment = paste0(comment, comment0))
-    writeF(fvals = c(rep(0, years.burnin),
+    writeF(fvals = scal*c(rep(0, years.burnin),
                      seq(0, fmsytable[spp, "fmsy90r"], length.out = years.rup),
                      seq(fmsytable[spp, "fmsy90r"], fmsytable[spp, "fmsy90l"],
                          length.out = years.rdown)),
            species = fmsytable$species[spp], case = 1,
            comment = paste0(comment, comment1))
-    writeF(fvals = c(rep(0, years.burnin),
+    writeF(fvals = scal*c(rep(0, years.burnin),
                      seq(0, fmsytable[spp, "fmsy90r"], length.out = years.fish)),
            species = fmsytable$species[spp], case = 2,
            comment = paste0(comment, comment2))
