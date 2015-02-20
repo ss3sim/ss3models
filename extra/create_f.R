@@ -38,9 +38,14 @@ library(ss3sim)
 library(r4ss)
 library(ggplot2)
 library(plyr)
-modelnames <- dir(file.path("inst", "models"))
-foldername <- file.path(dir(file.path(getwd(), "inst", "models"),
-                        full.names = TRUE), "om")
+
+# If you are a developer uncomment this line
+# devtools::load_all("MUST TYPE IN PATH TO CLONED VERSION OF SS3MODELS")
+library(ss3models)
+
+modelnames <- dir(system.file("models", package = "ss3models"))
+foldername <- file.path(dir(file.path(
+  system.file("models", package = "ss3models")), full.names = TRUE), "om")
 
 ###############################################################################
 ###############################################################################
@@ -91,8 +96,8 @@ ggplot(fmsytable.full) + geom_line(aes(fValues, eqCatch))+facet_wrap(".id", scal
     geom_vline(aes(xintercept=fmsy90r), col="gray") +
     geom_vline(aes(xintercept=fmsy), col="black") +
     geom_vline(aes(xintercept=fmsy90l), col="gray")
-ggsave(file.path("extra", "plots", "catch_curves.png"), width = 9, height = 7)
-write.csv(fmsytable.full, file.path("extra", "fmsytable.full.csv"))
+ggsave(file.path("fmsy", "catch_curves.png"), width = 9, height = 7)
+write.csv(fmsytable.full, file.path("fmsy", "fmsytable.full.csv"))
 ## Pare down to just the meta data
 fmsytable <- unique(subset(fmsytable.full, select=-c(fValues, eqCatch)))
 
@@ -142,7 +147,7 @@ comment1 <- paste0("# Two-way trip F, increasing to Fmsy (right limb) for, ",
 comment2 <- paste0("# One-way trip F, increasing to Fmsy (right limb) for 75\n")
 
 
-setwd(file.path("inst", "cases"))
+setwd(system.file("cases", package = "ss3models"))
 for (spp in seq_along(modelnames)) {
     writeF(fvals = c(rep(0, years.burnin), rep(fmsytable[spp, "fmsy"], years.fish)),
            species = fmsytable$species[spp], case = 0,
