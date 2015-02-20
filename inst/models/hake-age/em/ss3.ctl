@@ -71,7 +71,7 @@
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI INIT PRIOR PR_type SD PHASE
- 13 17 13 15 -1 99 1 # SR_LN(R0)
+ 13 17 13 15 -1 99 2 # SR_LN(R0)
  0.2 1 0.200318 0.777 -1 0.113 -4 # SR_BH_steep
  1 1.6 1.4 1.1 -1 99 -6 # SR_sigmaR
  -5 5 0 0 -1 99 -50 # SR_envlink
@@ -82,7 +82,7 @@
 1 #do_recdev:  0=none; 1=devvector; 2=simple deviations
 1 # first year of main recr_devs; early devs can preceed this era
 100 # last year of main recr_devs; forecast devs start in following year
-3 #_recdev phase 
+1 #_recdev phase 
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
  -4 #_recdev_early_phase
@@ -231,7 +231,7 @@
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -3 3 0 0 -1 99 -5 # LnQ_base_1_Fishery
- -3 3 0 0 -1 99 5 # LnQ_base_2_Survey
+ -3 3 0 0 -1 99 3 # LnQ_base_2_Survey
  -3 3 0 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
@@ -247,15 +247,15 @@
  20 0 0 0 # 2 Survey
  15 0 0 1 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 0 69 4.33 45 -1 0.05 1 0 0 0 0 0 0 0 # AgeSel_1P_1_Fishery
+ 0 69 4.33 45 -1 0.05 4 0 0 0 0 0 0 0 # AgeSel_1P_1_Fishery
  -5 10 -1 5 -1 0.05 -3 0 0 0 0 0 0 0 # AgeSel_1P_2_Fishery
- -4 12 1.1 3 -1 0.05 2 0 0 0 0 0 0 0 # AgeSel_1P_3_Fishery
+ -4 12 1.1 3 -1 0.05 5 0 0 0 0 0 0 0 # AgeSel_1P_3_Fishery
  -2 30 15 10 -1 0.05 -4 0 0 0 0 0 0 0 # AgeSel_1P_4_Fishery
  -999 5 -999 -999 -1 0.05 -3 0 0 0 0 0 0 0 # AgeSel_1P_5_Fishery
  -9 1000 999 0.5 -1 0.05 -4 0 0 0 0 0 0 0 # AgeSel_1P_6_Fishery
- 0 69 3.72 45 -1 0.05 1 0 0 0 0 0 0 0 # AgeSel_2P_1_Survey
+ 0 69 3.72 45 -1 0.05 4 0 0 0 0 0 0 0 # AgeSel_2P_1_Survey
  -5 10 -1 5 -1 0.05 -3 0 0 0 0 0 0 0 # AgeSel_2P_2_Survey
- -4 12 1.06 3 -1 0.05 2 0 0 0 0 0 0 0 # AgeSel_2P_3_Survey
+ -4 12 1.06 3 -1 0.05 5 0 0 0 0 0 0 0 # AgeSel_2P_3_Survey
  -2 30 15 10 -1 0.05 -4 0 0 0 0 0 0 0 # AgeSel_2P_4_Survey
  -999 5 -999 -999 -1 0.05 -3 0 0 0 0 0 0 0 # AgeSel_2P_5_Survey
  -9 1000 999 0.5 -1 0.05 -4 0 0 0 0 0 0 0 # AgeSel_2P_6_Survey

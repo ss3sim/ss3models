@@ -36,7 +36,7 @@
 #
 #_growth_parms
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 0.01 0.15 0.05 0.05 0 0.0226 -6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
+ 0.01 0.15 0.05 0.05 -1 0.0226 -6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
  10 35 18 30 -1 99 -1 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
  40 120 62 66 -1 99 -1 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
  0.01 0.2 0.047 0.05 -1 99 -1 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
@@ -69,8 +69,8 @@
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI INIT PRIOR PR_type SD PHASE
- 3 15 5.6 5 -1 99 -1 # SR_LN(R0)
- 0.2 1 0.44 0.44 2 0.1 -7 # SR_BH_steep
+ 3 15 5.6 5 -1 99 1 # SR_LN(R0)
+ 0.2 1 0.44 0.44 -1 0.1 -7 # SR_BH_steep
  0 5 0.5 1 -1 99 -50 # SR_sigmaR
  -5 5 0 0 -1 99 -50 # SR_envlink
  -5 5 0 0 -1 99 -50 # SR_R1_offset
@@ -80,7 +80,7 @@
 1 #do_recdev:  0=none; 1=devvector; 2=simple deviations
 1 # first year of main recr_devs; early devs can preceed this era
 100 # last year of main recr_devs; forecast devs start in following year
-1 #_recdev phase 
+2 #_recdev phase 
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
  -4 #_recdev_early_phase
@@ -215,7 +215,7 @@
 #
 #_initial_F_parms
 #_LO HI INIT PRIOR PR_type SD PHASE
- 0 1 0 0.01 0 99 -1 # InitF_1fishery1
+ 0 1 0 0.01 -1 99 -1 # InitF_1fishery1
 #
 #_Q_setup
  # Q_type options:  <0=mirror, 0=float_nobiasadj, 1=float_biasadj, 2=parm_nobiasadj, 3=parm_w_random_dev, 4=parm_w_randwalk, 5=mean_unbiased_float_assign_to_parm
@@ -229,7 +229,7 @@
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -20 20 0 0 -1 99 -5 # LnQ_base_1_fishery1
- -20 20 -0.0656039 0 -1 99 5 # LnQ_base_2_survey1
+ -20 20 -0.0656039 0 -1 99 3 # LnQ_base_2_survey1
  -20 20 0 0 -1 99 -5 # LnQ_base_3_survey2
 #
 #_size_selex_types
@@ -245,16 +245,16 @@
  20 0 0 0 # 2 survey1
  15 0 0 1 # 3 survey2
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 40 89 21.2 57 -1 99 3 0 0 0 0 0.5 0 0 # AgeSel_1P_1_fishery1
- -5 0 -1 -5 0 5 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_2_fishery1
- 0 10 4.08 5 -1 99 3 0 0 0 0 0.5 0 0 # AgeSel_1P_3_fishery1
- 0 30 15 10 0 10 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_4_fishery1
+ 40 89 21.2 57 -1 99 4 0 0 0 0 0.5 0 0 # AgeSel_1P_1_fishery1
+ -5 0 -1 -5 -1 5 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_2_fishery1
+ 0 10 4.08 5 -1 99 5 0 0 0 0 0.5 0 0 # AgeSel_1P_3_fishery1
+ 0 30 15 10 -1 10 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_4_fishery1
  -15 0 -999 -10 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_5_fishery1
- -999 10000 999 0 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_6_fishery1
- 40 89 18.28 57 -1 99 3 0 0 0 0 0.5 0 0 # AgeSel_2P_1_survey1
- -5 0 -1 -5 0 5 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_2_survey1
- 0 10 4.08 5 -1 99 3 0 0 0 0 0.5 0 0 # AgeSel_2P_3_survey1
- 0 30 15 10 0 10 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_4_survey1
+ -999 10000 999 -1 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_6_fishery1
+ 40 89 18.28 57 -1 99 4 0 0 0 0 0.5 0 0 # AgeSel_2P_1_survey1
+ -5 0 -1 -5 -1 5 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_2_survey1
+ 0 10 4.08 5 -1 99 5 0 0 0 0 0.5 0 0 # AgeSel_2P_3_survey1
+ 0 30 15 10 -1 10 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_4_survey1
  -15 0 -999 -10 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_5_survey1
  -999 10000 999 0 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_6_survey1
 #_Cond 0 #_custom_sel-env_setup (0/1) 

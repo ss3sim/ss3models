@@ -1,5 +1,5 @@
 #V3.24O
-#_data_and_control_files: mac.dat // mac.ctl
+#_data_and_control_files: ss3.dat // ss3.ctl
 #_SS-V3.24O-safe-win64;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.1
 1  #_N_Growth_Patterns
 1 #_N_Morphs_Within_GrowthPattern 

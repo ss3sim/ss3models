@@ -1,7 +1,7 @@
 #V3.24O
 #C Hake OM control file
 #C Created for Empirical simulation group, 2014
-#_data_and_control_files: hakeOM.dat // hakeOM.ctl
+#_data_and_control_files: ss3.dat // ss3.ctl
 #_SS-V3.24O-safe-win64;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.1
 1  #_N_Growth_Patterns
 1 #_N_Morphs_Within_GrowthPattern 
