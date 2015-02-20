@@ -1,0 +1,9 @@
+natM_type; 1Parm 
+natM_n_breakpoints; NULL 
+natM_lorenzen; NULL 
+natM_val; c(NA, NA) 
+par_name; NULL 
+par_int; NULL 
+par_phase; NULL 
+forecast_num; 1
+run_change_e_full; TRUE

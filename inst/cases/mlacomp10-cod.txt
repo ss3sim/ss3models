@@ -1,0 +1,4 @@
+fleets; c(1)
+years; list(sample(c(26, 46, 60, 68, 76, 84, 92, 100), 2, replace = FALSE))
+Nsamp; list(500)
+mean_outfile; vbgf_remove
