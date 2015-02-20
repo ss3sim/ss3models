@@ -1,3 +1,0 @@
-fleets;2
-years;list(seq(50,100, by=2))
-sds_obs;list(.01)
