@@ -1,8 +1,8 @@
 #V3.24O
-#_data_and_control_files: flaEM.dat // flaEM.ctl
+#_data_and_control_files: ss3.dat // ss3.ctl
 #_SS-V3.24O-safe-win64;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.1
 1  #_N_Growth_Patterns
-1 #_N_Morphs_Within_GrowthPattern
+1 #_N_Morphs_Within_GrowthPattern 
 #_Cond 1 #_Morph_between/within_stdev_ratio (no read if N_morphs=1)
 #_Cond  1 #vector_Morphdist_(-1_in_first_val_gives_normal_approx)
 #
@@ -15,10 +15,10 @@
 #_Cond 1 1 1 2 4 10 # example move definition for seas=1, morph=1, source=1 dest=2, age1=4, age2=10
 #
 0 #_Nblock_Patterns
-#_Cond 0 #_blocks_per_pattern
+#_Cond 0 #_blocks_per_pattern 
 # begin and end years of blocks
 #
-0.5 #_fracfemale
+0.5 #_fracfemale 
 0 #_natM_type:_0=1Parm; 1=N_breakpoints;_2=Lorenzen;_3=agespecific;_4=agespec_withseasinterpolate
   #_no additional input for selected M option; read 1P per morph
 1 # GrowthModel: 1=vonBert with L1&L2; 2=Richards with L1&L2; 3=age_speciific_K; 4=not implemented
@@ -37,12 +37,12 @@
 #_growth_parms
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  0.01 1.8 0.2 0 -1 0.8 -3 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
- 2 20 12.6666 30.8 -1 0.2 3 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
- 25 80 47.4245 40.1 -1 0.2 3 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
- 0.01 2 0.347769 0 -1 0.8 3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
- 0.01 0.5 0.2 0.2 -1 0.8 6 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
- 0.01 0.5 0.2 0.2 -1 0.8 6 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
- 0 3 1e-005 1e-005 -1 0.2 -3 0 0 0 0 0 0 0 # Wtlen_1_Fem
+ 0.63333 63.333 12.6666 30.8 -1 0.2 -3 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
+ 2.371225 237.1225 47.4245 40.1 -1 0.2 -3 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
+ 0.01738845 1.738845 0.347769 0 -1 0.8 -3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
+ 0.01 0.5 0.2 0.2 -1 0.8 -6 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
+ 0.01 0.5 0.2 0.2 -1 0.8 -6 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
+ 0 3 1e-05 1e-05 -1 0.2 -3 0 0 0 0 0 0 0 # Wtlen_1_Fem
  2.5 3.5 3 2.98 -1 0.2 -3 0 0 0 0 0 0 0 # Wtlen_2_Fem
  25 35 28.9 0.879 -1 0.8 -3 0 0 0 0 0 0 0 # Mat50%_Fem
  -3 3 -0.42 -1.14 -1 0.8 -3 0 0 0 0 0 0 0 # Mat_slope_Fem
@@ -58,7 +58,7 @@
 #
 #_Cond 0  #custom_MG-block_setup (0/1)
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no MG-block parameters
-#_Cond No MG parm trends
+#_Cond No MG parm trends 
 #
 #_seasonal_effects_on_biology_parms
  0 0 0 0 0 0 0 0 0 0 #_femwtlen1,femwtlen2,mat1,mat2,fec1,fec2,Malewtlen1,malewtlen2,L1,K
@@ -69,9 +69,9 @@
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI INIT PRIOR PR_type SD PHASE
- .052467 52.467 10.4934 10.3 -1 10 1 # SR_LN(R0)
+ 4 20 10.4934 10.3 -1 10 -1 # SR_LN(R0)
  0.0038 3.803 0.760619 0.7 -1 0.05 -4 # SR_BH_steep
- .004 4 0.7 0.8 -1 0.8 -4 # SR_sigmaR
+ 0.004 4 0.7 0.8 -1 0.8 -4 # SR_sigmaR
  -5 5 0 0 -1 1 -3 # SR_envlink
  -5 5 0 0 -1 1 -4 # SR_R1_offset
  0 0 0 0 -1 0 -99 # SR_autocorr
@@ -80,7 +80,7 @@
 1 #do_recdev:  0=none; 1=devvector; 2=simple deviations
 1 # first year of main recr_devs; early devs can preceed this era
 100 # last year of main recr_devs; forecast devs start in following year
-2 #_recdev phase
+2 #_recdev phase 
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
  -4 #_recdev_early_phase
@@ -101,7 +101,109 @@
 # read specified recr devs
 #_Yr Input_value
 #
-#Fishing Mortality info
+# all recruitment deviations
+#DisplayOnly 0.789342 # Main_RecrDev_1
+#DisplayOnly -0.789656 # Main_RecrDev_2
+#DisplayOnly -0.0314567 # Main_RecrDev_3
+#DisplayOnly -0.644678 # Main_RecrDev_4
+#DisplayOnly 0.445013 # Main_RecrDev_5
+#DisplayOnly -0.486787 # Main_RecrDev_6
+#DisplayOnly -0.971287 # Main_RecrDev_7
+#DisplayOnly 0.373564 # Main_RecrDev_8
+#DisplayOnly 0.582253 # Main_RecrDev_9
+#DisplayOnly 0.327679 # Main_RecrDev_10
+#DisplayOnly -0.0581451 # Main_RecrDev_11
+#DisplayOnly 0.283437 # Main_RecrDev_12
+#DisplayOnly 0.232145 # Main_RecrDev_13
+#DisplayOnly 0.114803 # Main_RecrDev_14
+#DisplayOnly 0.163688 # Main_RecrDev_15
+#DisplayOnly 0.0291937 # Main_RecrDev_16
+#DisplayOnly 0.150812 # Main_RecrDev_17
+#DisplayOnly 0.260825 # Main_RecrDev_18
+#DisplayOnly -0.156381 # Main_RecrDev_19
+#DisplayOnly 0.0299737 # Main_RecrDev_20
+#DisplayOnly 0.050797 # Main_RecrDev_21
+#DisplayOnly -0.0587786 # Main_RecrDev_22
+#DisplayOnly -0.411641 # Main_RecrDev_23
+#DisplayOnly -0.30124 # Main_RecrDev_24
+#DisplayOnly -0.239219 # Main_RecrDev_25
+#DisplayOnly -0.228678 # Main_RecrDev_26
+#DisplayOnly -0.122115 # Main_RecrDev_27
+#DisplayOnly -0.195053 # Main_RecrDev_28
+#DisplayOnly 0.113509 # Main_RecrDev_29
+#DisplayOnly -0.0846659 # Main_RecrDev_30
+#DisplayOnly -0.0513065 # Main_RecrDev_31
+#DisplayOnly -0.000338667 # Main_RecrDev_32
+#DisplayOnly -0.1266 # Main_RecrDev_33
+#DisplayOnly -0.105856 # Main_RecrDev_34
+#DisplayOnly -0.0150804 # Main_RecrDev_35
+#DisplayOnly -0.168079 # Main_RecrDev_36
+#DisplayOnly -0.202681 # Main_RecrDev_37
+#DisplayOnly -0.124319 # Main_RecrDev_38
+#DisplayOnly 0.0230486 # Main_RecrDev_39
+#DisplayOnly -0.189 # Main_RecrDev_40
+#DisplayOnly -0.010437 # Main_RecrDev_41
+#DisplayOnly -0.0377678 # Main_RecrDev_42
+#DisplayOnly -0.0509291 # Main_RecrDev_43
+#DisplayOnly -0.104915 # Main_RecrDev_44
+#DisplayOnly -0.00476882 # Main_RecrDev_45
+#DisplayOnly -0.0390564 # Main_RecrDev_46
+#DisplayOnly -0.0250955 # Main_RecrDev_47
+#DisplayOnly 0.0263686 # Main_RecrDev_48
+#DisplayOnly 0.00840301 # Main_RecrDev_49
+#DisplayOnly 0.0721772 # Main_RecrDev_50
+#DisplayOnly -0.0428504 # Main_RecrDev_51
+#DisplayOnly 0.00770418 # Main_RecrDev_52
+#DisplayOnly -0.107254 # Main_RecrDev_53
+#DisplayOnly -0.12753 # Main_RecrDev_54
+#DisplayOnly -0.0462285 # Main_RecrDev_55
+#DisplayOnly -0.0278973 # Main_RecrDev_56
+#DisplayOnly -0.023365 # Main_RecrDev_57
+#DisplayOnly 0.051958 # Main_RecrDev_58
+#DisplayOnly -0.0829383 # Main_RecrDev_59
+#DisplayOnly -0.0862864 # Main_RecrDev_60
+#DisplayOnly 0.215775 # Main_RecrDev_61
+#DisplayOnly 0.0660829 # Main_RecrDev_62
+#DisplayOnly -0.070416 # Main_RecrDev_63
+#DisplayOnly -0.114424 # Main_RecrDev_64
+#DisplayOnly 0.0459923 # Main_RecrDev_65
+#DisplayOnly -0.0492288 # Main_RecrDev_66
+#DisplayOnly -0.0514985 # Main_RecrDev_67
+#DisplayOnly 0.243525 # Main_RecrDev_68
+#DisplayOnly -0.0548232 # Main_RecrDev_69
+#DisplayOnly 0.215637 # Main_RecrDev_70
+#DisplayOnly -0.0024707 # Main_RecrDev_71
+#DisplayOnly 0.037641 # Main_RecrDev_72
+#DisplayOnly 0.0423846 # Main_RecrDev_73
+#DisplayOnly -0.13364 # Main_RecrDev_74
+#DisplayOnly 0.131204 # Main_RecrDev_75
+#DisplayOnly -0.0300354 # Main_RecrDev_76
+#DisplayOnly 0.0911603 # Main_RecrDev_77
+#DisplayOnly 0.216066 # Main_RecrDev_78
+#DisplayOnly -0.029827 # Main_RecrDev_79
+#DisplayOnly 0.11853 # Main_RecrDev_80
+#DisplayOnly 0.0598896 # Main_RecrDev_81
+#DisplayOnly 0.1306 # Main_RecrDev_82
+#DisplayOnly 0.0668544 # Main_RecrDev_83
+#DisplayOnly 0.0402346 # Main_RecrDev_84
+#DisplayOnly 0.0231138 # Main_RecrDev_85
+#DisplayOnly 0.165272 # Main_RecrDev_86
+#DisplayOnly 0.0924952 # Main_RecrDev_87
+#DisplayOnly -0.0128507 # Main_RecrDev_88
+#DisplayOnly -0.0536698 # Main_RecrDev_89
+#DisplayOnly 0.000537417 # Main_RecrDev_90
+#DisplayOnly -0.0146573 # Main_RecrDev_91
+#DisplayOnly -0.0119246 # Main_RecrDev_92
+#DisplayOnly 0.243027 # Main_RecrDev_93
+#DisplayOnly 0.186916 # Main_RecrDev_94
+#DisplayOnly 0.0162154 # Main_RecrDev_95
+#DisplayOnly 0.0776305 # Main_RecrDev_96
+#DisplayOnly 0.104758 # Main_RecrDev_97
+#DisplayOnly 0.0629353 # Main_RecrDev_98
+#DisplayOnly -0.158003 # Main_RecrDev_99
+#DisplayOnly 0.536662 # Main_RecrDev_100
+#
+#Fishing Mortality info 
 0.3 # F ballpark for annual F (=Z-M) for specified year
 -1 # F ballpark year (neg value to disable)
 3 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
@@ -109,14 +211,11 @@
 # no additional F input needed for Fmethod 1
 # if Fmethod=2; read overall start F value; overall phase; N detailed inputs to read
 # if Fmethod=3; read N iterations for tuning for Fmethod 3
-
 4  # N iterations for tuning F in hybrid method (recommend 3 to 7)
 #
 #_initial_F_parms
 #_LO HI INIT PRIOR PR_type SD PHASE
  0 2 0 0 -1 99 -1 # InitF_1Fishery
-
-# F rates for Fmethod=2
 #
 #_Q_setup
  # Q_type options:  <0=mirror, 0=float_nobiasadj, 1=float_biasadj, 2=parm_nobiasadj, 3=parm_w_random_dev, 4=parm_w_randwalk, 5=mean_unbiased_float_assign_to_parm
@@ -130,8 +229,8 @@
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -20 20 0 0 -1 0.5 -2 # LnQ_base_1_Fishery
- -20 20 0 0 -1 0.5 2 # LnQ_base_2_Survey
- -20 20 0 0 -1 0.5 2 # LnQ_base_3_CPUE
+ -20 20 0 0 -1 0.5 -2 # LnQ_base_2_Survey
+ -20 20 0 0 -1 0.5 -2 # LnQ_base_3_CPUE
 #
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
@@ -145,26 +244,24 @@
  10 0 0 0 # 1 Fishery
  10 0 0 0 # 2 Survey
  10 0 0 0 # 3 CPUE
-
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
-3.0	182	36.4	36.4	-1	0.05	4	0	0	0	0	0	0	0	#	Fishery PEAK	value
--5.0	5.0	-1.0	-1.0	-1	0.05	-3	0	0	0	0	0	0	0	#	Fishery TOP	logistic
--4.0	21.5	4.3	4.3	-1	0.05	5	0	0	0	0	0	0	0	#	Fishery WIDTH	exp
--2.0	75.0	15.0	15.0	-1	0.05	-3	0	0	0	0	0	0	0	#	Fishery WIDTH	exp
--15.0	5.0	-999.0	-999.0	-1	0.05	-2	0	0	0	0	0	0	0	#	Fishery INIT	logistic
--5.0	5.0	-999.0	-999.0	-1	0.05	-2	0	0	0	0	0	0	0	#	Fishery FINAL	logistic
-3.0	153	30.6	30.6	-1	0.05	4	0	0	0	0	0	0	0	#	Survey PEAK	value
--5.0	5.0	-1.0	-1.0	-1	0.05	-3	0	0	0	0	0	0	0	#	Survey TOP	logistic
--4.0	22	4.3	4.3	-1	0.05	5	0	0	0	0	0	0	0	#	Survey WIDTH	exp
--2.0	75.0	15.0	15.0	-1	0.05	-3	0	0	0	0	0	0	0	#	Survey WIDTH	exp
--15.0	5.0	-999.0	-999.0	-1	0.05	-2	0	0	0	0	0	0	0	#	Survey INIT	logistic
--5.0	5.0	-999.0	-999.0	-1	0.05	-2	0	0	0	0	0	0	0	#	Survey FINAL	logistic
-
-#_Cond 0 #_custom_sel-env_setup (0/1)
+ 3.64 72.8 36.4 36.4 -1 0.05 -4 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
+ -5 5 -1 -1 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
+ 0 21.5 4.3 4.3 -1 0.05 -5 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
+ -2 75 15 15 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_1P_4_Fishery
+ -15 5 -999 -999 -1 0.05 -2 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
+ -5 5 -999 -999 -1 0.05 -2 0 0 0 0 0 0 0 # SizeSel_1P_6_Fishery
+ 3.06 61.2 30.6 30.6 -1 0.05 -4 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
+ -5 5 -1 -1 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
+ 0 21.5 4.3 4.3 -1 0.05 -5 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
+ -2 75 15 15 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
+ -15 5 -999 -999 -1 0.05 -2 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
+ -5 5 -999 -999 -1 0.05 -2 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
+#_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
-#_Cond 0 #_custom_sel-blk_setup (0/1)
+#_Cond 0 #_custom_sel-blk_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no block usage
-#_Cond No selex parm trends
+#_Cond No selex parm trends 
 #_Cond -4 # placeholder for selparm_Dev_Phase
 #_Cond 0 #_env/block/dev_adjust_method (1=standard; 2=logistic trans to keep in base parm bounds; 3=standard w/ no bound check)
 #
@@ -173,7 +270,7 @@
 #_Cond -6 6 1 1 2 0.01 -4 0 0 0 0 0 0 0  #_placeholder if no parameters
 #
 0 #_Variance_adjustments_to_input_values
-#_fleet: 1 2 3
+#_fleet: 1 2 3 
 #_Cond  0 0 0 #_add_to_survey_CV
 #_Cond  0 0 0 #_add_to_discard_stddev
 #_Cond  0 0 0 #_add_to_bodywt_CV
@@ -185,7 +282,7 @@
 1 #_sd_offset
 #
 0 # number of changes to make to default Lambdas (default value is 1.0)
-# Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=SizeFreq; 7=sizeage; 8=catch; 9=init_equ_catch;
+# Like_comp codes:  1=surv; 2=disc; 3=mnwt; 4=length; 5=age; 6=SizeFreq; 7=sizeage; 8=catch; 9=init_equ_catch; 
 # 10=recrdev; 11=parm_prior; 12=parm_dev; 13=CrashPen; 14=Morphcomp; 15=Tag-comp; 16=Tag-negbin; 17=F_ballpark
 #like_comp fleet/survey  phase  value  sizefreq_method
 #
@@ -205,7 +302,7 @@
 #  1 1 1 1 #_parameter-dev-vectors
 #  1 1 1 1 #_crashPenLambda
 #  0 0 0 0 # F_ballpark_lambda
-0 # (0/1) read specs for more stddev reporting
+0 # (0/1) read specs for more stddev reporting 
  # 0 1 -1 5 1 5 1 -1 5 # placeholder for selex type, len/age, year, N selex bins, Growth pattern, N growth ages, NatAge_area(-1 for all), NatAge_yr, N Natages
  # placeholder for vector of selex bins to be reported
  # placeholder for vector of growth ages to be reported
