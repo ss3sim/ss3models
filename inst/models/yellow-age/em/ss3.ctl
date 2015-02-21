@@ -215,48 +215,48 @@
 #
 #_initial_F_parms
 #_LO HI INIT PRIOR PR_type SD PHASE
- 0 1 0 0.01 -1 99 -1 # InitF_1fishery1
+ 0 1 0 0.01 -1 99 -1 # InitF_1Fishery
 #
 #_Q_setup
  # Q_type options:  <0=mirror, 0=float_nobiasadj, 1=float_biasadj, 2=parm_nobiasadj, 3=parm_w_random_dev, 4=parm_w_randwalk, 5=mean_unbiased_float_assign_to_parm
 #_for_env-var:_enter_index_of_the_env-var_to_be_linked
 #_Den-dep  env-var  extra_se  Q_type
- 0 0 0 2 # 1 fishery1
- 0 0 0 2 # 2 survey1
- 0 0 0 2 # 3 survey2
+ 0 0 0 2 # 1 Fishery
+ 0 0 0 2 # 2 Survey
+ 0 0 0 2 # 3 CPUE
 #
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
- -20 20 0 0 -1 99 -5 # LnQ_base_1_fishery1
- -20 20 -0.0656039 0 -1 99 3 # LnQ_base_2_survey1
- -20 20 0 0 -1 99 -5 # LnQ_base_3_survey2
+ -20 20 0 0 -1 99 -5 # LnQ_base_1_Fishery
+ -20 20 -0.0656039 0 -1 99 3 # LnQ_base_2_Survey
+ -20 20 0 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
 #_Pattern Discard Male Special
- 0 0 0 0 # 1 fishery1
- 0 0 0 0 # 2 survey1
- 0 0 0 0 # 3 survey2
+ 0 0 0 0 # 1 Fishery
+ 0 0 0 0 # 2 Survey
+ 0 0 0 0 # 3 CPUE
 #
 #_age_selex_types
 #_Pattern ___ Male Special
- 20 0 0 0 # 1 fishery1
- 20 0 0 0 # 2 survey1
- 15 0 0 1 # 3 survey2
+ 20 0 0 0 # 1 Fishery
+ 20 0 0 0 # 2 Survey
+ 15 0 0 1 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 40 89 21.2 57 -1 99 4 0 0 0 0 0.5 0 0 # AgeSel_1P_1_fishery1
- -5 0 -1 -5 -1 5 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_2_fishery1
- 0 10 4.08 5 -1 99 5 0 0 0 0 0.5 0 0 # AgeSel_1P_3_fishery1
- 0 30 15 10 -1 10 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_4_fishery1
- -15 0 -999 -10 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_5_fishery1
- -999 10000 999 -1 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_6_fishery1
- 40 89 18.28 57 -1 99 4 0 0 0 0 0.5 0 0 # AgeSel_2P_1_survey1
- -5 0 -1 -5 -1 5 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_2_survey1
- 0 10 4.08 5 -1 99 5 0 0 0 0 0.5 0 0 # AgeSel_2P_3_survey1
- 0 30 15 10 -1 10 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_4_survey1
- -15 0 -999 -10 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_5_survey1
- -999 10000 999 0 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_6_survey1
+ 40 89 21.2 57 -1 99 4 0 0 0 0 0.5 0 0 # AgeSel_1P_1_Fishery
+ -5 0 -1 -5 -1 5 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_2_Fishery
+ 0 10 4.08 5 -1 99 5 0 0 0 0 0.5 0 0 # AgeSel_1P_3_Fishery
+ 0 30 15 10 -1 10 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_4_Fishery
+ -15 0 -999 -10 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_5_Fishery
+ -999 10000 999 -1 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_6_Fishery
+ 40 89 18.28 57 -1 99 4 0 0 0 0 0.5 0 0 # AgeSel_2P_1_Survey
+ -5 0 -1 -5 -1 5 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_2_Survey
+ 0 10 4.08 5 -1 99 5 0 0 0 0 0.5 0 0 # AgeSel_2P_3_Survey
+ 0 30 15 10 -1 10 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_4_Survey
+ -15 0 -999 -10 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_5_Survey
+ -999 10000 999 0 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1)
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1)
