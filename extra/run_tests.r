@@ -3,6 +3,7 @@
 ## development.
 
 ## Last update: 2/11/15 by Cole to add determinstic runs for newest models
+## 2/20/15 by Cole to tweak for the new package format and some other bugs
 ### ------------------------------------------------------------
 
 ## Startup the working environment
@@ -12,12 +13,18 @@
 
 ## Load the neccessary libraries
 library(devtools)
+## install_github("r4ss/r4ss")
 library(r4ss)
 library(ggplot2)
 library(plyr)
 library(reshape2)
+## install_github("ss3sim/ss3models")
+library(ss3models)
 ## Install ss3sim package. Be sure to pull before installing
-## devtools::install("../ss3sim")
+## devtools::install_github("ss3sim/ss3sim")
+## devtools::install("ss3sim/ss3sim")
+load_all("c:/Users/Cole/ss3sim/")
+load_all("c:/Users/Cole/ss3models/")
 library(ss3sim)
 
 ## install.packages(c("doParallel", "foreach"))
@@ -32,12 +39,12 @@ getDoParWorkers()
 ### before trying more advanced scenarios, particularly new ones.
 
 ## Setup cases and models
-case_folder <- 'cases'
+case_folder <- system.file("cases", package = "ss3models")
 ## modelnames <- dir(pattern = "om$", full.names = FALSE)[1:2]
-model_names <- c("hake", "yel", "mac")
+model_names <- c("hake", "yellow", "mackerel")[-2]
 ## These are the high data cases used for deterministic testing. Write them
 ## for each model to be tested. Age and length comps.
-index100 <- c('fleets;2', 'years;list(seq(50,100, by=2))', 'sds_obs;list(.01)')
+index100 <- c('fleets;3', 'years;list(seq(50,100, by=2))', 'sds_obs;list(.01)')
 lcomp100 <- c('fleets;c(1,2)', 'years;list(seq(50,100, by=2), seq(50,100, by=2))', 'Nsamp;list(500, 500)', 'cpar;NA')
 agecomp100 <- c('fleets;c(1,2)', 'years;list(seq(50,100, by=2),seq(50,100, by=2))', 'Nsamp;list(500, 500)', 'cpar;NA')
 for(species in model_names){
@@ -46,18 +53,19 @@ for(species in model_names){
     writeLines(agecomp100, con=paste0(case_folder,"/", "agecomp100-", species, ".txt"))
 }
 
-## Loop through all of the species and run Nsim iterations
-Nsim <- 15
-user.recdevs <- matrix(rnorm(Nsim*100,0, .01), nrow=100)
+## Loop through all of the species and run Nsim deterministic iterations
+Nsim <- 50
+user.recdevs <- matrix(rnorm(Nsim*100,0, .05), nrow=100)
 results.sc <- results.ts <- list()
 for(i in 1:length(model_names)){
-    print(paste("starting model", model_names[i]))
-    scen <- expand_scenarios(species=model_names[i], cases=list(D=100, F=1, E=0))
-    om.dir <- paste0(model_names[i], "-om")
-    em.dir <- paste0(model_names[i], "-em")
+    spp <- model_names[i]
+    print(paste("starting model", spp))
+    scen <- expand_scenarios(species=spp, cases=list(D=100, F=1, E=0))
+    om.dir <- ss3model(spp, "om")
+    em.dir <- ss3model(spp, "em")
     case_files <-
         list(F = "F", D = c("index", "lcomp", "agecomp"), E="E")
-    run_ss3sim(iterations = 1:Nsim, scenarios = scen, parallel=TRUE,
+    run_ss3sim(iterations = 2:Nsim, scenarios = scen, parallel=F,
                parallel_iterations=TRUE, case_folder = case_folder, om_dir
                = om.dir, em_dir = em.dir, case_files = case_files,
                user_recdevs=user.recdevs)
@@ -72,8 +80,8 @@ for(i in 1:length(model_names)){
         subset(calculate_re(read.csv("ss3sim_ts.csv"), add=TRUE),
                select=c("ID","species", "D", "replicate", "year","SpawnBio_re",
                "Recruit_0_re", "F_re"))
-    file.copy("ss3sim_scalar.csv", paste0("scalar_", model_names[i], ".csv"))
-    file.copy("ss3sim_ts.csv", paste0("ts_", model_names[i], ".csv"))
+    file.copy("ss3sim_scalar.csv", paste0("scalar_", spp, ".csv"))
+    file.copy("ss3sim_ts.csv", paste0("ts_", spp, ".csv"))
     unlink(scen, TRUE); file.remove("ss3sim_scalar.csv", "ss3sim_ts.csv")
 }
 
