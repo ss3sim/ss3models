@@ -27,7 +27,6 @@ d$PRIOR <- NULL
 d$PR_type <- NULL
 d$SD <- NULL
 d <- d %>% mutate_each(funs(sprintf("%.1f", round(., digits = 1))), LO:HI)
-knitr::kable(d, format = "markdown")
 ```
 
 ```{r}
