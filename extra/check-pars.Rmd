@@ -1,8 +1,8 @@
 ---
 title: "Summarize parameter values for SS3 model setups"
+date: "`r Sys.Date()`"
 output:
-  md_document:
-    variant: markdown_github
+  html_document
 ---
 
 ```{r, echo = FALSE}
@@ -15,20 +15,36 @@ knitr::opts_chunk$set(
 options("width" = 90)
 ```
 
-```{r}
+```{r, message=FALSE}
 library("ss3models")
 library("dplyr")
-d <- get_parvalues(system.file("models", package = "ss3models"), write_csv = FALSE)
-```
-
-```{r, results="asis"}
-d[d$Label == "mat50%_fem", "Label"] <- "mat50perc_fem" # or we'll break knitr
-d$PRIOR <- NULL
-d$PR_type <- NULL
-d$SD <- NULL
-d <- d %>% mutate_each(funs(sprintf("%.1f", round(., digits = 1))), LO:HI)
+d <- get_parvalues(system.file("models", package = "ss3models"),
+  write_csv = FALSE)
 ```
 
 ```{r}
-knitr::kable(dplyr::arrange(d, Label), format = "markdown")
+d[d$Label == "mat50%_fem", "Label"] <- "mat50perc_fem" # or we'll break knitr
+d <- select(d, -PRIOR, -PR_type, -SD)
+d <- d %>%
+  mutate_each(funs(sprintf("%.1f", round(., digits = 1))), LO:HI) %>%
+  arrange(Label)
+```
+
+In the table at the end, try searching for a particular parameter to filter the table. Click on a column header to sort by that column. Available parameters are:
+
+```{r}
+sort(unique(d$Label))
+```
+
+Or search by a model setup name to see all parameters for that model setup. Available models are:
+
+```{r}
+list_models()
+```
+
+```{r, cache=FALSE}
+# devtools::install_github('rstudio/DT')
+DT::datatable(d, options = list(
+  pageLength = 100,
+  lengthMenu = c(10, 50, 100, 200, 400)))
 ```
