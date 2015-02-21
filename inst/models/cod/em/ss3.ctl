@@ -37,11 +37,11 @@
 #_growth_parms
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  0.01 1.8 0.2 0.1 -1 0.8 -3 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
- 10 80 20 30.8 -1 0.2 4 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
- 25 250 132 120.1 -1 0.2 4 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
- 0.01 2 0.2 0.25 -1 0.8 4 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
- 0.01 0.5 0.1 0.1 -1 0.8 5 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
- 0.01 0.5 0.1 0.1 -1 0.8 5 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
+ 1 100 20 30.8 -1 0.2 -4 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
+ 6.6 660 132 120.1 -1 0.2 -4 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
+ 0.01 1 0.2 0.25 -1 0.8 -4 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
+ 0.01 0.5 0.1 0.1 -1 0.8 -5 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
+ 0.01 0.5 0.1 0.1 -1 0.8 -5 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  0 3 6.8e-006 6.8e-006 -1 0 -1 0 0 0 0 0 0 0 # Wtlen_1_Fem
  2.5 3.5 3.101 3.101 -1 0.2 -3 0 0 0 0 0 0 0 # Wtlen_2_Fem
  10 50 38.18 0 -1 0 -3 0 0 0 0 0 0 0 # Mat50%_Fem
@@ -69,7 +69,7 @@
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI INIT PRIOR PR_type SD PHASE
- 10 25 18.6996 10.3 -1 10 1 # SR_LN(R0)
+ 4 20 18.7 10.3 -1 10 -1 # SR_LN(R0)
  0.2 1 0.65 0.7 -1 0.05 -4 # SR_BH_steep
  0 2 0.4 0.8 -1 0.8 -5 # SR_sigmaR
  -5 5 0 0 -1 1 -3 # SR_envlink
@@ -127,8 +127,8 @@
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -3 3 0 0 -1 99 -5 # LnQ_base_1_Fishery
- -3 3 0 0 -1 99 5 # LnQ_base_2_SURVEY
- -3 3 0 0 -1 99 -5 # LnQ_base_3_CPUE
+ -20 20 0 0 -1 99 -5 # LnQ_base_2_SURVEY
+ -20 20 0 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
@@ -143,15 +143,15 @@
  10 0 0 0 # 2 SURVEY
  10 0 0 0 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 20 250 50.8 50.8 -1 0.05 2 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
+ 5.08 101.6 50.8 50.8 -1 0.05 -2 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
  -5 3 -3 -3 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
- -4 25 5.1 5.1 -1 0.05 3 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
+ 0 25.5 5.1 5.1 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
  -2 16 15 15 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_1P_4_Fishery
  -15 5 -999 -999 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
  -5 5 -999 -999 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_1P_6_Fishery
- 20 199 41.8 41.8 -1 0.05 2 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
+ 4.18 83.6 41.8 41.8 -1 0.05 -2 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
  -5 3 -4 -4 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
- -4 25 5.2 5.2 -1 0.05 3 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
+ 0 26 5.2 5.2 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
  -2 15 14 14 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
  -100 100 -99 -99 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
  -100 100 99 99 -1 0.05 -99 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey

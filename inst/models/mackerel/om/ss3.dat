@@ -347,7 +347,7 @@ Fishery%Survey%CPUE
 
 2 # length bin method: 1=use databins; 2=generate from binwidth,min,max below; 3=read vector
 1 # binwidth for population size comp
-0 # minimum size in the population (lower edge of first bin and size at age 0.00)
+1 # minimum size in the population (lower edge of first bin and size at age 0.00)
 100 # maximum size in the population (lower edge of last bin)
 
 -1 #_comp_tail_compression
