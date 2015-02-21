@@ -4,27 +4,22 @@ install_github("ss3sim/ss3models")
 install_github("ss3sim/ss3sim")
 library(r4ss)
 library(ss3sim)
-library(ss3models)
 
-temp_path <- file.path(tempdir(), "ss3models")
-dir.create(temp_path, showWarnings = FALSE)
-wd <- getwd()
-setwd(temp_path)
+#Christine's path
+#mod.path <- "~/GitHub/ss3models/inst/models"
 
-## Set to the path and filename of the OM and EM control files
-## This doesn't work for me. 
-file.copy(system.file("inst", "models", "cod", package = "ss3models"),
-          ".", recursive = TRUE)
-ctlom <- system.file("inst", "models", "cod", "om","ss3.ctl",
-                     package = "ss3models")
+if (!grepl("ss3models", getwd())) {
+  stop("This script assumes you are in the ss3models dir.")
+}
+load_all()
 
-mod.path<-"~/GitHub/ss3models/inst/models"
+mod.path <- system.file("models", package = "ss3models")
+
 #Don't standardize age-structured mackerel or yelloweye
-models.to.standardize<-dir(getwd())[-c(4,6,8)]
+models.to.standardize <- dir(system.file("models", package = "ss3models"))[-c(4,6:8)]
 paths<-file.path(mod.path,models.to.standardize)
-om.paths<-file.path(paths,"om/ss3.ctl")
-em.paths<-file.path(paths,"em/ss3.ctl")
-
+om.paths<-file.path(paths, "om", "ss3.ctl")
+em.paths<-file.path(paths, "em", "ss3.ctl")
 
 
   # Use SS_parlines to get the proper names for parameters for the data frame
@@ -48,6 +43,6 @@ for(i in 1:length(om.paths)){
 
 for(i in 1:length(om.paths)){
   standardize_bounds(percent_df = percent.df, dir = paths[i],
-                     em_ctl_file = "em/ss3.ctl")
-
+                     em_ctl_file = "em/ss3.ctl", estimate = NULL)
 }
+
