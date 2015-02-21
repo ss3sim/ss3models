@@ -1,4 +1,4 @@
 *.vim
 .Rproj.user
 fmsy/**
-README_cache
+*_cache/

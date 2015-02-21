@@ -1,0 +1,31 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  cache = TRUE,
+  autodep = TRUE
+)
+options("width" = 90)
+```
+
+```{r}
+library("ss3models")
+d <- get_parvalues(system.file("models", package = "ss3models"), write_csv = FALSE)
+```
+
+```{r, results="asis"}
+d[d$Label == "mat50%_fem", "Label"] <- "mat50perc_fem" # or we'll break knitr
+d$PRIOR <- NULL
+d$PR_type <- NULL
+d$SD <- NULL
+knitr::kable(d, format = "markdown")
+```
+
+```{r}
+knitr::kable(dplyr::arrange(d, Label), format = "markdown")
+```
