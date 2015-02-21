@@ -39,11 +39,11 @@
 #_growth_parms
 #_LO  HI   INIT     PRIOR    PR_type SD  PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  0.05 0.4  0.22 -1.60944 -1      0.1 -4    0       0       0         0         0          0     0 # NatM_p_1_Fem_GP_1
- 0.25 25 5 32 -1 99 -4 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
- 2.75 275 55 50 -1 99 -4 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
- 0.02 2 0.4 0.3 -1 99 -4 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
- 0.01 0.5 0.1 0.1 -1 99 -7 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
- 0.01 0.5 0.1 0.1 -1 99 -7 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
+ 0.25 25 5 32 -1 99 4 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
+ 2.75 275 55 50 -1 99 4 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
+ 0.02 2 0.4 0.3 -1 99 4 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
+ 0.01 0.5 0.1 0.1 -1 99 7 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
+ 0.01 0.5 0.1 0.1 -1 99 7 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  -3   3    7e-006    7e-006    -1      99  -50   0       0       0         0         0          0     0 # Wtlen_1_Fem
  -3   3    2.95     2.9624   -1      99  -50   0       0       0         0         0          0     0 # Wtlen_2_Fem
  -3   43   31       36.89    -1      99  -50   0       0       0         0         0          0     0 # Mat50%_Fem
@@ -71,7 +71,7 @@
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI  INIT     PRIOR PR_type SD    PHASE
- 4 20 15 15 -1 99 -2 # SR_LN(R0)
+ 4 20 15 15 -1 99 2 # SR_LN(R0)
  0.2 1   0.82 0.777 -1      0.113 -4   # SR_BH_steep
  1   1.6 1.4      1.1   -1      99    -6  # SR_sigmaR
  -5  5   0        0     -1      99    -50 # SR_envlink
@@ -103,7 +103,7 @@
 # read specified recr devs
 #_Yr Input_value
 #
-#Fishing Mortality info 
+#Fishing Mortality info
 0.3 # F ballpark for annual F (=Z-M) for specified year
 -1999 # F ballpark year (neg value to disable)
 3 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
@@ -129,7 +129,7 @@
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -3 3 0 0 -1 99 -5 # LnQ_base_1_Fishery
- -20 20 0 0 -1 99 -3 # LnQ_base_2_Survey
+ -20 20 0 0 -1 99 3 # LnQ_base_2_Survey
  -20 20 0 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
@@ -145,15 +145,15 @@
  10 0 0 0 # 2 Survey
  10 0 0 0 # 3 CPUE
 #_LO  HI   INIT  PRIOR PR_type SD   PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 4.51 90.2 45.1 45 -1 0.05 -5 0 0 0 0 0.5 0 0 # SizeSel_1P_1_Fishery
+ 4.51 90.2 45.1 45 -1 0.05 5 0 0 0 0 0.5 0 0 # SizeSel_1P_1_Fishery
  -5   10   -1    5     -1       0.05 -3    0       0       0         0         0.5        0     0 # SizeSel_1P_2_Fishery
- 0 27.6 5.52 3 -1 0.05 -6 0 0 0 0 0.5 0 0 # SizeSel_1P_3_Fishery
+ 0 27.6 5.52 3 -1 0.05 6 0 0 0 0 0.5 0 0 # SizeSel_1P_3_Fishery
  -2   30   15    10    -1       0.05 -4    0       0       0         0         0.5        0     0 # SizeSel_1P_4_Fishery
  -999 5    -999  -999  -1       0.05 -3    0       0       0         0         0.5        0     0 # SizeSel_1P_5_Fishery
  -9   1000 999  0.5   -1       0.05 -4    0       0       0         0         0.5        0     0 # SizeSel_1P_6_Fishery
- 3.894 77.88 38.94 45 -1 0.05 -5 0 0 0 0 0.5 0 0 # SizeSel_2P_1_Survey
+ 3.894 77.88 38.94 45 -1 0.05 5 0 0 0 0 0.5 0 0 # SizeSel_2P_1_Survey
  -5   10   -1    5     -1       0.05 -3    0       0       0         0         0.5        0     0 # SizeSel_2P_2_Survey
- 0 27.65 5.53 3 -1 0.05 -6 0 0 0 0 0.5 0 0 # SizeSel_2P_3_Survey
+ 0 27.65 5.53 3 -1 0.05 6 0 0 0 0 0.5 0 0 # SizeSel_2P_3_Survey
  -2   30   15    10    -1       0.05 -4    0       0       0         0         0.5        0     0 # SizeSel_2P_4_Survey
  -999 5    -999  -999  -1       0.05 -3    0       0       0         0         0.5        0     0 # SizeSel_2P_5_Survey
  -9   1000 999   0.5   -1       0.05 -4    0       0       0         0         0.5        0     0 # SizeSel_2P_6_Survey
