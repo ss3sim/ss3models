@@ -4,7 +4,8 @@
 \alias{get_parvalues}
 \title{Get parameter values for SS3 model setups}
 \usage{
-get_parvalues(modelfolder = ".", write_csv = TRUE)
+get_parvalues(modelfolder = ".", write_csv = TRUE,
+  outfile = "parlist.csv", ss_binary = "ss3_24o_opt")
 }
 \arguments{
   \item{modelfolder}{Path to a folder containing SS3
@@ -14,10 +15,17 @@ get_parvalues(modelfolder = ".", write_csv = TRUE)
   \code{system.file("models", package = "ss3models")}.}
 
   \item{write_csv}{Should the parameter value data frame be
-  written to CSV file named \code{parlist.csv}?}
+  written to CSV file named \code{outfile}}
+
+  \item{outfile}{A character value specifying a file name
+  for the output if \code{write_csv = TRUE}. Must end in
+  \code{.csv}.}
+
+  \item{ss_binary}{A character value specifying which
+  version of SS3 to use.}
 }
 \value{
-A CSV file named \code{parlist} if \code{write_csv = TRUE}.
+A CSV file named \code{outfile} if \code{write_csv = TRUE}.
 The parameter data frame is returned invisibly regardless.
 }
 \description{
