@@ -24,8 +24,7 @@ d <- get_parvalues(system.file("models", package = "ss3models"),
 
 ```{r}
 d[d$Label == "mat50%_fem", "Label"] <- "mat50perc_fem" # or we'll break knitr
-d <- select(d, -PRIOR, -PR_type, -SD)
-d <- d %>%
+d <- select(d, -PRIOR, -PR_type, -SD) %>%
   mutate_each(funs(sprintf("%.1f", round(., digits = 1))), LO:HI) %>%
   arrange(Label)
 ```
