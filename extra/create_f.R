@@ -95,16 +95,10 @@ g <- ggplot(fmsytable.full) + geom_line(aes(fValues, eqCatch))+facet_wrap("speci
     geom_hline(aes(yintercept=catch90), col="blue") +
     geom_vline(aes(xintercept=fmsy90r), col="gray") +
     geom_vline(aes(xintercept=fmsy), col="black") +
-<<<<<<< HEAD
     geom_vline(aes(xintercept=fmsy90l), col="gray") +
     geom_vline(aes(xintercept=NatM), col="red")
-ggsave(file.path("extra", "plots", "catch_curves.png"), g, width=9, height=7)
-write.csv(fmsytable.full, file.path("extra", "fmsytable.full.csv"))
-=======
-    geom_vline(aes(xintercept=fmsy90l), col="gray")
-ggsave(file.path("fmsy", "catch_curves.png"), width = 9, height = 7)
+ggsave(file.path("fmsy", "catch_curves.png"),g, width = 9, height = 7)
 write.csv(fmsytable.full, file.path("fmsy", "fmsytable.full.csv"))
->>>>>>> 8b5974eb1058ca95913670ded56b37ee5ab25ef8
 ## Pare down to just the meta data
 fmsytable <- unique(subset(fmsytable.full, select=-c(fValues, eqCatch)))
 
