@@ -1,8 +1,10 @@
 ---
+title: "Summarize parameter values for SS3 model setups"
 output:
   md_document:
     variant: markdown_github
 ---
+
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -15,6 +17,7 @@ options("width" = 90)
 
 ```{r}
 library("ss3models")
+library("dplyr")
 d <- get_parvalues(system.file("models", package = "ss3models"), write_csv = FALSE)
 ```
 
@@ -23,6 +26,7 @@ d[d$Label == "mat50%_fem", "Label"] <- "mat50perc_fem" # or we'll break knitr
 d$PRIOR <- NULL
 d$PR_type <- NULL
 d$SD <- NULL
+d <- d %>% mutate_each(funs(sprintf("%.1f", round(., digits = 1))), LO:HI)
 knitr::kable(d, format = "markdown")
 ```
 
