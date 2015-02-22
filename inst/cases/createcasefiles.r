@@ -18,7 +18,8 @@
 ## Set working directories
 ###############################################################################
 wd.curr <- getwd()
-setwd(dir.cases)
+if (Sys.info()["user"] == "kelli") devtools::load_all("c:/ss/ss3models")
+setwd(system.file("cases", package = "ss3models"))
 my.spp <- dir(system.file("models", package = "ss3models"))
 
 start <- 1
