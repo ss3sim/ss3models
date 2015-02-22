@@ -58,8 +58,8 @@ get_parvalues <- function(modelfolder = ".", write_csv = TRUE,
     ctl.em$Label <- tolower(ctl.em$Label)
     both <- merge(ctl.om, ctl.em, by = "Label", all = TRUE, suffixes = c(".om", ".em"),
       sort = TRUE)
-    both <- setNames(both[, c(1, 4, 2, 3, 6, 5, 7:10)],
-      c("Label", "LO", "ctl.om", "INIT.om", "INIT.em", "HI",
+    both <- setNames(both[, c(1, 4, 3, 2, 6, 5, 7:10)],
+      c("Label", "LO", "clt.om", "INIT.om", "INIT.em", "HI",
         "PRIOR", "PR_type", "SD", "PHASE.em"))
     both$model <- models[mod]
     results[[mod]] <- both
