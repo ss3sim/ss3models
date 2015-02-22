@@ -21,7 +21,6 @@ library(reshape2)
 ## install_github("ss3sim/ss3models")
 ## Install ss3sim package. Be sure to pull before installing
 ## devtools::install_github("ss3sim/ss3sim")
-## devtools::install("ss3sim/ss3sim")
 load_all("c:/Users/Cole/ss3sim/")
 load_all("c:/Users/Cole/ss3models/")
 library(ss3sim)
@@ -40,7 +39,7 @@ getDoParWorkers()
 ## Setup cases and models
 case_folder <- system.file("cases", package = "ss3models")
 ## modelnames <- dir(pattern = "om$", full.names = FALSE)[1:2]
-model_names <- c("hake", "yellow", "mackerel")[-2]
+model_names <- c("hake", "yellow", "mackerel")
 ## These are the high data cases used for deterministic testing. Write them
 ## for each model to be tested. Age and length comps.
 index100 <- c('fleets;2', 'years;list(seq(50,100, by=2))', 'sds_obs;list(.01)')
@@ -51,63 +50,126 @@ for(species in model_names){
     writeLines(lcomp100, con=paste0(case_folder,"/", "lcomp100-", species, ".txt"))
     writeLines(agecomp100, con=paste0(case_folder,"/", "agecomp100-", species, ".txt"))
 }
+scen.all <- expand_scenarios(species=model_names, cases=list(D=100, F=1))
 
 ## Loop through all of the species and run Nsim deterministic iterations
-Nsim <- 4
+Nsim <- 50
+user.recdevs <- matrix(rnorm(Nsim*100,0, .01), nrow=100)
+results.sc <- results.ts <- list()
+for(i in 1:length(model_names)){
+    spp <- model_names[i]
+    print(paste("starting model", spp))
+    scen <- expand_scenarios(species=spp, cases=list(D=100, F=1))
+    om.dir <- ss3model(spp, "om"); em.dir <- ss3model(spp, "em")
+    case_files <- list(F="F", D=c("index", "lcomp", "agecomp"))
+    run_ss3sim(iterations=1:Nsim, scenarios=scen, parallel=TRUE,
+               parallel_iterations=TRUE, case_folder=case_folder,
+               user_recdevs=user.recdevs,
+               om_dir=om.dir, em_dir=em.dir, case_files=case_files)
+}
+## Read in and save data
+get_results_all(user=scen.all, parallel=TRUE, over=TRUE)
+file.copy("ss3sim_scalar.csv", "det_sc.csv", over=TRUE)
+file.copy("ss3sim_ts.csv", "det_ts.csv", over=TRUE)
+unlink(scen)
+## Now do the same but with process error
+Nsim <- 50
 user.recdevs <- matrix(rnorm(Nsim*100,0, .05), nrow=100)
 results.sc <- results.ts <- list()
 for(i in 1:length(model_names)){
     spp <- model_names[i]
     print(paste("starting model", spp))
-    scen <- expand_scenarios(species=spp, cases=list(D=100, F=1, E=0))
-    om.dir <- ss3model(spp, "om")
-    em.dir <- ss3model(spp, "em")
-    case_files <-
-        list(F="F", D=c("index", "lcomp", "agecomp"), E="E")
+    scen <- expand_scenarios(species=spp, cases=list(D=100, F=1))
+    om.dir <- ss3model(spp, "om"); em.dir <- ss3model(spp, "em")
+    case_files <- list(F="F", D=c("index", "lcomp", "agecomp"))
     run_ss3sim(iterations=1:Nsim, scenarios=scen, parallel=TRUE,
                parallel_iterations=TRUE, case_folder=case_folder,
                ## user_recdevs=user.recdevs,
                om_dir=om.dir, em_dir=em.dir, case_files=case_files)
-    ## Read in and save key data for plotting
-    get_results_all(user=scen, parallel=FALSE, over=TRUE)
-    results.sc[[i]] <-
-        subset(calculate_re(read.csv("ss3sim_scalar.csv"), add=TRUE),
-               select=c("ID", "species", "D", "replicate", "L_at_Amin_Fem_GP_1_re","L_at_Amax_Fem_GP_1_re",
-               "VonBert_K_Fem_GP_1_re","CV_young_Fem_GP_1_re", "CV_old_Fem_GP_1_re",
-               "depletion_re", "SSB_MSY_re", "params_on_bound_em",
-               "max_grad", "depletion_om") )
-    results.ts[[i]] <-
-        subset(calculate_re(read.csv("ss3sim_ts.csv"), add=TRUE),
-               select=c("ID","species", "D", "replicate", "year","SpawnBio_re",
-               "Recruit_0_re", "F_re", "SpawnBio_om"))
-    file.copy("ss3sim_scalar.csv", paste0("scalar_", spp, ".csv"))
-    file.copy("ss3sim_ts.csv", paste0("ts_", spp, ".csv"))
-    unlink(scen, TRUE); file.remove("ss3sim_scalar.csv", "ss3sim_ts.csv")
 }
+## Read in and save data
+get_results_all(user=scen.all, parallel=TRUE, over=TRUE)
+file.copy("ss3sim_scalar.csv", "sto_sc.csv", over=TRUE)
+file.copy("ss3sim_ts.csv", "sto_ts.csv", over=TRUE)
 
-## Put all data together into long form for plotting
-results.sc.long <- melt(do.call(rbind, results.sc), id.vars=
-        c("ID","species", "D", "replicate", "max_grad", "params_on_bound_em"))
-results.ts.long <- melt(do.call(rbind, results.ts), id.vars=c("ID","species", "D", "replicate", "year"))
-results.ts.long <- merge(x=results.ts.long, y= subset(results.sc.long,
-                         select=c("ID", "params_on_bound_em", "max_grad")),
-                         by="ID")
-levels(results.sc.long$variable) <- gsub("_Fem_GP_1_re|_re", "", levels(results.sc.long$variable))
-levels(results.ts.long$variable) <- gsub("_re", "", levels(results.ts.long$variable))
-plot_scalar_points(results.sc.long, x="variable", y='value',
-                   horiz='species', rel=TRUE, color='max_grad')
-ggsave("plots/new_models_scalars.png", width=9, height=7)
-plot_ts_lines(results.ts.long, vert="variable", y='value', horiz='species',
-              rel=TRUE, color="max_grad")
-ggsave("plots/new_models_TS.png", width=9, height=7)
+sto.sc <- read.csv("sto_sc.csv")
+sto.sc$process_error <- "stochastic"
+det.sc <- read.csv("det_sc.csv")
+det.sc$process_error <- "deterministic"
+results.sc <- rbind(sto.sc, det.sc)
+results.sc <- calculate_re(results.sc, add=TRUE)
+results.sc$log_max_grad <- log(results.sc$max_grad)
+re.names <- names(results.sc)[grep("_re", names(results.sc))]
+growth.names <- re.names[grep("GP_", re.names)]
+selex.names <- re.names[grep("Sel_", re.names)]
+management.names <- c("SSB_MSY_re", "depletion_re", "SSB_Unfished_re", "Catch_endyear_re")
+results.sc.long <-
+    melt(results.sc, measure.vars=re.names,
+         id.vars= c("species", "process_error", "replicate",
+         "log_max_grad", "params_on_bound_em"))
+results.sc.long.growth <- droplevels(subset(results.sc.long, variable %in% growth.names))
+results.sc.long.selex <- droplevels(subset(results.sc.long, variable %in% selex.names))
+results.sc.long.management <- droplevels(subset(results.sc.long, variable %in% management.names))
+g <- plot_scalar_points(results.sc.long.growth, x="variable", y='value',
+                   horiz='species', vert="process_error", rel=TRUE, color='log_max_grad')+
+    theme(axis.text.x=element_text(angle=90))
+ggsave("plots/sc.growth.png",g, width=9, height=7)
+g <- plot_scalar_points(results.sc.long.selex, x="variable", y='value',
+                   horiz='species', vert="process_error", rel=TRUE, color='log_max_grad')+
+    theme(axis.text.x=element_text(angle=90))
+ggsave("plots/sc.selex.png", g, width=9, height=7)
+g <- plot_scalar_points(results.sc.long.management, x="variable", y='value',
+                   horiz='species', vert="process_error", rel=TRUE, color='log_max_grad')+
+    theme(axis.text.x=element_text(angle=90))
+ggsave("plots/sc.management.png",g, width=9, height=7)
+g <- ggplot(results.sc, aes(x=depletion_om, y=log_max_grad))+geom_point() +
+    geom_hline(yintercept=log(.01), color="red") +
+    facet_grid(species~process_error)
+ggsave("plots/sc.convergence.png",g, width=9, height=7)
 plyr::ddply(results.sc.long, .(species), summarize,
-            median.maxgrad=round(median(max_grad),2),
-            max.bounds=max(params_on_bound_em))
-## End of test runs. Check plots and table make sure everything looks good.
+            median.logmaxgrad=round(median(log_max_grad),2),
+            max.stuck.on.bounds=max(params_on_bound_em))
+
+## make time series plots
+sto.ts <- read.csv("sto_ts.csv")
+sto.ts$process_error <- "stochastic"
+det.ts <- read.csv("det_ts.csv")
+det.ts$process_error <- "deterministic"
+results.ts <- rbind(sto.ts, det.ts)
+results.ts <- calculate_re(results.ts, add=TRUE)
+results.ts <-
+    merge(x=results.ts, y= subset(results.sc,
+     select=c("ID", "params_on_bound_em", "log_max_grad")), by="ID")
+re.names <- names(results.ts)[grep("_re", names(results.ts))]
+results.ts.long <-
+    melt(results.ts, measure.vars=re.names,
+         id.vars= c("ID","species", "process_error", "replicate",
+         "log_max_grad", "params_on_bound_em", "year"))
+g <- plot_ts_lines(results.ts.long,  y='value', vert="variable", vert2="process_error",
+                   horiz='species', rel=TRUE, color='log_max_grad')
+ggsave("plots/ts.results.png", g, width=9, height=7)
+g <- plot_ts_lines(results.ts, y="SpawnBio_om", horiz="species",
+                   vert="process_error", color="log_max_grad")
+ggsave("plots/ts.convergence.png", g, width=9, height=7)
+
+## End of test runs. Check plots and table make sure everything looks
+## good before deleting the runs. You may need them for investigations of
+## issues
+
+## Clean up folder
+file.remove(c(paste0(scen,"-sto"),paste0(scen,"-det")))
+file.remove(c("ss3sim_scalars.csv", "ss3sim_ts.csv", "det_sc.csv",
+              "det_ts.csv", "sto_sc.csv", "sto_ts.csv"))
 ### ------------------------------------------------------------
 
-res.all <- rbind(read.csv("scalar_hake.csv"), read.csv("scalar_mackerel.csv"))
+### ------------------------------------------------------------
+## Some other random checks of plots we wanted to do
+res.all <- rbind(read.csv("scalar_hake.csv"),
+                 read.csv("scalar_mackerel.csv"),
+                 read.csv("scalar_yellow.csv"))
 ggplot(res.all, aes(x=species, y=depletion_om))+geom_boxplot()+ ylim(0,1)
+
+### ------------------------------------------------------------
 
 ## ## Run a few with ParmTrace turned on to see behavior of estimation
 ## trace.hake <- read.table("D100-E0-F1-hake/1/em/ParmTrace.sso", header=TRUE)
