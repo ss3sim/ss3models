@@ -21,7 +21,7 @@
 #' head(p)
 #' }
 #' @export
-#' @importFrom r4ss SS_parlines, SS_output
+#' @importFrom r4ss SS_parlines SS_output
 
 get_parvalues <- function(modelfolder = ".", write_csv = TRUE,
   outfile = "parlist.csv", ss_binary = "ss3_24o_opt") {
@@ -46,7 +46,7 @@ get_parvalues <- function(modelfolder = ".", write_csv = TRUE,
     setwd(file.path(models[mod], "om"))
     system(paste(ss_binary, "-noest"), show.output.on.console = FALSE)
     ctl.om <- suppressWarnings(SS_output(getwd(), covar = FALSE,
-      verbose = FALSE, ncol = 300, printstats = FALSE))
+      verbose = FALSE, ncols = 300, printstats = FALSE))
     ctl.om <- ctl.om$parameters[, c("Label", "Value", "Init")]
     ctl.om <- ctl.om[-grep("^F_fleet_", ctl.om$Label), ]
     ctl.om <- ctl.om[-grep("RecrDev_", ctl.om$Label), ]
