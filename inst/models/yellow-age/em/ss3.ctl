@@ -229,7 +229,7 @@
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -20 20 0 0 -1 99 -5 # LnQ_base_1_Fishery
- -20 20 -0.0656039 0 -1 99 3 # LnQ_base_2_Survey
+ -20 20 0 0 -1 99 3 # LnQ_base_2_Survey
  -20 20 0 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
