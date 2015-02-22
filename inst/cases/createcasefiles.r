@@ -45,7 +45,7 @@ ncalyears <- 2
 # Currently not using the lower sample size as Ono et al. (2014)
 # showed sample size really did not matter
 # lcomp and age comp sample sizes
-high <- 500
+high <- 40
 low <- 10
 
 # Estimate CVs or not
