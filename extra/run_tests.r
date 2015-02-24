@@ -24,7 +24,7 @@ library(reshape2)
 load_all("c:/Users/Cole/ss3sim/")
 load_all("c:/Users/Cole/ss3models/")
 library(ss3sim)
-
+library(ss3models)
 ## install.packages(c("doParallel", "foreach"))
 library(doParallel)
 registerDoParallel(cores = 4)
@@ -39,7 +39,7 @@ getDoParWorkers()
 ## Setup cases and models
 case_folder <- system.file("cases", package = "ss3models")
 ## modelnames <- dir(pattern = "om$", full.names = FALSE)[1:2]
-model_names <- c("hake", "yellow", "mackerel")
+model_names <- c("hake", "yellow", "mackerel")[1]
 ## These are the high data cases used for deterministic testing. Write them
 ## for each model to be tested. Age and length comps.
 index100 <- c('fleets;2', 'years;list(seq(50,100, by=2))', 'sds_obs;list(.01)')
@@ -53,9 +53,8 @@ for(species in model_names){
 scen.all <- expand_scenarios(species=model_names, cases=list(D=100, F=1))
 
 ## Loop through all of the species and run Nsim deterministic iterations
-Nsim <- 50
+Nsim <- 40
 user.recdevs <- matrix(rnorm(Nsim*100,0, .01), nrow=100)
-results.sc <- results.ts <- list()
 for(i in 1:length(model_names)){
     spp <- model_names[i]
     print(paste("starting model", spp))
@@ -71,11 +70,8 @@ for(i in 1:length(model_names)){
 get_results_all(user=scen.all, parallel=TRUE, over=TRUE)
 file.copy("ss3sim_scalar.csv", "det_sc.csv", over=TRUE)
 file.copy("ss3sim_ts.csv", "det_ts.csv", over=TRUE)
-unlink(scen)
+file.rename(scen.all, paste0(scen.all, "-det"))
 ## Now do the same but with process error
-Nsim <- 50
-user.recdevs <- matrix(rnorm(Nsim*100,0, .05), nrow=100)
-results.sc <- results.ts <- list()
 for(i in 1:length(model_names)){
     spp <- model_names[i]
     print(paste("starting model", spp))
@@ -91,7 +87,10 @@ for(i in 1:length(model_names)){
 get_results_all(user=scen.all, parallel=TRUE, over=TRUE)
 file.copy("ss3sim_scalar.csv", "sto_sc.csv", over=TRUE)
 file.copy("ss3sim_ts.csv", "sto_ts.csv", over=TRUE)
+file.rename(scen.all, paste0(scen.all, "-sto"))
+## unlink(c(paste0(scen.all, "-sto"), paste0(scen.all, "-det")), TRUE)
 
+## Quick plots
 sto.sc <- read.csv("sto_sc.csv")
 sto.sc$process_error <- "stochastic"
 det.sc <- read.csv("det_sc.csv")
@@ -126,9 +125,11 @@ g <- ggplot(results.sc, aes(x=depletion_om, y=log_max_grad))+geom_point() +
     geom_hline(yintercept=log(.01), color="red") +
     facet_grid(species~process_error)
 ggsave("plots/sc.convergence.png",g, width=9, height=7)
-plyr::ddply(results.sc.long, .(species), summarize,
+plyr::ddply(results.sc.long, .(species, process_error), summarize,
             median.logmaxgrad=round(median(log_max_grad),2),
             max.stuck.on.bounds=max(params_on_bound_em))
+ggplot(results.sc, aes(x=process_error, y=log_max_grad))+geom_violin()+
+    facet_wrap("species")+geom_hline(yintercept=log(.01), col='red')
 
 ## make time series plots
 sto.ts <- read.csv("sto_ts.csv")
