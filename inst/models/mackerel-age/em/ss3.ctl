@@ -90,7 +90,7 @@
  26 #_first_yr_fullbias_adj_in_MPD
  99 #_last_yr_fullbias_adj_in_MPD
  100 #_first_recent_yr_nobias_adj_in_MPD
- -2 #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs)
+ 0.9 #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs)
  0 #_period of cycles in recruitment (N parms read below)
  -5 #min rec_dev
  5 #max rec_dev
