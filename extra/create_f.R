@@ -45,9 +45,10 @@ library(plyr)
 
 # If you are a developer uncomment this line
 # devtools::load_all("MUST TYPE IN PATH TO CLONED VERSION OF SS3MODELS")
-library(ss3models)
 
-modelnames <- dir(system.file("models", package = "ss3models"))
+
+
+modelnames <- dir( system.file("models", package = "ss3models"))
 foldername <- file.path(dir(file.path(
   system.file("models", package = "ss3models")), full.names = TRUE), "om")
 
@@ -105,7 +106,7 @@ g <- ggplot(fmsytable.full) + geom_line(aes(fValues, relative_catch))+
 ggsave(file.path("plots/catch_curves.png"),g, width = 9, height = 7)
 ## Pare down to just the meta data
 fmsytable <- unique(subset(fmsytable.full, select=-c(fValues, eqCatch, relative_catch)))
-write.csv(fmsytable, file.path("fmsy", "fmsytable.full.csv"))
+write.csv(fmsytable, "fmsytable.csv")
 
 
 ###############################################################################
@@ -152,7 +153,8 @@ comment1 <- paste0("# Two-way trip F, increasing to Fmsy (right limb) for, ",
                    "years.\n")
 comment2 <- paste0("# One-way trip F, increasing to Fmsy (right limb) for 75\n")
 
-
+## Be careful of where this is writing the files to if working locally
+## setwd("../inst/cases/")
 setwd(system.file("cases", package = "ss3models"))
 print(paste("writing F case files to", getwd()))
 for (spp in seq_along(modelnames)) {
