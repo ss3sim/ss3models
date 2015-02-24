@@ -70,7 +70,7 @@ truem.df <- data.frame(species=modelnames, NatM=truem)
 F.start <- truem*.05#sapply(truem, function(x) ifelse(x > 0.25, 0.8, 0.015))
 F.end <- truem*6 #sapply(truem, function(x) ifelse(x > 0.25, 1.6, 0.4))
 
-N.steps <- 50
+N.steps <- 75
 for (m in seq_along(modelnames)) {
   dir.results <- file.path("fmsy", modelnames[m])
   dir.create(dir.results, recursive = TRUE, showWarnings = FALSE)
