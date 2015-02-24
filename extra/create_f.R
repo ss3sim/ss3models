@@ -13,6 +13,7 @@
 ## Modified 2/20/15 by Cole to make paths work with installed package, not
 ## cloned git repo. Also changed bounds for F values based on M, and added
 ## NatM to the plot/table...
+## Modified 2/24 by Cole for minor tweaks to models and did relative catch
 #-----------------------------------------------------------------------------#
 ###############################################################################
 ###############################################################################
@@ -79,28 +80,32 @@ for (m in seq_along(modelnames)) {
 }
 
 names(fmsy) <- modelnames
-fmsytable.full <- ldply(fmsy, mutate,
-                   maxcatch= max(eqCatch),
-                   ## for one of the models this wasn't unique so took first one
-                   fmsy=fValues[which.max(eqCatch)[1]],
-                   catch90=0.90 * maxcatch,
-                   fmsy90l=fValues[which(eqCatch > catch90)][1],
-                   fmsy90r=fValues[rev(which(eqCatch > catch90))][1])
+fmsytable.full <-
+    ldply(fmsy, mutate,
+          maxcatch= max(eqCatch),
+          relative_catch=eqCatch/maxcatch,
+          ## for one of the models this wasn't unique so took first one
+          fmsy=fValues[which.max(eqCatch)[1]],
+          catch90=0.90 * maxcatch,
+          fmsy90l=fValues[which(eqCatch > catch90)][1],
+          fmsy90r=fValues[rev(which(eqCatch > catch90))][1])
 fmsytable.full$species <- gsub("-om", "", fmsytable.full$.id)
 fmsytable.full <- merge(fmsytable.full, y=truem.df, by="species")
 fmsytable.full$.id <- NULL
-g <- ggplot(fmsytable.full) + geom_line(aes(fValues, eqCatch))+facet_wrap("species", scales="free") +
-    ggtitle("Catch Curves for models") +
-    geom_point(aes(x=fmsy, y=maxcatch)) +
-    geom_hline(aes(yintercept=catch90), col="blue") +
+g <- ggplot(fmsytable.full) + geom_line(aes(fValues, relative_catch))+
+    facet_wrap("species", scales="free_x") +
+    ggtitle("Catch Curves for models") + xlab("Fishing Effort (F)") +
+    ylab("Relative Equilibrium Catch")+
+    geom_point(aes(x=fmsy, y=1)) +
+    geom_hline(aes(yintercept=catch90/maxcatch), col="blue") +
     geom_vline(aes(xintercept=fmsy90r), col="gray") +
     geom_vline(aes(xintercept=fmsy), col="black") +
     geom_vline(aes(xintercept=fmsy90l), col="gray") +
     geom_vline(aes(xintercept=NatM), col="red")
-ggsave(file.path("fmsy", "catch_curves.png"),g, width = 9, height = 7)
-write.csv(fmsytable.full, file.path("fmsy", "fmsytable.full.csv"))
+ggsave(file.path("plots/catch_curves.png"),g, width = 9, height = 7)
 ## Pare down to just the meta data
-fmsytable <- unique(subset(fmsytable.full, select=-c(fValues, eqCatch)))
+fmsytable <- unique(subset(fmsytable.full, select=-c(fValues, eqCatch, relative_catch)))
+write.csv(fmsytable, file.path("fmsy", "fmsytable.full.csv"))
 
 
 ###############################################################################
@@ -149,11 +154,13 @@ comment2 <- paste0("# One-way trip F, increasing to Fmsy (right limb) for 75\n")
 
 
 setwd(system.file("cases", package = "ss3models"))
+print(paste("writing F case files to", getwd()))
 for (spp in seq_along(modelnames)) {
     ## Some species are special cases and we need to scale the whole F
     ## sequence down to improve convergence. So far just hake and mackerel
     ## models
     scal <- ifelse(length(grep("hake|mackerel",modelnames[spp]))>0, .6, 1)
+    print(paste(modelnames[spp], "scalar =", scal))
     writeF(fvals = scal*c(rep(0, years.burnin), rep(fmsytable[spp, "fmsy"], years.fish)),
            species = fmsytable$species[spp], case = 0,
            comment = paste0(comment, comment0))
