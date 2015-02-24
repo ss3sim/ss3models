@@ -71,7 +71,7 @@
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI  INIT     PRIOR PR_type SD    PHASE
- 4 20 15 15 -1 99 2 # SR_LN(R0)
+ 4 20 18 15 -1 99 2 # SR_LN(R0)
  0.2 1   0.82 0.777 -1      0.113 -4   # SR_BH_steep
  1   1.6 1.4      1.1   -1      99    -6  # SR_sigmaR
  -5  5   0        0     -1      99    -50 # SR_envlink
@@ -129,7 +129,7 @@
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -3 3 0 0 -1 99 -5 # LnQ_base_1_Fishery
- -20 20 0 0 -1 99 3 # LnQ_base_2_Survey
+ -20 20 0 0 -1 99 1 # LnQ_base_2_Survey
  -20 20 0 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
