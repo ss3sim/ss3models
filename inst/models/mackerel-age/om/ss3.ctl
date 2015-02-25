@@ -70,7 +70,7 @@
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI INIT PRIOR PR_type SD PHASE
  1 30 10 0 -1 0 1 # SR_LN(R0)
- 0.1 1 0.9 0 1 0 5 # SR_BH_steep
+ 0.1 1 0.8 0 1 0 5 # SR_BH_steep
  0 2 1 0 -1 0 -3 # SR_sigmaR
  -5 5 0 0 -1 0 -3 # SR_envlink
  -15 15 0 0 -1 0 1 # SR_R1_offset
