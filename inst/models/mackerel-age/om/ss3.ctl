@@ -207,7 +207,7 @@
 0.3 # F ballpark for annual F (=Z-M) for specified year
 -100 # F ballpark year (neg value to disable)
 2 # F_Method:  1=Pope; 2=instan. F; 3=hybrid (hybrid is recommended)
-1.1 # max F or harvest rate, depends on F_Method
+4.1 # max F or harvest rate, depends on F_Method
 # no additional F input needed for Fmethod 1
 # if Fmethod=2; read overall start F value; overall phase; N detailed inputs to read
 # if Fmethod=3; read N iterations for tuning for Fmethod 3

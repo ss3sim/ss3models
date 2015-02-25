@@ -347,8 +347,8 @@ Fishery%Survey%CPUE
 
 2 # length bin method: 1=use databins; 2=generate from binwidth,min,max below; 3=read vector
 1 # binwidth for population size comp
-0 # minimum size in the population (lower edge of first bin and size at age 0.00)
-60 # maximum size in the population (lower edge of last bin)
+1 # minimum size in the population (lower edge of first bin and size at age 0.00)
+100 # maximum size in the population (lower edge of last bin)
 
 -1 #_comp_tail_compression
 1e-05 #_add_to_comp
@@ -359,8 +359,8 @@ Fishery%Survey%CPUE
 #Yr Seas Flt/Svy Gender Part Nsamp datavector(female-male)
  1 1 1 0 0 100 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 
-12 #_N_age_bins
- 1 2 3 4 5 6 7 8 9 10 11 12
+9 #_N_age_bins
+ 0 1 2 3 4 5 6 7 8
 1 #_N_ageerror_definitions
  -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
  0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001
@@ -368,7 +368,7 @@ Fishery%Survey%CPUE
 3 #_Lbin_method: 1=poplenbins; 2=datalenbins; 3=lengths
 0 #_combine males into females at or below this bin number
 #Yr Seas Flt/Svy Gender Part Ageerr Lbin_lo Lbin_hi Nsamp datavector(female-male)
- 1983 1 1 0 0 1 -1 -1 100 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 0 0 1 -1 -1 100 1 1 1 1 1 1 1 1 1
 
 0 #_N_MeanSize-at-Age_obs
 #Yr Seas Flt/Svy Gender Part Ageerr Ignore datavector(female-male)
