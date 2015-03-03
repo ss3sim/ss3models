@@ -354,13 +354,13 @@
  -4 21.5 4.3 4.3 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_3_Fishery
  -2 75 15 15 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_4_Fishery
  -15 5 -999 -999 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_1P_5_Fishery
- -5 5 -999 -999 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_1P_6_Fishery
+ -5 1000 999 -999 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_1P_6_Fishery
  3 153 30.6 30.6 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_2P_1_Survey
  -5 5 -1 -1 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_2_Survey
  -4 22 4.3 4.3 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_3_Survey
  -2 75 15 15 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_4_Survey
  -15 5 -999 -999 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_2P_5_Survey
- -5 5 -999 -999 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_2P_6_Survey
+ -5 1000 999 -999 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
