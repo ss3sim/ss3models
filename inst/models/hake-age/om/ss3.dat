@@ -7,7 +7,7 @@
 1 #_styr
 100 #_endyr
 1 #_nseas
- 12 #_months/season
+12 #_months/season
 1 #_spawn_seas
 1 #_Nfleet
 2 #_Nsurveys
@@ -130,7 +130,7 @@ Fishery%Survey%CPUE
 #_Fleet Units Errtype
 1 1 0 # Fishery
 2 1 0 # Survey
-3 1 0 # CPUE
+3 1 0 # Survey
 #_year seas index obs err
  1 1 2 1 1 # Survey
  2 1 2 1 1 # Survey
@@ -332,6 +332,7 @@ Fishery%Survey%CPUE
  98 1 3 1 1 # CPUE
  99 1 3 1 1 # CPUE
  100 1 3 1 1 # CPUE
+
 0 #_N_fleets_with_discard
 #_discard_units (1=same_as_catchunits(bio/num); 2=fraction; 3=numbers)
 #_discard_errtype:  >0 for DF of T-dist(read CV below); 0 for normal with CV; -1 for normal with se; -2 for lognormal
@@ -557,9 +558,11 @@ Fishery%Survey%CPUE
 
 20 #_N_age_bins
  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
-1 #_N_ageerror_definitions
--1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1
-0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001	0.001
+2 #_N_ageerror_definitions
+ 0.5 1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5 14.5 15.5 16.5 17.5 18.5 19.5 20.5
+ 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001
+ 0.5 1.5 2.5 3.5 4.5 5.5 6.5 7.5 8.5 9.5 10.5 11.5 12.5 13.5 14.5 15.5 16.5 17.5 18.5 19.5 20.5
+ 0.329 0.329 0.347 0.369 0.395 0.428 0.468 0.518 0.579 0.653 0.745 0.858 0.996 1.167 1.376 1.632 1.858 2.172 2.53 2.934 3.388
 200 #_N_Agecomp_obs
 3 #_Lbin_method: 1=poplenbins; 2=datalenbins; 3=lengths
 0 #_combine males into females at or below this bin number
@@ -778,5 +781,3 @@ Fishery%Survey%CPUE
 0 # no morphcomp data 
 
 999
-
-ENDDATA
