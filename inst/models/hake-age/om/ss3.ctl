@@ -28,7 +28,7 @@
 999 #_Growth_Age_for_L2 (999 to use as Linf)
 0 #_SD_add_to_LAA (set to 0.1 for SS2 V1.x compatibility)
 0 #_CV_Growth_Pattern:  0 CV=f(LAA); 1 CV=F(A); 2 SD=F(LAA); 3 SD=F(A); 4 logSD=F(A)
-2 #_maturity_option:  1=length logistic; 2=age logistic; 3=read age-maturity matrix by growth_pattern; 4=read age-fecundity; 5=read fec and wt from wtatage.ss
+1 #_maturity_option:  1=length logistic; 2=age logistic; 3=read age-maturity matrix by growth_pattern; 4=read age-fecundity; 5=read fec and wt from wtatage.ss
 #_placeholder for empirical age-maturity by growth pattern
 2 #_First_Mature_Age
 1 #_fecundity option:(1)eggs=Wt*(a+b*Wt);(2)eggs=a*L^b;(3)eggs=a*Wt^b; (4)eggs=a+b*L; (5)eggs=a+b*W
@@ -46,8 +46,8 @@
  0.03 0.2 0.1 0.1 -1 99 -5 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  -3 3 7e-006 7e-006 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_1_Fem
  -3 3 2.95 2.9624 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_2_Fem
- -3 43 2.835 36.89 -1 99 -50 0 0 0 0 0 0 0 # Mat50%_Fem
- -3 3 -2.208 -0.48 -1 99 -50 0 0 0 0 0 0 0 # Mat_slope_Fem
+ -3 43 31 36.89 -1 99 -50 0 0 0 0 0 0 0 # Mat50%_Fem
+ -3 3 -0.23 -0.48 -1 99 -50 0 0 0 0 0 0 0 # Mat_slope_Fem
  -3 3 1 1 -1 99 -50 0 0 0 0 0 0 0 # Eggs/kg_inter_Fem
  -3 3 0 0 -1 99 -50 0 0 0 0 0 0 0 # Eggs/kg_slope_wt_Fem
  0 2 1 1 -1 99 -50 0 0 0 0 0 0 0 # RecrDist_GP_1
@@ -72,7 +72,7 @@
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI INIT PRIOR PR_type SD PHASE
  13 17 15 15 -1 99 1 # SR_LN(R0)
- 0.2 1 0.82 0.777 -1 0.113 -4 # SR_BH_steep
+ 0.2 1 0.82 0.777 2 0.113 4 # SR_BH_steep
  1 1.6 1.4 1.1 -1 99 -6 # SR_sigmaR
  -5 5 0 0 -1 99 -50 # SR_envlink
  -5 5 0 0 -1 99 -50 # SR_R1_offset
@@ -341,28 +341,28 @@
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
 #_Pattern Discard Male Special
- 0 0 0 0 # 1 Fishery
- 0 0 0 0 # 2 Survey
- 0 0 0 0 # 3 CPUE
+ 24 0 0 0 # 1 Fishery
+ 24 0 0 0 # 2 Survey
+ 15 0 0 1 # 3 CPUE
 #
 #_age_selex_types
 #_Pattern ___ Male Special
- 20 0 0 0 # 1 Fishery
- 20 0 0 0 # 2 Survey
- 15 0 0 1 # 3 CPUE
+ 10 0 0 0 # 1 Fishery
+ 10 0 0 0 # 2 Survey
+ 10 0 0 0 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 0 69 4.33 45 -1 0.05 1 0 0 0 0 0 0 0 # AgeSel_1P_1_Fishery
- -5 10 -1 5 -1 0.05 -3 0 0 0 0 0 0 0 # AgeSel_1P_2_Fishery
- -4 12 1.1 3 -1 0.05 2 0 0 0 0 0 0 0 # AgeSel_1P_3_Fishery
- -2 30 15 10 -1 0.05 -4 0 0 0 0 0 0 0 # AgeSel_1P_4_Fishery
- -999 5 -999 -999 -1 0.05 -3 0 0 0 0 0 0 0 # AgeSel_1P_5_Fishery
- -9 1000 999 0.5 -1 0.05 -4 0 0 0 0 0 0 0 # AgeSel_1P_6_Fishery
- 0 69 3.72 45 -1 0.05 1 0 0 0 0 0 0 0 # AgeSel_2P_1_Survey
- -5 10 -1 5 -1 0.05 -3 0 0 0 0 0 0 0 # AgeSel_2P_2_Survey
- -4 12 1.06 3 -1 0.05 2 0 0 0 0 0 0 0 # AgeSel_2P_3_Survey
- -2 30 15 10 -1 0.05 -4 0 0 0 0 0 0 0 # AgeSel_2P_4_Survey
- -999 5 -999 -999 -1 0.05 -3 0 0 0 0 0 0 0 # AgeSel_2P_5_Survey
- -9 1000 999 0.5 -1 0.05 -4 0 0 0 0 0 0 0 # AgeSel_2P_6_Survey
+ 15 69 45.1 45 -1 0.05 1 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
+ -5 10 -1 5 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
+ -4 12 5.52 3 -1 0.05 2 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
+ -2 30 15 10 -1 0.05 -4 0 0 0 0 0 0 0 # SizeSel_1P_4_Fishery
+ -999 5 -999 -999 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
+ -9 1000 999 0.5 -1 0.05 -4 0 0 0 0 0 0 0 # SizeSel_1P_6_Fishery
+ 15 69 38.94 45 -1 0.05 1 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
+ -5 10 -1 5 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
+ -4 12 5.53 3 -1 0.05 2 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
+ -2 30 15 10 -1 0.05 -4 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
+ -999 5 -999 -999 -1 0.05 -3 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
+ -9 1000 999 0.5 -1 0.05 -4 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
@@ -384,7 +384,7 @@
 #_Cond  1 1 1 #_mult_by_agecomp_N
 #_Cond  1 1 1 #_mult_by_size-at-age_N
 #
-1 #_maxlambdaphase
+5 #_maxlambdaphase
 1 #_sd_offset
 #
 0 # number of changes to make to default Lambdas (default value is 1.0)
@@ -393,21 +393,21 @@
 #like_comp fleet/survey  phase  value  sizefreq_method
 #
 # lambdas (for info only; columns are phases)
-#  0 #_CPUE/survey:_1
-#  1 #_CPUE/survey:_2
-#  1 #_CPUE/survey:_3
-#  1 #_lencomp:_1
-#  1 #_lencomp:_2
-#  0 #_lencomp:_3
-#  1 #_agecomp:_1
-#  1 #_agecomp:_2
-#  0 #_agecomp:_3
-#  1 #_init_equ_catch
-#  1 #_recruitments
-#  1 #_parameter-priors
-#  1 #_parameter-dev-vectors
-#  1 #_crashPenLambda
-#  0 # F_ballpark_lambda
+#  0 0 0 0 0 #_CPUE/survey:_1
+#  1 1 1 1 1 #_CPUE/survey:_2
+#  1 1 1 1 1 #_CPUE/survey:_3
+#  1 1 1 1 1 #_lencomp:_1
+#  1 1 1 1 1 #_lencomp:_2
+#  0 0 0 0 0 #_lencomp:_3
+#  1 1 1 1 1 #_agecomp:_1
+#  1 1 1 1 1 #_agecomp:_2
+#  0 0 0 0 0 #_agecomp:_3
+#  1 1 1 1 1 #_init_equ_catch
+#  1 1 1 1 1 #_recruitments
+#  1 1 1 1 1 #_parameter-priors
+#  1 1 1 1 1 #_parameter-dev-vectors
+#  1 1 1 1 1 #_crashPenLambda
+#  0 0 0 0 0 # F_ballpark_lambda
 0 # (0/1) read specs for more stddev reporting 
  # 0 1 -1 5 1 5 1 -1 5 # placeholder for selex type, len/age, year, N selex bins, Growth pattern, N growth ages, NatAge_area(-1 for all), NatAge_yr, N Natages
  # placeholder for vector of selex bins to be reported

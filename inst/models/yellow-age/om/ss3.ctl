@@ -26,7 +26,7 @@
 999 #_Growth_Age_for_L2 (999 to use as Linf)
 0 #_SD_add_to_LAA (set to 0.1 for SS2 V1.x compatibility)
 0 #_CV_Growth_Pattern:  0 CV=f(LAA); 1 CV=F(A); 2 SD=F(LAA); 3 SD=F(A); 4 logSD=F(A)
-2 #_maturity_option:  1=length logistic; 2=age logistic; 3=read age-maturity matrix by growth_pattern; 4=read age-fecundity; 5=read fec and wt from wtatage.ss
+1 #_maturity_option:  1=length logistic; 2=age logistic; 3=read age-maturity matrix by growth_pattern; 4=read age-fecundity; 5=read fec and wt from wtatage.ss
 #_placeholder for empirical age-maturity by growth pattern
 2 #_First_Mature_Age
 1 #_fecundity option:(1)eggs=Wt*(a+b*Wt);(2)eggs=a*L^b;(3)eggs=a*Wt^b; (4)eggs=a+b*L; (5)eggs=a+b*W
@@ -36,7 +36,7 @@
 #
 #_growth_parms
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 0.01 0.15 0.05 0.05 0 0.0226 -6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
+ 0.01 0.15 0.05 0.05 -1 0.0226 -6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
  10 35 18 30 -1 99 -2 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
  40 120 62 66 -1 99 -2 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
  0.01 0.2 0.047 0.05 -1 99 -2 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
@@ -44,8 +44,8 @@
  -2 2 0.13 0.1 -1 99 -3 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  -3 3 9.77e-006 2.09e-005 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_1_Fem
  -3 4 3.17125 2.96956 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_2_Fem
- 1 39 14.6 40 -1 99 -50 0 0 0 0 0 0 0 # Mat50%_Fem
- -3 3 -0.474 -0.4 -1 99 -50 0 0 0 0 0 0 0 # Mat_slope_Fem
+ 38 39 38.78 40 -1 99 -50 0 0 0 0 0 0 0 # Mat50%_Fem
+ -3 3 -0.437 -0.4 -1 99 -50 0 0 0 0 0 0 0 # Mat_slope_Fem
  -3 300000 137900 137900 -1 1 -6 0 0 0 0 0 0 0 # Eggs/kg_inter_Fem
  -3 39000 36500 36500 -1 1 -6 0 0 0 0 0 0 0 # Eggs/kg_slope_wt_Fem
  0 2 1 1 -1 99 -50 0 0 0 0 0 0 0 # RecrDist_GP_1
@@ -70,7 +70,7 @@
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI INIT PRIOR PR_type SD PHASE
  3 15 5.6 5 -1 99 -1 # SR_LN(R0)
- 0.2 1 0.44 0.44 2 0.1 -7 # SR_BH_steep
+ 0.2 1 0.44 0.44 -1 0.1 -7 # SR_BH_steep
  0 5 0.5 1 -1 99 -50 # SR_sigmaR
  -5 5 0 0 -1 99 -50 # SR_envlink
  -5 5 0 0 -1 99 -50 # SR_R1_offset
@@ -339,28 +339,28 @@
 #_size_selex_types
 #discard_options:_0=none;_1=define_retention;_2=retention&mortality;_3=all_discarded_dead
 #_Pattern Discard Male Special
- 0 0 0 0 # 1 Fishery
- 0 0 0 0 # 2 Survey
- 0 0 0 0 # 3 CPUE
+ 24 0 0 0 # 1 Fishery
+ 24 0 0 0 # 2 Survey
+ 15 0 0 1 # 3 CPUE
 #
 #_age_selex_types
 #_Pattern ___ Male Special
- 20 0 0 0 # 1 Fishery
- 20 0 0 0 # 2 Survey
- 15 0 0 1 # 3 CPUE
+ 10 0 0 0 # 1 Fishery
+ 10 0 0 0 # 2 Survey
+ 10 0 0 0 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 40 89 21.2 57 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_1_Fishery
- -5 0 -1 -5 0 5 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_2_Fishery
- 0 10 4.08 5 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_3_Fishery
- 0 30 15 10 0 10 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_4_Fishery
- -15 0 -999 -10 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_5_Fishery
- -999 10000 999 0 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_6_Fishery
- 40 89 18.28 57 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_1_Survey
- -5 0 -1 -5 0 5 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_2_Survey
- 0 10 4.08 5 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_3_Survey
- 0 30 15 10 0 10 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_4_Survey
- -15 0 -999 -10 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_5_Survey
- -999 10000 999 0 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_6_Survey
+ 20 89 46.43 57 -1 99 3 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
+ -5 0 -1 -5 -1 5 -3 0 0 0 0 0 0 0 # SizeSel_1P_2_Fishery
+ 0 10 4.24 5 -1 99 3 0 0 0 0 0 0 0 # SizeSel_1P_3_Fishery
+ 0 30 15 10 -1 10 -3 0 0 0 0 0 0 0 # SizeSel_1P_4_Fishery
+ -999 0 -999 -10 -1 99 -3 0 0 0 0 0 0 0 # SizeSel_1P_5_Fishery
+ -999 10000 999 -1 -1 99 -3 0 0 0 0 0 0 0 # SizeSel_1P_6_Fishery
+ 20 89 38.68 57 -1 99 3 0 0 0 0 0 0 0 # SizeSel_2P_1_Survey
+ -5 0 -1 -5 -1 5 -3 0 0 0 0 0 0 0 # SizeSel_2P_2_Survey
+ 0 10 4.24 5 -1 99 3 0 0 0 0 0 0 0 # SizeSel_2P_3_Survey
+ 0 30 15 10 -1 10 -3 0 0 0 0 0 0 0 # SizeSel_2P_4_Survey
+ -999 0 -999 -10 -1 99 -3 0 0 0 0 0 0 0 # SizeSel_2P_5_Survey
+ -999 10000 999 0 -1 99 -3 0 0 0 0 0 0 0 # SizeSel_2P_6_Survey
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
