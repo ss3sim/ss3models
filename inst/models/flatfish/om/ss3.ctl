@@ -345,22 +345,28 @@
 #
 #_age_selex_types
 #_Pattern ___ Male Special
- 10 0 0 0 # 1 Fishery
- 10 0 0 0 # 2 Survey
- 10 0 0 0 # 3 CPUE
+ 11 0 0 0 # 1 Fishery
+ 11 0 0 0 # 2 Survey
+ 11 0 0 0 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 3 182 36.4 36.4 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_1P_1_Fishery
+ 4 85 36.4 36.4 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_1P_1_Fishery
  -5 5 -1 -1 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_2_Fishery
  -4 21.5 4.3 4.3 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_3_Fishery
  -2 75 15 15 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_1P_4_Fishery
  -15 5 -999 -999 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_1P_5_Fishery
  -5 1000 999 -999 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_1P_6_Fishery
- 3 153 30.6 30.6 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_2P_1_Survey
+ 4 85 30.6 30.6 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_2P_1_Survey
  -5 5 -1 -1 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_2_Survey
  -4 22 4.3 4.3 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_3_Survey
  -2 75 15 15 -1 0.05 -3 0 0 0 0 0.5 0 0 # SizeSel_2P_4_Survey
  -15 5 -999 -999 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_2P_5_Survey
  -5 1000 999 -999 -1 0.05 -2 0 0 0 0 0.5 0 0 # SizeSel_2P_6_Survey
+ 0 1 0.1 0.1 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_1_Fishery
+ 0 101 100 100 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_1P_2_Fishery
+ 0 1 0.1 0.1 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_1_Survey
+ 0 101 100 100 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_2P_2_Survey
+ 0 1 0.1 0.1 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_3P_1_CPUE
+ 0 101 100 100 -1 99 -3 0 0 0 0 0.5 0 0 # AgeSel_3P_2_CPUE 
 #_Cond 0 #_custom_sel-env_setup (0/1) 
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no enviro fxns
 #_Cond 0 #_custom_sel-blk_setup (0/1) 
