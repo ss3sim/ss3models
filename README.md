@@ -76,11 +76,11 @@ Included models
 
 2.  `flatfish`: (yellow tail flounder) length-based double normal selectivity (mimicking logistic) in OM, length-based double normal selectivity (mimicking logistic) in EM, narrow bounds
 
-3.  `yellow`: (yelloweye rockfish) length-based double normal selectivity (mimicking logistic) in OM, length-based double normal selectivity (mimicking logistic) in EM, length-based maturity
+3.  `yellow`: (yelloweye rockfish) length-based double normal selectivity (mimicking logistic) in OM, length-based double normal selectivity (mimicking logistic) in EM, length-based maturity. M increased to 0.08 to reduce % in plusgroup.
 
 4.  `hake`: (Pacific hake) length-based double normal selectivity (mimicking logistic) in OM, length-based double normal selectivity (mimicking logistic) in EM, length-based maturity (slightly changed compared t o the original assessment to match the purpose of this simulation study)
 
-5. `mackerel`: (Pacific mackerel) length-based double normal selectivity (mimicking logistic) in OM, length-based double normal selectivity (mimicking logistic) in EM, length-based maturity
+5. `mackerel`: (Pacific mackerel) length-based double normal selectivity (mimicking logistic) in OM, length-based double normal selectivity (mimicking logistic) in EM, length-based maturity. Steepness reduced from 0.9 to 0.8 given convergence issues.
 
 ### Base models (age-based selectivity)
 
@@ -88,9 +88,11 @@ Included models
 
 2.  `flatfish`: TODO
 
-3.  `yellow-age`: (yellowtail flounder) age-based double normal selectivity (mimicking logistic) in OM, age-based double normal selectivity (mimicking logistic) in EM, age-based maturity
+3.  `yellow-age`: (yelloweye rockfish) age-based double normal selectivity (mimicking logistic) in OM, age-based double normal selectivity (mimicking logistic) in EM, age-based maturity. M increased to 0.08 to reduce % in plusgroup.
 
-4.  `hake-age`: age-based double normal selectivity (mimicking logistic) in OM, age-based double normal selectivity (mimicking logistic) in EM, age-based maturity (converted from the 'hake' model)
+4.  `hake-age`: (Pacific hake) age-based double normal selectivity (mimicking logistic) in OM, age-based double normal selectivity (mimicking logistic) in EM, age-based maturity (converted from the 'hake' model)
+
+5.  `mackerel-age`: (Pacific mackerel) age-based double normal selectivity (mimicking logistic) in OM, age-based double normal selectivity (mimicking logistic) in EM, age-based maturity. Steepness reduced from 0.9 to 0.8 given convergence issues.
 
 ### Model summaries
 
@@ -105,10 +107,10 @@ Eventually more summary data and descriptive plots will be available on the `REA
 -   length-based
 
 -   Maturity:
--   age-based logistic maturity
--   length-based logistic maturity
+     -   age-based logistic maturity
+     -   length-based logistic maturity
 
-### TODO
+### Additional changes done
 
 -   [ ] lbin type = 3
 -   [ ] population bin width must be divisible by the data bin width
