@@ -350,7 +350,7 @@ Fishery%Survey%CPUE
 1 	# binwidth for population size comp
 10 	# minimum size in the population (lower edge of first bin and size at age 0.00)
 200 	# maximum size in the population (lower edge of last bin)
--0.001  #_comp_tail_compression
+-1  #_comp_tail_compression
 1e-10 #_add_to_comp
 0 	#_combine males into females at or below this bin number
 45 	#_N_LengthBins

@@ -340,7 +340,7 @@ Fishery%Survey%CPUE #_fleetnames
 86	# max size in the pop(lower edge of last bin)
 
 -1 #_comp_tail_compression
-0.00001 #_add_to_comp
+1e-10 #_add_to_comp
 1 #_max_combined_lbin
 42 #_N_lbins
 #_lbin_vector
