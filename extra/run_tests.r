@@ -128,15 +128,18 @@ results.sc.long.management <- droplevels(subset(results.sc.long, variable %in% m
 results.sc.long.management$variable <- gsub("_re", "", results.sc.long.management$variable)
 ## Quick plots
 g <- plot_scalar_points(results.sc.long.growth, x="variable", y='value',
-                   horiz='species', vert="process_error", rel=TRUE, color='log_max_grad')+
+                   horiz='species', vert="process_error", rel=TRUE,
+                        color='log_max_grad', print=FALSE)+
     theme(axis.text.x=element_text(angle=90))
 ggsave("plots/sc.growth.png",g, width=9, height=7)
 g <- plot_scalar_points(results.sc.long.selex, x="variable", y='value',
-                   horiz='species', vert="process_error", rel=TRUE, color='log_max_grad')+
+                   horiz='species', vert="process_error", rel=TRUE,
+                        color='log_max_grad', print=FALSE)+
     theme(axis.text.x=element_text(angle=90))
 ggsave("plots/sc.selex.png", g, width=9, height=7)
 g <- plot_scalar_points(results.sc.long.management, x="variable", y='value',
-                   horiz='species', vert="process_error", rel=TRUE, color='log_max_grad')+
+                   horiz='species', vert="process_error", rel=TRUE,
+                        color='log_max_grad', print=FALSE)+
     theme(axis.text.x=element_text(angle=90))
 ggsave("plots/sc.management.png",g, width=9, height=7)
 g <- ggplot(results.sc, aes(x=process_error, y=log_max_grad, color=runtime, size=params_on_bound_em,))+
@@ -159,6 +162,11 @@ det.ts <- read.csv("det_ts.csv")
 det.ts$process_error <- "deterministic"
 results.ts <- rbind(sto.ts, det.ts)
 results.ts <- calculate_re(results.ts, add=TRUE)
+## species needs to be fixed due to the dash in the age ones; crazy stupid
+## way to get around this for now
+results.ts$species <-
+    as.vector(do.call(rbind, lapply(strsplit(gsub("-age", "_age", results.ts$ID), '-'),
+                 function(x) x[3])))
 results.ts <-
     merge(x=results.ts, y= subset(results.sc,
      select=c("ID", "params_on_bound_em", "log_max_grad")), by="ID")
@@ -170,6 +178,9 @@ results.ts.long <-
          "log_max_grad", "params_on_bound_em", "year"))
 g <- plot_ts_lines(results.ts.long,  y='value', vert="variable", vert2="process_error",
                    horiz='species', rel=TRUE, color='log_max_grad', print=FALSE)
+ggsave("plots/ts.results_lines.png", g, width=9, height=7)
+g <- plot_ts_boxplot(results.ts.long,  y='value', vert="variable", vert2="process_error",
+                   horiz='species', rel=TRUE, print=FALSE)
 ggsave("plots/ts.results.png", g, width=9, height=7)
 g <- plot_ts_lines(results.ts, y="SpawnBio_om", horiz="species",
                    vert="process_error", color="log_max_grad", print=FALSE)
