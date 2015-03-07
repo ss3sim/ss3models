@@ -36,7 +36,7 @@
 #
 #_growth_parms
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 0.01 0.15 0.08 0.05 0 0.0226 -6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
+ 0.01 0.15 0.08 0.05 -1 0.0226 -6 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
  10 35 18 30 -1 99 -2 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
  40 120 62 66 -1 99 -2 0 0 0 0 0 0 0 # L_at_Amax_Fem_GP_1
  0.01 0.2 0.047 0.05 -1 99 -2 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
@@ -70,7 +70,7 @@
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
 #_LO HI INIT PRIOR PR_type SD PHASE
  3 15 5.6 5 -1 99 -1 # SR_LN(R0)
- 0.2 1 0.44 0.44 2 0.1 -7 # SR_BH_steep
+ 0.2 1 0.44 0.44 -1 0.1 -7 # SR_BH_steep
  0 5 0.5 1 -1 99 -50 # SR_sigmaR
  -5 5 0 0 -1 99 -50 # SR_envlink
  -5 5 0 0 -1 99 -50 # SR_R1_offset
