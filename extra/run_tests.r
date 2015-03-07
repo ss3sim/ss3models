@@ -21,8 +21,10 @@ library(reshape2)
 ## install_github("ss3sim/ss3models")
 ## Install ss3sim package. Be sure to pull before installing
 ## devtools::install_github("ss3sim/ss3sim")
-load_all("c:/Users/Cole/ss3sim/")
-load_all("c:/Users/Cole/ss3models/")
+## load_all("f:/Cole/ss3sim/")
+## load_all("f:/Cole/ss3models/")
+devtools::install("f:/Cole/ss3sim/")
+devtools::install("f:/Cole/ss3models/")
 library(ss3sim)
 library(ss3models)
 ## install.packages(c("doParallel", "foreach"))
@@ -38,8 +40,8 @@ getDoParWorkers()
 
 ## Setup cases and models
 case_folder <- system.file("cases", package = "ss3models")
-## modelnames <- dir(pattern = "om$", full.names = FALSE)[1:2]
-model_names <- c("hake", "yellow", "mackerel")[1]
+model_names <- dir(path="../inst/models/", full.names = FALSE)
+## model_names <- c("hake", "yellow", "mackerel")
 ## These are the high data cases used for deterministic testing. Write them
 ## for each model to be tested. Age and length comps.
 index100 <- c('fleets;2', 'years;list(seq(50,100, by=2))', 'sds_obs;list(.01)')
@@ -53,7 +55,7 @@ for(species in model_names){
 scen.all <- expand_scenarios(species=model_names, cases=list(D=100, F=1))
 
 ## Loop through all of the species and run Nsim deterministic iterations
-Nsim <- 40
+Nsim <- 50
 user.recdevs <- matrix(rnorm(Nsim*100,0, .01), nrow=100)
 for(i in 1:length(model_names)){
     spp <- model_names[i]
@@ -78,37 +80,53 @@ for(i in 1:length(model_names)){
     scen <- expand_scenarios(species=spp, cases=list(D=100, F=1))
     om.dir <- ss3model(spp, "om"); em.dir <- ss3model(spp, "em")
     case_files <- list(F="F", D=c("index", "lcomp", "agecomp"))
-    run_ss3sim(iterations=1:Nsim, scenarios=scen, parallel=TRUE,
+    run_ss3sim(iterations=1:Nsim, scenarios=scen, parallel=F,
                parallel_iterations=TRUE, case_folder=case_folder,
                ## user_recdevs=user.recdevs,
                om_dir=om.dir, em_dir=em.dir, case_files=case_files)
 }
 ## Read in and save data
-get_results_all(user=scen.all, parallel=TRUE, over=TRUE)
+get_results_all(user=scen.all, parallel=TRUE, over=F)
 file.copy("ss3sim_scalar.csv", "sto_sc.csv", over=TRUE)
 file.copy("ss3sim_ts.csv", "sto_ts.csv", over=TRUE)
 file.rename(scen.all, paste0(scen.all, "-sto"))
 ## unlink(c(paste0(scen.all, "-sto"), paste0(scen.all, "-det")), TRUE)
 
+
+## quickly manipulate results for plots
 ## Quick plots
 sto.sc <- read.csv("sto_sc.csv")
 sto.sc$process_error <- "stochastic"
 det.sc <- read.csv("det_sc.csv")
 det.sc$process_error <- "deterministic"
 results.sc <- rbind(sto.sc, det.sc)
-results.sc <- calculate_re(results.sc, add=TRUE)
+(scenario.counts <- ddply(results.sc, .(scenario), summarize, replicates=length(scenario)))
 results.sc$log_max_grad <- log(results.sc$max_grad)
+results.sc$converged <- ifelse(results.sc$max_grad<.1, "yes", "no")
+results.sc <- calculate_re(results.sc, add=TRUE)
+results.sc$runtime <- results.sc$RunTime
+## species needs to be fixed due to the dash in the age ones; crazy stupid
+## way to get around this for now
+results.sc$species <-
+    as.vector(do.call(rbind, lapply(strsplit(gsub("-age", "_age", results.sc$ID), '-'),
+                 function(x) x[3])))
+## Drop fixed params (columns of zeroes)
 re.names <- names(results.sc)[grep("_re", names(results.sc))]
-growth.names <- re.names[grep("GP_", re.names)]
-selex.names <- re.names[grep("Sel_", re.names)]
-management.names <- c("SSB_MSY_re", "depletion_re", "SSB_Unfished_re", "Catch_endyear_re")
 results.sc.long <-
-    melt(results.sc, measure.vars=re.names,
-         id.vars= c("species", "process_error", "replicate",
-         "log_max_grad", "params_on_bound_em"))
+    melt(results.sc, measure.vars=re.names, id.vars=
+         c("species", "replicate", "converged", "process_error",
+           "log_max_grad", "params_on_bound_em", "runtime"))
+growth.names <- re.names[grep("GP_", re.names)]
 results.sc.long.growth <- droplevels(subset(results.sc.long, variable %in% growth.names))
+results.sc.long.growth$variable <- gsub("_Fem_GP_1_re|_re", "", results.sc.long.growth$variable)
+selex.names <- re.names[grep("Sel_", re.names)]
 results.sc.long.selex <- droplevels(subset(results.sc.long, variable %in% selex.names))
+results.sc.long.selex$variable <- gsub("ery|ey|Size|_re", "", results.sc.long.selex$variable)
+results.sc.long.selex$variable <- gsub("_", ".", results.sc.long.selex$variable)
+management.names <- c("SSB_MSY_re", "depletion_re", "SSB_Unfished_re", "Catch_endyear_re")
 results.sc.long.management <- droplevels(subset(results.sc.long, variable %in% management.names))
+results.sc.long.management$variable <- gsub("_re", "", results.sc.long.management$variable)
+## Quick plots
 g <- plot_scalar_points(results.sc.long.growth, x="variable", y='value',
                    horiz='species', vert="process_error", rel=TRUE, color='log_max_grad')+
     theme(axis.text.x=element_text(angle=90))
@@ -121,15 +139,18 @@ g <- plot_scalar_points(results.sc.long.management, x="variable", y='value',
                    horiz='species', vert="process_error", rel=TRUE, color='log_max_grad')+
     theme(axis.text.x=element_text(angle=90))
 ggsave("plots/sc.management.png",g, width=9, height=7)
-g <- ggplot(results.sc, aes(x=depletion_om, y=log_max_grad))+geom_point() +
-    geom_hline(yintercept=log(.01), color="red") +
-    facet_grid(species~process_error)
+g <- ggplot(results.sc, aes(x=process_error, y=log_max_grad, color=runtime, size=params_on_bound_em,))+
+    geom_jitter()+
+    facet_wrap('species')+
+        geom_hline(yintercept=log(.01), col='red')
 ggsave("plots/sc.convergence.png",g, width=9, height=7)
 plyr::ddply(results.sc.long, .(species, process_error), summarize,
             median.logmaxgrad=round(median(log_max_grad),2),
             max.stuck.on.bounds=max(params_on_bound_em))
-ggplot(results.sc, aes(x=process_error, y=log_max_grad))+geom_violin()+
-    facet_wrap("species")+geom_hline(yintercept=log(.01), col='red')
+g <- ggplot(results.sc, aes(x=replicate, y=log_max_grad, color=species)) +
+    geom_point()+
+    facet_grid(process_error~.)
+ggsave("plots/sc.replicate.convergence.png",g, width=9, height=7)
 
 ## make time series plots
 sto.ts <- read.csv("sto_ts.csv")
@@ -141,16 +162,17 @@ results.ts <- calculate_re(results.ts, add=TRUE)
 results.ts <-
     merge(x=results.ts, y= subset(results.sc,
      select=c("ID", "params_on_bound_em", "log_max_grad")), by="ID")
+results.ts$converged <- ifelse(results.ts$log_max_grad<log(.1), "yes", "no")
 re.names <- names(results.ts)[grep("_re", names(results.ts))]
 results.ts.long <-
     melt(results.ts, measure.vars=re.names,
-         id.vars= c("ID","species", "process_error", "replicate",
+         id.vars= c("ID","species", "process_error", "replicate", "converged",
          "log_max_grad", "params_on_bound_em", "year"))
 g <- plot_ts_lines(results.ts.long,  y='value', vert="variable", vert2="process_error",
-                   horiz='species', rel=TRUE, color='log_max_grad')
+                   horiz='species', rel=TRUE, color='log_max_grad', print=FALSE)
 ggsave("plots/ts.results.png", g, width=9, height=7)
 g <- plot_ts_lines(results.ts, y="SpawnBio_om", horiz="species",
-                   vert="process_error", color="log_max_grad")
+                   vert="process_error", color="log_max_grad", print=FALSE)
 ggsave("plots/ts.convergence.png", g, width=9, height=7)
 
 ## End of test runs. Check plots and table make sure everything looks
@@ -158,19 +180,11 @@ ggsave("plots/ts.convergence.png", g, width=9, height=7)
 ## issues
 
 ## Clean up folder
-file.remove(c(paste0(scen,"-sto"),paste0(scen,"-det")))
+file.remove(c(paste0(scen.all,"-sto"),paste0(scen.all,"-det")))
 file.remove(c("ss3sim_scalars.csv", "ss3sim_ts.csv", "det_sc.csv",
               "det_ts.csv", "sto_sc.csv", "sto_ts.csv"))
 ### ------------------------------------------------------------
 
-### ------------------------------------------------------------
-## Some other random checks of plots we wanted to do
-res.all <- rbind(read.csv("scalar_hake.csv"),
-                 read.csv("scalar_mackerel.csv"),
-                 read.csv("scalar_yellow.csv"))
-ggplot(res.all, aes(x=species, y=depletion_om))+geom_boxplot()+ ylim(0,1)
-
-### ------------------------------------------------------------
 
 ## ## Run a few with ParmTrace turned on to see behavior of estimation
 ## trace.hake <- read.table("D100-E0-F1-hake/1/em/ParmTrace.sso", header=TRUE)
