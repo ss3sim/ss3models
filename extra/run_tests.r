@@ -29,7 +29,7 @@ library(ss3sim)
 library(ss3models)
 ## install.packages(c("doParallel", "foreach"))
 library(doParallel)
-registerDoParallel(cores = 4)
+registerDoParallel(cores = 5)
 # require(foreach)
 getDoParWorkers()
 
@@ -47,143 +47,139 @@ model_names <- dir(path="../inst/models/", full.names = FALSE)
 index100 <- c('fleets;2', 'years;list(seq(50,100, by=2))', 'sds_obs;list(.01)')
 lcomp100 <- c('fleets;c(1,2)', 'years;list(seq(50,100, by=2), seq(50,100, by=2))', 'Nsamp;list(500, 500)', 'cpar;NA')
 agecomp100 <- c('fleets;c(1,2)', 'years;list(seq(50,100, by=2),seq(50,100, by=2))', 'Nsamp;list(500, 500)', 'cpar;NA')
+index101 <- c('fleets;2', 'years;list(seq(50,101, by=2))', 'sds_obs;list(.01)')
+lcomp101 <- c('fleets;c(1,2)', 'years;list(seq(26,100, by=2), seq(26,100, by=2))', 'Nsamp;list(500, 500)', 'cpar;NA')
+agecomp101 <- c('fleets;c(1,2)', 'years;list(seq(26,100, by=2),seq(26,100, by=2))', 'Nsamp;list(500, 500)', 'cpar;NA')
 for(species in model_names){
     writeLines(index100, con=paste0(case_folder,"/", "index100-", species, ".txt"))
     writeLines(lcomp100, con=paste0(case_folder,"/", "lcomp100-", species, ".txt"))
     writeLines(agecomp100, con=paste0(case_folder,"/", "agecomp100-", species, ".txt"))
+    writeLines(index101, con=paste0(case_folder,"/", "index101-", species, ".txt"))
+    writeLines(lcomp101, con=paste0(case_folder,"/", "lcomp101-", species, ".txt"))
+    writeLines(agecomp101, con=paste0(case_folder,"/", "agecomp101-", species, ".txt"))
 }
-scen.all <- expand_scenarios(species=model_names, cases=list(D=100, F=1))
+scen.all <- expand_scenarios(species=model_names, cases=list(D=100:101, F=1))
 
-## Loop through all of the species and run Nsim deterministic iterations
+## Loop through all of the species and run for two high data cases with
+## process error
 Nsim <- 50
-user.recdevs <- matrix(rnorm(Nsim*100,0, .01), nrow=100)
 for(i in 1:length(model_names)){
     spp <- model_names[i]
     print(paste("starting model", spp))
-    scen <- expand_scenarios(species=spp, cases=list(D=100, F=1))
+    scen <- expand_scenarios(species=spp, cases=list(D=100:101, F=1))
     om.dir <- ss3model(spp, "om"); em.dir <- ss3model(spp, "em")
     case_files <- list(F="F", D=c("index", "lcomp", "agecomp"))
     run_ss3sim(iterations=1:Nsim, scenarios=scen, parallel=TRUE,
                parallel_iterations=TRUE, case_folder=case_folder,
-               user_recdevs=user.recdevs,
-               om_dir=om.dir, em_dir=em.dir, case_files=case_files)
+               om_dir=om.dir, em_dir=em.dir, case_files=case_files,
+               bias_adjust=TRUE, bias_nsim=15)
 }
 ## Read in and save data
 get_results_all(user=scen.all, parallel=TRUE, over=TRUE)
 file.copy("ss3sim_scalar.csv", "det_sc.csv", over=TRUE)
 file.copy("ss3sim_ts.csv", "det_ts.csv", over=TRUE)
-file.rename(scen.all, paste0(scen.all, "-det"))
-## Now do the same but with process error
-for(i in 1:length(model_names)){
-    spp <- model_names[i]
-    print(paste("starting model", spp))
-    scen <- expand_scenarios(species=spp, cases=list(D=100, F=1))
-    om.dir <- ss3model(spp, "om"); em.dir <- ss3model(spp, "em")
-    case_files <- list(F="F", D=c("index", "lcomp", "agecomp"))
-    run_ss3sim(iterations=1:Nsim, scenarios=scen, parallel=F,
-               parallel_iterations=TRUE, case_folder=case_folder,
-               ## user_recdevs=user.recdevs,
-               om_dir=om.dir, em_dir=em.dir, case_files=case_files)
-}
-## Read in and save data
-get_results_all(user=scen.all, parallel=TRUE, over=F)
-file.copy("ss3sim_scalar.csv", "sto_sc.csv", over=TRUE)
-file.copy("ss3sim_ts.csv", "sto_ts.csv", over=TRUE)
-file.rename(scen.all, paste0(scen.all, "-sto"))
-## unlink(c(paste0(scen.all, "-sto"), paste0(scen.all, "-det")), TRUE)
-
 
 ## quickly manipulate results for plots
-## Quick plots
-sto.sc <- read.csv("sto_sc.csv")
-sto.sc$process_error <- "stochastic"
 det.sc <- read.csv("det_sc.csv")
-det.sc$process_error <- "deterministic"
-results.sc <- rbind(sto.sc, det.sc)
-(scenario.counts <- ddply(results.sc, .(scenario), summarize, replicates=length(scenario)))
-results.sc$log_max_grad <- log(results.sc$max_grad)
-results.sc$converged <- ifelse(results.sc$max_grad<.1, "yes", "no")
-results.sc <- calculate_re(results.sc, add=TRUE)
-results.sc$runtime <- results.sc$RunTime
+(scenario.counts <- ddply(det.sc, .(scenario), summarize, replicates=length(scenario)))
+det.sc$log_max_grad <- log(det.sc$max_grad)
+det.sc$converged <- ifelse(det.sc$max_grad<.1, "yes", "no")
+det.sc <- calculate_re(det.sc, add=TRUE)
+det.sc$runtime <- det.sc$RunTime
 ## species needs to be fixed due to the dash in the age ones; crazy stupid
 ## way to get around this for now
-results.sc$species <-
-    as.vector(do.call(rbind, lapply(strsplit(gsub("-age", "_age", results.sc$ID), '-'),
+det.sc$species <-
+    as.vector(do.call(rbind, lapply(strsplit(gsub("-age", "_age", det.sc$ID), '-'),
                  function(x) x[3])))
 ## Drop fixed params (columns of zeroes)
-re.names <- names(results.sc)[grep("_re", names(results.sc))]
-results.sc.long <-
-    melt(results.sc, measure.vars=re.names, id.vars=
-         c("species", "replicate", "converged", "process_error",
+re.names <- names(det.sc)[grep("_re", names(det.sc))]
+det.sc.long <-
+    melt(det.sc, measure.vars=re.names, id.vars=
+         c("species", "replicate", "converged", "D",
            "log_max_grad", "params_on_bound_em", "runtime"))
 growth.names <- re.names[grep("GP_", re.names)]
-results.sc.long.growth <- droplevels(subset(results.sc.long, variable %in% growth.names))
-results.sc.long.growth$variable <- gsub("_Fem_GP_1_re|_re", "", results.sc.long.growth$variable)
+det.sc.long.growth <- droplevels(subset(det.sc.long, variable %in% growth.names))
+det.sc.long.growth$variable <- gsub("_Fem_GP_1_re|_re", "", det.sc.long.growth$variable)
 selex.names <- re.names[grep("Sel_", re.names)]
-results.sc.long.selex <- droplevels(subset(results.sc.long, variable %in% selex.names))
-results.sc.long.selex$variable <- gsub("ery|ey|Size|_re", "", results.sc.long.selex$variable)
-results.sc.long.selex$variable <- gsub("_", ".", results.sc.long.selex$variable)
+det.sc.long.selex <- droplevels(subset(det.sc.long, variable %in% selex.names))
+det.sc.long.selex$variable <- gsub("ery|ey|Size|_re", "", det.sc.long.selex$variable)
+det.sc.long.selex$variable <- gsub("_", ".", det.sc.long.selex$variable)
 management.names <- c("SSB_MSY_re", "depletion_re", "SSB_Unfished_re", "Catch_endyear_re")
-results.sc.long.management <- droplevels(subset(results.sc.long, variable %in% management.names))
-results.sc.long.management$variable <- gsub("_re", "", results.sc.long.management$variable)
+det.sc.long.management <- droplevels(subset(det.sc.long, variable %in% management.names))
+det.sc.long.management$variable <- gsub("_re", "", det.sc.long.management$variable)
+## also look at the NLL values
+NLL.names <- names(det.sc)[grep("NLL_.*_em",names(det.sc))]
+NLL.names <- NLL.names[which(sapply(NLL.names, function(ii) sd(det.sc[,ii], na.rm=TRUE))>0)]
+det.sc.long.NLL <-
+    melt(det.sc, measure.vars=NLL.names, id.vars=
+         c("species", "replicate", "converged", "D",
+           "log_max_grad", "params_on_bound_em", "runtime"))
+## center them so easier to plot
+det.sc.long.NLL <- ddply(det.sc.long.NLL, .(D, species, variable), transform,
+                         value.centered=value-min(value))
+det.sc.long.NLL$variable <- gsub("NLL_|_em", "", det.sc.long.NLL$variable)
+
+
 ## Quick plots
-g <- plot_scalar_points(results.sc.long.growth, x="variable", y='value',
-                   horiz='species', vert="process_error", rel=TRUE,
+g <- plot_scalar_points(det.sc.long.growth, x="variable", y='value',
+                   horiz='species', vert="D", rel=TRUE,
                         color='log_max_grad', print=FALSE)+
     theme(axis.text.x=element_text(angle=90))
 ggsave("plots/sc.growth.png",g, width=9, height=7)
-g <- plot_scalar_points(results.sc.long.selex, x="variable", y='value',
-                   horiz='species', vert="process_error", rel=TRUE,
+g <- plot_scalar_points(det.sc.long.selex, x="variable", y='value',
+                   horiz='species', vert="D", rel=TRUE,
                         color='log_max_grad', print=FALSE)+
     theme(axis.text.x=element_text(angle=90))
 ggsave("plots/sc.selex.png", g, width=9, height=7)
-g <- plot_scalar_points(results.sc.long.management, x="variable", y='value',
-                   horiz='species', vert="process_error", rel=TRUE,
+g <- plot_scalar_points(det.sc.long.management, x="variable", y='value',
+                   horiz='species', vert="D", rel=TRUE,
                         color='log_max_grad', print=FALSE)+
     theme(axis.text.x=element_text(angle=90))
 ggsave("plots/sc.management.png",g, width=9, height=7)
-g <- ggplot(results.sc, aes(x=process_error, y=log_max_grad, color=runtime, size=params_on_bound_em,))+
+g <- ggplot(det.sc, aes(x=D, y=log_max_grad, color=runtime, size=params_on_bound_em,))+
     geom_jitter()+
     facet_wrap('species')+
         geom_hline(yintercept=log(.01), col='red')
 ggsave("plots/sc.convergence.png",g, width=9, height=7)
-plyr::ddply(results.sc.long, .(species, process_error), summarize,
+plyr::ddply(det.sc.long, .(species, D), summarize,
             median.logmaxgrad=round(median(log_max_grad),2),
             max.stuck.on.bounds=max(params_on_bound_em))
-g <- ggplot(results.sc, aes(x=replicate, y=log_max_grad, color=species)) +
+g <- ggplot(det.sc, aes(x=replicate, y=log_max_grad, color=species)) +
     geom_point()+
-    facet_grid(process_error~.)
+    facet_grid(D~.)
 ggsave("plots/sc.replicate.convergence.png",g, width=9, height=7)
 
+g <- ggplot(det.sc.long.NLL, aes(x=species, y=value.centered, color=converged)) +geom_jitter() +
+    facet_grid(variable~D, scales='free_y') +
+    theme(axis.text.x=element_text(angle=90))
+ggsave("plots/sc.NLL.png",g, width=9, height=10)
+
+
 ## make time series plots
-sto.ts <- read.csv("sto_ts.csv")
-sto.ts$process_error <- "stochastic"
 det.ts <- read.csv("det_ts.csv")
-det.ts$process_error <- "deterministic"
-results.ts <- rbind(sto.ts, det.ts)
-results.ts <- calculate_re(results.ts, add=TRUE)
+det.ts <- calculate_re(det.ts, add=TRUE)
 ## species needs to be fixed due to the dash in the age ones; crazy stupid
 ## way to get around this for now
-results.ts$species <-
-    as.vector(do.call(rbind, lapply(strsplit(gsub("-age", "_age", results.ts$ID), '-'),
+det.ts$species <-
+    as.vector(do.call(rbind, lapply(strsplit(gsub("-age", "_age", det.ts$ID), '-'),
                  function(x) x[3])))
-results.ts <-
-    merge(x=results.ts, y= subset(results.sc,
+det.ts <-
+    merge(x=det.ts, y= subset(det.sc,
      select=c("ID", "params_on_bound_em", "log_max_grad")), by="ID")
-results.ts$converged <- ifelse(results.ts$log_max_grad<log(.1), "yes", "no")
-re.names <- names(results.ts)[grep("_re", names(results.ts))]
-results.ts.long <-
-    melt(results.ts, measure.vars=re.names,
-         id.vars= c("ID","species", "process_error", "replicate", "converged",
+det.ts$converged <- ifelse(det.ts$log_max_grad<log(.1), "yes", "no")
+re.names <- names(det.ts)[grep("_re", names(det.ts))]
+det.ts.long <-
+    melt(det.ts, measure.vars=re.names,
+         id.vars= c("ID","species", "D", "replicate", "converged",
          "log_max_grad", "params_on_bound_em", "year"))
-g <- plot_ts_lines(results.ts.long,  y='value', vert="variable", vert2="process_error",
+g <- plot_ts_lines(det.ts.long,  y='value', vert="variable", vert2="D",
                    horiz='species', rel=TRUE, color='log_max_grad', print=FALSE)
 ggsave("plots/ts.results_lines.png", g, width=9, height=7)
-g <- plot_ts_boxplot(results.ts.long,  y='value', vert="variable", vert2="process_error",
+g <- plot_ts_boxplot(det.ts.long,  y='value', vert="variable", vert2="D",
                    horiz='species', rel=TRUE, print=FALSE)
 ggsave("plots/ts.results.png", g, width=9, height=7)
-g <- plot_ts_lines(results.ts, y="SpawnBio_om", horiz="species",
-                   vert="process_error", color="log_max_grad", print=FALSE)
+g <- plot_ts_lines(subset(det.ts, D=="D100"), y="SpawnBio_om", horiz="species",
+                   vert="D", color="log_max_grad", print=FALSE)
 ggsave("plots/ts.convergence.png", g, width=9, height=7)
 
 ## End of test runs. Check plots and table make sure everything looks
@@ -191,9 +187,9 @@ ggsave("plots/ts.convergence.png", g, width=9, height=7)
 ## issues
 
 ## Clean up folder
-file.remove(c(paste0(scen.all,"-sto"),paste0(scen.all,"-det")))
+file.remove(scen.all)
 file.remove(c("ss3sim_scalars.csv", "ss3sim_ts.csv", "det_sc.csv",
-              "det_ts.csv", "sto_sc.csv", "sto_ts.csv"))
+              "det_ts.csv"))
 ### ------------------------------------------------------------
 
 

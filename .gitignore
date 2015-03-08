@@ -1,6 +1,6 @@
 *.vim
 .Rproj.user
 extra/fmsy/**
-extra/D100*
+extra/D10*
 *_cache/
 extra/*.html
