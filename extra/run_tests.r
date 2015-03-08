@@ -116,7 +116,7 @@ det.sc.long.NLL <-
            "log_max_grad", "params_on_bound_em", "runtime"))
 ## center them so easier to plot
 det.sc.long.NLL <- ddply(det.sc.long.NLL, .(D, species, variable), transform,
-                         value.centered=value-min(value))
+                         value.centered=value-min(value, na.rm=TRUE))
 det.sc.long.NLL$variable <- gsub("NLL_|_em", "", det.sc.long.NLL$variable)
 
 
@@ -149,10 +149,16 @@ g <- ggplot(det.sc, aes(x=replicate, y=log_max_grad, color=species)) +
     facet_grid(D~.)
 ggsave("plots/sc.replicate.convergence.png",g, width=9, height=7)
 
-g <- ggplot(det.sc.long.NLL, aes(x=species, y=value.centered, color=converged)) +geom_jitter() +
+g <- ggplot(subset(det.sc.long.NLL, D=="D100"), aes(x=species, y=value.centered,
+                                 color=converged, size=params_on_bound_em)) +geom_jitter() +
     facet_grid(variable~D, scales='free_y') +
-    theme(axis.text.x=element_text(angle=90))
+    theme(axis.text.x=element_text(angle=90)) + ylab("NLL-min(NLL)")
 ggsave("plots/sc.NLL.png",g, width=9, height=10)
+g <- ggplot(subset(det.sc.long.NLL, D=="D100" & converged=="yes"), aes(x=species, y=value.centered,
+                                 size=params_on_bound_em)) +geom_jitter() +
+    facet_grid(variable~D, scales='free_y') +
+    theme(axis.text.x=element_text(angle=90)) + ylab("NLL-min(NLL)")
+ggsave("plots/sc.NLL_converged_only.png",g, width=9, height=10)
 
 
 ## make time series plots
