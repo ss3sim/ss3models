@@ -20,7 +20,7 @@ Fishery%Survey%CPUE
  1 #_units of catch:  1=bio; 2=num
  0.01 #_se of log(catch) only used for init_eq_catch and for Fmethod 2 and 3; use -1 for discard only fleets
 1 #_Ngenders
-12 #_Nages
+8 #_Nages
  0 #_init_equil_catch_for_each_fishery
 100 #_N_lines_of_catch_to_read
 #_catch_biomass(mtons):_columns_are_fisheries,year,season
@@ -362,8 +362,8 @@ Fishery%Survey%CPUE
 9 #_N_age_bins
  0 1 2 3 4 5 6 7 8
 1 #_N_ageerror_definitions
- -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
- 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001
+ -1 -1 -1 -1 -1 -1 -1 -1 -1
+ 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001
 1 #_N_Agecomp_obs
 3 #_Lbin_method: 1=poplenbins; 2=datalenbins; 3=lengths
 0 #_combine males into females at or below this bin number
