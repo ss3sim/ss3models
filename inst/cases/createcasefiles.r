@@ -22,6 +22,8 @@ if (Sys.info()["user"] == "kelli") devtools::load_all("c:/ss/ss3models")
 setwd(system.file("cases", package = "ss3models"))
 my.spp <- dir(system.file("models", package = "ss3models"))
 
+library(ss3sim)
+
 start <- 1
 end   <- 100
 
@@ -71,10 +73,7 @@ less <- sapply(c("surv", "fish"), function(x) {
                })
 
 years.txt <- lapply(list(as = all.surv, af = all.fish,
-                         ls = less$surv, lf = less$fish),
-                    function(x) {
-                      paste0("c(", paste(x, collapse = ", "), ")")
-                    })
+  ls = less$surv, lf = less$fish), case_deparse)
 
 ###############################################################################
 ###############################################################################
@@ -115,43 +114,6 @@ sink(paste0("E", case, "-", species, ".txt"))
       }
       cat("forecast_num; 0\nrun_change_e_full; TRUE\n", sep = "")
   sink()
-}
-
-# A & L sample age and length comp data
-writeL <- function(Nsamp.fish, Nsamp.survey, years.fish, years.survey,
-                   type, case, spp) {
-  fish <- ifelse(is.null(years.fish), FALSE, TRUE)
-  survey <- ifelse(is.null(years.survey), FALSE, TRUE)
-  years <- "NULL"
-  Nsamp <- "NULL"
-  fleets <- "NULL"
-  cparval <- "NULL"
-  if (all(fish, survey)) {
-      years <- paste0("list(c(", paste(years.fish, collapse = ","),
-                      "), c(", paste(years.survey, collapse = ","), "))")
-      Nsamp <- paste0("list(c(", paste(Nsamp.fish, collapse = ","),
-                      "), c(", paste(Nsamp.survey, collapse = ","), "))")
-      fleets  <- "c(1, 2)"
-      cparval <- "c(2, 1)"
-  } else {
-    if (fish) {
-      years <- paste0("list(c(", paste(years.fish, collapse = ","), "))")
-      Nsamp <- paste0("list(c(", paste(Nsamp.fish, collapse = ","), "))")
-      fleets  <- "c(1)"
-      cparval <- "c(2)"
-    }
-    if (survey) {
-      years <- paste0("list(c(", paste(years.survey, collapse = ","), "))")
-      Nsamp <- paste0("list(c(", paste(Nsamp.survey, collapse = ","), "))")
-      fleets <- "c(2)"
-      cparval <- "c(1)"
-    }
-  }
-  l <- c(paste0("fleets; ", fleets),
-         paste("Nsamp;", Nsamp),
-         paste("years;", years),
-         paste("cpar;", cparval))
-  writeLines(l, paste0(type, case, "-", spp, ".txt"))
 }
 
 # D sample mlacomp data
@@ -268,50 +230,44 @@ counter <- 0
 #### Step
 #### change_lcomp: case "L"
 #### change_agecomp: case "A"
-#### Both sets of casefiles are created with writeL
+#### Both sets of casefiles are created with case_comp
 #### change "type" to create length or age casefiles
 #### if fishery then cpar = 2, if survey cpar = 1
 ###############################################################################
 ###############################################################################
 # Length data from just a fishery for all years
-writeL(Nsamp.fish = rep(high, length(all.fish)), Nsamp.survey = NULL,
-       years.fish = all.fish, years.survey = NULL,
-       type = "lcomp", case = 10, spp = my.spp[spp])
+case_comp(fleets = c(1), case = 10, spp = my.spp[spp],
+  Nsamp = list(rep(high, length(all.fish))), years = list(all.fish),
+  cpar = c(2), type = "lcomp")
 
 # Length data for all years of fishery and survey
-writeL(Nsamp.fish = rep(high, length(all.fish)),
-       Nsamp.survey = rep(high, length(all.surv)),
-       years.fish = all.fish, years.survey = all.surv,
-       type = "lcomp", case = 30, spp = my.spp[spp])
+case_comp(fleets = c(1, 2), case = 30, spp = my.spp[spp],
+  Nsamp = list(rep(high, length(all.fish)), rep(high, length(all.surv))),
+  years = list(all.fish, all.surv), cpar = c(2, 1), type = "lcomp")
 
 # Length data for all years of fishery and reduced years from survey
-writeL(Nsamp.fish = rep(high, length(all.fish)),
-       Nsamp.survey = rep(high, length(less$surv)),
-       years.fish = all.fish, years.survey = less$surv,
-       type = "lcomp", case = 31, spp = my.spp[spp])
+case_comp(fleets = c(1, 2), case = 31, spp = my.spp[spp],
+  Nsamp = list(rep(high, length(all.fish)), rep(high, length(less$surv))),
+  years = list(all.fish, less$surv), cpar = c(2, 1), type = "lcomp")
 
 # No age data
-writeL(Nsamp.fish = NULL,
-       Nsamp.survey = NULL,
-       years.fish = NULL, years.survey = NULL,
-       type = "agecomp", case = 0, spp = my.spp[spp])
+case_comp(fleets = NULL, case = 0, my.spp[spp], Nsamp = NULL, years = NULL,
+  cpar = NULL, type = "agecomp")
 
 # Age data from just a fishery for all years
-writeL(Nsamp.fish = rep(high, length(all.fish)), Nsamp.survey = NULL,
-       years.fish = all.fish, years.survey = NULL,
-       type = "agecomp", case = 10, spp = my.spp[spp])
+case_comp(fleets = c(1), case = 10, spp = my.spp[spp],
+  Nsamp = list(rep(high, length(all.fish))), years = list(all.fish),
+  cpar = c(2), type = "agecomp")
 
 # Age data for all years of fishery and survey
-writeL(Nsamp.fish = rep(high, length(all.fish)),
-       Nsamp.survey = rep(high, length(all.surv)),
-       years.fish = all.fish, years.survey = all.surv,
-       type = "agecomp", case = 30, spp = my.spp[spp])
+case_comp(fleets = c(1, 2), case = 30, spp = my.spp[spp],
+  Nsamp = list(rep(high, length(all.fish)), rep(high, length(all.surv))),
+  years = list(all.fish, all.surv), cpar = c(2, 1), type = "agecomp")
 
 # Age data for all years of fishery and reduced years from survey
-writeL(Nsamp.fish = rep(high, length(all.fish)),
-       Nsamp.survey = rep(high, length(less$surv)),
-       years.fish = all.fish, years.survey = less$surv,
-       type = "agecomp", case = 31, spp = my.spp[spp])
+case_comp(fleets = c(1, 2), case = 31, spp = my.spp[spp],
+  Nsamp = list(rep(high, length(all.fish)), rep(high, length(less$surv))),
+  years = list(all.fish, less$surv), cpar = c(2, 1), type = "agecomp")
 
 ###############################################################################
 ###############################################################################
