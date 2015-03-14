@@ -99,9 +99,9 @@ make_forecast <- function(outfile = "forecast.ss", dir = NULL, msy = 2,
   data$F_scalar <- 0
   data$Fcast_years <- forecast_years
   data$ControlRuleMethod <- 2
-  data$BforconstantF <- 1
-  data$BfornoF <- 0
-  data$Flimitfraction <- 0
+  data$BforconstantF <- 0.0101
+  data$BfornoF <- data$BforconstantF - 0.0001
+  data$Flimitfraction <- 1
   data$N_forecast_loops <- 3
   data$First_forecast_loop_with_stochastic_recruitment <- 100
   data$Forecast_loop_control_3 <- 0
@@ -125,5 +125,5 @@ make_forecast <- function(outfile = "forecast.ss", dir = NULL, msy = 2,
   SS_writeforecast(data, dir = dir, file = outfile, overwrite = TRUE,
     verbose = verbose)
 
-  return(invisible(data))
+  invisible(data)
 }
