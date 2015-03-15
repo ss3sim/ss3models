@@ -1,5 +1,5 @@
 ---
-title: "Summarize parameter values for SS3 model setups"
+title: "Parameter values for ss3models model setups"
 date: "`r Sys.Date()`"
 output:
   html_document
@@ -9,7 +9,7 @@ output:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  cache = TRUE,
+  cache = FALSE,
   autodep = TRUE
 )
 options("width" = 90)
