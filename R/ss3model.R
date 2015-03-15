@@ -14,7 +14,7 @@
 
 ss3model <- function(species, type = c("om", "em")) {
   type <- match.arg(type)
-  if (! species %in% list_models())
+  if (!any(species %in% list_models()))
     stop(paste(species, "isn't an available model setup. See the available",
       "model setups with list_models()."))
   system.file(file.path("models", species, type), package = "ss3models")
