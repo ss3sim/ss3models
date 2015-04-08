@@ -36,7 +36,7 @@ make_starter <- function(outfile = "starter.ss", dir = NULL, type = c("om", "em"
   data$detailed_age_structure <- 1
   data$checkup                <- 0
   data$parmtrace              <- 0
-  data$cumreport              <- 0
+  data$cumreport              <- ifelse(type == "om", 0, 1)
   data$prior_like             <- 0
   data$soft_bounds            <- 1
   data$N_bootstraps           <- 2
