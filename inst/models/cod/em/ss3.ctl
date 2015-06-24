@@ -120,14 +120,14 @@
 #_for_env-var:_enter_index_of_the_env-var_to_be_linked
 #_Den-dep  env-var  extra_se  Q_type
  0 0 0 2 # 1 Fishery
- 0 0 0 2 # 2 SURVEY
+ 0 0 0 2 # 2 Survey
  0 0 0 2 # 3 CPUE
 #
 #_Cond 0 #_If q has random component, then 0=read one parm for each fleet with random q; 1=read a parm for each year of index
 #_Q_parms(if_any);Qunits_are_ln(q)
 # LO HI INIT PRIOR PR_type SD PHASE
  -3 3 0 0 -1 99 -5 # LnQ_base_1_Fishery
- -20 20 0 0 -1 99 5 # LnQ_base_2_SURVEY
+ -20 20 0 0 -1 99 5 # LnQ_base_2_Survey
  -20 20 0 0 -1 99 -5 # LnQ_base_3_CPUE
 #
 #_size_selex_types
@@ -140,7 +140,7 @@
 #_age_selex_types
 #_Pattern ___ Male Special
  11 0 0 0 # 1 Fishery
- 11 0 0 0 # 2 SURVEY
+ 11 0 0 0 # 2 Survey
  11 0 0 0 # 3 CPUE
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
  5.08 101.6 50.8 50.8 -1 0.05 2 0 0 0 0 0 0 0 # SizeSel_1P_1_Fishery
