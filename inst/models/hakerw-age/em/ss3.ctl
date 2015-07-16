@@ -1,7 +1,7 @@
 #V3.24O
 #C Hake OM control file
 #C Created for Empirical simulation group, 2014
-#_data_and_control_files: hakeEM.dat // hakeEM.ctl
+#_data_and_control_files: ss3.dat // em.ctl
 #_SS-V3.24O-safe-MacOS;_04/10/2013;_Stock_Synthesis_by_Richard_Methot_(NOAA)_using_ADMB_11.0
 1  #_N_Growth_Patterns
 1 #_N_Morphs_Within_GrowthPattern
@@ -38,12 +38,12 @@
 #
 #_growth_parms
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
- 0.05 0.4 0.22 -1.60944 -1 0.1 -4 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
- 0.25 25 5 32 -1 99 -5 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
- 2.75 275 55 50 -1 99 4 0 3 40 100 20 0 0 # L_at_Amax_Fem_GP_1
- 0.02 2 0.4 0.3 -1 99 -3 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
- 0.01 0.5 0.1 0.1 -1 99 -5 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
- 0.01 0.5 0.1 0.1 -1 99 -5 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
+0.05 0.4 0.22 -1.60944 -1 0.1 -4 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
+0.25 25 5 32 -1 99 4 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
+2.75 275 55 50 -1 99 4 0 3 40 100 20 0 0 # L_at_Amax_Fem_GP_1
+0.02 2 0.4 0.3 -1 99 4 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
+0.01 0.5 0.1 0.1 -1 99 7 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
+0.01 0.5 0.1 0.1 -1 99 7 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
  -3 3 7e-06 7e-06 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_1_Fem
  -3 3 2.95 2.9624 -1 99 -50 0 0 0 0 0 0 0 # Wtlen_2_Fem
  -3 43 2.835 36.89 -1 99 -50 0 0 0 0 0 0 0 # Mat50%_Fem
@@ -58,7 +58,7 @@
 #_Cond 0  #custom_MG-env_setup (0/1)
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no MG-environ parameters
 #
-3 #_Cond 0  #custom_MG-block_setup (0/1)
+#_Cond 0  #custom_MG-block_setup (0/1)
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no MG-block parameters
 #_Cond No MG parm trends
 #
@@ -66,7 +66,7 @@
  0 0 0 0 0 0 0 0 0 0 #_femwtlen1,femwtlen2,mat1,mat2,fec1,fec2,Malewtlen1,malewtlen2,L1,K
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no seasonal MG parameters
 #
-#_Cond -4 #_MGparm_Dev_Phase
+3 #_Cond -4 #_MGparm_Dev_Phase
 #
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
