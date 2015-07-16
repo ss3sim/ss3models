@@ -304,4 +304,3 @@
  # placeholder for vector of growth ages to be reported
  # placeholder for vector of NatAges ages to be reported
 999
-
