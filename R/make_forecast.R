@@ -38,6 +38,9 @@
 #'   relative \emph{F}s that will be used in population forecasts.
 #' @param fleet A numeric value assigning the forecast to a specific fleet in
 #'   the model. Default is fleet \code{1}.
+#' @param stochrecloop A single numeric value assigning the loop in which stochastic
+#'   recruitment will occur within the forecasting.
+#'   Default is fleet \code{1}.
 #' @param verbose A logical specifying whether or not to write information to the
 #'   console while writing the forecast files. Useful for debugging.
 #'   Default is \code{FALSE}.
@@ -52,7 +55,7 @@
 make_forecast <- function(outfile = "forecast.ss", dir = NULL, msy = 2,
   spr_target = 0.4, b_target = 0.4, bmark_years = rep(0, 6), bmark_relf = 1,
   forecast = 0, nforecast = 0, forecast_years = rep(0, 4), fleet = 1,
-  verbose = FALSE, write_file = TRUE) {
+  stochrecloop = 1, verbose = FALSE, write_file = TRUE) {
   # perform some checks
   if (length(bmark_years) != 6) {
       stop(paste("bmark_years should be a vector of length six, not",
@@ -61,6 +64,10 @@ make_forecast <- function(outfile = "forecast.ss", dir = NULL, msy = 2,
   if (length(forecast_years) != 4) {
       stop(paste("forecast_years should be a vector of length six, not",
         length(forecast_years), "as entered."))
+  }
+    if (length(stochrecloop) != 1) {
+      stop(paste("stochrecloop should be a single numeric value",
+        "not", length(stochrecloop), "as entered."))
   }
   if (length(fleet) > 1) {
       stop(paste("write_forecast only works with a single fleet, please change",
