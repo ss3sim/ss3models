@@ -16,9 +16,10 @@
 #_Cond 1.0 # first age that moves (real age at begin of season, not integer) also cond on do_migration>0
 #_Cond 1 1 1 2 4 10 # example move definition for seas=1, morph=1, source=1 dest=2, age1=4, age2=10
 #
-0 #_Nblock_Patterns
-#_Cond 0 #_blocks_per_pattern
+1 #_Nblock_Patterns
+3 #_Cond 0 #_blocks_per_pattern
 # begin and end years of blocks
+1 39 40 59 60 100
 #
 0.5 #_fracfemale
 0 #_natM_type:_0=1Parm; 1=N_breakpoints;_2=Lorenzen;_3=agespecific;_4=agespec_withseasinterpolate
@@ -40,7 +41,7 @@
 #_LO HI INIT PRIOR PR_type SD PHASE env-var use_dev dev_minyr dev_maxyr dev_stddev Block Block_Fxn
 0.05 0.4 0.22 -1.60944 -1 0.1 -4 0 0 0 0 0 0 0 # NatM_p_1_Fem_GP_1
 0.25 25 5 32 -1 99 4 0 0 0 0 0 0 0 # L_at_Amin_Fem_GP_1
-2.75 275 55 50 -1 99 4 0 3 40 100 20 0 0 # L_at_Amax_Fem_GP_1
+2.75 275 55 50 -1 99 4 0 0 0 0 0 1 2 # L_at_Amax_Fem_GP_1
 0.02 2 0.4 0.3 -1 99 4 0 0 0 0 0 0 0 # VonBert_K_Fem_GP_1
 0.01 0.5 0.1 0.1 -1 99 7 0 0 0 0 0 0 0 # CV_young_Fem_GP_1
 0.01 0.5 0.1 0.1 -1 99 7 0 0 0 0 0 0 0 # CV_old_Fem_GP_1
@@ -58,15 +59,17 @@
 #_Cond 0  #custom_MG-env_setup (0/1)
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no MG-environ parameters
 #
-#_Cond 0  #custom_MG-block_setup (0/1)
+0 #_Cond 0  #custom_MG-block_setup (0/1)
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no MG-block parameters
+2.75 275 55 50 -1 99 4
+
 #_Cond No MG parm trends
 #
 #_seasonal_effects_on_biology_parms
  0 0 0 0 0 0 0 0 0 0 #_femwtlen1,femwtlen2,mat1,mat2,fec1,fec2,Malewtlen1,malewtlen2,L1,K
 #_Cond -2 2 0 0 -1 99 -2 #_placeholder when no seasonal MG parameters
 #
-3 #_Cond -4 #_MGparm_Dev_Phase
+#_Cond -4 #_MGparm_Dev_Phase
 #
 #_Spawner-Recruitment
 3 #_SR_function: 2=Ricker; 3=std_B-H; 4=SCAA; 5=Hockey; 6=B-H_flattop; 7=survival_3Parm
