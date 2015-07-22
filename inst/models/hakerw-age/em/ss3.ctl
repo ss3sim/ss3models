@@ -17,9 +17,9 @@
 #_Cond 1 1 1 2 4 10 # example move definition for seas=1, morph=1, source=1 dest=2, age1=4, age2=10
 #
 1 #_Nblock_Patterns
-3 #_Cond 0 #_blocks_per_pattern
+2 #_Cond 0 #_blocks_per_pattern
 # begin and end years of blocks
-1 39 40 59 60 100
+40 59 60 100
 #
 0.5 #_fracfemale
 0 #_natM_type:_0=1Parm; 1=N_breakpoints;_2=Lorenzen;_3=agespecific;_4=agespec_withseasinterpolate
