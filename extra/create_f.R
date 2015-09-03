@@ -14,6 +14,7 @@
 ## cloned git repo. Also changed bounds for F values based on M, and added
 ## NatM to the plot/table...
 ## Modified 2/24 by Cole for minor tweaks to models and did relative catch
+## Modified 9/2/2015 by Cole for minor tweaks for yellow model with 200 years
 #-----------------------------------------------------------------------------#
 ###############################################################################
 ###############################################################################
@@ -31,6 +32,8 @@ start <- 1
 end <- 100
 start.fishery <- 26
 years.rup <- 40
+## !!! Not all models have the same length anymore so need to be very
+## careful below.
 
 ###############################################################################
 ###############################################################################
@@ -42,6 +45,7 @@ library(ss3sim)
 library(r4ss)
 library(ggplot2)
 library(plyr)
+library(ss3models)
 
 # If you are a developer uncomment this line
 # devtools::load_all("MUST TYPE IN PATH TO CLONED VERSION OF SS3MODELS")
@@ -70,14 +74,18 @@ truem.df <- data.frame(species=modelnames, NatM=truem)
 F.start <- truem*.05#sapply(truem, function(x) ifelse(x > 0.25, 0.8, 0.015))
 F.end <- truem*6 #sapply(truem, function(x) ifelse(x > 0.25, 1.6, 0.4))
 
-N.steps <- 75
+N.steps <- 25
 for (m in seq_along(modelnames)) {
-  dir.results <- file.path("fmsy", modelnames[m])
-  dir.create(dir.results, recursive = TRUE, showWarnings = FALSE)
-  byval <- (F.end[m]-F.start[m])/N.steps
-  fmsy[[m]] <- profile_fmsy(om_in = foldername[m], results_out = dir.results,
-    simlength = 100, start = F.start[m], end = F.end[m], by_val = byval,
-    ss_mode = "safe")
+    print(paste('starting model', modelnames[m]))
+    dir.results <- file.path("fmsy", modelnames[m])
+    dir.create(dir.results, recursive = TRUE, showWarnings = FALSE)
+    byval <- (F.end[m]-F.start[m])/N.steps
+    ## yellow is a special case for now since it has a longer burn in
+    simlength <- ifelse(modelnames[m]=='yellow', 200, 100)
+    fmsy[[m]] <- profile_fmsy(om_in = foldername[m], simlength=simlength,
+                              results_out = dir.results, start =
+                                  F.start[m], end = F.end[m], by_val =
+                                      byval, ss_mode = "safe")
 }
 
 names(fmsy) <- modelnames
