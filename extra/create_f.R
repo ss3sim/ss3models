@@ -75,18 +75,15 @@ F.end <- truem*6 #sapply(truem, function(x) ifelse(x > 0.25, 1.6, 0.4))
 
 ## warning! make sure to delete the fmsy folder before proceeding if it
 ## exists for you already, can cause headaches
-N.steps <- 75
+N.steps <- 3
 for (m in seq_along(modelnames)) {
     print(paste('starting model', modelnames[m]))
     dir.results <- file.path("fmsy", modelnames[m])
     dir.create(dir.results, recursive = TRUE, showWarnings = FALSE)
     byval <- (F.end[m]-F.start[m])/N.steps
-    ## yellow is a special case for now since it has a longer burn in
-    simlength <- ifelse(modelnames[m]=='yellow', 200, 100)
-    fmsy[[m]] <- profile_fmsy(om_in = foldername[m], simlength=simlength,
-                              results_out = dir.results, start =
-                                  F.start[m], end = F.end[m], by_val =
-                                      byval, ss_mode = "safe")
+    fmsy[[m]] <- profile_fmsy(om_in=foldername[m], results_out=dir.results,
+                              start = F.start[m], end=F.end[m], by_val =
+                                  byval, ss_mode="safe")
 }
 
 names(fmsy) <- modelnames
