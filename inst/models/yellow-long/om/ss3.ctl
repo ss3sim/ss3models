@@ -79,17 +79,17 @@
 0 #_SR_env_target_0=none;1=devs;_2=R0;_3=steepness
 1 #do_recdev:  0=none; 1=devvector; 2=simple deviations
 1 # first year of main recr_devs; early devs can preceed this era
-100 # last year of main recr_devs; forecast devs start in following year
+175 # last year of main recr_devs; forecast devs start in following year
 -1 #_recdev phase 
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
  -4 #_recdev_early_phase
  0 #_forecast_recruitment phase (incl. late recr) (0 value resets to maxphase+1)
  1 #_lambda for Fcast_recr_like occurring before endyr+1
- -10 #_last_early_yr_nobias_adj_in_MPD
- 1 #_first_yr_fullbias_adj_in_MPD
- 100 #_last_yr_fullbias_adj_in_MPD
- 101 #_first_recent_yr_nobias_adj_in_MPD
+-10 #_last_early_yr_nobias_adj_in_MPD
+1 #_first_yr_fullbias_adj_in_MPD
+175 #_last_yr_fullbias_adj_in_MPD
+176 #_first_recent_yr_nobias_adj_in_MPD
  0 #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs)
  0 #_period of cycles in recruitment (N parms read below)
  -5 #min rec_dev
@@ -214,7 +214,7 @@
  0.2 1 0 # overall start F value; overall phase; N detailed inputs to read
 #Fleet Year Seas F_value se phase (for detailed setup of F_Method=2)
 
-#
+# 
 #_initial_F_parms
 #_LO HI INIT PRIOR PR_type SD PHASE
  0 1 0 0.01 0 99 -1 # InitF_1Fishery
