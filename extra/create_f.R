@@ -75,7 +75,7 @@ F.end <- truem*6 #sapply(truem, function(x) ifelse(x > 0.25, 1.6, 0.4))
 
 ## warning! make sure to delete the fmsy folder before proceeding if it
 ## exists for you already, can cause headaches
-N.steps <- 3
+N.steps <- 75
 for (m in seq_along(modelnames)) {
     print(paste('starting model', modelnames[m]))
     dir.results <- file.path("fmsy", modelnames[m])
@@ -164,7 +164,7 @@ for (spp in seq_along(modelnames)) {
     print(paste(modelnames[spp], "scalar =", scal))
     spp.name <- modelnames[[spp]]
     start <- 1
-    end <- ifelse(spp.name=='yellow', 200, 100)
+    end <- ifelse(spp.name=='yellow', 175, 100)
     start.fishery <- ifelse(spp.name== 'yellow', 126, 26)
     years.rup <- 40
     years.burnin <- start.fishery - start
