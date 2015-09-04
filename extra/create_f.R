@@ -153,6 +153,7 @@ comment0 <- paste0("# Constant F, at Fmsy for 75 years\n")
 comment2 <- paste0("# One-way trip F, increasing to Fmsy (right limb) for 75\n")
 
 ## Be careful of where this is writing the files to if working locally
+fmsytable <- read.csv('fmsytable.csv')
 setwd("../inst/cases/")
 ## setwd(system.file("cases", package = "ss3models"))
 print(paste("writing F case files to", getwd()))
@@ -164,8 +165,8 @@ for (spp in seq_along(modelnames)) {
     print(paste(modelnames[spp], "scalar =", scal))
     spp.name <- modelnames[[spp]]
     start <- 1
-    end <- ifelse(spp.name=='yellow', 175, 100)
-    start.fishery <- ifelse(spp.name== 'yellow', 126, 26)
+    end <- ifelse(spp.name=='yellow-long', 175, 100)
+    start.fishery <- ifelse(spp.name== 'yellow-long', 101, 26)
     years.rup <- 40
     years.burnin <- start.fishery - start
     years.fish <- end + start - start.fishery
