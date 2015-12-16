@@ -18,6 +18,9 @@
 #' m <- system.file("models", package = "ss3models")
 #' p <- get_parvalues(m, write_csv = FALSE)
 #' head(p)
+#' # All \code{p$Value} entries should equal \code{p$INIT.om} entries
+#' all(p$Value == p$"INIT.om", na.rm = TRUE)
+#' rm(m, p)
 #' }
 #' @export
 #' @importFrom ss3sim get_bin
@@ -55,9 +58,12 @@ get_parvalues <- function(modelfolder = ".", write_csv = TRUE,
     setwd(file.path(models[mod], "om"))
     sscall <- paste(get_bin(), "-noest")
     system(sscall, show.output.on.console = FALSE)
+    ctl.omctl <- SS_parlines(dir(pattern = "\\.ctl"))[, c("Label", "INIT")]
     # Read in the control.ss_new file because the model was run using
     # the .par file and the om.ctl file may not have the same INIT vals
     ctl.om <- SS_parlines("control.ss_new")[, c("Label", "INIT")]
+    colnames(ctl.om)[2] <- "Value"
+    ctl.om <- merge(ctl.om, ctl.omctl, by = "Label", all = TRUE)
     setwd("..")
     ctl.em <- SS_parlines(dir("em", pattern = "ctl", full.names = TRUE))
     ctl.em <- ctl.em[, -which(colnames(ctl.em) == "Linenum")]
