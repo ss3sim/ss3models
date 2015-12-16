@@ -28,8 +28,17 @@ get_parvalues <- function(modelfolder = ".", write_csv = TRUE,
   wd <- getwd()
   on.exit(setwd(wd))
   setwd(modelfolder)
-  models <- dir()
+  models <- list.dirs(full.names = FALSE, recursive = FALSE)
   results <- list()
+
+  # Perform sanity check that all listed models are actually models
+  test <- rep(TRUE, length(models))
+  for (mod in seq_along(models)) {
+    temp <- list.dirs(models[mod])
+    temp <- temp[-which(temp == models[mod])]
+    test[mod] <- all(file.path(models[mod], c("om", "em")) %in% temp)
+  }
+  models <- models[test]
 
   test <- strsplit(outfile, "\\.")[[1]][2]
   if (test != "csv") {
