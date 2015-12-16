@@ -54,22 +54,14 @@ get_parvalues <- function(modelfolder = ".", write_csv = TRUE,
   for (mod in seq_along(models)) {
     setwd(file.path(models[mod], "om"))
     system(paste(ss_binary, "-noest"), show.output.on.console = FALSE)
-    ctl.om <- suppressWarnings(SS_output(getwd(), covar = FALSE,
-      verbose = FALSE, ncols = 300, printstats = FALSE))
-    ctl.om <- ctl.om$parameters[, c("Label", "Value", "Init")]
-    ctl.om <- ctl.om[-grep("^F_fleet_", ctl.om$Label), ]
-    ctl.om <- ctl.om[-grep("RecrDev_", ctl.om$Label), ]
+    # Read in the control.ss_new file because the model was run using
+    # the .par file and the om.ctl file may not have the same INIT vals
+    ctl.om <- SS_parlines("control.ss_new")[, c("Label", "INIT")]
     setwd("..")
-    ctl.in <- dir("em", pattern = "ctl", full.names = TRUE)
-    ctl.em <- SS_parlines(ctl.in)[,
-      c("LO", "HI", "INIT", "PRIOR", "PR_type", "SD", "PHASE", "Label")]
-    ctl.om$Label <- tolower(ctl.om$Label)
-    ctl.em$Label <- tolower(ctl.em$Label)
+    ctl.em <- SS_parlines(dir("em", pattern = "ctl", full.names = TRUE))
+    ctl.em <- ctl.em[, -which(colnames(ctl.em) == "Linenum")]
     both <- merge(ctl.om, ctl.em, by = "Label", all = TRUE, suffixes = c(".om", ".em"),
       sort = TRUE)
-    both <- setNames(both[, c(1, 4, 3, 2, 6, 5, 7:10)],
-      c("Label", "LO", "clt.om", "INIT.om", "INIT.em", "HI",
-        "PRIOR", "PR_type", "SD", "PHASE.em"))
     both$model <- models[mod]
     results[[mod]] <- both
     setwd("..")
