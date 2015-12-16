@@ -26,7 +26,7 @@
 get_parvalues <- function(modelfolder = ".", write_csv = TRUE,
   outfile = "parlist.csv", ss_binary = "ss3_24o_opt") {
   wd <- getwd()
-  on.exit(setwd(wd))
+  on.exit(setwd(wd), add = TRUE)
   setwd(modelfolder)
   models <- list.dirs(full.names = FALSE, recursive = FALSE)
   results <- list()
@@ -49,7 +49,7 @@ get_parvalues <- function(modelfolder = ".", write_csv = TRUE,
     dir.create(temp_path, showWarnings = FALSE)
   file.copy(".", temp_path, recursive = TRUE)
   setwd(temp_path)
-  on.exit(unlink(temp_path, recursive = TRUE))
+  on.exit(unlink(temp_path, recursive = TRUE), add = TRUE)
 
   for (mod in seq_along(models)) {
     setwd(file.path(models[mod], "om"))
