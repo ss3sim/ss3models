@@ -8,7 +8,6 @@
 #'   named \code{outfile}
 #' @param outfile A character value specifying a file name for the output if
 #'   \code{write_csv = TRUE}. Must end in \code{.csv}.
-#' @param ss_binary A character value specifying which version of SS3 to use.
 #'
 #' @return A CSV file named \code{outfile} if \code{write_csv = TRUE}. The
 #'   parameter data frame is returned invisibly regardless.
@@ -21,10 +20,11 @@
 #' head(p)
 #' }
 #' @export
+#' @importFrom ss3sim get_bin
 #' @importFrom r4ss SS_parlines SS_output
 
 get_parvalues <- function(modelfolder = ".", write_csv = TRUE,
-  outfile = "parlist.csv", ss_binary = "ss3_24o_opt") {
+  outfile = "parlist.csv") {
   wd <- getwd()
   on.exit(setwd(wd), add = TRUE)
   setwd(modelfolder)
@@ -53,7 +53,8 @@ get_parvalues <- function(modelfolder = ".", write_csv = TRUE,
 
   for (mod in seq_along(models)) {
     setwd(file.path(models[mod], "om"))
-    system(paste(ss_binary, "-noest"), show.output.on.console = FALSE)
+    sscall <- paste(get_bin(), "-noest")
+    system(sscall, show.output.on.console = FALSE)
     # Read in the control.ss_new file because the model was run using
     # the .par file and the om.ctl file may not have the same INIT vals
     ctl.om <- SS_parlines("control.ss_new")[, c("Label", "INIT")]
